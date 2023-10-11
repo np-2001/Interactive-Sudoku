@@ -20,7 +20,9 @@ include_directories(${APPLICATION_LIBRARY})
 
 
 # Define a variable containing a list of source files for the project
-set(SOURCE_FILES main.cpp pch.h)
+set(SOURCE_FILES main.cpp pch.h
+        SudokuApp.cpp
+        SudokuApp.h)
 
 add_executable(${PROJECT_NAME} WIN32 MACOSX_BUNDLE ${SOURCE_FILES})
 

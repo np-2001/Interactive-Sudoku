@@ -2,6 +2,10 @@ project(SudokuLib)
 
 set(SOURCE_FILES MainFrame.cpp MainFrame.h
         pch.h
+        Game.cpp
+        Game.h
+        GameView.cpp
+        GameView.h
 )
 
 set(wxBUILD_PRECOMP OFF)
