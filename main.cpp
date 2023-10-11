@@ -3,6 +3,6 @@
 int main()
 {
     std::cout << "Hello, World!" << std::endl;
-    //test1
+    //test2
     return 0;
 }
