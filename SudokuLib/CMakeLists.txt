@@ -5,6 +5,8 @@ set(SOURCE_FILES MainFrame.cpp MainFrame.h
         ids.h
         Game.cpp
         GameView.cpp
+        Tile.cpp
+        Tile.h
 )
 
 set(wxBUILD_PRECOMP OFF)
