@@ -7,6 +7,10 @@ set(SOURCE_FILES MainFrame.cpp MainFrame.h
         GameView.cpp
         Tile.cpp
         Tile.h
+        Item.cpp
+        Item.h
+        VisitorItem.cpp
+        VisitorItem.h
 )
 
 set(wxBUILD_PRECOMP OFF)
