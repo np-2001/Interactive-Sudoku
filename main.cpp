@@ -1,8 +1,8 @@
-#include <iostream>
+/**
+ * @file main.cpp
+ * @authors Nitin C., Eliezer A.
+ */
+#include "pch.h"
+#include "SudokuApp.h"
 
-int main()
-{
-    std::cout << "Hello, World!" << std::endl;
-
-    return 0;
-}
+wxIMPLEMENT_APP(SudokuApp);
