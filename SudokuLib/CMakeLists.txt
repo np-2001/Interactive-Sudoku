@@ -13,6 +13,8 @@ set(SOURCE_FILES MainFrame.cpp MainFrame.h
         VisitorItem.h
         Digit.cpp
         Digit.h
+        Timer.cpp
+        Timer.h
 )
 
 set(wxBUILD_PRECOMP OFF)
