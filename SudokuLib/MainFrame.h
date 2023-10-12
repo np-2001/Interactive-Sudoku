@@ -13,6 +13,7 @@ class MainFrame : public wxFrame
 private:
     void OnExit(wxCommandEvent& event);
     void OnAbout(wxCommandEvent& event);
+    void OnCredits(wxCommandEvent& event);
 
 public:
     void Initialize();
