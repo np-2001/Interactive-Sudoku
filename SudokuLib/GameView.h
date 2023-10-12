@@ -1,12 +1,14 @@
 /**
  * @file GameView.h
- * @author Nitin Polavarapu
+ * @author Nitin Polavarapu, Samantha Wycoff
  *
  *
  */
 
 #ifndef PROJECT1_335_SUDOKULIB_GAMEVIEW_H
 #define PROJECT1_335_SUDOKULIB_GAMEVIEW_H
+
+#include "Game.h"
 
 class GameView : public wxWindow
 {
@@ -20,6 +22,12 @@ private:
 
     /// The last stopwatch time
     long mTime = 0;
+
+    /// Object that describes the game
+    Game mGame;
+
+    void OnPaint(wxPaintEvent& event);
+    void OnLeftDown(wxMouseEvent &event);
 
 public:
     void Initialize(wxFrame* parent);

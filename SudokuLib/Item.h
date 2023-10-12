@@ -92,7 +92,7 @@ public:
     virtual ~Item();
     virtual void SetImage(const std::wstring &file);
     virtual void Draw(wxGraphicsContext *graphics);
-    virtual bool HitTest(double x, double y);
+   // virtual bool HitTest(double x, double y);
     virtual void XmlLoad(wxXmlNode *node);
 
 };

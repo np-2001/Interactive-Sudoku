@@ -69,10 +69,10 @@ void Item::Draw(wxGraphicsContext *graphics)
  * @param y Mouse Y virtual pixel location
  * @return True if mouse click location is within Item
  */
-bool Item::HitTest(double x, double y)
-{
+//bool Item::HitTest(double x, double y)
+//{
     // Implement here: @Nitin
-}
+//}
 
 /**
  * Load in XML data
