@@ -11,6 +11,8 @@ set(SOURCE_FILES MainFrame.cpp MainFrame.h
         Item.h
         VisitorItem.cpp
         VisitorItem.h
+        Digit.cpp
+        Digit.h
 )
 
 set(wxBUILD_PRECOMP OFF)

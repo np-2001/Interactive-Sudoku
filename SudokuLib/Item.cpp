@@ -27,7 +27,7 @@ void Item::SetImage(const std::wstring &file)
         std::wstring filename;
 //        std::wstring filename = mGame->GetImagesDirectory() + L"/" + file;
         mItemImage = std::make_unique<wxImage>(filename, wxBITMAP_TYPE_ANY);
-        mItemBitmap = std::make_unique<wxBitmap>(*mItemImage);
+//        mItemBitmap = std::make_unique<wxBitmap>(*mItemImage);
     }
     else
     {
