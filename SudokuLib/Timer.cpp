@@ -18,18 +18,21 @@ const int FrameDuration = 30;
  * Timer Constructor
  */
 Timer::Timer() {
-    mTimer.SetOwner(this);
-    mTimer.Start(FrameDuration);
-    mStopWatch.Start();
 }
-void Timer::OnDraw(wxGraphicsContext *dc) {
-    auto newTime = mStopWatch.Time();
-    newTime = newTime * 0.001;
+
+void Timer::OnDraw(std::shared_ptr<wxGraphicsContext> graphics) {
+
+    int newTime = mTime * 0.001;
+
     wxString TimeString= wxString::Format(wxT("%i"),newTime);
-    wxFont font(wxSize(0, 20),
-                wxFONTFAMILY_SWISS,
-                wxFONTSTYLE_NORMAL,
-                wxFONTWEIGHT_NORMAL);
-   ///dc->SetFont(font,*wxBLACK);
-   ///dc->DrawText(TimeString,ScoreboardTopLeft.x,ScoreboardTopLeft.y);
+    wxFont bigFont(wxSize(0, 50),
+                   wxFONTFAMILY_SWISS,
+                   wxFONTSTYLE_NORMAL,
+                   wxFONTWEIGHT_BOLD);
+    graphics->SetFont(bigFont, wxColour(255, 0, 255));
+    graphics->DrawText(TimeString,ScoreboardTopLeft.x,ScoreboardTopLeft.y);
+}
+
+void Timer::Update(double Time) {
+    mTime = Time;
 }

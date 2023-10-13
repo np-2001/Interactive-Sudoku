@@ -26,6 +26,7 @@ void GameView::Initialize(wxFrame *parent) {
            wxFULL_REPAINT_ON_RESIZE);
     SetBackgroundStyle(wxBG_STYLE_PAINT);
     Bind(wxEVT_PAINT, &GameView::OnPaint, this);
+    Bind(wxEVT_TIMER,&GameView::OnTimer,this);
 
     mTimer.SetOwner(this);
     mTimer.Start(FrameDuration);
@@ -38,6 +39,13 @@ void GameView::Initialize(wxFrame *parent) {
  */
 void GameView::OnPaint(wxPaintEvent& event)
 {
+    // Compute the time that has elapsed
+    // since the last call to OnPaint.
+    // Compute the time that has elapsed
+    // since the last call to OnPaint.
+    double newTime = mStopWatch.Time();
+    auto elapsed = (double)(newTime - mTime) * 0.001;
+    mGame.Update(newTime);
     // Create a double-buffered display context
     wxAutoBufferedPaintDC dc(this);
 
@@ -53,6 +61,8 @@ void GameView::OnPaint(wxPaintEvent& event)
     // Tell the game class to draw
     wxSize size = GetClientSize();
     mGame.OnDraw(gc, size.GetWidth(), size.GetHeight());
+
+
 }
 
 

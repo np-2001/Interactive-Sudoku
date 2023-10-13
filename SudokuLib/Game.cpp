@@ -61,7 +61,9 @@ void Game::OnDraw(std::shared_ptr<wxGraphicsContext> graphics, int width, int he
     graphics->SetBrush(background);
     graphics->DrawRectangle(100, 100, pixelWidth, pixelHeight);
 
+    mTimeDisplay.OnDraw(graphics);
     graphics->PopState();
+
 
 }
 
@@ -76,3 +78,11 @@ void Game::OnLeftDown(int x, int y)
     double virtualY = (y - mYOffset) / mScale;
 }
 
+/**
+ * Handle updates for animation
+ * @param elapsed The time since the last update
+ */
+void Game::Update(double time)
+{
+    mTimeDisplay.Update(time);
+}

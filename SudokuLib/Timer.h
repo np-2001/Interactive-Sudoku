@@ -11,15 +11,14 @@
 class Timer : public wxWindow
 {
 private:
-    /// The timer that allows for animation
-    wxTimer mTimer;
+
     long mTime = 0;
-    /// Stopwatch used to measure elapsed time
-    wxStopWatch mStopWatch;
+
 
 public:
     Timer();
-    void OnDraw(wxGraphicsContext *dc);
+    void OnDraw(std::shared_ptr<wxGraphicsContext> gc);
+    void Update(double Time); //Called in Game
 };
 
 #endif //PROJECT1_335_SUDOKULIB_TIMER_H

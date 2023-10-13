@@ -9,7 +9,7 @@
 #define PROJECT1_335_SUDOKULIB_GAMEVIEW_H
 
 #include "Game.h"
-
+#include "Timer.h"
 class GameView : public wxWindow
 {
 private:
@@ -25,6 +25,7 @@ private:
 
     /// Object that describes the game
     Game mGame;
+
 
     void OnPaint(wxPaintEvent& event);
     void OnLeftDown(wxMouseEvent &event);
