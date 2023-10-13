@@ -10,7 +10,6 @@
 
 #include <string>
 #include <memory>
-#include <wx/graphics.h>
 #include <wx/xml/xml.h>
 #include "VisitorItem.h"
 
@@ -22,8 +21,8 @@ class Game;
 class Item
 {
 private:
-//    /// Game this item is contained in
-//    Game mGame;
+    /// Game this item is contained in
+    Game *mGame;
 
     /// Row of item
     double mRow = 0;
@@ -40,9 +39,7 @@ private:
     std::wstring mFile;
 
 protected:
-    // Implement when game class is made
-//    /// Constructor
-//    Item(Game *game);
+    Item(Game *game);
 
 public:
     ///  Default constructor (disabled)
@@ -88,6 +85,13 @@ public:
       * @param visitor The visitor we accept
       */
     virtual void Accept(VisitorItem* visitor) = 0;
+
+    /**
+     * Function to eat or be eaten
+     * this: object eating
+     * @param item item to be eaten
+     */
+    virtual void Eat(Item *item) = 0;
 
     virtual ~Item();
     virtual void SetImage(const std::wstring &file);
