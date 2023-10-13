@@ -23,6 +23,8 @@ private:
     ///offset variable for Y
     double mYOffset;
 
+    std::unique_ptr<wxBitmap> mBackground;  ///< Background image to use (hardcoded for now)
+
 
 public:
     Game();
