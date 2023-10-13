@@ -10,7 +10,7 @@
 
 #include "Item.h"
 #include <memory>
-
+#include "Timer.h"
 class Game
 {
 private:
@@ -22,10 +22,19 @@ private:
 
     ///offset variable for Y
     double mYOffset;
+
+    std::unique_ptr<wxBitmap> mBackground;  ///< Background image to use (hardcoded for now)
+
+
 public:
     Game();
     void OnDraw(std::shared_ptr<wxGraphicsContext> graphics, int width, int height);
     virtual void OnLeftDown(int x, int y);
+
+    /// The display timer (scoreboard)
+    Timer mTimeDisplay;
+
+    void Update(double time);
 };
 
 #endif //PROJECT1_335_SUDOKULIB_GAME_H
