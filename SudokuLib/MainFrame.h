@@ -1,6 +1,6 @@
 /**
  * @file MainFrame.h
- * @authors Nitin Polavarapu, Eliezer Amponsah
+ * @authors Nitin Polavarapu, Eliezer Amponsah, Samantha Wycoff
  *
  * The top level (main) frame of the application
  */
