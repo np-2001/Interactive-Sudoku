@@ -1,6 +1,6 @@
 /**
  * @file pch.h
- * @author Nitin Polavarapu
+ * @author Nitin Polavarapu, Sania Sinha
  *
  *
  */
@@ -11,6 +11,7 @@
 #include <wx/wxprec.h>
 #ifndef WX_PRECOMP
 #include <wx/wx.h>
+#include <wx/graphics.h>
 #endif
 
 #endif //PROJECT1_335_SUDOKULIB_PCH_H

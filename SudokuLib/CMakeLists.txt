@@ -15,6 +15,14 @@ set(SOURCE_FILES MainFrame.cpp MainFrame.h
         Digit.h
         Timer.cpp
         Timer.h
+        Given.cpp
+        Given.h
+        Background.cpp
+        Background.h
+        Container.cpp
+        Container.h
+        Xray.cpp
+        Xray.h
 )
 
 set(wxBUILD_PRECOMP OFF)
