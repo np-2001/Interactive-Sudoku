@@ -22,14 +22,15 @@ Timer::Timer() {
 
 void Timer::OnDraw(std::shared_ptr<wxGraphicsContext> graphics) {
 
-    int newTime = mTime * 0.001;
-
-    wxString TimeString= wxString::Format(wxT("%i"),newTime);
+    int seconds = mTime * 0.001;
+    int minutes = seconds / 60;
+    seconds = seconds % 60;
+    wxString TimeString= wxString::Format(wxT("%02i:%02i"),minutes,seconds);
     wxFont bigFont(wxSize(0, 50),
                    wxFONTFAMILY_SWISS,
                    wxFONTSTYLE_NORMAL,
                    wxFONTWEIGHT_BOLD);
-    graphics->SetFont(bigFont, wxColour(255, 0, 255));
+    graphics->SetFont(bigFont, *wxWHITE);
     graphics->DrawText(TimeString,ScoreboardTopLeft.x,ScoreboardTopLeft.y);
 }
 

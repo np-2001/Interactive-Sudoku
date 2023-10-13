@@ -59,10 +59,10 @@ void Game::OnDraw(std::shared_ptr<wxGraphicsContext> graphics, int width, int he
     //
     // Drawing a rectangle that is the playing area size
     //
-//    wxBrush background(*wxRED);
-//
-//    graphics->SetBrush(background);
-//    graphics->DrawRectangle(100, 100, pixelWidth, pixelHeight);
+    //    wxBrush background(*wxRED);
+    //
+    //    graphics->SetBrush(background);
+    //    graphics->DrawRectangle(100, 100, pixelWidth, pixelHeight);
 
     mTimeDisplay.OnDraw(graphics);
     graphics->PopState();
