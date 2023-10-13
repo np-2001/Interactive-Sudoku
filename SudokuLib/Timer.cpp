@@ -30,6 +30,6 @@ void Timer::OnDraw(wxGraphicsContext *dc) {
                 wxFONTFAMILY_SWISS,
                 wxFONTSTYLE_NORMAL,
                 wxFONTWEIGHT_NORMAL);
-    dc->SetFont(font,*wxBLACK);
-    dc->DrawText(TimeString,ScoreboardTopLeft.x,ScoreboardTopLeft.y);
+   ///dc->SetFont(font,*wxBLACK);
+   ///dc->DrawText(TimeString,ScoreboardTopLeft.x,ScoreboardTopLeft.y);
 }

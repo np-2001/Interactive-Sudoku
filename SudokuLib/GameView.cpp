@@ -24,6 +24,7 @@ void GameView::Initialize(wxFrame *parent) {
     Create(parent, wxID_ANY,
            wxDefaultPosition, wxDefaultSize,
            wxFULL_REPAINT_ON_RESIZE);
+    SetBackgroundStyle(wxBG_STYLE_PAINT);
     Bind(wxEVT_PAINT, &GameView::OnPaint, this);
 
     mTimer.SetOwner(this);
@@ -50,8 +51,8 @@ void GameView::OnPaint(wxPaintEvent& event)
         std::shared_ptr<wxGraphicsContext>(wxGraphicsContext::Create(dc));
 
     // Tell the game class to draw
-    wxRect rect = GetRect();
-    mGame.OnDraw(gc, rect.GetWidth(), rect.GetHeight());
+    wxSize size = GetClientSize();
+    mGame.OnDraw(gc, size.GetWidth(), size.GetHeight());
 }
 
 

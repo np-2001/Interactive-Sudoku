@@ -26,8 +26,8 @@ void Game::OnDraw(std::shared_ptr<wxGraphicsContext> graphics, int width, int he
     // This is up to you...
 
     //These cannot remain constants, they are constants for testing purposes!!
-    int pixelWidth = 48;
-    int pixelHeight = 48;
+    int pixelWidth = 800;
+    int pixelHeight = 800;
 
     //
     // Automatic Scaling
@@ -53,6 +53,13 @@ void Game::OnDraw(std::shared_ptr<wxGraphicsContext> graphics, int width, int he
     //
     // INSERT YOUR DRAWING CODE HERE
 
+    //
+    // Drawing a rectangle that is the playing area size
+    //
+    wxBrush background(*wxRED);
+
+    graphics->SetBrush(background);
+    graphics->DrawRectangle(100, 100, pixelWidth, pixelHeight);
 
     graphics->PopState();
 

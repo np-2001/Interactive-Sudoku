@@ -6,6 +6,7 @@
 #include "pch.h"
 #include "MainFrame.h"
 #include "ids.h"
+#include "GameView.h"
 
 /**
  * Initialize the MainFrame window
@@ -16,6 +17,9 @@ void MainFrame::Initialize()
     Create(nullptr, wxID_ANY, L"Action Sudoku",
            wxDefaultPosition, wxSize(1000, 800));
 
+
+    mGameView = new GameView();
+    mGameView->Initialize(this);
 
     // Main Menu Bar container
     auto menuBar = new wxMenuBar();
