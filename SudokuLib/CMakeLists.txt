@@ -23,6 +23,14 @@ set(SOURCE_FILES MainFrame.cpp MainFrame.h
         Container.h
         Xray.cpp
         Xray.h
+        VisitorSparty.cpp
+        VisitorSparty.h
+        VisitorBackground.cpp
+        VisitorBackground.h
+        VisitorDigit.cpp
+        VisitorDigit.h
+        VisitorContainer.cpp
+        VisitorContainer.h
 )
 
 set(wxBUILD_PRECOMP OFF)
