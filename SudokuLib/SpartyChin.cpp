@@ -1,20 +1,21 @@
 /**
- * @file Sparty.cpp
- * @author Sania Sinha
+ * @file SpartyChin.cpp
+ * @author Nitin Polavarapu
  */
 
 #include "pch.h"
-#include "Sparty.h"
-
+#include "SpartyChin.h"
 using namespace std;
 
-const wstring SpartyHeadImageName = L"images/sparty-1.png";
+
+const wstring SpartyChinImageName = L"images/sparty-2.png";
+
 
 /**
  * Constructor
  * @param game Game object associated with this item
  */
-Sparty::Sparty(Game *game) : Item(game)
+SpartyChin::SpartyChin(Game *game) : Item(game)
 {
 
 }
@@ -23,7 +24,7 @@ Sparty::Sparty(Game *game) : Item(game)
  * Accepting visitor to Sparty
  * @param visitor visitor object
  */
-void Sparty::Accept(VisitorItem* visitor)
+void SpartyChin::Accept(VisitorItem* visitor)
 {
 
 }
@@ -32,7 +33,7 @@ void Sparty::Accept(VisitorItem* visitor)
  * Sparty eats and does not get eaten
  * @param item digit to be eaten
  */
-void Sparty::Eat(Item *item)
+void SpartyChin::Eat(Item *item)
 {
 
 }
