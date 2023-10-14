@@ -11,7 +11,10 @@
 #include <wx/wxprec.h>
 #ifndef WX_PRECOMP
 #include <wx/wx.h>
-#include <wx/graphics.h>
 #endif
+
+#include <wx/graphics.h>
+#include <memory>
+
 
 #endif //PROJECT1_335_SUDOKULIB_PCH_H
