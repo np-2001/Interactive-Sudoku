@@ -33,6 +33,8 @@ set(SOURCE_FILES MainFrame.cpp MainFrame.h
         VisitorContainer.h
         Sparty.cpp
         Sparty.h
+        SpartyChin.cpp
+        SpartyChin.h
 )
 
 set(wxBUILD_PRECOMP OFF)
@@ -42,6 +44,6 @@ include(${wxWidgets_USE_FILE})
 
 add_library(${PROJECT_NAME} STATIC ${SOURCE_FILES})
 
-target_link_libraries(${PROJECT_NAME} ${wxWidgets_LIBRARIES})
-
 target_precompile_headers(${PROJECT_NAME} PRIVATE pch.h)
+
+target_link_libraries(${PROJECT_NAME} ${wxWidgets_LIBRARIES})
