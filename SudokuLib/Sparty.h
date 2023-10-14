@@ -16,6 +16,14 @@
 class Sparty: public Item
 {
 private:
+    /// Points to X location moving to. If not moving then equal to mCurrLocation
+    int mNewLocationX = Item::GetX();
+
+
+    /// Points to Y location moving to. If not moving then equal to mCurrLocation
+    int mNewLocationY = Item::GetY();
+
+
 
 public:
     Sparty(Game *game);
@@ -27,6 +35,13 @@ public:
 
     void Accept(VisitorItem* visitor) override;
     void Eat(Item *item) override;
+    void Update(double elapsed) override;
+
+    /// Setter for NewX and NewY
+    void SetNewCoordinates(int NewX, int NewY) {
+        mNewLocationX = NewX;
+        mNewLocationY = NewY;
+    }
 
 };
 
