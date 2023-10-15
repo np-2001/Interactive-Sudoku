@@ -47,10 +47,15 @@ void Item::Draw(shared_ptr<wxGraphicsContext> graphics)
 //        tileWidth = mGame->GetTileWidth();
 //        tileHeight = mGame->GetTileHeight();
 
-//        graphics->DrawBitmap(mItemBitmap, mCol*tileHeight, (mRow-1)*tileHeight-height, wid, hit);
+        // Hardcoded for now
+        int tileWidth = 48;
+        int tileHeight = 48;
+        int height = 20;
+
+        graphics->DrawBitmap(*mItemBitmap, mCol*tileHeight, (mRow-1)*tileHeight-height, wid, hit);
 
         // Uncomment the above and delete this once xml is configured
-        graphics->DrawBitmap(*mItemBitmap, 100, 100, wid, hit);
+//        graphics->DrawBitmap(*mItemBitmap, 100, 100, wid, hit);
     }
 }
 

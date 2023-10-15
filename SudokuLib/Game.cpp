@@ -5,6 +5,7 @@
 
 #include "pch.h"
 #include "Game.h"
+#include "Digit.h"
 using namespace std;
 
 /**
@@ -58,6 +59,7 @@ void Game::OnDraw(std::shared_ptr<wxGraphicsContext> graphics, int width, int he
 
     // Delete, just for testing, this is how to create the items
 //    auto item = make_shared<Digit>(this, L"images/0b.png");
+//    item->SetLocation(10,10);
 //    item->Draw(graphics);
 
     //
