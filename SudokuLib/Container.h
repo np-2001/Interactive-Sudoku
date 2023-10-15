@@ -20,7 +20,7 @@ class Container: public Item
 private:
 
 public:
-    Container(Game *game);
+    Container(Game *game, const std::wstring &filename);
     ///  Default constructor (disabled)
     Container() = delete;
 

@@ -20,7 +20,7 @@ class Digit: public Item
 private:
 
 public:
-    Digit(Game *game);
+    Digit(Game *game, const std::wstring &filename);
     ///  Default constructor (disabled)
     Digit() = delete;
 

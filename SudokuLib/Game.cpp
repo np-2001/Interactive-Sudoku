@@ -1,6 +1,6 @@
 /**
  * @file Game.cpp
- * @author Nitin Polavarapu, Samantha Wycoff
+ * @author Nitin Polavarapu, Samantha Wycoff, Sania Sinha
  */
 
 #include "pch.h"
@@ -56,6 +56,10 @@ void Game::OnDraw(std::shared_ptr<wxGraphicsContext> graphics, int width, int he
 
     graphics->DrawBitmap(*mBackground, 0, 0, mBackground->GetWidth(), mBackground->GetHeight());
 
+    // Delete, just for testing, this is how to create the items
+//    auto item = make_shared<Digit>(this, L"images/0b.png");
+//    item->Draw(graphics);
+
     //
     // Drawing a rectangle that is the playing area size
     //
@@ -66,8 +70,6 @@ void Game::OnDraw(std::shared_ptr<wxGraphicsContext> graphics, int width, int he
 
     mTimeDisplay.OnDraw(graphics);
     graphics->PopState();
-
-
 }
 
 /**

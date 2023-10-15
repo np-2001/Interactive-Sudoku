@@ -1,6 +1,6 @@
 /**
  * @file Game.h
- * @author Nitin Polavarapu, Samantha Wycoff
+ * @author Nitin Polavarapu, Samantha Wycoff, Sania Sinha
  *
  *
  */
@@ -22,6 +22,9 @@ private:
 
     ///offset variable for Y
     double mYOffset;
+
+    /// List of all items in the game
+    std::vector<std::shared_ptr<Item>> mItems;
 
     std::unique_ptr<wxBitmap> mBackground;  ///< Background image to use (hardcoded for now)
 

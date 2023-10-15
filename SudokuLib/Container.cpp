@@ -10,7 +10,7 @@
  * Constructor
  * @param game Game object associated with this item
  */
-Container::Container(Game *game) : Item(game)
+Container::Container(Game *game, const std::wstring &filename) : Item(game, filename)
 {
 
 }

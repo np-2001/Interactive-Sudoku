@@ -25,7 +25,7 @@ const wstring SpartyHeadImageName = L"images/sparty-1.png";
  * Constructor
  * @param game Game object associated with this item
  */
-Sparty::Sparty(Game *game) : Item(game)
+Sparty::Sparty(Game *game, const std::wstring &filename) : Item(game, filename)
 {
 
 }

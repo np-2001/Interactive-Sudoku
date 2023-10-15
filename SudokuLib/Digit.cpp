@@ -10,7 +10,7 @@
  * Constructor
  * @param game Game object associated with this item
  */
-Digit::Digit(Game *game) : Item(game)
+Digit::Digit(Game *game, const std::wstring &filename) : Item(game, filename)
 {
 
 }

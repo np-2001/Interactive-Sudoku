@@ -10,7 +10,7 @@
  * Constructor
  * @param game Game object associated with this item
  */
-Background::Background(Game *game) : Item(game)
+Background::Background(Game *game, const std::wstring &filename) : Item(game, filename)
 {
 
 }

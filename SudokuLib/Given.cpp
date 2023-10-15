@@ -10,7 +10,7 @@
  * Constructor
  * @param game Game object associated with this item
  */
-Given::Given(Game *game) : Digit(game)
+Given::Given(Game *game, const std::wstring &filename) : Digit(game, filename)
 {
 
 }

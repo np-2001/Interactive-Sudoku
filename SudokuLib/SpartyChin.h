@@ -14,7 +14,7 @@
 class SpartyChin : public Item
 {
 private:
-    SpartyChin(Game *game);
+    SpartyChin(Game *game, const std::wstring &filename);
 
     ///  Default constructor (disabled)
     SpartyChin() = delete;

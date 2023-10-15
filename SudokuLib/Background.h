@@ -18,7 +18,7 @@ class Background: public Item
 private:
 
 public:
-    Background(Game *game);
+    Background(Game *game, const std::wstring &filename);
     ///  Default constructor (disabled)
     Background() = delete;
 

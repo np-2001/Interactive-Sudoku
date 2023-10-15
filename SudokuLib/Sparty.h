@@ -26,7 +26,7 @@ private:
 
 
 public:
-    Sparty(Game *game);
+    Sparty(Game *game, const std::wstring &filename);
     ///  Default constructor (disabled)
     Sparty() = delete;
 
