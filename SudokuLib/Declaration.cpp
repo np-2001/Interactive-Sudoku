@@ -10,7 +10,7 @@ Declaration::Declaration(int hit, int wid) : mHeight(hit), mWidth(wid)
 {
 }
 
-void Declaration::Add(wxString id, std::wstring imageFile)
+void Declaration::Add(wxString id, const std::wstring &imageFile)
 {
     auto itemImage = std::make_shared<wxImage>(imageFile, wxBITMAP_TYPE_ANY);
     mDeclarations.insert({id, itemImage});

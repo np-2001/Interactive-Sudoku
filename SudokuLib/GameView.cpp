@@ -99,10 +99,11 @@ void GameView::OnLeftDown(wxMouseEvent &event)
  */
 void GameView::OnLoadLevel1(wxCommandEvent &event)
 {
-    wxMessageBox(L"Level 1 was clicked!");
+    //wxMessageBox(L"Level 1 was clicked!");
 
     // Re-evaluate this
     mGame.mLevel.SetLevel(L"Levels/level1.xml");
+    mGame.mLevel.LoadLevel();
 
     Refresh();
 }

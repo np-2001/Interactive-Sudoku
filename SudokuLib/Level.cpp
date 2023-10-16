@@ -7,28 +7,30 @@
 #include <wx/xml/xml.h>
 #include "Level.h"
 #include "Game.h"
+#include "Declaration.h"
 
 
 /**
  * Loads the Given Level
  * @param fileName level to load
  */
-void Level::LoadLevel(std::shared_ptr<wxGraphicsContext> gc)
+void Level::LoadLevel()
 {
     wxXmlDocument xmlDoc;
-    if(!xmlDoc.Load(mLevel)) // Error check
+    if(!xmlDoc.Load(mLevelFileName)) // Error check
     {
         wxMessageBox(L"Unable to load Level file");
         return;
     }
 
     auto root = xmlDoc.GetRoot();
-    double width;
-    double height;
-    root->GetAttribute(L"width").ToDouble(&width);
-    root->GetAttribute(L"height").ToDouble(&height);
+    int width;
+    int height;
+    root->GetAttribute(L"width").ToInt(&width);
+    root->GetAttribute(L"height").ToInt(&height);
 
-    mGame->OnDraw(gc, width, height);
+    //TODO Worthy of review
+    Declaration declarations(width, height);
 
     // Children of the xml: [declarations, items,
     auto child = root->GetChildren();
@@ -39,24 +41,12 @@ void Level::LoadLevel(std::shared_ptr<wxGraphicsContext> gc)
         if (name == L"declarations")
         {
             // Declarations should contain every usable object we are going to use
-            for (; innerNode; innerNode++)
+            for (; innerNode; innerNode=innerNode->GetNext())
             {
                 // Call constructors/Visitors for each item
-                auto innerName = innerNode->GetName();
-                if (innerName == L"given")
-                    wxMessageBox(L"Given Object");
-
-                else if (innerName == L"digit")
-                    wxMessageBox(L"Digit Object");
-
-                else if (innerName == L"sparty")
-                    wxMessageBox(L"Sparty Object");
-
-                else if (innerName == L"xray")
-                    wxMessageBox("xRay Object");
-
-                else if (innerName == L"background")
-                    wxMessageBox(L"Background Object");
+                auto innerId = innerNode->GetAttribute(L"id");
+                auto innerImage = innerNode->GetAttribute(L"image");
+                declarations.Add(innerId, innerImage.ToStdWstring());
             }
         }
 

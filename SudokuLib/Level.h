@@ -14,7 +14,7 @@ class Level
 private:
     /// Running Game to load this level on
     Game *mGame;
-    wxString mLevel;
+    wxString mLevelFileName;
 
 public:
 
@@ -30,14 +30,14 @@ public:
 
     Level(Game *game) : mGame(game) {}
 
-    void LoadLevel(std::shared_ptr<wxGraphicsContext>);
+    void LoadLevel();
 
 
     /**
      *
      * @param filename
      */
-    void SetLevel(wxString filename) {mLevel = filename; }
+    void SetLevel(wxString filename) {mLevelFileName = filename; }
 
 };
 

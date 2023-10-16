@@ -35,7 +35,7 @@ public:
     void operator=(const Declaration &) = delete;
 
     Declaration(int hit, int wid);
-    void Add(wxString id, std::wstring imageFile);
+    void Add(wxString id, const std::wstring &imageFile);
 
 
 
