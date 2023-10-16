@@ -20,7 +20,7 @@ class Container: public Item
 private:
 
 public:
-    Container(Game *game);
+    Container(Game *game, std::shared_ptr<wxImage> image);
     ///  Default constructor (disabled)
     Container() = delete;
 

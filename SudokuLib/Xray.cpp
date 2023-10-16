@@ -10,7 +10,7 @@
  * Constructor
  * @param game Game object associated with this item
  */
-Xray::Xray(Game *game) : Container(game)
+Xray::Xray(Game *game, std::shared_ptr<wxImage> image) : Container(game, image)
 {
 
 }

@@ -7,12 +7,15 @@
 #include "Item.h"
 #include "Game.h"
 
+using namespace std;
+
 /**
  * Constructor
  * @param game Game object associated with this item
  */
-Item::Item(Game *game): mGame(game)
+Item::Item(Game *game, std::shared_ptr<wxImage> image): mGame(game)
 {
+    mItemImage = image;
 }
 
 /**
@@ -24,38 +27,15 @@ Item::~Item()
 }
 
 /**
- * Set the image file to draw
- * @param file The image file
- */
-void Item::SetImage(const std::wstring &file)
-{
-    // If file is not empty
-    if (!file.empty())
-    {
-        std::wstring filename;
-//        std::wstring filename = mGame->GetImagesDirectory() + L"/" + file;
-        mItemImage = std::make_unique<wxImage>(filename, wxBITMAP_TYPE_ANY);
-//        mItemBitmap = std::make_unique<wxBitmap>(*mItemImage);
-    }
-    else
-    {
-        mItemImage.release();
-        // How to delete bitmap
-    }
-
-    mFile = file;
-}
-
-/**
  * Draw the item
  * @param dc Device context to draw on
  */
-void Item::Draw(wxGraphicsContext *graphics)
+void Item::Draw(shared_ptr<wxGraphicsContext> graphics)
 {
     // Load in BitMap only once
-    if(mItemBitmap.IsNull())
+    if(mItemBitmap == nullptr)
     {
-        mItemBitmap = graphics->CreateBitmapFromImage(*mItemImage);
+        mItemBitmap = std::make_unique<wxGraphicsBitmap>(graphics->CreateBitmapFromImage(*mItemImage));
     }
 
     if (mItemImage != nullptr)
@@ -67,7 +47,15 @@ void Item::Draw(wxGraphicsContext *graphics)
 //        tileWidth = mGame->GetTileWidth();
 //        tileHeight = mGame->GetTileHeight();
 
-//        graphics->DrawBitmap(mItemBitmap, mCol*tileHeight, (mRow-1)*tileHeight-height, wid, hit);
+        // Hardcoded for now
+        int tileWidth = 48;
+        int tileHeight = 48;
+        int height = 20;
+
+        graphics->DrawBitmap(*mItemBitmap, mCol*tileHeight, (mRow-1)*tileHeight-height, wid, hit);
+
+        // Uncomment the above and delete this once xml is configured
+//        graphics->DrawBitmap(*mItemBitmap, 100, 100, wid, hit);
     }
 }
 

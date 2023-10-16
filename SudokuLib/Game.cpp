@@ -1,16 +1,18 @@
 /**
  * @file Game.cpp
- * @author Nitin Polavarapu, Samantha Wycoff
+ * @author Nitin Polavarapu, Samantha Wycoff, Sania Sinha
  */
 
 #include "pch.h"
 #include "Game.h"
-using namespace std;
+#include "Digit.h"
+//using namespace std;
+using std::make_unique;
 
 /**
  * Game Constructor
  */
-Game::Game()
+Game::Game() : mLevel(this)
 {
     mBackground = make_unique<wxBitmap>(L"images/background.png", wxBITMAP_TYPE_ANY);
 }
@@ -56,6 +58,11 @@ void Game::OnDraw(std::shared_ptr<wxGraphicsContext> graphics, int width, int he
 
     graphics->DrawBitmap(*mBackground, 0, 0, mBackground->GetWidth(), mBackground->GetHeight());
 
+    // Delete, just for testing, this is how to create the items
+//    auto item = make_shared<Digit>(this, L"images/0b.png");
+//    item->SetLocation(10,10);
+//    item->Draw(graphics);
+
     //
     // Drawing a rectangle that is the playing area size
     //
@@ -65,9 +72,9 @@ void Game::OnDraw(std::shared_ptr<wxGraphicsContext> graphics, int width, int he
     //    graphics->DrawRectangle(100, 100, pixelWidth, pixelHeight);
 
     mTimeDisplay.OnDraw(graphics);
+
+
     graphics->PopState();
-
-
 }
 
 /**
@@ -88,4 +95,21 @@ void Game::OnLeftDown(int x, int y)
 void Game::Update(double time)
 {
     mTimeDisplay.Update(time);
+}
+
+/**
+ * Add an item to our collection
+ * @param item item to be added
+ */
+void Game::Add(std::shared_ptr<Item> item)
+{
+    mItems.push_back(item);
+}
+
+/**
+ * Clear all items
+ */
+void Game::Clear()
+{
+    mItems.clear();
 }

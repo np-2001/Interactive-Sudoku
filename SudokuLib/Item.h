@@ -30,16 +30,16 @@ private:
     double mCol = 0;
 
     /// The image for this item
-    std::unique_ptr<wxImage> mItemImage;
+    std::shared_ptr<wxImage> mItemImage = nullptr;
 
     /// The bitmap for this item
-    wxGraphicsBitmap mItemBitmap;
+    std::unique_ptr<wxGraphicsBitmap> mItemBitmap = nullptr;
 
     /// The file for this item
     std::wstring mFile;
 
 protected:
-    Item(Game *game);
+    Item(Game *game, std::shared_ptr<wxImage> image);
 
 public:
     ///  Default constructor (disabled)
@@ -94,8 +94,7 @@ public:
     virtual void Eat(Item *item) = 0;
 
     virtual ~Item();
-    virtual void SetImage(const std::wstring &file);
-    virtual void Draw(wxGraphicsContext *graphics);
+    virtual void Draw(std::shared_ptr<wxGraphicsContext> graphics);
    // virtual bool HitTest(double x, double y);
     virtual void XmlLoad(wxXmlNode *node);
 

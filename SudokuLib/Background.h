@@ -18,7 +18,7 @@ class Background: public Item
 private:
 
 public:
-    Background(Game *game);
+    Background(Game *game, std::shared_ptr<wxImage> image);
     ///  Default constructor (disabled)
     Background() = delete;
 

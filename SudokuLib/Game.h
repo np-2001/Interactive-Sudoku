@@ -1,6 +1,6 @@
 /**
  * @file Game.h
- * @author Nitin Polavarapu, Samantha Wycoff
+ * @author Nitin Polavarapu, Samantha Wycoff, Sania Sinha
  *
  *
  */
@@ -11,6 +11,8 @@
 #include "Item.h"
 #include <memory>
 #include "Timer.h"
+#include "Level.h"
+
 class Game
 {
 private:
@@ -23,7 +25,12 @@ private:
     ///offset variable for Y
     double mYOffset;
 
+    /// List of all items in the game
+    std::vector<std::shared_ptr<Item>> mItems;
+
     std::unique_ptr<wxBitmap> mBackground;  ///< Background image to use (hardcoded for now)
+
+
 
 
 public:
@@ -34,7 +41,12 @@ public:
     /// The display timer (scoreboard)
     Timer mTimeDisplay;
 
+    /// Current Level
+    Level mLevel;
+
     void Update(double time);
+    void Add(std::shared_ptr<Item> item);
+    void Clear();
 };
 
 #endif //PROJECT1_335_SUDOKULIB_GAME_H

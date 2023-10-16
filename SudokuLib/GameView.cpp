@@ -4,15 +4,17 @@
  */
 
 #include "pch.h"
+#include <wx/dcbuffer.h>
 #include "GameView.h"
 #include "Game.h"
 #include "ids.h"
-#include <wx/dcbuffer.h>
+
 
 using namespace std;
 
 /// Frame duration in milliseconds
 const int FrameDuration = 30;
+
 
 
 /**
@@ -27,6 +29,11 @@ void GameView::Initialize(wxFrame *parent) {
     SetBackgroundStyle(wxBG_STYLE_PAINT);
     Bind(wxEVT_PAINT, &GameView::OnPaint, this);
     Bind(wxEVT_TIMER,&GameView::OnTimer,this);
+
+    // Level Bindings
+    parent->Bind(wxEVT_COMMAND_MENU_SELECTED, &GameView::OnLoadLevel1, this, IDM_LEVEL_1);
+    parent->Bind(wxEVT_COMMAND_MENU_SELECTED, &GameView::OnLoadLevel2, this, IDM_LEVEL_2);
+    parent->Bind(wxEVT_COMMAND_MENU_SELECTED, &GameView::OnLoadLevel3, this, IDM_LEVEL_3);
 
     mTimer.SetOwner(this);
     mTimer.Start(FrameDuration);
@@ -82,4 +89,43 @@ void GameView::OnTimer(wxTimerEvent& event)
 void GameView::OnLeftDown(wxMouseEvent &event)
 {
     mGame.OnLeftDown(event.GetX(), event.GetY());
+}
+
+
+
+/**
+ * Handler to load level 1 on button click
+ * @param event event to handle
+ */
+void GameView::OnLoadLevel1(wxCommandEvent &event)
+{
+    //wxMessageBox(L"Level 1 was clicked!");
+
+    // Clear active objects
+    mGame.Clear();
+
+    // Re-evaluate this
+    mGame.mLevel.SetLevel(L"Levels/level1.xml");
+    //TODO Game complains about images not being loaded
+    mGame.mLevel.LoadLevel();
+
+    Refresh();
+}
+
+/**
+ * Handler to load level 2 on button click
+ * @param event event to handle
+ */
+void GameView::OnLoadLevel2(wxCommandEvent &event)
+{
+    wxMessageBox(L"Level 2 was clicked!");
+}
+
+/**
+ * Handler to load level 3 on button click
+ * @param event event to handle
+ */
+void GameView::OnLoadLevel3(wxCommandEvent &event)
+{
+    wxMessageBox(L"Level 3 was clicked!");
 }
