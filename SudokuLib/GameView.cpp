@@ -35,6 +35,8 @@ void GameView::Initialize(wxFrame *parent) {
     parent->Bind(wxEVT_COMMAND_MENU_SELECTED, &GameView::OnLoadLevel2, this, IDM_LEVEL_2);
     parent->Bind(wxEVT_COMMAND_MENU_SELECTED, &GameView::OnLoadLevel3, this, IDM_LEVEL_3);
 
+    Bind(wxEVT_LEFT_DOWN, &GameView::OnLeftDown, this);
+
     mTimer.SetOwner(this);
     mTimer.Start(FrameDuration);
     mStopWatch.Start();
