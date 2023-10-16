@@ -11,6 +11,8 @@
 #include "Item.h"
 #include <memory>
 #include "Timer.h"
+#include "Level.h"
+
 class Game
 {
 private:
@@ -29,6 +31,8 @@ private:
     std::unique_ptr<wxBitmap> mBackground;  ///< Background image to use (hardcoded for now)
 
 
+
+
 public:
     Game();
     void OnDraw(std::shared_ptr<wxGraphicsContext> graphics, int width, int height);
@@ -36,6 +40,9 @@ public:
 
     /// The display timer (scoreboard)
     Timer mTimeDisplay;
+
+    /// Current Level
+    Level mLevel;
 
     void Update(double time);
 };

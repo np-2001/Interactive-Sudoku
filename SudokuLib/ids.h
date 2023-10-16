@@ -13,7 +13,7 @@
  * ID of Levels
  */
 enum IDs{
-    IDM_LEVEL1 = wxID_HIGHEST + 1,
+    IDM_LEVEL_1 = wxID_HIGHEST + 1,
     IDM_LEVEL_2,
     IDM_LEVEL_3,
     IDM_SOLVE_LEVEL,

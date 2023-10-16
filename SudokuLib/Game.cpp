@@ -6,12 +6,13 @@
 #include "pch.h"
 #include "Game.h"
 #include "Digit.h"
-using namespace std;
+//using namespace std;
+using std::make_unique;
 
 /**
  * Game Constructor
  */
-Game::Game()
+Game::Game() : mLevel(this)
 {
     mBackground = make_unique<wxBitmap>(L"images/background.png", wxBITMAP_TYPE_ANY);
 }
@@ -71,6 +72,8 @@ void Game::OnDraw(std::shared_ptr<wxGraphicsContext> graphics, int width, int he
     //    graphics->DrawRectangle(100, 100, pixelWidth, pixelHeight);
 
     mTimeDisplay.OnDraw(graphics);
+
+
     graphics->PopState();
 }
 
