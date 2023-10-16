@@ -45,6 +45,8 @@ public:
     Level mLevel;
 
     void Update(double time);
+    void Add(std::shared_ptr<Item> item);
+    void Clear();
 };
 
 #endif //PROJECT1_335_SUDOKULIB_GAME_H

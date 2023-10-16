@@ -96,3 +96,20 @@ void Game::Update(double time)
 {
     mTimeDisplay.Update(time);
 }
+
+/**
+ * Add an item to our collection
+ * @param item item to be added
+ */
+void Game::Add(std::shared_ptr<Item> item)
+{
+    mItems.push_back(item);
+}
+
+/**
+ * Clear all items
+ */
+void Game::Clear()
+{
+    mItems.clear();
+}
