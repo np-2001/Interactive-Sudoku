@@ -101,8 +101,12 @@ void GameView::OnLoadLevel1(wxCommandEvent &event)
 {
     //wxMessageBox(L"Level 1 was clicked!");
 
+    // Clear active objects
+    mGame.Clear();
+
     // Re-evaluate this
     mGame.mLevel.SetLevel(L"Levels/level1.xml");
+    //TODO Game complains about images not being loaded
     mGame.mLevel.LoadLevel();
 
     Refresh();

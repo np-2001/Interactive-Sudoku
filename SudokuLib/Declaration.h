@@ -37,6 +37,9 @@ public:
     Declaration(int hit, int wid);
     void Add(wxString id, const std::wstring &imageFile);
 
+    /** Returns the ids to images of this level */
+    std::map<wxString, std::shared_ptr<wxImage>> GetDeclarations() {return mDeclarations; }
+
 
 
 };
