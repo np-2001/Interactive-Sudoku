@@ -33,7 +33,8 @@ private:
     std::shared_ptr<wxImage> mItemImage = nullptr;
 
     /// The bitmap for this item
-    std::unique_ptr<wxGraphicsBitmap> mItemBitmap = nullptr;
+//    std::unique_ptr<wxGraphicsBitmap> mItemBitmap = nullptr;
+    wxGraphicsBitmap mItemBitmap;
 
     /// The file for this item
     std::wstring mFile;

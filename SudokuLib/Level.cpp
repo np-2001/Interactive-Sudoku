@@ -1,6 +1,6 @@
 /**
  * @file Level.cpp
- * @author Eliezer Amponsah
+ * @author Eliezer Amponsah, Sania Sinha
  */
 
 #include "pch.h"
@@ -54,8 +54,14 @@ void Level::LoadLevel()
             for (; innerNode; innerNode = innerNode->GetNext())
             {
                 // Call constructors/Visitors for each item
+                auto innerName = innerNode->GetName();
                 auto innerId = innerNode->GetAttribute(L"id");
                 auto innerImage = innerNode->GetAttribute(L"image");
+
+                if(name == "sparty")
+                {
+                    innerImage = innerNode->GetAttribute(L"image1");
+                }
                 declarations.Add(innerId, innerImage.ToStdWstring());
             }
         }
@@ -100,7 +106,14 @@ void Level::LoadLevel()
                 {
                     item = std::make_shared<Container>(mGame, declarations.GetDeclarations().at(id));
                 }
+                else if(name == "sparty")
+                {
+                    item = std::make_shared<Sparty>(mGame, declarations.GetDeclarations().at(id));
 
+                }
+
+                // Set location of item
+                item->SetLocation(row,col);
                 // Add the item to our list
                 mGame->Add(item);
 

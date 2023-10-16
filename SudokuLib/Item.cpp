@@ -33,9 +33,10 @@ Item::~Item()
 void Item::Draw(shared_ptr<wxGraphicsContext> graphics)
 {
     // Load in BitMap only once
-    if(mItemBitmap == nullptr)
+    if(mItemBitmap.IsNull())
     {
-        mItemBitmap = std::make_unique<wxGraphicsBitmap>(graphics->CreateBitmapFromImage(*mItemImage));
+//        mItemBitmap = std::make_unique<wxGraphicsBitmap>(graphics->CreateBitmapFromImage(*mItemImage));
+        mItemBitmap = graphics->CreateBitmapFromImage(*mItemImage);
     }
 
     if (mItemImage != nullptr)
@@ -48,11 +49,10 @@ void Item::Draw(shared_ptr<wxGraphicsContext> graphics)
 //        tileHeight = mGame->GetTileHeight();
 
         // Hardcoded for now
-        int tileWidth = 48;
         int tileHeight = 48;
         int height = 20;
 
-        graphics->DrawBitmap(*mItemBitmap, mCol*tileHeight, (mRow-1)*tileHeight-height, wid, hit);
+        graphics->DrawBitmap(mItemBitmap, mCol*tileHeight, (mRow-1)*tileHeight-height, wid, hit);
 
         // Uncomment the above and delete this once xml is configured
 //        graphics->DrawBitmap(*mItemBitmap, 100, 100, wid, hit);
@@ -67,8 +67,8 @@ void Item::Draw(shared_ptr<wxGraphicsContext> graphics)
  */
 bool Item::HitTest(double x, double y)
 {
-    double wid = mItemBitmap->ConvertToImage().GetWidth();
-    double hit = mItemBitmap->ConvertToImage().GetHeight();
+    double wid = mItemBitmap.ConvertToImage().GetWidth();
+    double hit = mItemBitmap.ConvertToImage().GetHeight();
 
     // Make x and y relative to the top-left corner of the bitmap image
     // Subtracting the center makes x, y relative to the image center
