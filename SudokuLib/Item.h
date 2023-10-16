@@ -1,6 +1,6 @@
 /**
  * @file Item.h
- * @author Sania Sinha
+ * @author Sania Sinha, Finn Clark
  *
  * Class handling all items in our game
  */
@@ -95,7 +95,7 @@ public:
 
     virtual ~Item();
     virtual void Draw(std::shared_ptr<wxGraphicsContext> graphics);
-   // virtual bool HitTest(double x, double y);
+    virtual bool HitTest(double x, double y);
     virtual void XmlLoad(wxXmlNode *node);
 
 };
