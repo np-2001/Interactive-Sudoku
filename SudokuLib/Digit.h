@@ -20,7 +20,7 @@ class Digit: public Item
 private:
 
 public:
-    Digit(Game *game, const std::wstring &filename);
+    Digit(Game *game, std::shared_ptr<wxImage> image);
     ///  Default constructor (disabled)
     Digit() = delete;
 

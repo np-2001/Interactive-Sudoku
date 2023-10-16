@@ -13,9 +13,9 @@ using namespace std;
  * Constructor
  * @param game Game object associated with this item
  */
-Item::Item(Game *game, const std::wstring &filename): mGame(game)
+Item::Item(Game *game, std::shared_ptr<wxImage> image): mGame(game)
 {
-    mItemImage = make_unique<wxImage>(filename, wxBITMAP_TYPE_ANY);
+    mItemImage = image;
 }
 
 /**

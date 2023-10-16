@@ -17,7 +17,7 @@ class Xray: public Container
 private:
 
 public:
-    Xray(Game *game, const std::wstring &filename);
+    Xray(Game *game, std::shared_ptr<wxImage> image);
     ///  Default constructor (disabled)
     Xray() = delete;
 

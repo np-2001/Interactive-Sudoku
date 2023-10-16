@@ -10,7 +10,7 @@
  * Constructor
  * @param game Game object associated with this item
  */
-Digit::Digit(Game *game, const std::wstring &filename) : Item(game, filename)
+Digit::Digit(Game *game, std::shared_ptr<wxImage> image) : Item(game, image)
 {
 
 }

@@ -14,7 +14,7 @@
 class SpartyChin : public Item
 {
 private:
-    SpartyChin(Game *game, const std::wstring &filename);
+    SpartyChin(Game *game, std::shared_ptr<wxImage> image);
 
     ///  Default constructor (disabled)
     SpartyChin() = delete;

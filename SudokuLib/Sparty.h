@@ -26,7 +26,7 @@ private:
 
 
 public:
-    Sparty(Game *game, const std::wstring &filename);
+    Sparty(Game *game, std::shared_ptr<wxImage> image);
     ///  Default constructor (disabled)
     Sparty() = delete;
 

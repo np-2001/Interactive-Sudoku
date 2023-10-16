@@ -10,7 +10,7 @@
  * Constructor
  * @param game Game object associated with this item
  */
-Container::Container(Game *game, const std::wstring &filename) : Item(game, filename)
+Container::Container(Game *game, std::shared_ptr<wxImage> image) : Item(game, image)
 {
 
 }

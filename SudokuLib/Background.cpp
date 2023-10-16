@@ -10,7 +10,7 @@
  * Constructor
  * @param game Game object associated with this item
  */
-Background::Background(Game *game, const std::wstring &filename) : Item(game, filename)
+Background::Background(Game *game, std::shared_ptr<wxImage> image) : Item(game, image)
 {
 
 }

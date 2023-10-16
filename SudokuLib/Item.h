@@ -30,7 +30,7 @@ private:
     double mCol = 0;
 
     /// The image for this item
-    std::unique_ptr<wxImage> mItemImage = nullptr;
+    std::shared_ptr<wxImage> mItemImage = nullptr;
 
     /// The bitmap for this item
     std::unique_ptr<wxGraphicsBitmap> mItemBitmap = nullptr;
@@ -39,7 +39,7 @@ private:
     std::wstring mFile;
 
 protected:
-    Item(Game *game, const std::wstring &filename);
+    Item(Game *game, std::shared_ptr<wxImage> image);
 
 public:
     ///  Default constructor (disabled)
