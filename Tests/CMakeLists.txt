@@ -3,6 +3,7 @@ project(Tests)
 set(TEST_FILES
         GameTest.cpp
         gtest_main.cpp
+        ItemTest.cpp
 
 )
 

@@ -60,10 +60,10 @@ void Item::Draw(shared_ptr<wxGraphicsContext> graphics)
 }
 
 /**
- * Return true if clicked on Item
- * @param x Mouse X virtual pixel location
- * @param y Mouse Y virtual pixel location
- * @return True if mouse click location is within Item
+ * Return true if location "next to" an Item
+ * @param x  X virtual pixel location
+ * @param y  Y virtual pixel location
+ * @return True if (x,y) location is "next to" an item (directly to the right)
  */
 bool Item::HitTest(double x, double y)
 {
@@ -72,14 +72,16 @@ bool Item::HitTest(double x, double y)
 
     // Make x and y relative to the top-left corner of the bitmap image
     // Subtracting the center makes x, y relative to the image center
-    // Adding half the size makes x, y relative to theimage top corner
+    // Adding half the size makes x, y relative to the image top corner
+    // relevant to top right image corner
     double testX = x - GetX() + wid / 2;
     double testY = y - GetY() + hit / 2;
 
-    // Test to see if x, y are in the image
-    if (testX < 0 || testY < 0 || testX >= wid || testY >= hit)
+
+    // Test to see if x, y are next to the image
+    if (x < GetX()-50 || y < GetY() || x >= GetX() + wid || testY >= GetY() + hit)
     {
-        // We are outside the image
+        // We are not next to the image
         return false;
     }
 
