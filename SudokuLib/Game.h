@@ -30,9 +30,6 @@ private:
 
     std::unique_ptr<wxBitmap> mBackground;  ///< Background image to use (hardcoded for now)
 
-
-
-
 public:
     Game();
     void OnDraw(std::shared_ptr<wxGraphicsContext> graphics, int width, int height);

@@ -6,6 +6,7 @@
 #include "pch.h"
 #include "Game.h"
 #include "Digit.h"
+#include "Item.h"
 //using namespace std;
 using std::make_unique;
 
@@ -56,20 +57,16 @@ void Game::OnDraw(std::shared_ptr<wxGraphicsContext> graphics, int width, int he
     //
     // INSERT YOUR DRAWING CODE HERE
 
+    //Displays the background and the grid
     graphics->DrawBitmap(*mBackground, 0, 0, mBackground->GetWidth(), mBackground->GetHeight());
 
-    // Delete, just for testing, this is how to create the items
-//    auto item = make_shared<Digit>(this, L"images/0b.png");
-//    item->SetLocation(10,10);
-//    item->Draw(graphics);
+    //Iterate over list of items
+    //Draw each item in the list
+    for(auto item : mItems)
+    {
+        item->Draw(graphics);
+    }
 
-    //
-    // Drawing a rectangle that is the playing area size
-    //
-    //    wxBrush background(*wxRED);
-    //
-    //    graphics->SetBrush(background);
-    //    graphics->DrawRectangle(100, 100, pixelWidth, pixelHeight);
 
     mTimeDisplay.OnDraw(graphics);
 
