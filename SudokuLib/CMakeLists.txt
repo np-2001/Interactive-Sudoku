@@ -35,6 +35,8 @@ set(SOURCE_FILES MainFrame.cpp MainFrame.h
         Sparty.h
         SpartyChin.cpp
         SpartyChin.h
+        Declaration.cpp
+        Declaration.h
 )
 
 set(wxBUILD_PRECOMP OFF)
