@@ -30,8 +30,8 @@ void Game::OnDraw(std::shared_ptr<wxGraphicsContext> graphics, int width, int he
     // This is up to you...
 
     //These cannot remain constants, they are constants for testing purposes!!
-    int pixelWidth = 800;
-    int pixelHeight = 800;
+    int pixelWidth = mWidth*mTileSize;
+    int pixelHeight = mHeight*mTileSize;
 
     //
     // Automatic Scaling
@@ -58,7 +58,7 @@ void Game::OnDraw(std::shared_ptr<wxGraphicsContext> graphics, int width, int he
     // INSERT YOUR DRAWING CODE HERE
 
     //Displays the background and the grid
-    graphics->DrawBitmap(*mBackground, 0, 0, mBackground->GetWidth(), mBackground->GetHeight());
+//    graphics->DrawBitmap(*mBackground, 0, 0, mBackground->GetWidth(), mBackground->GetHeight());
 
     //Iterate over list of items
     //Draw each item in the list
