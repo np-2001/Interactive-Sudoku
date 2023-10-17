@@ -35,9 +35,17 @@ void Level::LoadLevel()
     int height;
     root->GetAttribute(L"width").ToInt(&width);
     root->GetAttribute(L"height").ToInt(&height);
+    // Comments from Finn - what about tileWidth and tileHeight?
+    // I realized that they are the same number in all the xml files, however
+    // if they are given to us to use, I feel we could grab them here
+    // instead of hardcoding a variable elsewhere
 
     //TODO Worthy of review
     Declaration declarations(width, height);
+    // (Finn) - in the declarations constructor it isnt using the attributes at all
+    // so i am little confused of the purpose of these
+    // also i think you have height and width flipped in position
+    // (according to the declarations constructor its (height, width))
 
     // Children of the xml: [declarations, games, items]
     auto child = root->GetChildren();
@@ -57,6 +65,10 @@ void Level::LoadLevel()
                 auto innerName = innerNode->GetName();
                 auto innerId = innerNode->GetAttribute(L"id");
                 auto innerImage = innerNode->GetAttribute(L"image");
+                // (Finn) - it appears that we are only grabbing the id and image attributes
+                // from the declarations but not the value attribute telling us what digit it is
+                // is there a reason for doing this? also how do we know which ids correspond to
+                // which digits
 
                 if(name == "sparty")
                 {
