@@ -60,6 +60,10 @@ public:
     void SetWidth(int wid) { mWidth = wid;}
     void SetHeight(int hit) { mHeight = hit;}
 
+    int GetTileSize() const { return mTileSize;}
+    int GetWidth() const { return mWidth;}
+    int GetHeight() const { return mHeight;}
+
     void Update(double time);
     void Add(std::shared_ptr<Item> item);
     void Clear();

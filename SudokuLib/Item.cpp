@@ -69,25 +69,11 @@ void Item::Draw(shared_ptr<wxGraphicsContext> graphics)
         int hit = mItemImage->GetHeight();
 
         // Make these getters in Game, Level class
-//        tileWidth = mGame->GetTileWidth();
-//        tileHeight = mGame->GetTileHeight();
-
-        // Hardcoded for now
-        int tileHeight = 48;
-        int height = 20;
-
-        double virtualX = (mCol*tileHeight - mGame->GetOffsetX()) / mGame->GetScale();
-        double virtualY = ((mRow-1)*tileHeight-height - mGame->GetOffsetY()) / mGame->GetScale();
-
-//        graphics->DrawBitmap(mItemBitmap, mCol*tileHeight, (mRow-1)*tileHeight-height, wid, hit);
-//        graphics->DrawBitmap(mItemBitmap, (mCol*tileHeight - mGame->GetOffsetX()) / mGame->GetScale(),
-//                             ((mRow-1)*tileHeight-hit - mGame->GetOffsetY()) / mGame->GetScale(), wid, hit);
+        int tileHeight = mGame->GetTileSize();
 
         graphics->DrawBitmap(mItemBitmap, ((mCol*tileHeight)),
-                             (((mRow-1)*tileHeight) - hit + mGame->GetOffsetY()), wid, hit);
+                             (((mRow+1)*tileHeight) - hit), wid, hit);
 
-        // Uncomment the above and delete this once xml is configured
-//        graphics->DrawBitmap(*mItemBitmap, 100, 100, wid, hit);
     }
 }
 
