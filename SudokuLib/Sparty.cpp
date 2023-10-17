@@ -11,7 +11,7 @@ using namespace std;
 
 
 /// Character speed in pixels per second
-const double MaxSpeed = 400.00;
+const double MaxSpeed = 400;
 
 /// The time for an eating cycles in seconds
 const double EatingTime = 0.5;
@@ -26,7 +26,6 @@ const double HeadbuttTime = 0.5;
  */
 Sparty::Sparty(Game *game, std::shared_ptr<wxImage> image) : Item(game, image)
 {
-
 }
 
 /**
@@ -51,11 +50,12 @@ void Sparty::Update(double elapsed)
 {
     double CurrLocationX = Item::GetX();
     double CurrLocationY = Item::GetY();
+
     wxPoint2DDouble Vector(mNewLocationX-CurrLocationX,mNewLocationY-CurrLocationY);
 
     if (Vector.m_x != 0 || Vector.m_y != 0) {
         Vector.Normalize();
-        Item::SetLocation((Vector.m_x*elapsed)+CurrLocationX,(Vector.m_y*elapsed)+CurrLocationY);
+        Item::SetLocation((Vector.m_x*elapsed*MaxSpeed)+CurrLocationX,(Vector.m_y*elapsed*MaxSpeed)+CurrLocationY);
         CurrLocationY = Item::GetY();
         CurrLocationX = Item::GetX();
     }

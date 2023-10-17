@@ -30,14 +30,14 @@ double Item::GetX() const
 {
     int tileHeight = 48;
     int width = mItemImage->GetWidth();
-    return (mCol*tileHeight+ (width/2.0));
+    return (mCol/48);
 }
 
 double Item::GetY() const
 {
     int tileHeight = 48;
     int height = mItemImage->GetHeight();
-    return ((mRow-1)*tileHeight + (height/2.0));
+    return (mRow/48);
 }
 
 void Item::SetPixelLocation(double x, double y)
