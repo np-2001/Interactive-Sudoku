@@ -53,6 +53,8 @@ void GameView::Initialize(wxFrame *parent) {
     mGame.Add(spartyChin);
     mGame.mSpartyChin = spartyChin;
 
+    mGame.mLevel.SetLevel(L"Levels/level1.xml");
+    mGame.mLevel.LoadLevel();
 
     mTimer.SetOwner(this);
     mTimer.Start(FrameDuration);
