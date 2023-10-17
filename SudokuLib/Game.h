@@ -13,7 +13,7 @@
 #include "Timer.h"
 #include "Level.h"
 #include "Sparty.h"
-
+#include "SpartyChin.h"
 class Game
 {
 private:
@@ -68,6 +68,7 @@ public:
     void Add(std::shared_ptr<Item> item);
     void Clear();
     std::shared_ptr<Sparty> mSparty = nullptr; /// pointer to sparty
+    std::shared_ptr<SpartyChin> mSpartyChin = nullptr; /// pointer to spartyChin
 };
 
 #endif //PROJECT1_335_SUDOKULIB_GAME_H

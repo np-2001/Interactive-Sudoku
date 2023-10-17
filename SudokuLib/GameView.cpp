@@ -9,6 +9,7 @@
 #include "Game.h"
 #include "ids.h"
 #include "Sparty.h"
+#include "SpartyChin.h"
 
 using namespace std;
 
@@ -17,6 +18,7 @@ const int FrameDuration = 30;
 
 
 const wstring SpartyHeadImageName = L"images/sparty-1.png";
+const wstring SpartyChinImageName = L"images/sparty-2.png";
 
 /**
  * Initialize the game view class.
@@ -42,6 +44,15 @@ void GameView::Initialize(wxFrame *parent) {
     std::shared_ptr<Sparty> sparty = std::make_shared<Sparty>(&mGame,mItemImage);
     mGame.Add(sparty);
     mGame.mSparty = sparty;
+
+    std::shared_ptr<wxImage> mItemChinImage = std::make_shared<wxImage>(SpartyChinImageName, wxBITMAP_TYPE_ANY);
+    std::shared_ptr<SpartyChin> spartyChin = std::make_shared<SpartyChin>(&mGame,mItemChinImage);
+    mGame.Add(sparty);
+    mGame.mSparty = sparty;
+
+    mGame.Add(spartyChin);
+    mGame.mSpartyChin = spartyChin;
+
 
     mTimer.SetOwner(this);
     mTimer.Start(FrameDuration);

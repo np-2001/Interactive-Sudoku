@@ -8,8 +8,16 @@
 using namespace std;
 
 
-const wstring SpartyChinImageName = L"images/sparty-2.png";
 
+
+/// Character speed in pixels per second
+const double MaxSpeed = 400;
+
+/// The time for an eating cycles in seconds
+const double EatingTime = 0.5;
+
+/// The time for a headbutt cycle in seconds
+const double HeadbuttTime = 0.5;
 
 /**
  * Constructor
@@ -35,5 +43,26 @@ void SpartyChin::Accept(VisitorItem* visitor)
  */
 void SpartyChin::Eat(Item *item)
 {
+
+}
+
+void SpartyChin::Update(double elapsed)
+{
+    double CurrLocationX = Item::GetX();
+    double CurrLocationY = Item::GetY();
+
+    wxPoint2DDouble Vector(mNewLocationX-CurrLocationX,mNewLocationY-CurrLocationY);
+
+    if (Vector.m_x != 0 || Vector.m_y != 0) {
+        Vector.Normalize();
+        Item::SetPixelLocation((Vector.m_x* elapsed * MaxSpeed)+ CurrLocationX,(Vector.m_y*elapsed*MaxSpeed)+CurrLocationY);
+        if (std::abs(Item::GetX()-mNewLocationX) < 20) {
+            Item::SetPixelLocation(mNewLocationX,Item::GetY());
+        }
+        if (std::abs(Item::GetY()-mNewLocationY) < 20) {
+            Item::SetPixelLocation(Item::GetX(),mNewLocationY);
+        }
+
+    }
 
 }

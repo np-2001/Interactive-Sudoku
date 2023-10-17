@@ -73,7 +73,7 @@ void Game::OnDraw(std::shared_ptr<wxGraphicsContext> graphics, int width, int he
         item->Draw(graphics);
     }
     mSparty->Draw(graphics);
-
+    mSpartyChin->Draw(graphics);
 
     mTimeDisplay.OnDraw(graphics);
 
@@ -90,7 +90,10 @@ void Game::OnLeftDown(int x, int y)
 {
     double virtualX = (x - mXOffset) / mScale;
     double virtualY = (y - mYOffset) / mScale;
+
+    //Should be a visitor to set New Coordinates instead of pointer to Sparty and Sparty Chin
     mSparty->SetNewCoordinates(virtualX,virtualY);
+    mSpartyChin->SetNewCoordinates(virtualX,virtualY);
 
 }
 
@@ -107,6 +110,7 @@ void Game::Update(double time)
 
 
         mSparty->Update(time);
+        mSpartyChin->Update(time);
     }
 
 }
