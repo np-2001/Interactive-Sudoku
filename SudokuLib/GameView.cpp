@@ -78,7 +78,8 @@ void GameView::OnPaint(wxPaintEvent& event)
 
 
     // Tell the game class to draw
-    wxSize size = GetClientSize();
+//    wxSize size = GetClientSize();
+    wxRect size = GetRect();
     mGame.OnDraw(gc, size.GetWidth(), size.GetHeight());
 
 
