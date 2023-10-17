@@ -55,7 +55,7 @@ void Sparty::Update(double elapsed)
 
     if (Vector.m_x != 0 || Vector.m_y != 0) {
         Vector.Normalize();
-        Item::SetLocation((Vector.m_x*elapsed*MaxSpeed)+CurrLocationX,(Vector.m_y*elapsed*MaxSpeed)+CurrLocationY);
+        Item::SetPixelLocation((Vector.m_x* elapsed * MaxSpeed)+ CurrLocationX,(Vector.m_y*elapsed*MaxSpeed)+CurrLocationY);
         CurrLocationY = Item::GetY();
         CurrLocationX = Item::GetX();
     }

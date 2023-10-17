@@ -28,16 +28,16 @@ Item::~Item()
 
 double Item::GetX() const
 {
-    int tileHeight = 48;
+    int tileHeight = mGame->GetTileSize();
     int width = mItemImage->GetWidth();
     return (mCol*tileHeight+ (width/2.0));
 }
 
 double Item::GetY() const
 {
-    int tileHeight = 48;
+    int tileHeight = mGame->GetTileSize();
     int height = mItemImage->GetHeight();
-    return ((mRow-1)*tileHeight + (height/2.0));
+    return ((mRow+1)*tileHeight - (height/2.0));
 }
 
 void Item::SetPixelLocation(double x, double y)
