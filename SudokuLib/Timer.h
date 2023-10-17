@@ -11,9 +11,7 @@
 class Timer : public wxWindow
 {
 private:
-
     long mTime = 0;
-
 
 public:
     Timer();

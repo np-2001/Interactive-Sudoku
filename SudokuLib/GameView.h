@@ -36,6 +36,7 @@ private:
 public:
     void Initialize(wxFrame* parent);
 
+    void SetTime(long Time) { mTime = Time;}
 };
 
 #endif //PROJECT1_335_SUDOKULIB_GAMEVIEW_H

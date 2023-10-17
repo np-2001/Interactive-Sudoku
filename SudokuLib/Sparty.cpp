@@ -19,7 +19,6 @@ const double EatingTime = 0.5;
 /// The time for a headbutt cycle in seconds
 const double HeadbuttTime = 0.5;
 
-const wstring SpartyHeadImageName = L"images/sparty-1.png";
 
 /**
  * Constructor
@@ -52,8 +51,13 @@ void Sparty::Update(double elapsed)
 {
     double CurrLocationX = Item::GetX();
     double CurrLocationY = Item::GetY();
-    const wxPoint Vector(mNewLocationX-CurrLocationX,mNewLocationY-CurrLocationY);
-    double Magnitude = sqrt((Vector.x * Vector.x) + (Vector.y * Vector.y));
-    const wxPoint NormalVector(Vector.x/Magnitude,Vector.y/Magnitude);
-    Item::SetLocation((NormalVector.x*MaxSpeed)+CurrLocationX,(NormalVector.y*MaxSpeed)+CurrLocationY);
+    wxPoint2DDouble Vector(mNewLocationX-CurrLocationX,mNewLocationY-CurrLocationY);
+
+    if (Vector.m_x != 0 || Vector.m_y != 0) {
+        Vector.Normalize();
+        Item::SetLocation((Vector.m_x*elapsed)+CurrLocationX,(Vector.m_y*elapsed)+CurrLocationY);
+        CurrLocationY = Item::GetY();
+        CurrLocationX = Item::GetX();
+    }
+
 }

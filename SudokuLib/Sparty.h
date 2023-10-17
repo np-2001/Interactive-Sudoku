@@ -17,11 +17,11 @@ class Sparty: public Item
 {
 private:
     /// Points to X location moving to. If not moving then equal to mCurrLocation
-    int mNewLocationX = Item::GetX();
+    double mNewLocationX = Item::GetX();
 
 
     /// Points to Y location moving to. If not moving then equal to mCurrLocation
-    int mNewLocationY = Item::GetY();
+    double mNewLocationY = Item::GetY();
 
 
 

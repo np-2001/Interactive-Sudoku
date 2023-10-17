@@ -8,7 +8,7 @@
 #include "GameView.h"
 #include "Game.h"
 #include "ids.h"
-
+#include "Sparty.h"
 
 using namespace std;
 
@@ -16,6 +16,7 @@ using namespace std;
 const int FrameDuration = 30;
 
 
+const wstring SpartyHeadImageName = L"images/sparty-1.png";
 
 /**
  * Initialize the game view class.
@@ -37,9 +38,15 @@ void GameView::Initialize(wxFrame *parent) {
 
     Bind(wxEVT_LEFT_DOWN, &GameView::OnLeftDown, this);
 
+    std::shared_ptr<wxImage> mItemImage = std::make_shared<wxImage>(SpartyHeadImageName, wxBITMAP_TYPE_ANY);
+    std::shared_ptr<Sparty> sparty = std::make_shared<Sparty>(&mGame,mItemImage);
+    mGame.Add(sparty);
+    mGame.mSparty = sparty;
+
     mTimer.SetOwner(this);
     mTimer.Start(FrameDuration);
     mStopWatch.Start();
+
 }
 
 /**
@@ -52,9 +59,11 @@ void GameView::OnPaint(wxPaintEvent& event)
     // since the last call to OnPaint.
     // Compute the time that has elapsed
     // since the last call to OnPaint.
-    double newTime = mStopWatch.Time();
+    auto newTime = mStopWatch.Time();
     auto elapsed = (double)(newTime - mTime) * 0.001;
-    mGame.Update(newTime);
+    mTime = newTime;
+
+    mGame.Update(elapsed);
     // Create a double-buffered display context
     wxAutoBufferedPaintDC dc(this);
 
@@ -65,6 +74,8 @@ void GameView::OnPaint(wxPaintEvent& event)
 
     // Create a graphics context
     auto gc = std::shared_ptr<wxGraphicsContext>(wxGraphicsContext::Create(dc));
+
+
 
     // Tell the game class to draw
     wxSize size = GetClientSize();

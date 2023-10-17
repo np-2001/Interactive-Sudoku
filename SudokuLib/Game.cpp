@@ -64,7 +64,7 @@ void Game::OnDraw(std::shared_ptr<wxGraphicsContext> graphics, int width, int he
     //Draw each item in the list
     for(auto item : mItems)
     {
-        // Sparty is hardcoded for now
+         //Sparty is hardcoded for now
         if(item == mItems.back())
         {
             break;
@@ -72,6 +72,7 @@ void Game::OnDraw(std::shared_ptr<wxGraphicsContext> graphics, int width, int he
 
         item->Draw(graphics);
     }
+    mSparty->Draw(graphics);
 
 
     mTimeDisplay.OnDraw(graphics);
@@ -89,6 +90,8 @@ void Game::OnLeftDown(int x, int y)
 {
     double virtualX = (x - mXOffset) / mScale;
     double virtualY = (y - mYOffset) / mScale;
+    mSparty->SetNewCoordinates(virtualX,virtualY);
+
 }
 
 /**
@@ -98,6 +101,14 @@ void Game::OnLeftDown(int x, int y)
 void Game::Update(double time)
 {
     mTimeDisplay.Update(time);
+
+    if (mSparty != nullptr) {
+
+
+
+        mSparty->Update(time);
+    }
+
 }
 
 /**
