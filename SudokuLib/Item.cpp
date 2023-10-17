@@ -29,22 +29,22 @@ Item::~Item()
 double Item::GetX() const
 {
     int tileHeight = 48;
-    int width = 20;
+    int width = mItemImage->GetWidth();
     return (mCol*tileHeight+ (width/2.0));
 }
 
 double Item::GetY() const
 {
     int tileHeight = 48;
-    int height = 15;
+    int height = mItemImage->GetHeight();
     return ((mRow-1)*tileHeight + (height/2.0));
 }
 
 void Item::SetPixelLocation(double x, double y)
 {
     int tileHeight = 48;
-    int width = 20;
-    int height = 15;
+    int width = mItemImage->GetWidth();
+    int height = mItemImage->GetHeight();
 
     mCol = (x - (width/2.0))/tileHeight;
     mRow = ((y - (height/2.0))/tileHeight) + 1;
