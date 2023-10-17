@@ -104,6 +104,8 @@ public:
     virtual bool HitTest(double x, double y);
     virtual void XmlLoad(wxXmlNode *node);
 
+    Game * GetGame() { return mGame; }
+
 };
 
 #endif //PROJECT1_335__ITEM_H
