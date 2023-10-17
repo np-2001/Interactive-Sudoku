@@ -60,13 +60,18 @@ public:
       * The Row of the item
       * @return X location in pixels
       */
-    double GetX() const { return mRow; }
+    double GetRow() const { return mRow; }
 
     /**
      * The Column of the item
      * @return Y location in pixels
      */
-    double GetY() const { return mCol; }
+    double GetCol() const { return mCol; }
+
+    double GetX() const;
+    double GetY() const;
+
+    void SetPixelLocation(double x, double y);
 
     /**
      * Set the item row and column

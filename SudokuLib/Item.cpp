@@ -26,6 +26,30 @@ Item::~Item()
 
 }
 
+double Item::GetX() const
+{
+    int tileHeight = 48;
+    int width = 20;
+    return (mCol*tileHeight+ (width/2.0));
+}
+
+double Item::GetY() const
+{
+    int tileHeight = 48;
+    int height = 15;
+    return ((mRow-1)*tileHeight + (height/2.0));
+}
+
+void Item::SetPixelLocation(double x, double y)
+{
+    int tileHeight = 48;
+    int width = 20;
+    int height = 15;
+
+    mCol = (x - (width/2.0))/tileHeight;
+    mRow = ((y - (height/2.0))/tileHeight) + 1;
+}
+
 /**
  * Draw the item
  * @param dc Device context to draw on
