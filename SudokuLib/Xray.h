@@ -12,12 +12,13 @@
 #include "Item.h"
 #include "Container.h"
 
-class Xray: public Container
+class Xray: public Item
 {
 private:
-
+    /// Capacity of the xray container
+    int mCapacity;
 public:
-    Xray(Game *game, std::shared_ptr<wxImage> image);
+    Xray(Game *game, std::shared_ptr<wxImage> image, int capacity);
     ///  Default constructor (disabled)
     Xray() = delete;
 

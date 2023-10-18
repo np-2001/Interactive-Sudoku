@@ -40,6 +40,9 @@ private:
 
     std::unique_ptr<wxBitmap> mBackground;  ///< Background image to use (hardcoded for now)
 
+    /// Current Level
+    std::shared_ptr<Level> mLevel;
+
 
 public:
     Game();
@@ -49,8 +52,7 @@ public:
     /// The display timer (scoreboard)
     Timer mTimeDisplay;
 
-    /// Current Level
-    Level mLevel;
+
 
     double GetOffsetX() const { return mXOffset;}
     double GetOffsetY() const { return mYOffset;}
@@ -69,6 +71,9 @@ public:
     void Clear();
     std::shared_ptr<Sparty> mSparty = nullptr; /// pointer to sparty
     std::shared_ptr<SpartyChin> mSpartyChin = nullptr; /// pointer to spartyChin
+
+    // Level related Operations
+    std::shared_ptr<Level> GetLevel() {return mLevel; }
 };
 
 #endif //PROJECT1_335_SUDOKULIB_GAME_H

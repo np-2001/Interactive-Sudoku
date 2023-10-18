@@ -53,9 +53,6 @@ void GameView::Initialize(wxFrame *parent) {
     mGame.Add(spartyChin);
     mGame.mSpartyChin = spartyChin;
 
-    mGame.mLevel.SetLevel(L"Levels/level1.xml");
-    mGame.mLevel.LoadLevel();
-
     mTimer.SetOwner(this);
     mTimer.Start(FrameDuration);
     mStopWatch.Start();
@@ -88,6 +85,10 @@ void GameView::OnPaint(wxPaintEvent& event)
     // Create a graphics context
     auto gc = std::shared_ptr<wxGraphicsContext>(wxGraphicsContext::Create(dc));
 
+    // Load Level 1
+    mGame.GetLevel()->LoadLevel();
+    //mGame->mLevel.LoadLevel();
+    Refresh();
 
 
     // Tell the game class to draw
@@ -132,9 +133,9 @@ void GameView::OnLoadLevel1(wxCommandEvent &event)
     mGame.Clear();
 
     // Re-evaluate this
-    mGame.mLevel.SetLevel(L"Levels/level1.xml");
+    mGame.GetLevel()->SetLevel(L"Levels/level1.xml");
     //TODO Game complains about images not being loaded
-    mGame.mLevel.LoadLevel();
+    mGame.GetLevel()->LoadLevel();
 
     Refresh();
 }

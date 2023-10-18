@@ -9,8 +9,9 @@
 /**
  * Constructor
  * @param game Game object associated with this item
+ * @param capacity Capacity of the xray
  */
-Xray::Xray(Game *game, std::shared_ptr<wxImage> image) : Container(game, image)
+Xray::Xray(Game *game, std::shared_ptr<wxImage> image, int capacity) : Item(game, image), mCapacity(capacity)
 {
 
 }

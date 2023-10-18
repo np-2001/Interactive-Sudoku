@@ -21,7 +21,7 @@ class Given: public Digit
 private:
 
 public:
-    Given(Game *game, std::shared_ptr<wxImage> image);
+    Given(Game *game, std::shared_ptr<wxImage> image, int value);
     ///  Default constructor (disabled)
     Given() = delete;
 

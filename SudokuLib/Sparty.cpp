@@ -80,3 +80,43 @@ void Sparty::Update(double elapsed)
     }
 
 }
+
+/**
+ * Constructor for sparty item
+ * @param game Game this sparty belongs to
+ * @param image1 sparty
+ * @param image2 sparty chin
+ * @param front draw order of sparty's different images
+ * @param headAngle sparty pivot angle
+ * @param headX sparty pivot x
+ * @param headY sparty pivot y
+ * @param mouthAngle sparty mouth angle pivot
+ * @param mouthX sparty mouth pivot x
+ * @param mouthY sparty mouth pivot y
+ * @param targetX offset x for clicked location
+ * @param targetY offset y for clicked location
+ */
+Sparty::Sparty(Game *game,
+               std::shared_ptr<wxImage> image1,
+               std::shared_ptr<wxImage> image2,
+               int front,
+               double headAngle,
+               double headX,
+               double headY,
+               double mouthAngle,
+               double mouthX,
+               double mouthY,
+               double targetX,
+               double targetY) : Item(game, image1)
+{
+    // Just a bunch of initialisations
+    mImage2 = image2;
+    mFront = front;
+    mHeadAngle = headAngle;
+    mHeadPivotX = headX;
+    mHeadPivotY = headY;
+    mMouthAngle = mouthAngle;
+    mMouthPivotX = mouthX;
+    mMouthPivotY = mouthY;
+    mTargetOffset = wxPoint2DDouble(targetX, targetY);
+}

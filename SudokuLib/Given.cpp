@@ -10,7 +10,7 @@
  * Constructor
  * @param game Game object associated with this item
  */
-Given::Given(Game *game, std::shared_ptr<wxImage> image) : Digit(game, image)
+Given::Given(Game *game, std::shared_ptr<wxImage> image, int value) : Digit(game, image, value)
 {
 
 }

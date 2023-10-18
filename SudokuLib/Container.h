@@ -18,9 +18,10 @@
 class Container: public Item
 {
 private:
+    std::shared_ptr<wxImage> mFront_Image;
 
 public:
-    Container(Game *game, std::shared_ptr<wxImage> image);
+    Container(Game *game, std::shared_ptr<wxImage> image, std::shared_ptr<wxImage> front);
     ///  Default constructor (disabled)
     Container() = delete;
 

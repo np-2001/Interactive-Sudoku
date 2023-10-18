@@ -10,11 +10,15 @@
 //using namespace std;
 using std::make_unique;
 
+/// Starting Level for initialisation
+wxString initLevel = L"Levels/level1.xml";
+
 /**
  * Game Constructor
  */
-Game::Game() : mLevel(this)
+Game::Game()
 {
+    mLevel = std::make_shared<Level>(this, initLevel);
     mBackground = make_unique<wxBitmap>(L"images/background.png", wxBITMAP_TYPE_ANY);
 }
 
@@ -65,10 +69,10 @@ void Game::OnDraw(std::shared_ptr<wxGraphicsContext> graphics, int width, int he
     for(auto item : mItems)
     {
          //Sparty is hardcoded for now
-        if(item == mItems.back())
-        {
-            break;
-        }
+//        if(item == mItems.back())
+//        {
+//            break;
+//        }
 
         item->Draw(graphics);
     }
