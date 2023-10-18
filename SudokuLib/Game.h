@@ -43,6 +43,8 @@ private:
     /// Current Level
     std::shared_ptr<Level> mLevel;
 
+    std::shared_ptr<Sparty> mSparty = nullptr; /// pointer to sparty
+    std::shared_ptr<SpartyChin> mSpartyChin = nullptr; /// pointer to spartyChin
 
 public:
     Game();
@@ -69,11 +71,16 @@ public:
     void Update(double time);
     void Add(std::shared_ptr<Item> item);
     void Clear();
-    std::shared_ptr<Sparty> mSparty = nullptr; /// pointer to sparty
-    std::shared_ptr<SpartyChin> mSpartyChin = nullptr; /// pointer to spartyChin
 
-    // Level related Operations
+
+    /// Level related Operations
     std::shared_ptr<Level> GetLevel() {return mLevel; }
+
+    /// Setter for Sparty
+    void SetSparty(std::shared_ptr<Sparty> sparty) {
+        mSparty = sparty;
+    }
+
 };
 
 #endif //PROJECT1_335_SUDOKULIB_GAME_H

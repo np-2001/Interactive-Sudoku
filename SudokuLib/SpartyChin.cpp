@@ -12,7 +12,7 @@ using namespace std;
 
 
 /// Character speed in pixels per second
-const double MaxSpeed = 800;
+const double MaxSpeed = 3200;
 
 /// The time for an eating cycles in seconds
 const double EatingTime = 0.5;

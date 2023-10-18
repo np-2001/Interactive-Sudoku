@@ -40,19 +40,20 @@ void GameView::Initialize(wxFrame *parent) {
 
     Bind(wxEVT_LEFT_DOWN, &GameView::OnLeftDown, this);
 
-    std::shared_ptr<wxImage> mItemImage = std::make_shared<wxImage>(SpartyHeadImageName, wxBITMAP_TYPE_ANY);
-    std::shared_ptr<Sparty> sparty = std::make_shared<Sparty>(&mGame,mItemImage);
-    mGame.Add(sparty);
-    mGame.mSparty = sparty;
+//    std::shared_ptr<wxImage> mItemImage = std::make_shared<wxImage>(SpartyHeadImageName, wxBITMAP_TYPE_ANY);
+//    std::shared_ptr<Sparty> sparty = std::make_shared<Sparty>(&mGame,mItemImage);
+//    mGame.Add(sparty);
+//    mGame.mSparty = sparty;
+//
+//    std::shared_ptr<wxImage> mItemChinImage = std::make_shared<wxImage>(SpartyChinImageName, wxBITMAP_TYPE_ANY);
+//    std::shared_ptr<SpartyChin> spartyChin = std::make_shared<SpartyChin>(&mGame,mItemChinImage);
+//    mGame.Add(sparty);
+//    mGame.mSparty = sparty;
+//
+//    mGame.Add(spartyChin);
+//    mGame.mSpartyChin = spartyChin;
 
-    std::shared_ptr<wxImage> mItemChinImage = std::make_shared<wxImage>(SpartyChinImageName, wxBITMAP_TYPE_ANY);
-    std::shared_ptr<SpartyChin> spartyChin = std::make_shared<SpartyChin>(&mGame,mItemChinImage);
-    mGame.Add(sparty);
-    mGame.mSparty = sparty;
-
-    mGame.Add(spartyChin);
-    mGame.mSpartyChin = spartyChin;
-
+    mGame.GetLevel()->LoadLevel();
     mTimer.SetOwner(this);
     mTimer.Start(FrameDuration);
     mStopWatch.Start();
@@ -86,7 +87,7 @@ void GameView::OnPaint(wxPaintEvent& event)
     auto gc = std::shared_ptr<wxGraphicsContext>(wxGraphicsContext::Create(dc));
 
     // Load Level 1
-    mGame.GetLevel()->LoadLevel();
+
     //mGame->mLevel.LoadLevel();
     Refresh();
 
@@ -137,7 +138,7 @@ void GameView::OnLoadLevel1(wxCommandEvent &event)
     //TODO Game complains about images not being loaded
     mGame.GetLevel()->LoadLevel();
 
-    Refresh();
+    //Refresh();
 }
 
 /**

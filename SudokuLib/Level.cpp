@@ -186,6 +186,11 @@ void Level::MakeItems(wxXmlNode* node)
         // id mapping
         auto obj = mDeclaration->GetDeclaration(id);
 
+        double row;
+        double col;
+        node->GetAttribute("col").ToDouble(&col);
+        node->GetAttribute("row").ToDouble(&row);
+
         // Individual Instantiation
         if (name == "digit")
         {
@@ -230,7 +235,7 @@ void Level::MakeItems(wxXmlNode* node)
             obj->GetAttribute(L"target-x").ToDouble(&targetX);
             obj->GetAttribute(L"target-y").ToDouble(&targetY);
 
-            item = std::make_shared<Sparty>(mGame,
+            std::shared_ptr<Sparty> sparty = std::make_shared<Sparty>(mGame,
                                             mDeclaration->GetImage(id),
                                             mDeclaration->GetImage(id + L"b"),
                                             front,
@@ -242,18 +247,19 @@ void Level::MakeItems(wxXmlNode* node)
                                             mouthY,
                                             targetX,
                                             targetY);
-
+            mGame->SetSparty(sparty);
+            item = sparty;
+            item->SetLocation(row, col);
+            sparty->SetNewCoordinates(item->GetX(),item->GetY());
         }
 
-        double row;
-        double col;
-        node->GetAttribute("col").ToDouble(&col);
-        node->GetAttribute("row").ToDouble(&row);
 
-        // Set the location
-        item->SetLocation(row, col);
+
         // Add to mItems
         mGame->Add(item);
+        // Set the location
+        item->SetLocation(row, col);
+
 
     }
 }
