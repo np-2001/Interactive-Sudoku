@@ -120,3 +120,5 @@ Sparty::Sparty(Game *game,
     mMouthPivotY = mouthY;
     mTargetOffset = wxPoint2DDouble(targetX, targetY);
 }
+
+

@@ -39,6 +39,7 @@ void GameView::Initialize(wxFrame *parent) {
     parent->Bind(wxEVT_COMMAND_MENU_SELECTED, &GameView::OnLoadLevel3, this, IDM_LEVEL_3);
 
     Bind(wxEVT_LEFT_DOWN, &GameView::OnLeftDown, this);
+    Bind(wxEVT_KEY_DOWN, &GameView::OnKeyDown, this);
 
 //    std::shared_ptr<wxImage> mItemImage = std::make_shared<wxImage>(SpartyHeadImageName, wxBITMAP_TYPE_ANY);
 //    std::shared_ptr<Sparty> sparty = std::make_shared<Sparty>(&mGame,mItemImage);
@@ -121,7 +122,6 @@ void GameView::OnLeftDown(wxMouseEvent &event)
 }
 
 
-
 /**
  * Handler to load level 1 on button click
  * @param event event to handle
@@ -157,4 +157,13 @@ void GameView::OnLoadLevel2(wxCommandEvent &event)
 void GameView::OnLoadLevel3(wxCommandEvent &event)
 {
     wxMessageBox(L"Level 3 was clicked!");
+}
+
+/**
+ * Handle the key  down event.
+ * @param event The key down event
+ */
+void GameView::OnKeyDown(wxKeyEvent &event)
+{
+   mGame.OnKeyDown(event);
 }

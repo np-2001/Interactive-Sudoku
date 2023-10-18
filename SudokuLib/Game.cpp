@@ -7,6 +7,7 @@
 #include "Game.h"
 #include "Digit.h"
 #include "Item.h"
+#include "Sparty.h"
 //using namespace std;
 using std::make_unique;
 
@@ -135,3 +136,21 @@ void Game::Clear()
 {
     mItems.clear();
 }
+
+/**
+ * Handle the key  down event for either key B or space bar.
+ * @param event The key down event
+ */
+void Game::OnKeyDown(wxKeyEvent &event)
+{
+    if (event.GetKeyCode() == WXK_SPACE)
+    {
+        //mSpartyChin->OnKeyDown(event);
+    }
+    //if (event.GetKeyCode() == "key b")
+    //{
+    //   mSparty->OnKeyDown(event);
+    //}
+}
+
+

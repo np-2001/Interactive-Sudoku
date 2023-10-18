@@ -1,6 +1,6 @@
 /**
  * @file SpartyChin.cpp
- * @author Nitin Polavarapu
+ * @author Nitin Polavarapu, Samantha Wycoff
  */
 
 #include "pch.h"
@@ -73,4 +73,20 @@ void SpartyChin::Update(double elapsed)
         }
     }
 
+}
+
+void SpartyChin::OnKeyDown(std::shared_ptr<wxGraphicsContext> graphics, wxPoint mouthPivot, double mouthAngle)
+{
+    //int wid = mItemImage->GetWidth();
+    //int hit = mItemImage->GetHeight();
+
+    graphics->PushState();
+
+    graphics->Translate(mouthPivot.x, mouthPivot.y);
+    graphics->Rotate(mouthAngle);
+    graphics->Translate(-mouthPivot.x, -mouthPivot.y);
+
+    //graphics->DrawBitmap(mItemBitmap, 0, 0, wid, hit);
+
+    graphics->PopState();
 }

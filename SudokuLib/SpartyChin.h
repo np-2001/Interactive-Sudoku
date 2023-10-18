@@ -1,6 +1,6 @@
 /**
  * @file SpartyChin.h
- * @author Nitin Polavarapu
+ * @author Nitin Polavarapu, Samantha Wycoff
  *
  *
  */
@@ -21,6 +21,7 @@ private:
     /// Points to Y location moving to. If not moving then equal to mCurrLocation
     double mNewLocationY = Item::GetY();
 
+
 public:
     SpartyChin(Game *game, std::shared_ptr<wxImage> image);
 
@@ -34,6 +35,7 @@ public:
     void Eat(Item *item) override;
 
     void Update(double elapsed) override;
+    void OnKeyDown(std::shared_ptr<wxGraphicsContext> graphics, wxPoint mouthPivot, double mouthAngle);
 
     /// Setter for NewX and NewY
     void SetNewCoordinates(int NewX, int NewY) {

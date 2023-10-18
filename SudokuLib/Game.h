@@ -46,6 +46,7 @@ private:
     std::shared_ptr<Sparty> mSparty = nullptr; /// Temp pointer to sparty to be replaced with visitor
     std::shared_ptr<SpartyChin> mSpartyChin = nullptr; /// Temp pointer to spartyChin to be replaced with visitor
 
+
 public:
     Game();
     void OnDraw(std::shared_ptr<wxGraphicsContext> graphics, int width, int height);
@@ -71,6 +72,7 @@ public:
     void Update(double time);
     void Add(std::shared_ptr<Item> item);
     void Clear();
+    void OnKeyDown(wxKeyEvent &event);
 
 
     /// Level related Operations
