@@ -97,7 +97,7 @@ void Game::OnLeftDown(int x, int y)
 
     //Should be a visitor to set New Coordinates instead of pointer to Sparty and Sparty Chin
     mSparty->SetNewCoordinates(virtualX,virtualY);
-    //mSpartyChin->SetNewCoordinates(virtualX,virtualY);
+    mSpartyChin->SetNewCoordinates(virtualX,virtualY);
 
 }
 
@@ -114,7 +114,7 @@ void Game::Update(double time)
 
 
         mSparty->Update(time);
-        //mSpartyChin->Update(time);
+        mSpartyChin->Update(time);
     }
 
 }

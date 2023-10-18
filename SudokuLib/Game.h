@@ -43,8 +43,8 @@ private:
     /// Current Level
     std::shared_ptr<Level> mLevel;
 
-    std::shared_ptr<Sparty> mSparty = nullptr; /// pointer to sparty
-    std::shared_ptr<SpartyChin> mSpartyChin = nullptr; /// pointer to spartyChin
+    std::shared_ptr<Sparty> mSparty = nullptr; /// Temp pointer to sparty to be replaced with visitor
+    std::shared_ptr<SpartyChin> mSpartyChin = nullptr; /// Temp pointer to spartyChin to be replaced with visitor
 
 public:
     Game();
@@ -79,6 +79,10 @@ public:
     /// Setter for Sparty
     void SetSparty(std::shared_ptr<Sparty> sparty) {
         mSparty = sparty;
+    }
+
+    void SetChin(std::shared_ptr<SpartyChin> chin) {
+        mSpartyChin = chin;
     }
 
 };

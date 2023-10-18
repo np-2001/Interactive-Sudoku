@@ -23,8 +23,7 @@ private:
     /// Points to Y location moving to. If not moving then equal to mCurrLocation
     double mNewLocationY = Item::GetY();
 
-    /// Sparty's chin
-    std::shared_ptr<wxImage> mImage2;
+
 
     /// Dictates which image (image 1 or 2) is drawn in the front
     int mFront;
@@ -75,6 +74,9 @@ public:
         mNewLocationX = NewX;
         mNewLocationY = NewY;
     }
+
+    /// Sparty's chin
+    std::shared_ptr<wxImage> mImage2;
 
 };
 

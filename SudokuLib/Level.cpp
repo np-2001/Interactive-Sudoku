@@ -247,6 +247,15 @@ void Level::MakeItems(wxXmlNode* node)
                                             mouthY,
                                             targetX,
                                             targetY);
+            /// Needs to be redone (draw chin in sparty.cpp)
+
+            std::shared_ptr<SpartyChin> chin = std::make_shared<SpartyChin>(mGame,sparty->mImage2);
+            mGame->SetChin(chin);
+            item = chin;
+            item->SetLocation(row, col);
+            chin->SetNewCoordinates(item->GetX(),item->GetY());
+            mGame->Add(item);
+
             mGame->SetSparty(sparty);
             item = sparty;
             item->SetLocation(row, col);
