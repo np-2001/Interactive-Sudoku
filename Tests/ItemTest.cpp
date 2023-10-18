@@ -9,6 +9,7 @@
 #include <Game.h>
 
 using namespace std;
+class Item;
 
 /// item image
 const std::wstring ItemImageName = L"images/0b.png";
