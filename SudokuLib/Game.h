@@ -13,7 +13,6 @@
 #include "Timer.h"
 #include "Level.h"
 #include "Sparty.h"
-#include "SpartyChin.h"
 class Game
 {
 private:
@@ -44,7 +43,6 @@ private:
     std::shared_ptr<Level> mLevel;
 
     std::shared_ptr<Sparty> mSparty = nullptr; /// Temp pointer to sparty to be replaced with visitor
-    std::shared_ptr<SpartyChin> mSpartyChin = nullptr; /// Temp pointer to spartyChin to be replaced with visitor
 
 
 public:
@@ -83,9 +81,7 @@ public:
         mSparty = sparty;
     }
 
-    void SetChin(std::shared_ptr<SpartyChin> chin) {
-        mSpartyChin = chin;
-    }
+
 
 };
 

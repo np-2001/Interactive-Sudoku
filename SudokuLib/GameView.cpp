@@ -9,7 +9,7 @@
 #include "Game.h"
 #include "ids.h"
 #include "Sparty.h"
-#include "SpartyChin.h"
+
 
 using namespace std;
 

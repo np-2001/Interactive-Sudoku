@@ -98,7 +98,6 @@ void Game::OnLeftDown(int x, int y)
 
     //Should be a visitor to set New Coordinates instead of pointer to Sparty and Sparty Chin
     mSparty->SetNewCoordinates(virtualX,virtualY);
-    mSpartyChin->SetNewCoordinates(virtualX,virtualY);
 
 }
 
@@ -115,7 +114,7 @@ void Game::Update(double time)
 
 
         mSparty->Update(time);
-        mSpartyChin->Update(time);
+
     }
 
 }
@@ -143,11 +142,8 @@ void Game::Clear()
  */
 void Game::OnKeyDown(wxKeyEvent &event)
 {
-    wxPoint newPoint(2,3);
-    if (event.GetKeyCode() == WXK_SPACE)
-    {
-        mSpartyChin->SetNewMouthPoints(newPoint,1);
-    }
+
+
     //if (event.GetKeyCode() == "key b")
     //{
     //   mSparty->OnKeyDown(event);

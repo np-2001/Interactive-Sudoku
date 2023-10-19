@@ -7,7 +7,6 @@
 #include "Sparty.h"
 #include "Game.h"
 #include <cmath>
-
 using namespace std;
 
 
@@ -119,6 +118,45 @@ Sparty::Sparty(Game *game,
     mMouthPivotX = mouthX;
     mMouthPivotY = mouthY;
     mTargetOffset = wxPoint2DDouble(targetX, targetY);
+
+    //mChin = std::make_shared<SpartyChin>(game,mImage2,mFront,mHeadAngle,mHeadPivotX,mHeadPivotY,mMouthAngle,mMouthPivotX,mMouthPivotY,targetX,targetY);
+}
+
+void Sparty::Draw(std::shared_ptr<wxGraphicsContext> graphics) {
+
+    if (mFront == 2) {
+        Sparty::ChinDraw(graphics);
+        Item::Draw(graphics);
+    } else {
+        Item::Draw(graphics);
+        Sparty::ChinDraw(graphics);
+
+    }
+
+
+}
+
+
+void Sparty::ChinDraw(std::shared_ptr<wxGraphicsContext> graphics) {
+    // Load in BitMap only once
+    if(mChinBitmap.IsNull())
+    {
+//        mItemBitmap = std::make_unique<wxGraphicsBitmap>(graphics->CreateBitmapFromImage(*mItemImage));
+        mChinBitmap = graphics->CreateBitmapFromImage(*mImage2);
+    }
+
+    if (mImage2 != nullptr)
+    {
+        int wid = mImage2->GetWidth();
+        int hit = mImage2->GetHeight();
+
+        // Make these getters in Game, Level class
+        int tileHeight = Item::GetGame()->GetTileSize();
+
+        graphics->DrawBitmap(mChinBitmap, ((Item::GetCol()*tileHeight)),
+                             (((Item::GetRow()+1)*tileHeight) - hit), wid, hit);
+
+    }
 }
 
 

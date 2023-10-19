@@ -49,6 +49,10 @@ private:
     /// Target location offset as a vector(x,y)
     wxPoint2DDouble mTargetOffset;
 
+    //std::shared_ptr<SpartyChin> mChin;
+
+    ///Chin Bitmap
+    wxGraphicsBitmap mChinBitmap;
 
 
 public:
@@ -78,6 +82,13 @@ public:
     /// Sparty's chin
     std::shared_ptr<wxImage> mImage2;
 
+    ///Getter for sparty chin object
+    ///std::shared_ptr<SpartyChin> GetChin() { return mChin;}
+
+    void Draw(std::shared_ptr<wxGraphicsContext> graphics) override;
+
+    void ChinDraw(std::shared_ptr<wxGraphicsContext> graphics);
+    //void HeadDraw(std::shared_ptr<wxGraphicsContext> graphics);
 };
 
 #endif //PROJECT1_335_SUDOKULIB_SPARTY_H
