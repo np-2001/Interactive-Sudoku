@@ -75,18 +75,34 @@ void SpartyChin::Update(double elapsed)
 
 }
 
-void SpartyChin::OnKeyDown(std::shared_ptr<wxGraphicsContext> graphics, wxPoint mouthPivot, double mouthAngle)
+void SpartyChin::Draw(shared_ptr<wxGraphicsContext> graphics)
 {
-    //int wid = mItemImage->GetWidth();
-    //int hit = mItemImage->GetHeight();
+    SetNewBitmap(mSpartyChinBitmap);
+    // Load in BitMap only once
+    if(mSpartyChinBitmap.IsNull())
+    {
+//        mItemBitmap = std::make_unique<wxGraphicsBitmap>(graphics->CreateBitmapFromImage(*mItemImage));
+        mSpartyChinBitmap = graphics->CreateBitmapFromImage(*GetItemImage());
+    }
 
-    graphics->PushState();
+    if (GetItemImage() != nullptr)
+    {
+        int wid = GetItemImage()->GetWidth();
+        int hit = GetItemImage()->GetHeight();
 
-    graphics->Translate(mouthPivot.x, mouthPivot.y);
-    graphics->Rotate(mouthAngle);
-    graphics->Translate(-mouthPivot.x, -mouthPivot.y);
+        // Make these getters in Game, Level class
+        int tileHeight = GetGame()->GetTileSize();
 
-    //graphics->DrawBitmap(mItemBitmap, 0, 0, wid, hit);
+        graphics->PushState();
 
-    graphics->PopState();
+        graphics->Translate(mMouthPivot.x, mMouthPivot.y);
+        graphics->Rotate(mMouthAngle);
+        graphics->Translate(-mMouthPivot.x, -mMouthPivot.y);
+
+        graphics->DrawBitmap(mSpartyChinBitmap, ((GetCol()*tileHeight)),
+                             (((GetRow()+1)*tileHeight) - hit), wid, hit);
+
+        graphics->PopState();
+
+    }
 }

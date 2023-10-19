@@ -105,6 +105,14 @@ public:
     virtual void XmlLoad(wxXmlNode *node);
 
     Game * GetGame() { return mGame; }
+    std::shared_ptr<wxImage> GetItemImage() {return mItemImage;}
+    wxGraphicsBitmap GetItemBitmap() {return mItemBitmap;}
+
+    /// Setter for newBitmap
+    void SetNewBitmap(wxGraphicsBitmap newBitmap) {
+        mItemBitmap = newBitmap;
+    }
+
 
 };
 

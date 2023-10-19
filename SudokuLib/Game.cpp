@@ -77,7 +77,7 @@ void Game::OnDraw(std::shared_ptr<wxGraphicsContext> graphics, int width, int he
 
         item->Draw(graphics);
     }
-    //mSparty->Draw(graphics);
+   // mSparty->Draw(graphics);
     //mSpartyChin->Draw(graphics);
 
     mTimeDisplay.OnDraw(graphics);
@@ -143,9 +143,10 @@ void Game::Clear()
  */
 void Game::OnKeyDown(wxKeyEvent &event)
 {
+    wxPoint newPoint(2,3);
     if (event.GetKeyCode() == WXK_SPACE)
     {
-        //mSpartyChin->OnKeyDown(event);
+        mSpartyChin->SetNewMouthPoints(newPoint,1);
     }
     //if (event.GetKeyCode() == "key b")
     //{

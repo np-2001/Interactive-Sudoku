@@ -121,3 +121,5 @@ void Item::XmlLoad(wxXmlNode *node)
     mRow = x;
     mCol = y;
 }
+
+
