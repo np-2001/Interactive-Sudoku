@@ -11,17 +11,16 @@
 //using namespace std;
 using std::make_unique;
 
-/// Starting Level for initialisation
-wxString initLevel = L"Levels/level1.xml";
 
 /**
  * Game Constructor
  */
 Game::Game()
 {
-    mLevel = std::make_shared<Level>(this, initLevel);
-    mBackground = make_unique<wxBitmap>(L"images/background.png", wxBITMAP_TYPE_ANY);
+    mLevel = std::make_shared<Level>(this);
+    //mBackground = make_unique<wxBitmap>(L"images/background.png", wxBITMAP_TYPE_ANY);
 }
+
 
 /**
 * Draw the game

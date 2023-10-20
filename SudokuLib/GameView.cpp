@@ -13,6 +13,9 @@
 
 using namespace std;
 
+/// Starting Level for initialisation
+wxString initLevel = L"Levels/level1.xml";
+
 /// Frame duration in milliseconds
 const int FrameDuration = 30;
 
@@ -54,6 +57,7 @@ void GameView::Initialize(wxFrame *parent) {
 //    mGame.Add(spartyChin);
 //    mGame.mSpartyChin = spartyChin;
 
+    mGame.GetLevel()->SetLevel(initLevel);
     mGame.GetLevel()->LoadLevel();
     mTimer.SetOwner(this);
     mTimer.Start(FrameDuration);

@@ -47,6 +47,7 @@ private:
 
 public:
     Game();
+    Game(wxString startingLevel);
     void OnDraw(std::shared_ptr<wxGraphicsContext> graphics, int width, int height);
     virtual void OnLeftDown(int x, int y);
 

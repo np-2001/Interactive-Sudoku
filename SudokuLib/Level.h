@@ -33,9 +33,12 @@ public:
     /// Assignment operator
     void operator=(const Level &) = delete;
 
-    Level(Game *game, wxString level);
+    Level(Game *game);
 
     void LoadLevel();
+
+    /** Returns the fileName for the Current Level */
+    wxString GetCurrentLevel() {return mLevelFileName; }
 
 
     /**

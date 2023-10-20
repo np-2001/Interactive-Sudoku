@@ -15,7 +15,11 @@
 #include "Xray.h"
 #include "Sparty.h"
 
-Level::Level(Game *game, wxString level) : mGame(game), mLevelFileName(level)
+/**
+ * Constructor
+ * @param game Game this level belongs to
+ */
+Level::Level(Game *game) : mGame(game)
 {
 }
 
@@ -225,6 +229,7 @@ void Level::MakeItems(wxXmlNode* node)
         else if (name == "container")
         {
             // Load back image, Load every digit, then load front image
+            continue;
         }
         else if (name == "sparty")
         {

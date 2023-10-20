@@ -44,6 +44,9 @@ public:
      */
     std::shared_ptr<wxImage> GetImage(const wxString& id) {return mImages[id]; }
 
+    /** Returns the size of the declaration map */
+    size_t GetDeclarationSize() {return mDeclarations.size(); }
+
 
 
 };
