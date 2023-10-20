@@ -108,12 +108,15 @@ void Game::Update(double time)
 {
     mTimeDisplay.Update(time);
 
-    if (mSparty != nullptr) {
-
-
-
-        mSparty->Update(time);
-
+//    if (mSparty != nullptr) {
+//
+//
+//
+//        mSparty->Update(time);
+//
+//    }
+    for (auto item: mItems) {
+        item->Update(time);
     }
 
 }
@@ -143,10 +146,10 @@ void Game::OnKeyDown(wxKeyEvent &event)
 {
 
 
-    //if (event.GetKeyCode() == "key b")
-    //{
-    //   mSparty->OnKeyDown(event);
-    //}
+//    if (event.GetKeyCode() == WXK_SPACE)
+//    {
+//        mSparty->rotate = true;
+//    }
 }
 
 

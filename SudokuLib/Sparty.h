@@ -89,6 +89,8 @@ public:
 
     void ChinDraw(std::shared_ptr<wxGraphicsContext> graphics);
     //void HeadDraw(std::shared_ptr<wxGraphicsContext> graphics);
+
+    bool rotate = false;
 };
 
 #endif //PROJECT1_335_SUDOKULIB_SPARTY_H

@@ -37,7 +37,7 @@ private:
     /// List of all items in the game
     std::vector<std::shared_ptr<Item>> mItems;
 
-    std::unique_ptr<wxBitmap> mBackground;  ///< Background image to use (hardcoded for now)
+    //std::unique_ptr<wxBitmap> mBackground;  ///< Background image to use (hardcoded for now)
 
     /// Current Level
     std::shared_ptr<Level> mLevel;

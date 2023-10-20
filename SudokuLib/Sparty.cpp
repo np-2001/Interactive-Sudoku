@@ -125,12 +125,12 @@ Sparty::Sparty(Game *game,
 void Sparty::Draw(std::shared_ptr<wxGraphicsContext> graphics) {
 
     if (mFront == 2) {
-        Sparty::ChinDraw(graphics);
-        Item::Draw(graphics);
-    } else {
         Item::Draw(graphics);
         Sparty::ChinDraw(graphics);
 
+    } else {
+        Sparty::ChinDraw(graphics);
+        Item::Draw(graphics);
     }
 
 
@@ -139,22 +139,54 @@ void Sparty::Draw(std::shared_ptr<wxGraphicsContext> graphics) {
 
 void Sparty::ChinDraw(std::shared_ptr<wxGraphicsContext> graphics) {
     // Load in BitMap only once
+    int wid = mImage2->GetWidth();
+    int hit = mImage2->GetHeight();
+    // Make these getters in Game, Level class
+    int tileHeight = Item::GetGame()->GetTileSize();
+    auto x = ((Item::GetCol()*tileHeight));
+    auto y = (((Item::GetRow()+1)*tileHeight) - hit);
+
     if(mChinBitmap.IsNull())
     {
-//        mItemBitmap = std::make_unique<wxGraphicsBitmap>(graphics->CreateBitmapFromImage(*mItemImage));
         mChinBitmap = graphics->CreateBitmapFromImage(*mImage2);
     }
 
-    if (mImage2 != nullptr)
+    if (mImage2 != nullptr and rotate == false)
     {
-        int wid = mImage2->GetWidth();
-        int hit = mImage2->GetHeight();
 
-        // Make these getters in Game, Level class
-        int tileHeight = Item::GetGame()->GetTileSize();
+        auto x = ((Item::GetCol()*tileHeight));
+        auto y = (((Item::GetRow()+1)*tileHeight) - hit);
+
 
         graphics->DrawBitmap(mChinBitmap, ((Item::GetCol()*tileHeight)),
                              (((Item::GetRow()+1)*tileHeight) - hit), wid, hit);
+
+    } else {
+
+        graphics->PushState();
+
+
+
+        graphics->Translate(mHeadPivotX, mHeadPivotY);
+
+        graphics->Rotate(0);
+        graphics->Translate(-mHeadPivotX, -mHeadPivotY);
+
+
+        graphics->Translate(mMouthPivotX, mMouthPivotY);
+        graphics->Rotate(mMouthAngle);
+        graphics->Translate(-mMouthPivotX, -mMouthPivotY);
+
+        x = ((Item::GetCol()*tileHeight));
+        y = (((Item::GetRow()+1)*tileHeight) - hit);
+        wid = mImage2->GetWidth();
+        hit = mImage2->GetHeight();
+
+        graphics->DrawBitmap(mChinBitmap, 0,0, wid, hit);
+
+        graphics->PopState();
+
+        //rotate = false;
 
     }
 }
