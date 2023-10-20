@@ -3,22 +3,25 @@
  * @author Finn Clark
  */
 
-#include <pch.h>
+#include "pch.h"
 #include "gtest/gtest.h"
 #include <Item.h>
 #include <Game.h>
+#include <filesystem>
+#include <Digit.h>
 
 using namespace std;
 class Item;
-
+// std::filesystem::current_path().generic_string() + L"/../../"
 /// item image
-const std::wstring ItemImageName = L"images/0b.png";
-const std::shared_ptr<wxImage> image = make_unique<wxImage>(ItemImageName, wxBITMAP_TYPE_ANY);
+const std::wstring itemFile = L"0b.png";
+auto itemFilepath = std::filesystem::current_path().generic_string() + L"/images/" + itemFile;
+auto image = std::make_shared<wxImage>(itemFilepath, wxBITMAP_TYPE_ANY);
 
 /** Mock class for testing the class Item */
 class ItemMock : public Item {
 public:
-    ItemMock(Game *game) : Item(game, image) {}
+    ItemMock(Game *game, std::shared_ptr<wxImage> image) : Item(game, image) {}
     void Eat(Item *item) {};
     void Accept(VisitorItem* visitor) {};
 
@@ -26,13 +29,13 @@ public:
 
 TEST(ItemTest, Construct) {
     Game game;
-    ItemMock item(&game);
+//    std::shared_ptr<Item> item = std::make_shared<Digit>(game, image, 0);
 }
 
 TEST(ItemTest, HitTest) {
     // Create an item to test
     Game game;
-    ItemMock item(&game);
+    ItemMock item(&game, image);
 
     // Give it a location
     // Always make the numbers different, in case they are mixed up
