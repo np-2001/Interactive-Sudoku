@@ -80,8 +80,7 @@ public:
         mSparty = sparty;
     }
 
-
-
+    std::shared_ptr<Item> HitTest(int x, int y);
 };
 
 #endif //PROJECT1_335_SUDOKULIB_GAME_H
