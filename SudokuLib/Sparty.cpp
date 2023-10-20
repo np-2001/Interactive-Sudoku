@@ -151,7 +151,7 @@ void Sparty::ChinDraw(std::shared_ptr<wxGraphicsContext> graphics) {
         mChinBitmap = graphics->CreateBitmapFromImage(*mImage2);
     }
 
-    if (mImage2 != nullptr and rotate == false)
+    if (mImage2 != nullptr && rotate == false)
     {
 
         auto x = ((Item::GetCol()*tileHeight));
