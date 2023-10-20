@@ -1,6 +1,6 @@
 /**
  * @file Declaration.h
- * @author Sania Sinha
+ * @author Sania Sinha, Eliezer Amponsah
  *
  * Class describing declarations in a game
  */
@@ -17,10 +17,6 @@
 class Declaration
 {
 private:
-    /// Height of screen
-    int mHeight;
-    /// Width of screen
-    int mWidth;
 
     /// Map of ids to XmlNode for the declarations section
     std::map<wxString, wxXmlNode* > mDeclarations;
@@ -29,17 +25,6 @@ private:
     std::map<wxString, std::shared_ptr<wxImage>> mImages;
 
 public:
-    /// Default constructor (disabled)
-    Declaration() = delete;
-
-    /// Copy constructor (disabled)
-    Declaration(const Declaration &) = delete;
-
-    /// Assignment operator
-    void operator=(const Declaration &) = delete;
-
-    Declaration(int hit, int wid);
-
     void Add(wxString id, wxXmlNode *node);
 
     /** Returns the ids to images of this level */

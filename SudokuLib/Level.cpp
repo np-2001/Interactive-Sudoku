@@ -26,7 +26,10 @@ Level::Level(Game *game, wxString level) : mGame(game), mLevelFileName(level)
  */
 void Level::LoadLevel()
 {
+    //Redefined. Declaration is now accessible for the duration of the game
+    mDeclaration = std::make_shared<Declaration>();
     wxXmlDocument xmlDoc;
+
     if(!xmlDoc.Load(mLevelFileName)) // Error check
     {
         wxMessageBox(L"Unable to load Level file");
@@ -36,11 +39,16 @@ void Level::LoadLevel()
     auto root = xmlDoc.GetRoot();
     int width;
     int height;
+    int tileSize;
     root->GetAttribute(L"width").ToInt(&width);
     root->GetAttribute(L"height").ToInt(&height);
+    root->GetAttribute(L"tilewidth").ToInt(&tileSize);
 
-    //Redefined. Declaration is now accessible for the duration of the game
-    mDeclaration = std::make_shared<Declaration>(width, height);
+    // Set Game dimensions
+    mGame->SetWidth(width);
+    mGame->SetHeight(height);
+    mGame->SetTileSize(tileSize);
+
 
     // Children of the xml: [declaration, game, items]
     auto tag = root->GetChildren(); ///< tag = [declaration, game, items]

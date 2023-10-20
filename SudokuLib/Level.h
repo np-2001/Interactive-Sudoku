@@ -44,6 +44,9 @@ public:
      */
     void SetLevel(wxString filename) {mLevelFileName = filename; }
 
+    /** Gets the Declaration for this level*/
+    const std::shared_ptr<Declaration> GetDeclaration()  const {return  mDeclaration; }
+
 
 };
 

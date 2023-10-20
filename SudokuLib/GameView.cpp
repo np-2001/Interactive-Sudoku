@@ -87,11 +87,6 @@ void GameView::OnPaint(wxPaintEvent& event)
     // Create a graphics context
     auto gc = std::shared_ptr<wxGraphicsContext>(wxGraphicsContext::Create(dc));
 
-    // Load Level 1
-
-    //mGame->mLevel.LoadLevel();
-    Refresh();
-
 
     // Tell the game class to draw
 //    wxSize size = GetClientSize();
@@ -135,10 +130,9 @@ void GameView::OnLoadLevel1(wxCommandEvent &event)
 
     // Re-evaluate this
     mGame.GetLevel()->SetLevel(L"Levels/level1.xml");
-    //TODO Game complains about images not being loaded
     mGame.GetLevel()->LoadLevel();
 
-    //Refresh();
+    Refresh();
 }
 
 /**
@@ -147,7 +141,13 @@ void GameView::OnLoadLevel1(wxCommandEvent &event)
  */
 void GameView::OnLoadLevel2(wxCommandEvent &event)
 {
-    wxMessageBox(L"Level 2 was clicked!");
+    mGame.Clear();
+
+    // Re-evaluate this
+    mGame.GetLevel()->SetLevel(L"Levels/level2.xml");
+    mGame.GetLevel()->LoadLevel();
+
+    Refresh();
 }
 
 /**

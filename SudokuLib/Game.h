@@ -26,13 +26,13 @@ private:
     double mYOffset;
 
     /// Tile size
-    int mTileSize = 48;
+    int mTileSize;
 
     /// Screen Width
-    int mWidth = 20;
+    int mWidth;
 
     /// Screen Height
-    int mHeight = 15;
+    int mHeight;
 
     /// List of all items in the game
     std::vector<std::shared_ptr<Item>> mItems;
@@ -52,8 +52,6 @@ public:
 
     /// The display timer (scoreboard)
     Timer mTimeDisplay;
-
-
 
     double GetOffsetX() const { return mXOffset;}
     double GetOffsetY() const { return mYOffset;}
