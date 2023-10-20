@@ -7,15 +7,13 @@
 #include "gtest/gtest.h"
 #include <Item.h>
 #include <Game.h>
-#include <filesystem>
 #include <Digit.h>
 
 using namespace std;
 class Item;
-// std::filesystem::current_path().generic_string() + L"/../../"
 /// item image
 const std::wstring itemFile = L"0b.png";
-auto itemFilepath = std::filesystem::current_path().generic_string() + L"/images/" + itemFile;
+auto itemFilepath = L"images/" + itemFile;
 auto image = std::make_shared<wxImage>(itemFilepath, wxBITMAP_TYPE_ANY);
 
 /** Mock class for testing the class Item */
@@ -29,7 +27,7 @@ public:
 
 TEST(ItemTest, Construct) {
     Game game;
-//    std::shared_ptr<Item> item = std::make_shared<Digit>(game, image, 0);
+    ItemMock item(&game, image);
 }
 
 TEST(ItemTest, HitTest) {
