@@ -1,6 +1,6 @@
 /**
  * @file Level.h
- * @author Eliezer Amponsah
+ * @author Eliezer Amponsah, Finn Clark
  *
  *
  */
@@ -18,6 +18,9 @@ private:
     Game *mGame;
     wxString mLevelFileName;
     std::shared_ptr<Declaration> mDeclaration;
+
+    /// Solution of the game
+    int mSolution[9][9];
 
     void MakeDeclarations(wxXmlNode *node);
     void MakeItems(wxXmlNode *node);
@@ -40,7 +43,6 @@ public:
     /** Returns the fileName for the Current Level */
     wxString GetCurrentLevel() {return mLevelFileName; }
 
-
     /**
      *
      * @param filename
@@ -50,7 +52,7 @@ public:
     /** Gets the Declaration for this level*/
     const std::shared_ptr<Declaration> GetDeclaration()  const {return  mDeclaration; }
 
-
+    void LoadSolve(wxXmlNode *node);
 };
 
 #endif //PROJECT1_335_SUDOKULIB_LEVEL_H
