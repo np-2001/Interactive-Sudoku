@@ -39,6 +39,8 @@ set(SOURCE_FILES MainFrame.cpp MainFrame.h
         Level.h
         Level.cpp
         Level.h
+        LevelDisplay.cpp
+        LevelDisplay.h
 )
 
 set(wxBUILD_PRECOMP OFF)

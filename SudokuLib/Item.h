@@ -113,6 +113,10 @@ public:
         mItemBitmap = newBitmap;
     }
 
+    /// Getter for mItem Image
+    std::shared_ptr<wxImage> GetImage() {
+        return mItemImage;
+    }
 
 };
 

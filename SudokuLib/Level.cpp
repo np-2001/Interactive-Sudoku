@@ -14,7 +14,7 @@
 #include "Container.h"
 #include "Xray.h"
 #include "Sparty.h"
-
+#include "LevelDisplay.h"
 /**
  * Constructor
  * @param game Game this level belongs to
@@ -52,7 +52,6 @@ void Level::LoadLevel()
     mGame->SetWidth(width);
     mGame->SetHeight(height);
     mGame->SetTileSize(tileSize);
-
 
     // Children of the xml: [declaration, game, items]
     auto tag = root->GetChildren(); ///< tag = [declaration, game, items]
@@ -303,6 +302,16 @@ void Level::MakeItems(wxXmlNode* node)
         mGame->Add(item);
         // Set the location
         item->SetLocation(row, col);
+
+        if (mLevelFileName == L"Levels/level1.xml") {
+            mPopup = LevelDisplay("LEVEL 1");
+        } else if (mLevelFileName == L"Levels/level2.xml") {
+            mPopup = LevelDisplay("LEVEL 2");
+        } else {
+            mPopup = LevelDisplay("LEVEL 3");
+        }
+
+
 
 
     }

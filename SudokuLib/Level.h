@@ -9,6 +9,7 @@
 #define PROJECT1_335_SUDOKULIB_LEVEL_H
 
 #include "Declaration.h"
+#include "LevelDisplay.h"
 class Game;
 
 class Level
@@ -24,6 +25,7 @@ private:
 
     void MakeDeclarations(wxXmlNode *node);
     void MakeItems(wxXmlNode *node);
+
 
 public:
 
@@ -54,6 +56,9 @@ public:
 
     void LoadSolve(wxXmlNode *node);
     void SolveLevel();
+
+    ///Test will be fixed
+    LevelDisplay mPopup;
 };
 
 #endif //PROJECT1_335_SUDOKULIB_LEVEL_H

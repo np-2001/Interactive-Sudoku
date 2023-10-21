@@ -81,7 +81,7 @@ void Game::OnDraw(std::shared_ptr<wxGraphicsContext> graphics, int width, int he
 
     mTimeDisplay.OnDraw(graphics);
 
-
+    mLevel->mPopup.Draw(graphics);
     graphics->PopState();
 }
 
@@ -107,7 +107,7 @@ void Game::OnLeftDown(int x, int y)
 void Game::Update(double time)
 {
     mTimeDisplay.Update(time);
-
+    mLevel->mPopup.Update(time);
 //    if (mSparty != nullptr) {
 //
 //
