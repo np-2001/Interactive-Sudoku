@@ -1,6 +1,6 @@
 /**
  * @file Sparty.cpp
- * @author Sania Sinha,Nitin Polavarapu
+ * @author Sania Sinha,Nitin Polavarapu, Samantha Wycoff
  */
 
 #include "pch.h"
@@ -193,6 +193,10 @@ void Sparty::ChinDraw(std::shared_ptr<wxGraphicsContext> graphics) {
     }
 }
 
+/**
+ * Handle drawing Sparty head image and headbutt animation.
+ * @param graphics Graphics device to draw with.
+ */
 void Sparty::HeadDraw(std::shared_ptr<wxGraphicsContext> graphics) {
     // Load in BitMap only once
     int wid = mImage->GetWidth();
