@@ -155,6 +155,13 @@ void Level::LoadLevel()
 
  }
 
+ /**
+  * solve the level
+  */
+  void Level::SolveLevel() {
+
+  }
+
 
 /**
  * Creates the declarations for the objects that will be used in this level

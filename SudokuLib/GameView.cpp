@@ -37,6 +37,7 @@ void GameView::Initialize(wxFrame *parent) {
     Bind(wxEVT_TIMER,&GameView::OnTimer,this);
 
     // Level Bindings
+    parent->Bind(wxEVT_COMMAND_MENU_SELECTED, &GameView::OnLoadLevel0, this, IDM_LEVEL_0);
     parent->Bind(wxEVT_COMMAND_MENU_SELECTED, &GameView::OnLoadLevel1, this, IDM_LEVEL_1);
     parent->Bind(wxEVT_COMMAND_MENU_SELECTED, &GameView::OnLoadLevel2, this, IDM_LEVEL_2);
     parent->Bind(wxEVT_COMMAND_MENU_SELECTED, &GameView::OnLoadLevel3, this, IDM_LEVEL_3);
@@ -127,7 +128,16 @@ void GameView::OnLeftDown(wxMouseEvent &event)
  */
 void GameView::OnSolveLevel(wxCommandEvent &event)
 {
-//    mGame.GetLevel()->SolveLevel();
+    mGame.GetLevel()->SolveLevel();
+}
+
+/**
+ * Handler to load level 0 on button click
+ * @param event event to handle
+ */
+void GameView::OnLoadLevel0(wxCommandEvent &event)
+{
+    StartNewLevel(L"Levels/level0.xml");
 }
 
 

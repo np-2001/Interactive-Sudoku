@@ -32,6 +32,7 @@ private:
     void OnPaint(wxPaintEvent& event);
     void OnLeftDown(wxMouseEvent &event);
     void OnKeyDown(wxKeyEvent &event);
+    void OnLoadLevel0(wxCommandEvent &event);
     void OnLoadLevel1(wxCommandEvent& event);
     void OnLoadLevel2(wxCommandEvent& event);
     void OnLoadLevel3(wxCommandEvent& event);
