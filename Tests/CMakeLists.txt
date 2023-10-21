@@ -33,3 +33,6 @@ target_link_libraries(Tests_run ${APPLICATION_LIBRARY} ${wxWidgets_LIBRARIES} )
 target_link_libraries(Tests_run gtest)
 
 target_precompile_headers(Tests_run PRIVATE ../${APPLICATION_LIBRARY}/pch.h)
+
+file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/../images/
+        DESTINATION ${CMAKE_CURRENT_BINARY_DIR}/images/)
