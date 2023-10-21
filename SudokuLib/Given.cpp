@@ -29,7 +29,7 @@ void Given::Accept(VisitorItem* visitor)
  * Givens do not get eaten
  * @param item digit to be eaten
  */
-void Given::Eat(Item *item)
+void Given::Eat()
 {
 
 }

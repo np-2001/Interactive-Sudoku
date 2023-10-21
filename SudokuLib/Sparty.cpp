@@ -41,7 +41,7 @@ void Sparty::Accept(VisitorItem* visitor)
  * Sparty eats and does not get eaten
  * @param item digit to be eaten
  */
-void Sparty::Eat(Item *item)
+void Sparty::Eat()
 {
 
 }

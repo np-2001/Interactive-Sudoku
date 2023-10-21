@@ -26,7 +26,7 @@ public:
     Xray(const Xray &) = delete;
 
     void Accept(VisitorItem* visitor) override;
-    void Eat(Item *item) override;
+    void Eat() override;
 
 };
 

@@ -9,6 +9,7 @@
 #include "Item.h"
 #include "VisitorItem.h"
 #include "VisitorDigit.h"
+#include "VisitorGiven.h"
 #include "Sparty.h"
 //using namespace std;
 using std::make_unique;
@@ -207,6 +208,14 @@ void Game::OnKeyDown(wxKeyEvent &event)
             if(visitor.IsDigit())
             {
                 // We are next to a Digit
+                VisitorGiven visitor2;
+                item->Accept(&visitor2);
+
+                if(! visitor2.IsGiven())
+                {
+                    // It is not a Given
+                    item->Eat();
+                }
             }
         }
     }

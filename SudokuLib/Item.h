@@ -97,7 +97,7 @@ public:
      * this: object eating
      * @param item item to be eaten
      */
-    virtual void Eat(Item *item) = 0;
+    virtual void Eat() = 0;
 
     virtual ~Item();
     virtual void Draw(std::shared_ptr<wxGraphicsContext> graphics);

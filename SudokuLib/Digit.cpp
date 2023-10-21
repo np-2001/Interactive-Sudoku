@@ -28,7 +28,7 @@ void Digit::Accept(VisitorItem* visitor)
  * calling object is Sparty
  * @param item digit to be eaten
  */
-void Digit::Eat(Item *item)
+void Digit::Eat()
 {
 
 }

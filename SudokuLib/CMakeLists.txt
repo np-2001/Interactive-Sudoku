@@ -41,8 +41,8 @@ set(SOURCE_FILES MainFrame.cpp MainFrame.h
         Level.h
         LevelDisplay.cpp
         LevelDisplay.h
-        VisitGiven.cpp
-        VisitGiven.h
+        VisitorGiven.cpp
+        VisitorGiven.h
 )
 
 set(wxBUILD_PRECOMP OFF)

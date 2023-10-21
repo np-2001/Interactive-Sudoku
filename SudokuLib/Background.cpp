@@ -28,7 +28,7 @@ void Background::Accept(VisitorItem* visitor)
  * Backgrounds do not have Eat functionality
  * @param item background item
  */
-void Background::Eat(Item *item)
+void Background::Eat()
 {
 
 }

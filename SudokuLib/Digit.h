@@ -36,7 +36,7 @@ public:
     int GetValue() const { return mValue;}
 
     void Accept(VisitorItem* visitor) override;
-    void Eat(Item *item) override;
+    void Eat() override;
 
 };
 

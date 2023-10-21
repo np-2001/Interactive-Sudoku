@@ -29,7 +29,7 @@ void Xray::Accept(VisitorItem* visitor)
  * Xrays do not have Eat functionality
  * @param item background item
  */
-void Xray::Eat(Item *item)
+void Xray::Eat()
 {
 
 }

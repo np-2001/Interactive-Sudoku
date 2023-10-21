@@ -73,7 +73,7 @@ public:
     Sparty(const Sparty &) = delete;
 
     void Accept(VisitorItem* visitor) override;
-    void Eat(Item *item) override;
+    void Eat() override;
     void Update(double elapsed) override;
 
     /// Setter for NewX and NewY
