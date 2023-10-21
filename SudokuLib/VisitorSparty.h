@@ -27,6 +27,15 @@ public:
      */
     bool IsSparty() const { return mIsSparty; }
 
+    /**
+     * Checks if we are visiting Sparty
+     * @param sparty item we are visiting
+     */
+    void VisitSparty(Sparty *sparty) override
+    {
+        mIsSparty = true;
+    }
+
 };
 
 #endif //PROJECT1_335_SUDOKULIB_VISITORSPARTY_H

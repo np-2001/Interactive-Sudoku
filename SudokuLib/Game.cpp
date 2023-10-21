@@ -10,6 +10,7 @@
 #include "VisitorItem.h"
 #include "VisitorDigit.h"
 #include "VisitorGiven.h"
+#include "VisitorSparty.h"
 #include "Sparty.h"
 //using namespace std;
 using std::make_unique;
@@ -135,10 +136,17 @@ std::shared_ptr<Item> Game::EatTest(int x, int y)
 {
     for (auto i = mItems.rbegin(); i != mItems.rend();  i++)
     {
-        if ((*i)->EatTest(x, y))
+        VisitorSparty visitor;
+        (*i)->Accept(&visitor);
+
+        if(!visitor.IsSparty())
         {
-            return *i;
+            if ((*i)->EatTest(x, y))
+            {
+                return *i;
+            }
         }
+
     }
 
     return  nullptr;
