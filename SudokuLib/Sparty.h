@@ -1,6 +1,6 @@
 /**
  * @file Sparty.h
- * @author Sania Sinha
+ * @author Sania Sinha, Samantha Wycoff
  *
  * Sparty
  */

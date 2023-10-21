@@ -227,6 +227,7 @@ void Game::OnKeyDown(wxKeyEvent &event)
             }
         }
     }
+    // event key code 66 is the key for b
     if(event.GetKeyCode() == 66)
     {
         mSparty->headButt = true;
