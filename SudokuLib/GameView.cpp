@@ -189,12 +189,11 @@ void GameView::StartNewLevel(wxString levelFile)
     // Set and Start the new level
     mGame.GetLevel()->SetLevel(levelFile);
     mGame.GetLevel()->LoadLevel();
-
     // Reset Timer
-    mStopWatch.Start();
-    //mGame.mTimeDisplay.ResetTimer();
-    //mTime = mStopWatch.Time();
-    //mTimer.Start();
+    //mStopWatch.Start();
+    mGame.mTimeDisplay.ResetTimer();
+    mTime = mStopWatch.Time();
+    mTimer.Start();
 
 
 
