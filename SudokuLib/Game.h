@@ -88,6 +88,7 @@ public:
     void ResetTime() {
         mTime = 0;
     }
+
 };
 
 #endif //PROJECT1_335_SUDOKULIB_GAME_H

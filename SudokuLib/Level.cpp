@@ -306,11 +306,11 @@ void Level::MakeItems(wxXmlNode* node)
         item->SetLocation(row, col);
 
         if (mLevelFileName == L"Levels/level1.xml") {
-            mPopup = LevelDisplay("Level1");
+            mPopup = std::make_shared<LevelDisplay>("Level1");
         } else if (mLevelFileName == L"Levels/level2.xml") {
-            mPopup = LevelDisplay("Level2");
+            mPopup = std::make_shared<LevelDisplay>("Level2");
         } else {
-            mPopup = LevelDisplay("Level3");
+            mPopup = std::make_shared<LevelDisplay>("Level3");
         }
 
     }

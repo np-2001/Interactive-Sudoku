@@ -83,9 +83,14 @@ void Game::OnDraw(std::shared_ptr<wxGraphicsContext> graphics, int width, int he
    // mSparty->Draw(graphics);
     //mSpartyChin->Draw(graphics);
 
-    mTimeDisplay.OnDraw(graphics);
 
-    mLevel->mPopup.Draw(graphics);
+    ///Make sures timer is not drawn when popup is not nullptr
+    if (mLevel->mPopup != nullptr and mTime*0.001 < 3) {
+        mLevel->mPopup->Draw(graphics);
+    } else {
+        mTimeDisplay.OnDraw(graphics);
+    }
+
     graphics->PopState();
 }
 
@@ -96,17 +101,21 @@ void Game::OnDraw(std::shared_ptr<wxGraphicsContext> graphics, int width, int he
 */
 void Game::OnLeftDown(int x, int y)
 {
-    auto xOffset = mSparty->GetOffset().m_x;
-    auto yOffset = mSparty->GetOffset().m_y;
-    x = x-xOffset;
-    y = y+(((mSparty->GetItemImage())->GetHeight())-yOffset);
+    ///Makes sure sparty does not move when popup is drawn
+    if (mLevel->mPopup == nullptr)
+    {
+        auto xOffset = mSparty->GetOffset().m_x;
+        auto yOffset = mSparty->GetOffset().m_y;
+        x = x - xOffset;
+        y = y + (((mSparty->GetItemImage())->GetHeight()) - yOffset);
 
-    double virtualX = (x - mXOffset) / mScale;
-    double virtualY = (y - mYOffset) / mScale;
+        double virtualX = (x - mXOffset) / mScale;
+        double virtualY = (y - mYOffset) / mScale;
 
-    //Should be a visitor to set New Coordinates instead of pointer to Sparty and Sparty Chin
+        //Should be a visitor to set New Coordinates instead of pointer to Sparty and Sparty Chin
 
-    mSparty->SetNewCoordinates(virtualX,virtualY);
+        mSparty->SetNewCoordinates(virtualX, virtualY);
+    }
 
 }
 
@@ -119,7 +128,17 @@ void Game::Update(double time)
     mTime = mTime + (time*1000);
 
     mTimeDisplay.Update(mTime);
-    mLevel->mPopup.Update(mTime);
+
+    if (mTime*0.001 > 3 and  mLevel->mPopup != nullptr) {
+
+        this->ResetTime();
+        mLevel->mPopup = nullptr;
+    }
+
+    if (mLevel->mPopup != nullptr) {
+        mLevel->mPopup->Update(mTime);
+    }
+
 //    if (mSparty != nullptr) {
 //
 //

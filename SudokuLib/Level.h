@@ -58,7 +58,7 @@ public:
     void SolveLevel();
 
     ///Test will be fixed
-    LevelDisplay mPopup;
+    std::shared_ptr<LevelDisplay> mPopup = nullptr;
 };
 
 #endif //PROJECT1_335_SUDOKULIB_LEVEL_H

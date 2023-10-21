@@ -195,7 +195,5 @@ void GameView::StartNewLevel(wxString levelFile)
     mTime = mStopWatch.Time();
     mTimer.Start();
 
-
-
     //Refresh();
 }
