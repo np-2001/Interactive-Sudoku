@@ -101,7 +101,8 @@ public:
 
     virtual ~Item();
     virtual void Draw(std::shared_ptr<wxGraphicsContext> graphics);
-    virtual bool HitTest(double x, double y);
+    virtual bool EatTest(double x, double y);
+    bool HitTest(int x, int y);
     virtual void XmlLoad(wxXmlNode *node);
 
     Game * GetGame() { return mGame; }

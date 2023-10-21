@@ -1,6 +1,6 @@
 /**
  * @file MainFrame.cpp
- * @authors Nitin Polavarapu, Eliezer Amponsah, Samantha Wycoff
+ * @authors Nitin Polavarapu, Eliezer Amponsah, Samantha Wycoff, Finn Clark
  */
 
 #include "pch.h"
