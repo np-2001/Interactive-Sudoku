@@ -32,6 +32,7 @@ void MainFrame::Initialize()
     menuBar->Append(helpMenu, L"&Help");
 
     // Level Submenu
+    levelMenu->Append(IDM_LEVEL_0, L"&Level 0", "Load level 0");
     levelMenu->Append(IDM_LEVEL_1, L"&Level 1", "Load level 1");
     levelMenu->Append(IDM_LEVEL_2, L"&Level 2", "Load level 2");
     levelMenu->Append(IDM_LEVEL_3, L"&Level 3", "Load level 3");

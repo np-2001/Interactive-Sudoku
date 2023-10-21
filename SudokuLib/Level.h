@@ -53,6 +53,7 @@ public:
     const std::shared_ptr<Declaration> GetDeclaration()  const {return  mDeclaration; }
 
     void LoadSolve(wxXmlNode *node);
+    void SolveLevel();
 };
 
 #endif //PROJECT1_335_SUDOKULIB_LEVEL_H
