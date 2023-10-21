@@ -17,6 +17,9 @@ public:
     Timer();
     void OnDraw(std::shared_ptr<wxGraphicsContext> gc);
     void Update(double Time); //Called in Game
+
+    /** Resets the timer*/
+    void ResetTimer() {mTime = 0;}
 };
 
 #endif //PROJECT1_335_SUDOKULIB_TIMER_H

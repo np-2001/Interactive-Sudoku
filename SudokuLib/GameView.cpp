@@ -127,16 +127,7 @@ void GameView::OnLeftDown(wxMouseEvent &event)
  */
 void GameView::OnLoadLevel1(wxCommandEvent &event)
 {
-    //wxMessageBox(L"Level 1 was clicked!");
-
-    // Clear active objects
-    mGame.Clear();
-
-    // Re-evaluate this
-    mGame.GetLevel()->SetLevel(L"Levels/level1.xml");
-    mGame.GetLevel()->LoadLevel();
-
-    Refresh();
+    StartNewLevel(L"Levels/level1.xml");
 }
 
 /**
@@ -145,13 +136,7 @@ void GameView::OnLoadLevel1(wxCommandEvent &event)
  */
 void GameView::OnLoadLevel2(wxCommandEvent &event)
 {
-    mGame.Clear();
-
-    // Re-evaluate this
-    mGame.GetLevel()->SetLevel(L"Levels/level2.xml");
-    mGame.GetLevel()->LoadLevel();
-
-    Refresh();
+    StartNewLevel(L"Levels/level2.xml");
 }
 
 /**
@@ -160,7 +145,7 @@ void GameView::OnLoadLevel2(wxCommandEvent &event)
  */
 void GameView::OnLoadLevel3(wxCommandEvent &event)
 {
-    wxMessageBox(L"Level 3 was clicked!");
+    StartNewLevel(L"Levels/level3.xml");
 }
 
 /**
@@ -170,4 +155,28 @@ void GameView::OnLoadLevel3(wxCommandEvent &event)
 void GameView::OnKeyDown(wxKeyEvent &event)
 {
    mGame.OnKeyDown(event);
+}
+
+/**
+ * Loads the level with the specified fileName
+ * @param levelFile
+ */
+void GameView::StartNewLevel(wxString levelFile)
+{
+    // Clear Game's Items
+    mGame.Clear();
+
+    // Set and Start the new level
+    mGame.GetLevel()->SetLevel(levelFile);
+    mGame.GetLevel()->LoadLevel();
+
+    // Reset Timer
+    mStopWatch.Start();
+    //mGame.mTimeDisplay.ResetTimer();
+    //mTime = mStopWatch.Time();
+    //mTimer.Start();
+
+
+
+    //Refresh();
 }
