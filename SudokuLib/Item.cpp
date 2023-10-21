@@ -83,10 +83,10 @@ void Item::Draw(shared_ptr<wxGraphicsContext> graphics)
  * @param y  Y virtual pixel location
  * @return True if (x,y) location is "next to" an item (directly to the right)
  */
-bool Item::HitTest(double x, double y)
+bool Item::EatTest(double x, double y)
 {
-    double wid = mItemBitmap.ConvertToImage().GetWidth();
-    double hit = mItemBitmap.ConvertToImage().GetHeight();
+    double wid = mItemImage->GetWidth();
+    double hit = mItemImage->GetHeight();
 
     // Make x and y relative to the top-left corner of the bitmap image
     // Subtracting the center makes x, y relative to the image center
@@ -100,6 +100,36 @@ bool Item::HitTest(double x, double y)
     if (x < GetX()-50 || y < GetY() || x >= GetX() + wid || testY >= GetY() + hit)
     {
         // We are not next to the image
+        return false;
+    }
+
+    // Test to see if x, y are in the drawn part of the image
+    // If the location is transparent, we are not in the drawn
+    // part of the image
+    return !mItemImage->IsTransparent((int)testX, (int)testY);
+}
+
+/**
+ * Test to see if we hit this object with a mouse.
+ * @param x X position to test
+ * @param y Y position to test
+ * @return true if hit.
+ */
+bool Item::HitTest(int x, int y)
+{
+    double wid = mItemImage->GetWidth();
+    double hit = mItemImage->GetHeight();
+
+    // Make x and y relative to the top-left corner of the bitmap image
+    // Subtracting the center makes x, y relative to the image center
+    // Adding half the size makes x, y relative to theimage top corner
+    double testX = x - GetX() + wid / 2;
+    double testY = y - GetY() + hit / 2;
+
+    // Test to see if x, y are in the image
+    if (testX < 0 || testY < 0 || testX >= wid || testY >= hit)
+    {
+        // We are outside the image
         return false;
     }
 

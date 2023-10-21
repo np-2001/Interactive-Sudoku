@@ -1,6 +1,6 @@
 /**
  * @file VisitorDigit.h
- * @author Sania Sinha
+ * @author Sania Sinha, Finn Clark
  *
  * Checks if visited item is a digit
  */
@@ -19,6 +19,7 @@ class VisitorDigit: public VisitorItem
 private:
     /// Flag checking if item is a digit
     bool mIsDigit = false;
+    int mValue = 9;
 
 public:
     /**
@@ -26,6 +27,12 @@ public:
      * @return returns true if item is a digit
      */
     bool IsDigit() const { return mIsDigit; }
+
+    /**
+     * Getter for mValue
+     * @returns the value of the digit
+     */
+     int GetValue() const { return mValue; }
 
 };
 

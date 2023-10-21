@@ -14,6 +14,7 @@
 #include "Container.h"
 #include "Xray.h"
 #include "Sparty.h"
+#include "VisitorDigit.h"
 
 /**
  * Constructor
@@ -159,7 +160,37 @@ void Level::LoadLevel()
   * solve the level
   */
   void Level::SolveLevel() {
+      // for every row
+      for(int row = 1; row < 10; row++) {
+          // for every column
+          for(int col = 1; col < 10; col++) {
+              // check to see if there is an item in the spot
+              auto spot = mGame->HitTest(row, col);
+              if(spot != nullptr)
+              {
+                  // if so, check if its a digit or given
+                  VisitorDigit visitor;
+                  spot->Accept(&visitor);
 
+                  if (visitor.IsDigit()) {
+                      // check if its correct againist solution?
+                      bool correct = (visitor.GetValue() == mSolution[row][col]);
+                      if (!correct) {
+                          // the solution is incorrect, display it as incorrect?
+                      }
+                  }
+              }
+              else
+              {
+                  // else, reference solution to see what number goes there
+                  // find the number elsewhere on the board
+                  // and assign it there
+                  auto correct = mSolution[row][col];
+                  // how tf am i supposed to find one on the board
+              }
+
+          }
+      }
   }
 
 

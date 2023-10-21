@@ -1,6 +1,6 @@
 /**
  * @file Game.cpp
- * @author Nitin Polavarapu, Samantha Wycoff, Sania Sinha
+ * @author Nitin Polavarapu, Samantha Wycoff, Sania Sinha, Finn Clark
  */
 
 #include "pch.h"
@@ -128,8 +128,29 @@ void Game::Update(double time)
  * @param y Y location in pixels
  * @returns Pointer to item we clicked on or nullptr if none.
 */
-std::shared_ptr<Item> Game::HitTest(int x, int y)
+std::shared_ptr<Item> Game::EatTest(int x, int y)
 {
+    for (auto i = mItems.rbegin(); i != mItems.rend();  i++)
+    {
+        if ((*i)->EatTest(x, y))
+        {
+            return *i;
+        }
+    }
+
+    return  nullptr;
+}
+
+/**
+ * Test an row, col location to see if it was hit
+ * @param row row of the item
+ * @param col col of the item
+ * @returns Pointer to item we clicked on or nullptr if none.
+*/
+std::shared_ptr<Item> Game::HitTest(int row, int col)
+{
+    double x = (col*48+ (20/2.0)) + 24;
+    double y = ((row+1)*48 - (25/2.0)) + 24;
     for (auto i = mItems.rbegin(); i != mItems.rend();  i++)
     {
         if ((*i)->HitTest(x, y))

@@ -1,6 +1,6 @@
 /**
  * @file Game.h
- * @author Nitin Polavarapu, Samantha Wycoff, Sania Sinha
+ * @author Nitin Polavarapu, Samantha Wycoff, Sania Sinha, Finn Clark
  *
  *
  */
@@ -80,7 +80,8 @@ public:
         mSparty = sparty;
     }
 
-    std::shared_ptr<Item> HitTest(int x, int y);
+    std::shared_ptr<Item> EatTest(int x, int y);
+    std::shared_ptr<Item> HitTest(int row, int col);
 };
 
 #endif //PROJECT1_335_SUDOKULIB_GAME_H
