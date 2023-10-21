@@ -170,10 +170,10 @@ void Game::OnKeyDown(wxKeyEvent &event)
     {
         mSparty->rotate = true;
     }
-    // if(event.GetKeyCode() == 56)
-     //{
-        //mSpartychin->rotate = true;
-     //}
+    if(event.GetKeyCode() == 66)
+    {
+        mSparty->headButt = true;
+    }
 }
 
 

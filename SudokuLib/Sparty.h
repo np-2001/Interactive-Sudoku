@@ -54,6 +54,9 @@ private:
     ///Chin Bitmap
     wxGraphicsBitmap mChinBitmap;
 
+    ///Head Bitmap
+    wxGraphicsBitmap mHeadBitmap;
+
 
 public:
     Sparty(Game *game, std::shared_ptr<wxImage> image);
@@ -79,6 +82,9 @@ public:
         mNewLocationY = NewY;
     }
 
+    /// Sparty's head
+    std::shared_ptr<wxImage> mImage;
+
     /// Sparty's chin
     std::shared_ptr<wxImage> mImage2;
 
@@ -88,9 +94,10 @@ public:
     void Draw(std::shared_ptr<wxGraphicsContext> graphics) override;
 
     void ChinDraw(std::shared_ptr<wxGraphicsContext> graphics);
-    //void HeadDraw(std::shared_ptr<wxGraphicsContext> graphics);
+    void HeadDraw(std::shared_ptr<wxGraphicsContext> graphics);
 
     bool rotate = false;
+    bool headButt = false;
 };
 
 #endif //PROJECT1_335_SUDOKULIB_SPARTY_H
