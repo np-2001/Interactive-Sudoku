@@ -98,6 +98,8 @@ public:
 
     bool rotate = false;
     bool headButt = false;
+
+    wxPoint2DDouble GetOffset() { return mTargetOffset;}
 };
 
 #endif //PROJECT1_335_SUDOKULIB_SPARTY_H

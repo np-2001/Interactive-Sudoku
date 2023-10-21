@@ -19,7 +19,7 @@ public:
     LevelDisplay(wxString word);
     LevelDisplay();
     void Draw(std::shared_ptr<wxGraphicsContext> graphics);
-    void Update(double elapsed);
+    void Update(double time);
 };
 
 #endif //PROJECT1_335_SUDOKULIB_LEVELDISPLAY_H

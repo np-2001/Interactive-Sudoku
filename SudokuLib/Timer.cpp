@@ -37,5 +37,5 @@ void Timer::OnDraw(std::shared_ptr<wxGraphicsContext> graphics) {
 }
 
 void Timer::Update(double Time) {
-    mTime = mTime + (Time*1000);
+    mTime = Time;
 }

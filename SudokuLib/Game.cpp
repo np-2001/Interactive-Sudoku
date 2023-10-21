@@ -96,10 +96,16 @@ void Game::OnDraw(std::shared_ptr<wxGraphicsContext> graphics, int width, int he
 */
 void Game::OnLeftDown(int x, int y)
 {
+    auto xOffset = mSparty->GetOffset().m_x;
+    auto yOffset = mSparty->GetOffset().m_y;
+    x = x-xOffset;
+    y = y+(((mSparty->GetItemImage())->GetHeight())-yOffset);
+
     double virtualX = (x - mXOffset) / mScale;
     double virtualY = (y - mYOffset) / mScale;
 
     //Should be a visitor to set New Coordinates instead of pointer to Sparty and Sparty Chin
+
     mSparty->SetNewCoordinates(virtualX,virtualY);
 
 }
@@ -110,8 +116,10 @@ void Game::OnLeftDown(int x, int y)
  */
 void Game::Update(double time)
 {
-    mTimeDisplay.Update(time);
-    mLevel->mPopup.Update(time);
+    mTime = mTime + (time*1000);
+
+    mTimeDisplay.Update(mTime);
+    mLevel->mPopup.Update(mTime);
 //    if (mSparty != nullptr) {
 //
 //

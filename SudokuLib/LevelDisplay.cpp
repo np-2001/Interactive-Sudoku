@@ -23,6 +23,6 @@ void LevelDisplay::Draw(std::shared_ptr<wxGraphicsContext> graphics) {
     }
 }
 
-void LevelDisplay::Update(double elapsed) {
-    mTime = mTime + (elapsed*1000);
+void LevelDisplay::Update(double time) {
+    mTime = time;
 }

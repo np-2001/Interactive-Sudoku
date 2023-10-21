@@ -44,7 +44,8 @@ private:
 
     std::shared_ptr<Sparty> mSparty = nullptr; /// Temp pointer to sparty to be replaced with visitor
 
-
+    ///Current time
+    long mTime = 0;
 public:
     Game();
     Game(wxString startingLevel);
@@ -83,6 +84,10 @@ public:
 
     std::shared_ptr<Item> EatTest(int x, int y);
     std::shared_ptr<Item> HitTest(int row, int col);
+
+    void ResetTime() {
+        mTime = 0;
+    }
 };
 
 #endif //PROJECT1_335_SUDOKULIB_GAME_H
