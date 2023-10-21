@@ -165,7 +165,10 @@ void Sparty::ChinDraw(std::shared_ptr<wxGraphicsContext> graphics) {
 
         graphics->PushState();
 
+        x = ((Item::GetCol()*tileHeight));
+        y = (((Item::GetRow()+1)*tileHeight) - hit);
 
+        graphics->Translate(x,y);
 
         graphics->Translate(mHeadPivotX, mHeadPivotY);
 
@@ -177,8 +180,7 @@ void Sparty::ChinDraw(std::shared_ptr<wxGraphicsContext> graphics) {
         graphics->Rotate(mMouthAngle);
         graphics->Translate(-mMouthPivotX, -mMouthPivotY);
 
-        x = ((Item::GetCol()*tileHeight));
-        y = (((Item::GetRow()+1)*tileHeight) - hit);
+
         wid = mImage2->GetWidth();
         hit = mImage2->GetHeight();
 
