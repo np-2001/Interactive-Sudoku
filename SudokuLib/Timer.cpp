@@ -17,7 +17,9 @@ const int FrameDuration = 30;
 /*
  * Timer Constructor
  */
-Timer::Timer() {
+Timer::Timer()
+{
+
 }
 
 void Timer::OnDraw(std::shared_ptr<wxGraphicsContext> graphics) {

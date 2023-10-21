@@ -51,3 +51,6 @@ add_library(${PROJECT_NAME} STATIC ${SOURCE_FILES})
 target_precompile_headers(${PROJECT_NAME} PRIVATE pch.h)
 
 target_link_libraries(${PROJECT_NAME} ${wxWidgets_LIBRARIES})
+
+file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/../images/
+        DESTINATION ${CMAKE_CURRENT_BINARY_DIR}/images/)

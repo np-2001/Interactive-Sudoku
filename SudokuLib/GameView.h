@@ -10,6 +10,8 @@
 
 #include "Game.h"
 #include "Timer.h"
+
+
 class GameView : public wxWindow
 {
 private:
@@ -38,6 +40,7 @@ public:
     void Initialize(wxFrame* parent);
 
     void SetTime(long Time) { mTime = Time;}
+    void StartNewLevel(wxString levelFile);
 };
 
 #endif //PROJECT1_335_SUDOKULIB_GAMEVIEW_H

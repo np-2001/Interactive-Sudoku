@@ -122,6 +122,26 @@ void Game::Update(double time)
 }
 
 /**
+ * Test an x,y location to see if has been eaten
+ * by sparty
+ * @param x X location in pixels
+ * @param y Y location in pixels
+ * @returns Pointer to item we clicked on or nullptr if none.
+*/
+std::shared_ptr<Item> Game::HitTest(int x, int y)
+{
+    for (auto i = mItems.rbegin(); i != mItems.rend();  i++)
+    {
+        if ((*i)->HitTest(x, y))
+        {
+            return *i;
+        }
+    }
+
+    return  nullptr;
+}
+
+/**
  * Add an item to our collection
  * @param item item to be added
  */
@@ -150,6 +170,10 @@ void Game::OnKeyDown(wxKeyEvent &event)
 //    {
 //        mSparty->rotate = true;
 //    }
+    // if(event.GetKeyCode() == 56)
+     //{
+        //mSpartychin->rotate = true;
+     //}
 }
 
 

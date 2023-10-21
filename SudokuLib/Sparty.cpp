@@ -123,7 +123,17 @@ Sparty::Sparty(Game *game,
 }
 
 void Sparty::Draw(std::shared_ptr<wxGraphicsContext> graphics) {
+/**
+    if (Item::Draw(graphics) != nullptr && rotate == true)
+    {
+        graphics->Translate(mHeadPivotX, mHeadPivotY);
+        graphics->Rotate(mHeadAngle);
+        graphics->Translate(-mHeadPivotX, -mHeadPivotY);
 
+        graphics->Translate(mMouthPivotX, mMouthPivotY);
+        graphics->Rotate(0);
+        graphics->Translate(-mMouthPivotX, -mMouthPivotY);
+    }**/
     if (mFront == 2) {
         Item::Draw(graphics);
         Sparty::ChinDraw(graphics);
@@ -132,8 +142,6 @@ void Sparty::Draw(std::shared_ptr<wxGraphicsContext> graphics) {
         Sparty::ChinDraw(graphics);
         Item::Draw(graphics);
     }
-
-
 }
 
 

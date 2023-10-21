@@ -1,6 +1,6 @@
 /**
  * @file Level.cpp
- * @author Eliezer Amponsah, Sania Sinha
+ * @author Eliezer Amponsah, Sania Sinha, Finn Clark
  */
 
 #include "pch.h"
@@ -72,7 +72,7 @@ void Level::LoadLevel()
         // Process Game tag
         else if (tagName == L"game")
         {
-            std::cout << "at game..." << std::endl;
+            LoadSolve(tag->GetChildren());
         }
 
         // Process Items Tag
@@ -132,6 +132,28 @@ void Level::LoadLevel()
 
 
 }
+
+/**
+ * Loads the solution for the level
+ * @param Starting node for the solution
+ */
+ void Level::LoadSolve(wxXmlNode* node)
+ {
+     int j =0;
+     // <game col="6" row="3">3 2 4 8 7 6 0 1 5 7 5 6 2 0 1 4 8 ... </game>
+     auto new_col = node->GetAttribute(L"col");
+     auto new_row = node->GetAttribute(L"row");
+
+     auto content = node->GetContent().ToStdString();
+
+     for (int i = 0; i<content.length(); i++) {
+         if (content[i] != ' ') {
+             mSolution[j/9][j%9] = content[i]-48;
+             j++;
+         }
+     }
+
+ }
 
 
 /**
