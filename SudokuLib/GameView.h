@@ -1,6 +1,6 @@
 /**
  * @file GameView.h
- * @author Nitin Polavarapu, Samantha Wycoff
+ * @author Nitin Polavarapu, Samantha Wycoff, Finn Clark
  *
  *
  */
@@ -35,6 +35,7 @@ private:
     void OnLoadLevel1(wxCommandEvent& event);
     void OnLoadLevel2(wxCommandEvent& event);
     void OnLoadLevel3(wxCommandEvent& event);
+    void OnSolveLevel(wxCommandEvent &event);
 
 public:
     void Initialize(wxFrame* parent);
