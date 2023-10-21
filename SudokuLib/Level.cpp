@@ -305,6 +305,13 @@ void Level::MakeItems(wxXmlNode* node)
         // Set the location
         item->SetLocation(row, col);
 
+        if (mLevelFileName == L"Levels/level1.xml") {
+            mPopup = LevelDisplay("Level1");
+        } else if (mLevelFileName == L"Levels/level2.xml") {
+            mPopup = LevelDisplay("Level2");
+        } else {
+            mPopup = LevelDisplay("Level3");
+        }
 
     }
 }
