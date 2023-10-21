@@ -13,12 +13,13 @@ class GameView;
 class MainFrame : public wxFrame
 {
 private:
-
-    GameView* mGameView;
+    /// pointer to GameView class
+    GameView* mGameView = nullptr;
 
     void OnExit(wxCommandEvent& event);
     void OnAbout(wxCommandEvent& event);
     void OnCredits(wxCommandEvent& event);
+    void OnClose(wxCloseEvent& event);
 
 public:
     void Initialize();

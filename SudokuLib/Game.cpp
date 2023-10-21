@@ -166,10 +166,14 @@ void Game::OnKeyDown(wxKeyEvent &event)
 {
 
 
-//    if (event.GetKeyCode() == WXK_SPACE)
-//    {
-//        mSparty->rotate = true;
-//    }
+    if (event.GetKeyCode() == WXK_SPACE)
+    {
+        mSparty->rotate = true;
+    }
+    // if(event.GetKeyCode() == 56)
+     //{
+        //mSpartychin->rotate = true;
+     //}
 }
 
 

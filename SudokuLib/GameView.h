@@ -42,6 +42,11 @@ public:
 
     void SetTime(long Time) { mTime = Time;}
     void StartNewLevel(wxString levelFile);
+
+    /**
+ * Stop the timer so the window can close
+ */
+    void Stop() {mTimer.Stop();}
 };
 
 #endif //PROJECT1_335_SUDOKULIB_GAMEVIEW_H
