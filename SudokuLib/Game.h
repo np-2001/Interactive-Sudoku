@@ -70,6 +70,7 @@ public:
     void Add(std::shared_ptr<Item> item);
     void Clear();
     void OnKeyDown(wxKeyEvent &event);
+    void Accept(VisitorItem *visitor);
 
 
     /// Level related Operations

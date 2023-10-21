@@ -9,6 +9,7 @@
 #define PROJECT1_335_SUDOKULIB_VISITORDIGIT_H
 
 #include "VisitorItem.h"
+#include "Digit.h"
 
 /**
  * Class detailing visitor that
@@ -33,6 +34,13 @@ public:
      * @returns the value of the digit
      */
      int GetValue() const { return mValue; }
+
+     /**
+      * Sets flag to true since we are visiting a digit
+      * Stores the value of digit
+      * @param digit item being visited
+      */
+     void VisitDigit(Digit *digit) override { mIsDigit = true; mValue = digit->GetValue();}
 
 };
 

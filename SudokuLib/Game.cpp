@@ -7,6 +7,8 @@
 #include "Game.h"
 #include "Digit.h"
 #include "Item.h"
+#include "VisitorItem.h"
+#include "VisitorDigit.h"
 #include "Sparty.h"
 //using namespace std;
 using std::make_unique;
@@ -190,10 +192,39 @@ void Game::OnKeyDown(wxKeyEvent &event)
     if (event.GetKeyCode() == WXK_SPACE)
     {
         mSparty->rotate = true;
+
+        int x = (int) (mSparty->GetX());
+        int y = (int) (mSparty->GetY());
+
+        auto item = EatTest(x, y);
+
+        if(item != nullptr)
+        {
+            //Check if we clicked on a Digit that is not a Given
+            VisitorDigit visitor;
+            item->Accept(&visitor);
+
+            if(visitor.IsDigit())
+            {
+                // We are next to a Digit
+            }
+        }
     }
     if(event.GetKeyCode() == 66)
     {
         mSparty->headButt = true;
+    }
+}
+
+/**
+ * Accepts visitors to the Game
+ * @param visitor visitor being accepted
+ */
+void Game::Accept(VisitorItem *visitor)
+{
+    for(auto item: mItems)
+    {
+        item->Accept(visitor);
     }
 }
 

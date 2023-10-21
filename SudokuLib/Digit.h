@@ -29,6 +29,12 @@ public:
     ///  Copy constructor (disabled)
     Digit(const Digit &) = delete;
 
+    /**
+     * Getter for value of digit
+     * @return value of digit
+     */
+    int GetValue() const { return mValue;}
+
     void Accept(VisitorItem* visitor) override;
     void Eat(Item *item) override;
 

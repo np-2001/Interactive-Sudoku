@@ -21,7 +21,7 @@ Container::Container(Game *game, std::shared_ptr<wxImage> image, std::shared_ptr
  */
 void Container::Accept(VisitorItem* visitor)
 {
-
+    visitor->VisitContainer(this);
 }
 
 /**

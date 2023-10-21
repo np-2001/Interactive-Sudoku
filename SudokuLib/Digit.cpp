@@ -20,7 +20,7 @@ Digit::Digit(Game *game, std::shared_ptr<wxImage> image, int value) : Item(game,
  */
 void Digit::Accept(VisitorItem* visitor)
 {
-
+    visitor->VisitDigit(this);
 }
 
 /**

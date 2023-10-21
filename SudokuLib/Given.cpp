@@ -21,7 +21,8 @@ Given::Given(Game *game, std::shared_ptr<wxImage> image, int value) : Digit(game
  */
 void Given::Accept(VisitorItem* visitor)
 {
-
+    // Have not added upcall
+    visitor->VisitGiven(this);
 }
 
 /**

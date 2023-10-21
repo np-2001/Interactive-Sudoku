@@ -34,7 +34,7 @@ Sparty::Sparty(Game *game, std::shared_ptr<wxImage> image) : Item(game, image)
  */
 void Sparty::Accept(VisitorItem* visitor)
 {
-
+    visitor->VisitSparty(this);
 }
 
 /**
