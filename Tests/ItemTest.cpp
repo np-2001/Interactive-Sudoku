@@ -13,8 +13,8 @@ using namespace std;
 class Item;
 /// item image
 const std::wstring itemFile = L"0b.png";
-auto itemFilepath = L"images/" + itemFile;
-auto image = std::make_shared<wxImage>(itemFilepath, wxBITMAP_TYPE_ANY);
+const std::wstring itemFilepath = L"images/0b.png";
+std::shared_ptr<wxImage> image = std::make_shared<wxImage>(itemFilepath, wxBITMAP_TYPE_ANY);
 
 /** Mock class for testing the class Item */
 class ItemMock : public Item {
@@ -32,11 +32,14 @@ public:
 };
 
 TEST(ItemTest, Construct) {
+
+
     Game game;
     ItemMock item(&game, image);
 }
 
 TEST(ItemTest, HitTest) {
+
     // Create an item to test
     Game game;
     ItemMock item(&game, image);

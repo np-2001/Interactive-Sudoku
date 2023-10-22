@@ -54,6 +54,7 @@ void Sparty::Update(double elapsed)
     wxPoint2DDouble Vector(mNewLocationX-CurrLocationX,mNewLocationY-CurrLocationY);
     Game * mGame = Item::GetGame();
     if (Vector.m_x != 0 || Vector.m_y != 0) {
+
         double Length = Vector.GetVectorLength();
         Vector.Normalize();
 
@@ -65,6 +66,7 @@ void Sparty::Update(double elapsed)
             Item::SetPixelLocation(NewVector.m_x*elapsed+CurrLocationX,NewVector.m_y*elapsed+CurrLocationY);
         } else {
             Item::SetPixelLocation(mNewLocationX,mNewLocationY);
+
         }
 
 //        Item::SetPixelLocation((Vector.m_x* elapsed * MaxSpeed)+ CurrLocationX,(Vector.m_y*elapsed*MaxSpeed)+CurrLocationY);
@@ -77,6 +79,16 @@ void Sparty::Update(double elapsed)
 //        }
 
     }
+
+    mMouthCurrAngle += (mMouthNewAngle-mMouthCurrAngle)*(elapsed*8);
+
+
+    if (std::abs(mMouthCurrAngle-mMouthNewAngle) < 0.001) {
+        mMouthCurrAngle = mMouthNewAngle;
+        mMouthNewAngle = 0;
+    }
+
+
 
 }
 
@@ -151,17 +163,16 @@ void Sparty::ChinDraw(std::shared_ptr<wxGraphicsContext> graphics) {
         mChinBitmap = graphics->CreateBitmapFromImage(*mImage2);
     }
 
-    if (mImage2 != nullptr && rotate == false)
+    if (mImage2 != nullptr)
     {
 
-        auto x = ((Item::GetCol()*tileHeight));
-        auto y = (((Item::GetRow()+1)*tileHeight) - hit);
+//        auto x = ((Item::GetCol()*tileHeight));
+//        auto y = (((Item::GetRow()+1)*tileHeight) - hit);
+//
+//
+//        graphics->DrawBitmap(mChinBitmap, ((Item::GetCol()*tileHeight)),
+//                             (((Item::GetRow()+1)*tileHeight) - hit), wid, hit);
 
-
-        graphics->DrawBitmap(mChinBitmap, ((Item::GetCol()*tileHeight)),
-                             (((Item::GetRow()+1)*tileHeight) - hit), wid, hit);
-
-    } else {
 
         graphics->PushState();
 
@@ -177,7 +188,7 @@ void Sparty::ChinDraw(std::shared_ptr<wxGraphicsContext> graphics) {
 
 
         graphics->Translate(mMouthPivotX, mMouthPivotY);
-        graphics->Rotate(mMouthAngle);
+        graphics->Rotate(mMouthCurrAngle);
         graphics->Translate(-mMouthPivotX, -mMouthPivotY);
 
 
@@ -188,7 +199,7 @@ void Sparty::ChinDraw(std::shared_ptr<wxGraphicsContext> graphics) {
 
         graphics->PopState();
 
-        //rotate = false;
+
 
     }
 }

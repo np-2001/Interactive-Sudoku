@@ -46,6 +46,11 @@ private:
     /// Pivot y of mouth
     double mMouthPivotY;
 
+    ///Old angle of mouth
+    double mMouthCurrAngle = 0;
+
+    ///New angle of mouth
+    double mMouthNewAngle = 0;
     /// Target location offset as a vector(x,y)
     wxPoint2DDouble mTargetOffset;
 
@@ -100,6 +105,27 @@ public:
     bool headButt = false;
 
     wxPoint2DDouble GetOffset() { return mTargetOffset;}
+
+    ///Setter for new rotate angle
+    void SetNewAngle() {
+        mMouthNewAngle = mMouthAngle;
+    }
+
+    ///Getter for new X position
+    double GetNewX() {
+        return mNewLocationX;
+    }
+
+    ///Getter for new Y position
+    double GetNewY() {
+        return mNewLocationY;
+    }
+
+    ///Getter for current angle
+    double GetAngle() {
+        return mMouthCurrAngle;
+    }
+
 };
 
 #endif //PROJECT1_335_SUDOKULIB_SPARTY_H

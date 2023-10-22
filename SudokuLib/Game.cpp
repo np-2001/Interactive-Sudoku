@@ -106,8 +106,8 @@ void Game::OnLeftDown(int x, int y)
     {
         auto xOffset = mSparty->GetOffset().m_x;
         auto yOffset = mSparty->GetOffset().m_y;
-        x = x - xOffset;
-        y = y + (((mSparty->GetItemImage())->GetHeight()) - yOffset);
+        //x = x - xOffset;
+        //y = y + (((mSparty->GetItemImage())->GetHeight()) - yOffset);
 
         double virtualX = (x - mXOffset) / mScale;
         double virtualY = (y - mYOffset) / mScale;
@@ -225,9 +225,9 @@ void Game::OnKeyDown(wxKeyEvent &event)
 {
 
 
-    if (event.GetKeyCode() == WXK_SPACE)
+    if (event.GetKeyCode() == WXK_SPACE and int(mSparty->GetX()) == int(mSparty->GetNewX()) and int(mSparty->GetY()) == int(mSparty->GetNewY()) and mSparty->GetAngle() == 0)
     {
-        mSparty->rotate = true;
+        mSparty->SetNewAngle();
 
         int x = (int) (mSparty->GetX());
         int y = (int) (mSparty->GetY());
