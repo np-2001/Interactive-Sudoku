@@ -175,6 +175,7 @@ void GameView::OnLoadLevel3(wxCommandEvent &event)
 void GameView::OnKeyDown(wxKeyEvent &event)
 {
    mGame.OnKeyDown(event);
+   Refresh();
 }
 
 /**

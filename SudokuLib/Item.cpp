@@ -97,7 +97,12 @@ bool Item::EatTest(double x, double y)
 
 
     // Test to see if x, y are next to the image
-    if (x < GetX()-50 || y < GetY() || x >= GetX() + wid || testY >= GetY() + hit)
+//    if (x < GetX()-50 || y < GetY()-50 || x >= GetX() + wid || testY >= GetY() + hit)
+//    {
+//        // We are not next to the image
+//        return false;
+//    }
+    if (testX < -50 || testY < -50 || testX >= wid + 50|| testY >= hit + 50)
     {
         // We are not next to the image
         return false;
@@ -106,7 +111,8 @@ bool Item::EatTest(double x, double y)
     // Test to see if x, y are in the drawn part of the image
     // If the location is transparent, we are not in the drawn
     // part of the image
-    return !mItemImage->IsTransparent((int)testX, (int)testY);
+//    return !mItemImage->IsTransparent((int)testX, (int)testY);
+    return true;
 }
 
 /**
