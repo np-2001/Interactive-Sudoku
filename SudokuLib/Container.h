@@ -18,10 +18,9 @@
 class Container: public Item
 {
 private:
-    std::shared_ptr<wxImage> mFront_Image;
-
+    std::vector<std::shared_ptr<Digit>> mContainerItems;
 public:
-    Container(Game *game, std::shared_ptr<wxImage> image, std::shared_ptr<wxImage> front);
+    Container(Game *game, std::shared_ptr<wxImage> image);
     ///  Default constructor (disabled)
     Container() = delete;
 
@@ -30,6 +29,15 @@ public:
 
     void Accept(VisitorItem* visitor) override;
     void Eat() override;
+
+    void AddContainerChildren(wxXmlNode *node);
+
+    /**
+     * Adds digit "item" to the container
+     * @param item Digit to be added
+     */
+    void Add(std::shared_ptr<Digit> item) {mContainerItems.push_back(item); };
+
 
 };
 

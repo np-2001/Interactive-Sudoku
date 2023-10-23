@@ -258,8 +258,20 @@ void Level::MakeItems(wxXmlNode* node)
         }
         else if (name == "container")
         {
+
             // Load back image, Load every digit, then load front image
-            continue;
+
+            auto container = std::make_shared<Container>(mGame, mDeclaration->GetImage(id));
+            container->SetLocation(row, col);
+            mGame->Add(container);
+
+            container->AddContainerChildren(node->GetChildren());
+
+            item = std::make_shared<Container>(mGame, mDeclaration->GetImage(id + "b"));
+
+
+
+
         }
         else if (name == "sparty")
         {
@@ -317,3 +329,5 @@ void Level::MakeItems(wxXmlNode* node)
 
     }
 }
+
+// Maybe I move this to container class since those who know do

@@ -79,13 +79,15 @@ void Game::OnDraw(std::shared_ptr<wxGraphicsContext> graphics, int width, int he
 //        }
 
         item->Draw(graphics);
+        // If Item is a Container
+        // Visit Container and then Draw ContainerItems
     }
    // mSparty->Draw(graphics);
     //mSpartyChin->Draw(graphics);
 
 
     ///Make sures timer is not drawn when popup is not nullptr
-    if (mLevel->mPopup != nullptr and mTime*0.001 < 3) {
+    if (mLevel->mPopup != nullptr && mTime*0.001 < 3) {
         mLevel->mPopup->Draw(graphics,pixelHeight,pixelWidth);
     } else {
         mTimeDisplay.OnDraw(graphics);
@@ -129,7 +131,7 @@ void Game::Update(double time)
 
     mTimeDisplay.Update(mTime);
 
-    if (mTime*0.001 > 3 and  mLevel->mPopup != nullptr) {
+    if (mTime*0.001 > 3 &&  mLevel->mPopup != nullptr) {
 
         this->ResetTime();
         mLevel->mPopup = nullptr;
@@ -225,7 +227,8 @@ void Game::OnKeyDown(wxKeyEvent &event)
 {
 
 
-    if (event.GetKeyCode() == WXK_SPACE and int(mSparty->GetX()) == int(mSparty->GetNewX()) and int(mSparty->GetY()) == int(mSparty->GetNewY()) and mSparty->GetAngle() == 0)
+    if (event.GetKeyCode() == WXK_SPACE && int(mSparty->GetX()) == int(mSparty->GetNewX())
+        && int(mSparty->GetY()) == int(mSparty->GetNewY()) && mSparty->GetAngle() == 0)
     {
         mSparty->SetNewAngle();
 
