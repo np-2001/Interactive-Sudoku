@@ -182,15 +182,13 @@ std::shared_ptr<Item> Game::EatTest(int x, int y)
 }
 
 /**
- * Test an row, col location to see if it was hit
- * @param row row of the item
- * @param col col of the item
+ * Test an x,y location to see if it was hit
+ * @param x x pixel location of the item
+ * @param y y pixel location of the item
  * @returns Pointer to item we clicked on or nullptr if none.
 */
-std::shared_ptr<Item> Game::HitTest(int row, int col)
+std::shared_ptr<Item> Game::HitTest(int x, int y)
 {
-    double x = (col*48+ (20/2.0)) + 24;
-    double y = ((row+1)*48 - (25/2.0)) + 24;
     for (auto i = mItems.rbegin(); i != mItems.rend();  i++)
     {
         if ((*i)->HitTest(x, y))

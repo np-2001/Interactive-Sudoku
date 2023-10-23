@@ -75,10 +75,10 @@ public:
 
     /**
      * Set the item row and column
-     * @param x row location
-     * @param y col location
+     * @param row row location
+     * @param col col location
      */
-    void SetLocation(double x, double y) { mRow = x; mCol = y; }
+    void SetLocation(double row, double col) { mRow = row; mCol = col; }
 
     /**
      * Handle updates for animation
