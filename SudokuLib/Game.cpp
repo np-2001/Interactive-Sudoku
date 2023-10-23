@@ -86,7 +86,7 @@ void Game::OnDraw(std::shared_ptr<wxGraphicsContext> graphics, int width, int he
 
     ///Make sures timer is not drawn when popup is not nullptr
     if (mLevel->mPopup != nullptr and mTime*0.001 < 3) {
-        mLevel->mPopup->Draw(graphics);
+        mLevel->mPopup->Draw(graphics,pixelHeight,pixelWidth);
     } else {
         mTimeDisplay.OnDraw(graphics);
     }

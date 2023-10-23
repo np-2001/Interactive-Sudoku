@@ -18,7 +18,7 @@ private:
 public:
     LevelDisplay(wxString word);
     LevelDisplay();
-    void Draw(std::shared_ptr<wxGraphicsContext> graphics);
+    void Draw(std::shared_ptr<wxGraphicsContext> graphics,int pixelHeight,int pixelWidth);
     void Update(double time);
 };
 
