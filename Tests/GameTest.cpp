@@ -6,6 +6,9 @@
 #include <pch.h>
 #include "gtest/gtest.h"
 #include <Game.h>
+#include <Item.h>
+#include <Digit.h>
+#include <Sparty.h>
 #include <regex>
 #include <string>
 #include <fstream>
@@ -19,14 +22,19 @@ TEST(GameTest, Construct){
     Game game;
 }
 
-// Determine if all items are being iterated over and drawn
-TEST(GameTest, OnDraw){
+
+TEST(GameTest, HitTest){
     Game game;
+    std::shared_ptr<wxImage> image = std::make_shared<wxImage>(L"images/1b.png", wxBITMAP_TYPE_ANY);
+    ASSERT_EQ(game.HitTest(200, 200), nullptr) << L"Testing Empty Game";
 
-    // Test that there are no items in the game
-        //add code here
+    shared_ptr<Digit> digit = make_shared<Digit>(&game,image,1);
+    game.Add(digit);
+    digit->SetLocation(100, 200);
+    ASSERT_EQ(game.HitTest(200, 200), nullptr);
+    ASSERT_TRUE(digit->GetRow() == 100);
 
-    //shared_ptr<Item> item = make_shared<Item>(&game)
-    //game.Add(item);
+    ASSERT_TRUE(game.HitTest(100, 200) == digit);
 
 }
+
