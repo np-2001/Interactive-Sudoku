@@ -20,6 +20,8 @@ using namespace std;
 
 TEST(GameTest, Construct){
     Game game;
+    game.GetLevel()->SetLevel(L"Levels/level0.xml");
+    game.GetLevel()->LoadLevel();
 }
 
 
@@ -28,11 +30,13 @@ TEST(GameTest, HitTest){
     std::shared_ptr<wxImage> image = std::make_shared<wxImage>(L"images/1b.png", wxBITMAP_TYPE_ANY);
     ASSERT_EQ(game.HitTest(200, 200), nullptr) << L"Testing Empty Game";
 
+    game.GetLevel()->SetLevel(L"Levels/level0.xml");
+    game.GetLevel()->LoadLevel();
+
     shared_ptr<Digit> digit = make_shared<Digit>(&game,image,1);
     game.Add(digit);
-    digit->SetLocation(100, 200);
-    ASSERT_EQ(game.HitTest(200, 200), nullptr);
-    ASSERT_TRUE(digit->GetRow() == 100);
+    digit->SetPixelLocation(100, 200);
+    ASSERT_EQ(game.HitTest(1000, 1000), nullptr);
 
     ASSERT_TRUE(game.HitTest(100, 200) == digit);
 

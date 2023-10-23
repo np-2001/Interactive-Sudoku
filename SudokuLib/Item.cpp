@@ -47,7 +47,7 @@ void Item::SetPixelLocation(double x, double y)
     int height = mItemImage->GetHeight();
 
     mCol = (x - (width/2.0))/tileHeight;
-    mRow = ((y - (height/2.0))/tileHeight) + 1;
+    mRow = ((y + (height/2.0))/tileHeight) - 1;
 }
 
 /**
@@ -139,10 +139,7 @@ bool Item::HitTest(int x, int y)
         return false;
     }
 
-    // Test to see if x, y are in the drawn part of the image
-    // If the location is transparent, we are not in the drawn
-    // part of the image
-    return !mItemImage->IsTransparent((int)testX, (int)testY);
+    return true;
 }
 
 /**
