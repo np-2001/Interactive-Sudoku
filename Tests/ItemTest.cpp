@@ -19,7 +19,7 @@ public:
     void Update(double elapsed){};
     void Eat() {};
     void Draw(std::shared_ptr<wxGraphicsContext> graphics) {};
-    bool EatTest(double x, double y) {};
+//    bool EatTest(double x, double y) {};
     void XmlLoad(wxXmlNode *node) {};
 
 
