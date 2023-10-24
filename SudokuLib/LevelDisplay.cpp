@@ -41,15 +41,15 @@ void LevelDisplay::Draw(std::shared_ptr<wxGraphicsContext> graphics,int pixelHei
                        wxFONTSTYLE_NORMAL,
                        wxFONTWEIGHT_BOLD);
         graphics->SetFont(smallFont, *wxBLACK);
-        graphics->GetTextExtent(L"Space: Eat", &wid, &hit);
-        graphics->DrawText(L"Space: Eat", pixelWidth/2 - wid/2, pixelHeight/2-rectangleHeight/2+80);
+        graphics->GetTextExtent(L"space: Eat", &wid, &hit);
+        graphics->DrawText(L"space: Eat", pixelWidth/2 - wid/2, pixelHeight/2-rectangleHeight/2+80);
 
-        graphics->GetTextExtent(L"0-8: regurgitate", &wid, &hit);
-        graphics->DrawText(L"0-8: regurgitate", pixelWidth/2 - wid/2, pixelHeight/2-rectangleHeight/2+130);
+        graphics->GetTextExtent(L"0-8: Regurgitate", &wid, &hit);
+        graphics->DrawText(L"0-8: Regurgitate", pixelWidth/2 - wid/2, pixelHeight/2-rectangleHeight/2+130);
 
 
-        graphics->GetTextExtent(L"B Headbutt", &wid, &hit);
-        graphics->DrawText(L"B Headbutt", pixelWidth/2 - wid/2, pixelHeight/2-rectangleHeight/2+180);
+        graphics->GetTextExtent(L"B: Headbutt", &wid, &hit);
+        graphics->DrawText(L"B: Headbutt", pixelWidth/2 - wid/2, pixelHeight/2-rectangleHeight/2+180);
     }
 }
 
