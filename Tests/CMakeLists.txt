@@ -5,6 +5,7 @@ set(TEST_FILES
         gtest_main.cpp
         ItemTest.cpp
         LevelTest.cpp
+        VisitorTest.cpp
 
 )
 
