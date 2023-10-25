@@ -46,6 +46,11 @@ void Sparty::Eat()
 
 }
 
+void Sparty::Regurgitate()
+{
+
+}
+
 void Sparty::Update(double elapsed)
 {
     double CurrLocationX = Item::GetX();

@@ -106,10 +106,7 @@ void Game::OnLeftDown(int x, int y)
     ///Makes sure sparty does not move when popup is drawn
     if (mLevel->mPopup == nullptr)
     {
-        auto xOffset = mSparty->GetOffset().m_x;
-        auto yOffset = mSparty->GetOffset().m_y;
-        //x = x - xOffset;
-        //y = y + (((mSparty->GetItemImage())->GetHeight()) - yOffset);
+
 
         double virtualX = (x - mXOffset) / mScale;
         double virtualY = (y - mYOffset) / mScale;
@@ -251,6 +248,11 @@ void Game::OnKeyDown(wxKeyEvent &event)
                 {
                     // It is not a Given
                     item->Eat();
+                }
+                else
+                {
+                    // We are next to a Given
+                    item->Regurgitate();
                 }
             }
         }

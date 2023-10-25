@@ -32,3 +32,8 @@ void Digit::Eat()
 {
     this->SetLocation(14, 0.5);
 }
+
+void Digit::Regurgitate()
+{
+
+}

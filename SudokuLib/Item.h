@@ -99,6 +99,11 @@ public:
      */
     virtual void Eat() = 0;
 
+    /**
+     * Regurgitate items onto board
+     */
+    virtual void Regurgitate() = 0;
+
     virtual ~Item();
     virtual void Draw(std::shared_ptr<wxGraphicsContext> graphics);
     virtual bool EatTest(double x, double y);

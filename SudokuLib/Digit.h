@@ -37,6 +37,7 @@ public:
 
     void Accept(VisitorItem* visitor) override;
     void Eat() override;
+    void Regurgitate() override;
 
 };
 
