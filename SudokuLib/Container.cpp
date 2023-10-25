@@ -62,11 +62,56 @@ void Container::AddContainerChildren(wxXmlNode* node)
 
         digit = std::make_shared<Digit>(game, image, value);
 
+        digit->SetLocation(row, col);
         mContainerItems.push_back(digit);
     }
+}
+
+/**
+ * Draws the container and its object
+ * @param graphics graphics context to draw on
+ */
+void Container::Draw(std::shared_ptr<wxGraphicsContext> graphics)
+{
+    // Draw underlying image
+    mContainerBitmap = graphics->CreateBitmapFromImage(*mContainerImage);
+
+    int wid = mContainerImage->GetWidth();
+    int hit = mContainerImage->GetHeight();
+    int tileHeight = GetGame()->GetTileSize();
+
+    graphics->DrawBitmap(mContainerBitmap, ((GetCol()*tileHeight)),
+                         (((GetRow()+1)*tileHeight) - hit), wid, hit);
+
+    // Draw Digits in container
+    for (auto &elm : mContainerItems)
+    {
+        elm->Draw(graphics);
+    }
+
+    // Draw Front Image
+    mFrontBitmap = graphics->CreateBitmapFromImage(*mFrontImage);
+    wid = mContainerImage->GetWidth();
+    hit = mContainerImage->GetHeight();
+    tileHeight = GetGame()->GetTileSize();
+
+    graphics->DrawBitmap(mFrontBitmap, ((GetCol()*tileHeight)),
+                         (((GetRow()+1)*tileHeight) - hit), wid, hit);
+
 }
 
 void Container::Regurgitate()
 {
 
+}
+
+/**
+ * Constructor for Container
+ * @param game Game this container belongs to
+ * @param image Underlying image
+ * @param front Cover image
+ */
+Container::Container(Game *game, std::shared_ptr<wxImage> image, std::shared_ptr<wxImage> front) :
+ Item(game, image), mContainerImage(image), mFrontImage(front)
+{
 }

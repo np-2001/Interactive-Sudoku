@@ -261,14 +261,15 @@ void Level::MakeItems(wxXmlNode* node)
 
             // Load back image, Load every digit, then load front image
 
-            auto container = std::make_shared<Container>(mGame, mDeclaration->GetImage(id));
+            auto container = std::make_shared<Container>(mGame, mDeclaration->GetImage(id),
+                                                         mDeclaration->GetImage(id + L"b"));
             container->SetLocation(row, col);
             mGame->Add(container);
 
             container->AddContainerChildren(node->GetChildren());
 
-            item = std::make_shared<Container>(mGame, mDeclaration->GetImage(id + "b"));
-
+            //item = std::make_shared<Container>(mGame, mDeclaration->GetImage(id + "b"));
+            continue;
 
 
 
