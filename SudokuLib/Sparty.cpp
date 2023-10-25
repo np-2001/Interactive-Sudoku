@@ -87,14 +87,18 @@ void Sparty::Update(double elapsed)
 
     mMouthCurrAngle += (mMouthNewAngle-mMouthCurrAngle)*(elapsed*8);
 
-
     if (std::abs(mMouthCurrAngle-mMouthNewAngle) < 0.001) {
         mMouthCurrAngle = mMouthNewAngle;
         mMouthNewAngle = 0;
     }
 
 
+    mHeadCurrAngle += (mHeadNewAngle-mHeadCurrAngle)*(elapsed*8);
 
+    if (std::abs(mHeadCurrAngle-mHeadNewAngle) < 0.001) {
+        mHeadCurrAngle = mHeadNewAngle;
+        mHeadNewAngle = 0;
+    }
 }
 
 /**
@@ -143,12 +147,10 @@ Sparty::Sparty(Game *game,
 void Sparty::Draw(std::shared_ptr<wxGraphicsContext> graphics) {
     if (mFront == 2) {
         Sparty::HeadDraw(graphics);
-        //Item::Draw(graphics);
         Sparty::ChinDraw(graphics);
 
     } else {
         Sparty::ChinDraw(graphics);
-        //Item::Draw(graphics);
         Sparty::HeadDraw(graphics);
     }
 }
@@ -217,6 +219,7 @@ void Sparty::HeadDraw(std::shared_ptr<wxGraphicsContext> graphics) {
     // Load in BitMap only once
     int wid = mImage->GetWidth();
     int hit = mImage->GetHeight();
+
     // Make these getters in Game, Level class
     int tileHeight = Item::GetGame()->GetTileSize();
     auto x = ((Item::GetCol()*tileHeight));
@@ -227,18 +230,8 @@ void Sparty::HeadDraw(std::shared_ptr<wxGraphicsContext> graphics) {
         mHeadBitmap = graphics->CreateBitmapFromImage(*mImage);
     }
 
-    if (mImage != nullptr && headButt == false)
+    if (mImage != nullptr)
     {
-
-        auto x = ((Item::GetCol()*tileHeight));
-        auto y = (((Item::GetRow()+1)*tileHeight) - hit);
-
-
-        graphics->DrawBitmap(mHeadBitmap, ((Item::GetCol()*tileHeight)),
-                             (((Item::GetRow()+1)*tileHeight) - hit), wid, hit);
-
-    } else {
-
         graphics->PushState();
 
         x = ((Item::GetCol()*tileHeight));

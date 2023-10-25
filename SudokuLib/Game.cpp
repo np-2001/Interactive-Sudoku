@@ -11,6 +11,7 @@
 #include "VisitorDigit.h"
 #include "VisitorGiven.h"
 #include "VisitorSparty.h"
+#include "VisitorBackground.h"
 #include "Sparty.h"
 //using namespace std;
 using std::make_unique;
@@ -116,6 +117,19 @@ void Game::OnLeftDown(int x, int y)
         mSparty->SetNewCoordinates(virtualX, virtualY);
     }
 
+    // Sparty does not move off playing area screen
+    for (auto i = mItems.rbegin(); i != mItems.rend();  i++)
+    {
+        VisitorBackground visitor;
+        (*i)->Accept(&visitor);
+
+        if(visitor.IsBackground())
+        {
+            //if()
+        }
+    }
+
+
 }
 
 /**
@@ -172,7 +186,6 @@ std::shared_ptr<Item> Game::EatTest(int x, int y)
                 return *i;
             }
         }
-
     }
 
     return  nullptr;
@@ -220,12 +233,10 @@ void Game::Clear()
  */
 void Game::OnKeyDown(wxKeyEvent &event)
 {
-
-
     if (event.GetKeyCode() == WXK_SPACE && int(mSparty->GetX()) == int(mSparty->GetNewX())
-        && int(mSparty->GetY()) == int(mSparty->GetNewY()) && mSparty->GetAngle() == 0)
+        && int(mSparty->GetY()) == int(mSparty->GetNewY()) && mSparty->GetAngleMouth() == 0)
     {
-        mSparty->SetNewAngle();
+        mSparty->SetNewAngleMouth();
 
         int x = (int) (mSparty->GetX());
         int y = (int) (mSparty->GetY());
@@ -258,9 +269,35 @@ void Game::OnKeyDown(wxKeyEvent &event)
         }
     }
     // event key code 66 is the key for b
-    if(event.GetKeyCode() == 66)
+    if (event.GetKeyCode() == 66 && int(mSparty->GetX()) == int(mSparty->GetNewX())
+        && int(mSparty->GetY()) == int(mSparty->GetNewY()) && mSparty->GetAngleHead() == 0)
     {
-        mSparty->headButt = true;
+        mSparty->SetNewAngleHead();
+
+        int x = (int) (mSparty->GetX());
+        int y = (int) (mSparty->GetY());
+
+        auto item = EatTest(x, y);
+
+        if(item != nullptr)
+        {
+            //Check if we clicked on a Digit that is not a Given
+            VisitorDigit visitor;
+            item->Accept(&visitor);
+
+            if(visitor.IsDigit())
+            {
+                // We are next to a Digit
+                VisitorGiven visitor2;
+                item->Accept(&visitor2);
+
+                if(! visitor2.IsGiven())
+                {
+                    // It is not a Given
+                    item->Eat();
+                }
+            }
+        }
     }
 }
 

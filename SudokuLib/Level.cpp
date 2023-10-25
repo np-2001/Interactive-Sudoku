@@ -1,6 +1,6 @@
 /**
  * @file Level.cpp
- * @author Eliezer Amponsah, Sania Sinha, Finn Clark
+ * @author Eliezer Amponsah, Sania Sinha, Finn Clark, Samantha Wycoff
  */
 
 #include "pch.h"
@@ -308,6 +308,7 @@ void Level::MakeItems(wxXmlNode* node)
             item = sparty;
             item->SetLocation(row, col);
             sparty->SetNewCoordinates(item->GetX(),item->GetY());
+
         }
 
 

@@ -1,6 +1,6 @@
 /**
  * @file LevelDisplay.cpp
- * @author Nitin Polavarapu
+ * @author Nitin Polavarapu, Samantha Wycoff
  */
 
 #include "pch.h"

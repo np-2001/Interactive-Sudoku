@@ -37,6 +37,12 @@ private:
     /// Pivot y of head
     double mHeadPivotY;
 
+    ///Old angle of head
+    double mHeadCurrAngle = 0;
+
+    ///New angle of head
+    double mHeadNewAngle = 0;
+
     /// Pivot angle of the chin
     double mMouthAngle;
 
@@ -51,10 +57,9 @@ private:
 
     ///New angle of mouth
     double mMouthNewAngle = 0;
+
     /// Target location offset as a vector(x,y)
     wxPoint2DDouble mTargetOffset;
-
-    //std::shared_ptr<SpartyChin> mChin;
 
     ///Chin Bitmap
     wxGraphicsBitmap mChinBitmap;
@@ -102,14 +107,16 @@ public:
     void ChinDraw(std::shared_ptr<wxGraphicsContext> graphics);
     void HeadDraw(std::shared_ptr<wxGraphicsContext> graphics);
 
-    bool rotate = false;
-    bool headButt = false;
-
     wxPoint2DDouble GetOffset() { return mTargetOffset;}
 
     ///Setter for new rotate angle
-    void SetNewAngle() {
+    void SetNewAngleMouth() {
         mMouthNewAngle = mMouthAngle;
+    }
+
+    ///Setter for new headbutt angle
+    void SetNewAngleHead() {
+        mHeadNewAngle = mHeadAngle;
     }
 
     ///Getter for new X position
@@ -122,9 +129,14 @@ public:
         return mNewLocationY;
     }
 
-    ///Getter for current angle
-    double GetAngle() {
+    ///Getter for current mouth angle
+    double GetAngleMouth() {
         return mMouthCurrAngle;
+    }
+
+    ///Getter for current mouth angle
+    double GetAngleHead() {
+        return mHeadCurrAngle;
     }
 
 };
