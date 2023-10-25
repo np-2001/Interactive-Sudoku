@@ -33,3 +33,8 @@ void Xray::Eat()
 {
 
 }
+
+void Xray::Regurgitate()
+{
+
+}

@@ -32,3 +32,8 @@ void Background::Eat()
 {
 
 }
+
+void Background::Regurgitate()
+{
+
+}

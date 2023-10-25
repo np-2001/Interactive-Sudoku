@@ -33,3 +33,8 @@ void Given::Eat()
 {
 
 }
+
+void Given::Regurgitate()
+{
+
+}

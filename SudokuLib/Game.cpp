@@ -249,6 +249,11 @@ void Game::OnKeyDown(wxKeyEvent &event)
                     // It is not a Given
                     item->Eat();
                 }
+                else
+                {
+                    // We are next to a Given
+                    item->Regurgitate();
+                }
             }
         }
     }

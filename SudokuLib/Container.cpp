@@ -65,3 +65,8 @@ void Container::AddContainerChildren(wxXmlNode* node)
         mContainerItems.push_back(digit);
     }
 }
+
+void Container::Regurgitate()
+{
+
+}
