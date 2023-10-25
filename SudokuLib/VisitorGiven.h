@@ -22,7 +22,7 @@ public:
      * Getter for mIsGiven
      * @return returns true if item is a given
      */
-    bool IsGiven() const { return mIsGiven; }
+    bool MatchGiven() const { return mIsGiven; }
 
     /**
      * Sets flag to true since we are visiting a given

@@ -25,7 +25,7 @@ public:
      * Getter for mIsContainer
      * @return returns true if item is a container
      */
-    bool IsCntainer() const { return mIsContainer; }
+    bool MatchContainer() const { return mIsContainer; }
 
 };
 

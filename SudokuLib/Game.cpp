@@ -123,7 +123,7 @@ void Game::OnLeftDown(int x, int y)
         VisitorBackground visitor;
         (*i)->Accept(&visitor);
 
-        if(visitor.IsBackground())
+        if(visitor.MatchBackground())
         {
             //if()
         }
@@ -179,7 +179,7 @@ std::shared_ptr<Item> Game::EatTest(int x, int y)
         VisitorSparty visitor;
         (*i)->Accept(&visitor);
 
-        if(!visitor.IsSparty())
+        if(!visitor.MatchSparty())
         {
             if ((*i)->EatTest(x, y))
             {
@@ -249,13 +249,13 @@ void Game::OnKeyDown(wxKeyEvent &event)
             VisitorDigit visitor;
             item->Accept(&visitor);
 
-            if(visitor.IsDigit())
+            if(visitor.MatchDigit())
             {
                 // We are next to a Digit
                 VisitorGiven visitor2;
                 item->Accept(&visitor2);
 
-                if(! visitor2.IsGiven())
+                if(!visitor2.MatchGiven())
                 {
                     // It is not a Given
                     item->Eat();
@@ -285,13 +285,13 @@ void Game::OnKeyDown(wxKeyEvent &event)
             VisitorDigit visitor;
             item->Accept(&visitor);
 
-            if(visitor.IsDigit())
+            if(visitor.MatchDigit())
             {
                 // We are next to a Digit
                 VisitorGiven visitor2;
                 item->Accept(&visitor2);
 
-                if(! visitor2.IsGiven())
+                if(! visitor2.MatchGiven())
                 {
                     // It is not a Given
                     item->Eat();

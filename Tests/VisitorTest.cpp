@@ -28,7 +28,7 @@ TEST(VisitorTest, CheckType)
     item->Accept(&visitor);
 
     // Check if visitor can accurately tell that the item is a Digit
-    ASSERT_EQ(true, visitor.IsDigit());
+    ASSERT_EQ(true, visitor.MatchDigit());
     // Visitor gets the correct value
     ASSERT_EQ(0, visitor.GetValue());
 
@@ -42,7 +42,7 @@ TEST(VisitorTest, CheckType)
     item2->Accept(&visitor2);
 
     // Item is a given
-    ASSERT_EQ(true, visitor2.IsGiven());
+    ASSERT_EQ(true, visitor2.MatchGiven());
 
     // Make Sparty
     std::shared_ptr<Item> sparty;
@@ -57,8 +57,8 @@ TEST(VisitorTest, CheckType)
     sparty->Accept(&visitor4);
 
     // Item is a given
-    ASSERT_EQ(true, visitor3.IsSparty());
+    ASSERT_EQ(true, visitor3.MatchSparty());
     // Check others aren't returning false positives
-    ASSERT_EQ(false, visitor4.IsGiven());
+    ASSERT_EQ(false, visitor4.MatchGiven());
 
 }

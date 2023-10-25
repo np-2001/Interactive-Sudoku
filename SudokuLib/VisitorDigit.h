@@ -27,7 +27,7 @@ public:
      * Getter for mIsDigit
      * @return returns true if item is a digit
      */
-    bool IsDigit() const { return mIsDigit; }
+    bool MatchDigit() const { return mIsDigit; }
 
     /**
      * Getter for mValue

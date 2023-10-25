@@ -25,7 +25,7 @@ public:
      * Getter for mIsSparty
      * @return returns true if item is Sparty
      */
-    bool IsSparty() const { return mIsSparty; }
+    bool MatchSparty() const { return mIsSparty; }
 
     /**
      * Checks if we are visiting Sparty
