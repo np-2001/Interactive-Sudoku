@@ -43,6 +43,36 @@ TEST(GameTest, HitTest){
 
 }
 
+TEST(GameTest, Add){
+    Game game;
+
+    //initialize an image for an item
+    std::shared_ptr<wxImage> image = std::make_shared<wxImage>(L"images/1b.png", wxBITMAP_TYPE_ANY);
+
+    ASSERT_EQ(game.HitTest(100, 200), nullptr) <<
+                                               L"Testing empty game, no items in mItems.";
+
+    game.GetLevel()->SetLevel(L"Levels/level0.xml");
+    game.GetLevel()->LoadLevel();
+
+    //add digit to mItems
+    shared_ptr<Digit> digit = make_shared<Digit>(&game,image,1);
+    game.Add(digit);
+    digit->SetPixelLocation(100, 200);
+
+    //add given to mItems
+    shared_ptr<Given> given = make_shared<Given>(&game,image,1);
+    game.Add(given);
+    given->SetPixelLocation(300, 400);
+
+
+    ASSERT_TRUE(game.HitTest(100, 200) == digit) <<
+                                                 L"Testing digit was added to mItems";
+    ASSERT_TRUE(game.HitTest(300, 400) == given) <<
+                                                 L"Testing given was added to mItems";
+
+}
+
 TEST(GameTest, Clear){
     Game game;
 
