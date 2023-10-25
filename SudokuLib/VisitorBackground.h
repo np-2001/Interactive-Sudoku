@@ -1,6 +1,6 @@
 /**
  * @file VisitorBackground.h
- * @author Sania Sinha
+ * @author Sania Sinha, Samantha Wycoff
  *
  * Checks if visited item is the background
  */
@@ -12,20 +12,29 @@
 
 /**
  * Class detailing visitor that
- * Checks if visited item is the background
+ * Checks if visited item is Sparty
  */
 class VisitorBackground: public VisitorItem
 {
 private:
-    /// Flag checking if item is background
+    /// Flag checking if item is Sparty
     bool mIsBackground = false;
 
 public:
     /**
-     * Getter for mIsBackground
+     * Getter for mIsSparty
      * @return returns true if item is Sparty
      */
     bool IsBackground() const { return mIsBackground; }
+
+    /**
+     * Checks if we are visiting Sparty
+     * @param background item we are visiting
+     */
+    void VisitBackground(Background *background) override
+    {
+        mIsBackground = true;
+    }
 
 };
 

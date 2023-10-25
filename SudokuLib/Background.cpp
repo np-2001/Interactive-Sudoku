@@ -1,6 +1,6 @@
 /**
  * @file Background.cpp
- * @author Sania Sinha
+ * @author Sania Sinha, Samantha Wycoff
  */
 
 #include "pch.h"
@@ -21,7 +21,7 @@ Background::Background(Game *game, std::shared_ptr<wxImage> image) : Item(game, 
  */
 void Background::Accept(VisitorItem* visitor)
 {
-
+    visitor->VisitBackground(this);
 }
 
 /**

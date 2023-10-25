@@ -1,6 +1,6 @@
 /**
  * @file VisitorItem.h
- * @author Sania Sinha
+ * @author Sania Sinha, Samantha Wycoff
  *
  * Visitor base class
  */
@@ -13,6 +13,7 @@ class Digit;
 class Container;
 class Given;
 class Sparty;
+class Background;
 
 /**
  * Visitor base class
@@ -52,6 +53,12 @@ public:
      * @param sparty item we are visiting
      */
     virtual void VisitSparty(Sparty *sparty) {}
+
+    /**
+    * Visit Background
+    * @param background item we are visiting
+    */
+    virtual void VisitBackground(Background *background) {}
 
 };
 
