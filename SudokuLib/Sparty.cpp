@@ -143,56 +143,72 @@ Sparty::Sparty(Game *game,
 }
 
 void Sparty::Draw(std::shared_ptr<wxGraphicsContext> graphics) {
-        graphics->PushState();
-        int wid = mImage2->GetWidth();
-        int hit = mImage2->GetHeight();
-        // Make these getters in Game, Level class
-        int tileHeight = Item::GetGame()->GetTileSize();
-        auto x = ((Item::GetCol()*tileHeight));
-        auto y = (((Item::GetRow()+1)*tileHeight) - hit);
-        graphics->Translate(x,y);
 
+    int wid = mImage2->GetWidth();
+    int hit = mImage2->GetHeight();
+    // Make these getters in Game, Level class
+    int tileHeight = Item::GetGame()->GetTileSize();
+    auto x = ((Item::GetCol()*tileHeight));
+    auto y = (((Item::GetRow()+1)*tileHeight) - hit);
 
 
 
 
     if (mFront == 2) {
+        graphics->PushState();
+
+        graphics->Translate(x,y);
+
         graphics->Translate(mHeadPivotX, mHeadPivotY);
         graphics->Rotate(mHeadCurrAngle);
         graphics->Translate(-mHeadPivotX, -mHeadPivotY);
         Sparty::HeadDraw(graphics);
 
 
-        graphics->Translate(mHeadPivotX, mHeadPivotY);
-
-        graphics->Rotate(0);
-        graphics->Translate(-mHeadPivotX, -mHeadPivotY);
+//        graphics->Translate(mHeadPivotX, mHeadPivotY);
+//
+//        graphics->Rotate(0);
+//        graphics->Translate(-mHeadPivotX, -mHeadPivotY);
 
 
         graphics->Translate(mMouthPivotX, mMouthPivotY);
         graphics->Rotate(mMouthCurrAngle);
         graphics->Translate(-mMouthPivotX, -mMouthPivotY);
         Sparty::ChinDraw(graphics);
-
+        graphics->PopState();
     } else {
+        graphics->PushState();
+
+        graphics->Translate(x,y);
+
         graphics->Translate(mHeadPivotX, mHeadPivotY);
-
-        graphics->Rotate(0);
+        graphics->Rotate(mHeadCurrAngle);
         graphics->Translate(-mHeadPivotX, -mHeadPivotY);
-
 
         graphics->Translate(mMouthPivotX, mMouthPivotY);
         graphics->Rotate(mMouthCurrAngle);
         graphics->Translate(-mMouthPivotX, -mMouthPivotY);
-
         Sparty::ChinDraw(graphics);
+        graphics->PopState();
+
+        graphics->PushState();
+        graphics->Translate(x,y);
+//        graphics->Translate(mMouthPivotX, mMouthPivotY);
+//        graphics->Rotate(0);
+//        graphics->Translate(-mMouthPivotX, -mMouthPivotY);
+
 
         graphics->Translate(mHeadPivotX, mHeadPivotY);
         graphics->Rotate(mHeadCurrAngle);
         graphics->Translate(-mHeadPivotX, -mHeadPivotY);
         Sparty::HeadDraw(graphics);
+        graphics->PopState();
+
+
+
+
     }
-    graphics->PopState();
+
 }
 
 
