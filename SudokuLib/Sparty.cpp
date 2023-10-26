@@ -265,10 +265,10 @@ void Sparty::SetNewCoordinates(int NewX, int NewY) {
     {
         mNewLocationX = mImage->GetWidth()/2;
     }
-//    if(mNewLocationY < mImage->GetHeight())
-//    {
-//        mNewLocationY = mImage->GetHeight()/2;
-//    }
+    if(mNewLocationY < mImage->GetHeight()/2)
+    {
+        mNewLocationY = mImage->GetHeight()/2;
+    }
 //    if(mNewLocationY < (mGame->GetTileSize()*mGame->GetHeight() - (mImage->GetHeight())))
 //    {
 //        mNewLocationY = ((mGame->GetTileSize()*mGame->GetHeight()) - (mImage->GetHeight()))/2;
