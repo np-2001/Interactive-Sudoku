@@ -225,74 +225,78 @@ void Game::Clear()
  */
 void Game::OnKeyDown(wxKeyEvent &event)
 {
-    if (event.GetKeyCode() == WXK_SPACE && !(mSparty->GetMoving()) && mSparty->GetAngleMouth() == 0)
+    if (mLevel->mPopup == nullptr)
     {
-        mSparty->SetNewAngleMouth();
-
-        int x = (int) (mSparty->GetX());
-        int y = (int) (mSparty->GetY());
-
-        auto item = EatTest(x, y);
-
-        if(item != nullptr)
+        if(event.GetKeyCode() == WXK_SPACE && !(mSparty->GetMoving()) && mSparty->GetAngleMouth() == 0
+            && mSparty->GetAngleHead() == 0)
         {
-            //Check if we clicked on a Digit that is not a Given
-            VisitorDigit visitor;
-            item->Accept(&visitor);
+            mSparty->SetNewAngleMouth();
 
-            if(visitor.MatchDigit())
+            int x = (int)(mSparty->GetX());
+            int y = (int)(mSparty->GetY());
+
+            auto item = EatTest(x, y);
+
+            if(item != nullptr)
             {
-                // We are next to a Digit
-                VisitorGiven visitor2;
-                item->Accept(&visitor2);
+                //Check if we clicked on a Digit that is not a Given
+                VisitorDigit visitor;
+                item->Accept(&visitor);
 
-                if(!visitor2.MatchGiven())
+                if(visitor.MatchDigit())
                 {
-                    // It is not a Given
-                    item->Eat();
-                }
-                else
-                {
-                    // We are next to a Given
-                    item->Regurgitate();
+                    // We are next to a Digit
+                    VisitorGiven visitor2;
+                    item->Accept(&visitor2);
+
+                    if(!visitor2.MatchGiven())
+                    {
+                        // It is not a Given
+                        item->Eat();
+                    }
+                    else
+                    {
+                        // We are next to a Given
+                        item->Regurgitate();
+                    }
                 }
             }
         }
-    }
-    // event key code 66 is the key for b
-    auto oldx = int(mSparty->GetX());
-    auto oldy = int(mSparty->GetNewY());
-    auto newx =  int(mSparty->GetNewX());
-    auto newy =  int(mSparty->GetNewY());
-    auto currangle = int(mSparty->GetAngleMouth());
-    if (event.GetKeyCode() == 66 && !(mSparty->GetMoving()) && mSparty->GetAngleMouth() == 0)
-    {
-        mSparty->SetNewAngleHead();
+        // event key code 66 is the key for b
+        auto oldx = int(mSparty->GetX());
+        auto oldy = int(mSparty->GetNewY());
+        auto newx = int(mSparty->GetNewX());
+        auto newy = int(mSparty->GetNewY());
+        auto currangle = int(mSparty->GetAngleMouth());
+        if(event.GetKeyCode() == 66 && !(mSparty->GetMoving()) && mSparty->GetAngleMouth() == 0)
+        {
+            mSparty->SetNewAngleHead();
 
-        int x = (int) (mSparty->GetX());
-        int y = (int) (mSparty->GetY());
-//        Should not be here
-//        auto item = EatTest(x, y);
-//
-//        if(item != nullptr)
-//        {
-//            //Check if we clicked on a Digit that is not a Given
-//            VisitorDigit visitor;
-//            item->Accept(&visitor);
-//
-//            if(visitor.MatchDigit())
-//            {
-//                // We are next to a Digit
-//                VisitorGiven visitor2;
-//                item->Accept(&visitor2);
-//
-//                if(! visitor2.MatchGiven())
-//                {
-//                    // It is not a Given
-//                    item->Eat();
-//                }
-//            }
-//        }
+            int x = (int)(mSparty->GetX());
+            int y = (int)(mSparty->GetY());
+            //        Should not be here
+            //        auto item = EatTest(x, y);
+            //
+            //        if(item != nullptr)
+            //        {
+            //            //Check if we clicked on a Digit that is not a Given
+            //            VisitorDigit visitor;
+            //            item->Accept(&visitor);
+            //
+            //            if(visitor.MatchDigit())
+            //            {
+            //                // We are next to a Digit
+            //                VisitorGiven visitor2;
+            //                item->Accept(&visitor2);
+            //
+            //                if(! visitor2.MatchGiven())
+            //                {
+            //                    // It is not a Given
+            //                    item->Eat();
+            //                }
+            //            }
+            //        }
+        }
     }
 }
 
