@@ -108,25 +108,16 @@ void Game::OnLeftDown(int x, int y)
     ///Makes sure sparty does not move when popup is drawn
     if (mLevel->mPopup == nullptr)
     {
-
-
-        double virtualX = (x - mXOffset) / mScale;
-        double virtualY = (y - mYOffset) / mScale;
+        int virtualX = (x - mXOffset) / mScale;
+        int virtualY = (y - mYOffset) / mScale;
 
         //Should be a visitor to set New Coordinates instead of pointer to Sparty and Sparty Chin
-        mSparty->Moving = true;
-        mSparty->SetNewCoordinates(virtualX, virtualY);
-    }
-
-    // Sparty does not move off playing area screen
-    for (auto i = mItems.rbegin(); i != mItems.rend();  i++)
-    {
-        VisitorBackground visitor;
-        (*i)->Accept(&visitor);
-
-        if(visitor.MatchBackground())
+        //Sparty does not move when the left click is outside the background
+        if(virtualX >= 0 && virtualX < mWidth*mTileSize && virtualY >= 0 && virtualY < mHeight*mTileSize)
         {
-            //if()
+            //Should be a visitor to set New Coordinates instead of pointer to Sparty and Sparty Chin
+            mSparty->Moving = true;
+            mSparty->SetNewCoordinates(virtualX, virtualY);
         }
     }
 

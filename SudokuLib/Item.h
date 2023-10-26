@@ -124,6 +124,18 @@ public:
         return mItemImage;
     }
 
+///**
+// * Get the width of item
+// * @return item width in pixels
+// */
+//    int GetItemWidth() const { return mItemBitmap->GetWidth(); }
+//
+//    /**
+//* Get the height of item
+//* @return item height in pixels
+//*/
+//    int GetItemHeight() const { return mItemBitmap->GetHeight(); }
+
 };
 
 #endif //PROJECT1_335__ITEM_H
