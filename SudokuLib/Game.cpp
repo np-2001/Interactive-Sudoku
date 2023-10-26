@@ -12,6 +12,7 @@
 #include "VisitorGiven.h"
 #include "VisitorSparty.h"
 #include "VisitorBackground.h"
+#include "Background.h"
 #include "Sparty.h"
 //using namespace std;
 using std::make_unique;
@@ -113,7 +114,7 @@ void Game::OnLeftDown(int x, int y)
         double virtualY = (y - mYOffset) / mScale;
 
         //Should be a visitor to set New Coordinates instead of pointer to Sparty and Sparty Chin
-        mSparty->Moving = true;
+
         mSparty->SetNewCoordinates(virtualX, virtualY);
     }
 

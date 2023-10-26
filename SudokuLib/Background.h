@@ -2,16 +2,17 @@
  * @file Background.h
  * @author Sania Sinha
  *
- * Class for bcakground of each level
+ * Class for background of each level
  */
 
 #ifndef PROJECT1_335_SUDOKULIB_BACKGROUND_H
 #define PROJECT1_335_SUDOKULIB_BACKGROUND_H
 
 #include "Item.h"
+#include "Game.h"
 
 /**
- * Class for bcakground of each level
+ * Class for background of each level
  */
 class Background: public Item
 {

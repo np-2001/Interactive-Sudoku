@@ -37,14 +37,12 @@ private:
     /// List of all items in the game
     std::vector<std::shared_ptr<Item>> mItems;
 
-    //std::unique_ptr<wxBitmap> mBackground;  ///< Background image to use (hardcoded for now)
+   // std::unique_ptr<wxBitmap> mBackground;  ///< Background image to use (hardcoded for now)
 
     /// Current Level
     std::shared_ptr<Level> mLevel;
 
     std::shared_ptr<Sparty> mSparty = nullptr; /// Temp pointer to sparty to be replaced with visitor
-
-    std::shared_ptr<Background> mBackground = nullptr; ///Temp pointer to background to be replaced with visitor
 
     ///Current time
     long mTime = 0;
@@ -82,11 +80,6 @@ public:
     /// Setter for Sparty
     void SetSparty(std::shared_ptr<Sparty> sparty) {
         mSparty = sparty;
-    }
-
-    /// Setter for Background
-    void SetBackground(std::shared_ptr<Background> background) {
-        mBackground = background;
     }
 
     std::shared_ptr<Item> EatTest(int x, int y);
