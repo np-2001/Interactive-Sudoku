@@ -59,7 +59,7 @@ private:
     double mMouthNewAngle = 0;
 
     /// Target location offset as a vector(x,y)
-    wxPoint2DDouble mTargetOffset;
+    wxPoint2DDouble mTarget;
 
     ///Chin Bitmap
     wxGraphicsBitmap mChinBitmap;
@@ -107,7 +107,7 @@ public:
     void ChinDraw(std::shared_ptr<wxGraphicsContext> graphics);
     void HeadDraw(std::shared_ptr<wxGraphicsContext> graphics);
 
-    wxPoint2DDouble GetOffset() { return mTargetOffset;}
+    wxPoint2DDouble GetOffset() { return mTarget;}
 
     ///Setter for new rotate angle
     void SetNewAngleMouth() {
@@ -139,6 +139,7 @@ public:
         return mHeadCurrAngle;
     }
 
+    bool Moving = false;
 };
 
 #endif //PROJECT1_335_SUDOKULIB_SPARTY_H

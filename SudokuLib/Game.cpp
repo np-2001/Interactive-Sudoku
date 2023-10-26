@@ -113,7 +113,7 @@ void Game::OnLeftDown(int x, int y)
         double virtualY = (y - mYOffset) / mScale;
 
         //Should be a visitor to set New Coordinates instead of pointer to Sparty and Sparty Chin
-
+        mSparty->Moving = true;
         mSparty->SetNewCoordinates(virtualX, virtualY);
     }
 
