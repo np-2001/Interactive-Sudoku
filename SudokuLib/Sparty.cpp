@@ -58,14 +58,14 @@ void Sparty::Update(double elapsed)
     //Boolean is moving to false when you set target to set it true and then set it to false in the else statement in line 73. Do the offset in mNewLocationX
 
 
-//    mNewLocationX = mNewLocationX-mTarget.m_x;
-//    mNewLocationY = mNewLocationY+(GetItemImage()->GetHeight()-mTarget.m_y);
+
+
     wxPoint2DDouble Vector(mNewLocationX-CurrLocationX,mNewLocationY-CurrLocationY);
 
 
     Game * mGame = Item::GetGame();
 
-    if (Moving == true && (Vector.m_x != 0 || Vector.m_y != 0)) {
+    if (mMoving == true && (Vector.m_x != 0 || Vector.m_y != 0)) {
 
         double Length = Vector.GetVectorLength();
         Vector.Normalize();
@@ -78,17 +78,8 @@ void Sparty::Update(double elapsed)
             Item::SetPixelLocation(NewVector.m_x*elapsed+CurrLocationX,NewVector.m_y*elapsed+CurrLocationY);
         } else {
             Item::SetPixelLocation(mNewLocationX,mNewLocationY);
-            Moving = false;
+            SetMoving(false);
         }
-
-//        Item::SetPixelLocation((Vector.m_x* elapsed * MaxSpeed)+ CurrLocationX,(Vector.m_y*elapsed*MaxSpeed)+CurrLocationY);
-//        if (std::abs(Item::GetX()-mNewLocationX) < 20) {
-//            Item::SetPixelLocation(mNewLocationX,Item::GetY());
-//        }
-//
-//        if (std::abs(Item::GetY()-mNewLocationY) < 20) {
-//            Item::SetPixelLocation(Item::GetX(),mNewLocationY);
-//        }
 
     }
 
@@ -261,6 +252,14 @@ void Sparty::HeadDraw(std::shared_ptr<wxGraphicsContext> graphics) {
 
         graphics->PopState();
     }
+}
+
+/// Setter for NewX and NewY
+void Sparty::SetNewCoordinates(int NewX, int NewY) {
+    Game * mGame = Item::GetGame();
+    mNewLocationX = NewX-mTarget.m_x+mGame->GetTileSize();
+    mNewLocationY = NewY-mTarget.m_y;
+
 }
 
 

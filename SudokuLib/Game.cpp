@@ -116,7 +116,7 @@ void Game::OnLeftDown(int x, int y)
         if(virtualX >= 0 && virtualX < mWidth*mTileSize && virtualY >= 0 && virtualY < mHeight*mTileSize)
         {
             //Should be a visitor to set New Coordinates instead of pointer to Sparty and Sparty Chin
-            mSparty->Moving = true;
+            mSparty->SetMoving(true);
             mSparty->SetNewCoordinates(virtualX, virtualY);
         }
     }

@@ -67,7 +67,8 @@ private:
     ///Head Bitmap
     wxGraphicsBitmap mHeadBitmap;
 
-
+    ///Represents moving
+    bool mMoving = false;
 public:
     Sparty(Game *game, std::shared_ptr<wxImage> image);
 
@@ -88,10 +89,7 @@ public:
     void Update(double elapsed) override;
 
     /// Setter for NewX and NewY
-    void SetNewCoordinates(int NewX, int NewY) {
-        mNewLocationX = NewX;
-        mNewLocationY = NewY;
-    }
+    void SetNewCoordinates(int NewX, int NewY);
 
     /// Sparty's head
     std::shared_ptr<wxImage> mImage;
@@ -139,7 +137,10 @@ public:
         return mHeadCurrAngle;
     }
 
-    bool Moving = false;
+    void SetMoving(bool moving) {
+        mMoving = moving;
+    }
+
 };
 
 #endif //PROJECT1_335_SUDOKULIB_SPARTY_H
