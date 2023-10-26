@@ -308,6 +308,7 @@ void Level::MakeItems(wxXmlNode* node)
             mGame->SetSparty(sparty);
             item = sparty;
             item->SetLocation(row, col);
+
             sparty->SetNewCoordinates(item->GetX(),item->GetY());
 
         }

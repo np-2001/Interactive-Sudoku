@@ -143,48 +143,25 @@ Sparty::Sparty(Game *game,
 }
 
 void Sparty::Draw(std::shared_ptr<wxGraphicsContext> graphics) {
-    if (mFront == 2) {
-        Sparty::HeadDraw(graphics);
-        Sparty::ChinDraw(graphics);
-
-    } else {
-        Sparty::ChinDraw(graphics);
-        Sparty::HeadDraw(graphics);
-    }
-}
-
-
-void Sparty::ChinDraw(std::shared_ptr<wxGraphicsContext> graphics) {
-    // Load in BitMap only once
-    int wid = mImage2->GetWidth();
-    int hit = mImage2->GetHeight();
-    // Make these getters in Game, Level class
-    int tileHeight = Item::GetGame()->GetTileSize();
-    auto x = ((Item::GetCol()*tileHeight));
-    auto y = (((Item::GetRow()+1)*tileHeight) - hit);
-
-    if(mChinBitmap.IsNull())
-    {
-        mChinBitmap = graphics->CreateBitmapFromImage(*mImage2);
-    }
-
-    if (mImage2 != nullptr)
-    {
-
-//        auto x = ((Item::GetCol()*tileHeight));
-//        auto y = (((Item::GetRow()+1)*tileHeight) - hit);
-//
-//
-//        graphics->DrawBitmap(mChinBitmap, ((Item::GetCol()*tileHeight)),
-//                             (((Item::GetRow()+1)*tileHeight) - hit), wid, hit);
-
-
         graphics->PushState();
-
-        x = ((Item::GetCol()*tileHeight));
-        y = (((Item::GetRow()+1)*tileHeight) - hit);
-
+        int wid = mImage2->GetWidth();
+        int hit = mImage2->GetHeight();
+        // Make these getters in Game, Level class
+        int tileHeight = Item::GetGame()->GetTileSize();
+        auto x = ((Item::GetCol()*tileHeight));
+        auto y = (((Item::GetRow()+1)*tileHeight) - hit);
         graphics->Translate(x,y);
+
+
+
+
+
+    if (mFront == 2) {
+        graphics->Translate(mHeadPivotX, mHeadPivotY);
+        graphics->Rotate(mHeadCurrAngle);
+        graphics->Translate(-mHeadPivotX, -mHeadPivotY);
+        Sparty::HeadDraw(graphics);
+
 
         graphics->Translate(mHeadPivotX, mHeadPivotY);
 
@@ -195,16 +172,47 @@ void Sparty::ChinDraw(std::shared_ptr<wxGraphicsContext> graphics) {
         graphics->Translate(mMouthPivotX, mMouthPivotY);
         graphics->Rotate(mMouthCurrAngle);
         graphics->Translate(-mMouthPivotX, -mMouthPivotY);
+        Sparty::ChinDraw(graphics);
+
+    } else {
+        graphics->Translate(mHeadPivotX, mHeadPivotY);
+
+        graphics->Rotate(0);
+        graphics->Translate(-mHeadPivotX, -mHeadPivotY);
 
 
+        graphics->Translate(mMouthPivotX, mMouthPivotY);
+        graphics->Rotate(mMouthCurrAngle);
+        graphics->Translate(-mMouthPivotX, -mMouthPivotY);
+
+        Sparty::ChinDraw(graphics);
+
+        graphics->Translate(mHeadPivotX, mHeadPivotY);
+        graphics->Rotate(mHeadCurrAngle);
+        graphics->Translate(-mHeadPivotX, -mHeadPivotY);
+        Sparty::HeadDraw(graphics);
+    }
+    graphics->PopState();
+}
+
+
+void Sparty::ChinDraw(std::shared_ptr<wxGraphicsContext> graphics) {
+    // Load in BitMap only once
+    int wid = mImage2->GetWidth();
+    int hit = mImage2->GetHeight();
+
+
+    if(mChinBitmap.IsNull())
+    {
+        mChinBitmap = graphics->CreateBitmapFromImage(*mImage2);
+    }
+
+    if (mImage2 != nullptr)
+    {
         wid = mImage2->GetWidth();
         hit = mImage2->GetHeight();
 
         graphics->DrawBitmap(mChinBitmap, 0,0, wid, hit);
-
-        graphics->PopState();
-
-
 
     }
 }
@@ -218,11 +226,6 @@ void Sparty::HeadDraw(std::shared_ptr<wxGraphicsContext> graphics) {
     int wid = mImage->GetWidth();
     int hit = mImage->GetHeight();
 
-    // Make these getters in Game, Level class
-    int tileHeight = Item::GetGame()->GetTileSize();
-    auto x = ((Item::GetCol()*tileHeight));
-    auto y = (((Item::GetRow()+1)*tileHeight) - hit);
-
     if(mHeadBitmap.IsNull())
     {
         mHeadBitmap = graphics->CreateBitmapFromImage(*mImage);
@@ -230,27 +233,9 @@ void Sparty::HeadDraw(std::shared_ptr<wxGraphicsContext> graphics) {
 
     if (mImage != nullptr)
     {
-        graphics->PushState();
-
-        x = ((Item::GetCol()*tileHeight));
-        y = (((Item::GetRow()+1)*tileHeight) - hit);
-
-        graphics->Translate(x,y);
-
-        graphics->Translate(mMouthPivotX, mMouthPivotY);
-        graphics->Rotate(0);
-        graphics->Translate(-mMouthPivotX, -mMouthPivotY);
-
-        graphics->Translate(mHeadPivotX, mHeadPivotY);
-        graphics->Rotate(0);
-        graphics->Translate(-mHeadPivotX, -mHeadPivotY);
-
-        wid = mImage->GetWidth();
-        hit = mImage->GetHeight();
 
         graphics->DrawBitmap(mHeadBitmap, 0,0, wid, hit);
 
-        graphics->PopState();
     }
 }
 

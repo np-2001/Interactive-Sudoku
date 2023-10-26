@@ -225,8 +225,7 @@ void Game::Clear()
  */
 void Game::OnKeyDown(wxKeyEvent &event)
 {
-    if (event.GetKeyCode() == WXK_SPACE && int(mSparty->GetX()) == int(mSparty->GetNewX())
-        && int(mSparty->GetY()) == int(mSparty->GetNewY()) && mSparty->GetAngleMouth() == 0)
+    if (event.GetKeyCode() == WXK_SPACE && !(mSparty->GetMoving()) && mSparty->GetAngleMouth() == 0)
     {
         mSparty->SetNewAngleMouth();
 
@@ -261,35 +260,39 @@ void Game::OnKeyDown(wxKeyEvent &event)
         }
     }
     // event key code 66 is the key for b
-    if (event.GetKeyCode() == 66 && int(mSparty->GetX()) == int(mSparty->GetNewX())
-        && int(mSparty->GetY()) == int(mSparty->GetNewY()) && mSparty->GetAngleHead() == 0)
+    auto oldx = int(mSparty->GetX());
+    auto oldy = int(mSparty->GetNewY());
+    auto newx =  int(mSparty->GetNewX());
+    auto newy =  int(mSparty->GetNewY());
+    auto currangle = int(mSparty->GetAngleMouth());
+    if (event.GetKeyCode() == 66 && !(mSparty->GetMoving()) && mSparty->GetAngleMouth() == 0)
     {
         mSparty->SetNewAngleHead();
 
         int x = (int) (mSparty->GetX());
         int y = (int) (mSparty->GetY());
-
-        auto item = EatTest(x, y);
-
-        if(item != nullptr)
-        {
-            //Check if we clicked on a Digit that is not a Given
-            VisitorDigit visitor;
-            item->Accept(&visitor);
-
-            if(visitor.MatchDigit())
-            {
-                // We are next to a Digit
-                VisitorGiven visitor2;
-                item->Accept(&visitor2);
-
-                if(! visitor2.MatchGiven())
-                {
-                    // It is not a Given
-                    item->Eat();
-                }
-            }
-        }
+//        Should not be here
+//        auto item = EatTest(x, y);
+//
+//        if(item != nullptr)
+//        {
+//            //Check if we clicked on a Digit that is not a Given
+//            VisitorDigit visitor;
+//            item->Accept(&visitor);
+//
+//            if(visitor.MatchDigit())
+//            {
+//                // We are next to a Digit
+//                VisitorGiven visitor2;
+//                item->Accept(&visitor2);
+//
+//                if(! visitor2.MatchGiven())
+//                {
+//                    // It is not a Given
+//                    item->Eat();
+//                }
+//            }
+//        }
     }
 }
 

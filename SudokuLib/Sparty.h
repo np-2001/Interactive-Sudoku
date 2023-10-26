@@ -69,6 +69,13 @@ private:
 
     ///Represents moving
     bool mMoving = false;
+
+
+    /// Sparty's head
+    std::shared_ptr<wxImage> mImage;
+
+    /// Sparty's chin
+    std::shared_ptr<wxImage> mImage2;
 public:
     Sparty(Game *game, std::shared_ptr<wxImage> image);
 
@@ -91,11 +98,6 @@ public:
     /// Setter for NewX and NewY
     void SetNewCoordinates(int NewX, int NewY);
 
-    /// Sparty's head
-    std::shared_ptr<wxImage> mImage;
-
-    /// Sparty's chin
-    std::shared_ptr<wxImage> mImage2;
 
     ///Getter for sparty chin object
     ///std::shared_ptr<SpartyChin> GetChin() { return mChin;}
@@ -139,6 +141,11 @@ public:
 
     void SetMoving(bool moving) {
         mMoving = moving;
+    }
+
+    ///Getter for moving
+    bool GetMoving() {
+        return mMoving;
     }
 
 };
