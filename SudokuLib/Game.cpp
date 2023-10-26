@@ -111,8 +111,8 @@ void Game::OnLeftDown(int x, int y)
         int virtualX = (x - mXOffset) / mScale;
         int virtualY = (y - mYOffset) / mScale;
 
-        //Should be a visitor to set New Coordinates instead of pointer to Sparty and Sparty Chin
         //Sparty does not move when the left click is outside the background
+
         if(virtualX >= 0 && virtualX < mWidth*mTileSize && virtualY >= 0 && virtualY < mHeight*mTileSize)
         {
             //Should be a visitor to set New Coordinates instead of pointer to Sparty and Sparty Chin
@@ -120,8 +120,6 @@ void Game::OnLeftDown(int x, int y)
             mSparty->SetNewCoordinates(virtualX, virtualY);
         }
     }
-
-
 }
 
 /**

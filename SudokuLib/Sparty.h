@@ -17,11 +17,11 @@ class Sparty: public Item
 {
 private:
     /// Points to X location moving to. If not moving then equal to mCurrLocation
-    double mNewLocationX = Item::GetX();
+    int mNewLocationX = Item::GetX();
 
 
     /// Points to Y location moving to. If not moving then equal to mCurrLocation
-    double mNewLocationY = Item::GetY();
+    int mNewLocationY = Item::GetY();
 
 
 
@@ -147,6 +147,18 @@ public:
     bool GetMoving() {
         return mMoving;
     }
+
+    /**
+     * Getter for width of sparty
+     * @return sparty width in pixels
+     */
+    int GetSpartyWidth() const {return mImage->GetWidth();}
+
+    /**
+     * Getter for height of sparty
+     * @return sparty height in pixels
+     */
+    int GetSpartyHeight() const {return mImage->GetHeight();}
 
 };
 
