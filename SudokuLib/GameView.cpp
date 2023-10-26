@@ -120,6 +120,7 @@ void GameView::OnTimer(wxTimerEvent& event)
 void GameView::OnLeftDown(wxMouseEvent &event)
 {
     mGame.OnLeftDown(event.GetX(), event.GetY());
+
 }
 
 /**
