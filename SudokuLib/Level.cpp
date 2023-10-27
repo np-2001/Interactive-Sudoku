@@ -15,7 +15,6 @@
 #include "Xray.h"
 #include "Sparty.h"
 #include "LevelDisplay.h"
-#include "VisitorDigit.h"
 /**
  * Constructor
  * @param game Game this level belongs to
@@ -73,7 +72,7 @@ void Level::LoadLevel()
         // Process Game tag
         else if (tagName == L"game")
         {
-            LoadSolve(tag->GetChildren());
+            LoadSolve(tag);
         }
 
         // Process Items Tag
@@ -142,10 +141,10 @@ void Level::LoadLevel()
  {
      int j =0;
      // <game col="6" row="3">3 2 4 8 7 6 0 1 5 7 5 6 2 0 1 4 8 ... </game>
-     auto new_col = node->GetAttribute(L"col");
-     auto new_row = node->GetAttribute(L"row");
+     node->GetAttribute(L"row").ToInt(&mTopLeftPosition[0]);
+     node->GetAttribute(L"col").ToInt(&mTopLeftPosition[1]);
 
-     auto content = node->GetContent().ToStdString();
+     auto content = node->GetChildren()->GetContent().ToStdString();
 
      for (int i = 0; i<content.length(); i++) {
          if (content[i] != ' ') {
@@ -160,7 +159,29 @@ void Level::LoadLevel()
   * solve the level
   */
   void Level::SolveLevel() {
+     for(int row = mTopLeftPosition[0]; row < mTopLeftPosition[0]+9; row++) {
+         for(int col = mTopLeftPosition[1]; col < mTopLeftPosition[1]+9; col++) {
+             // i need to convert from row,col to x,y pixel location
+             // theres probably a better way to do this however,
+             int x = (col*48+ (24/2.0));
+             int y = ((row+1)*48 - (24/2.0));
+             // check to see if there is an item in the spot
+             auto spot = mGame->HitTest(x, y);
+             // if there is no item in the spot on the board find what number should go there
+             if(spot == nullptr)
+             {
+                 // else, reference solution to see what number goes there
+                 // find the number elsewhere on the board
+                 // and assign it there
+                 auto correct = mSolution[row][col];
 
+                 // TODO: find the "correct" number somewhere on the board
+                 // TODO: assign it to the current row and col values
+                 // TODO: redraw or update the board to show that the digits have moved
+             }
+
+         }
+     }
   }
 
 
