@@ -107,7 +107,7 @@ public:
     }
 
     std::shared_ptr<Item> FindNumber(int num);
-    void Throwup(std::shared_ptr<wxGraphicsContext> graphics,std::shared_ptr<Xray> xRay);
+    void Throwup(std::shared_ptr<wxGraphicsContext> graphics, Xray* xRay);
 };
 
 #endif //PROJECT1_335_SUDOKULIB_GAME_H
