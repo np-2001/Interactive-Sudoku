@@ -18,6 +18,7 @@
 #include "Background.h"
 #include "Sparty.h"
 #include "Xray.h"
+#include "PlayingArea.h"
 //using namespace std;
 using std::make_unique;
 
@@ -334,7 +335,6 @@ void Game::OnKeyDown(wxKeyEvent &event)
                         // It is not a Given
                         item->SetEatenLocation(item->GetRow(),item->GetCol());
                         mItems.erase(std::remove(mItems.begin(), mItems.end(), item), mItems.end());
-                        item->Eat();
                         VisitorXray xray_visitor;
                         auto xray = GetXray();
                         xray->Accept(&xray_visitor);
@@ -344,11 +344,10 @@ void Game::OnKeyDown(wxKeyEvent &event)
                     else
                     {
                         // We are next to a Given
-                        item->Regurgitate();
-
                     }
                 }
             }
+            // We are not next to an item
         }
         // event key code 66 is the key for b
         auto oldx = int(mSparty->GetX());
@@ -399,6 +398,29 @@ void Game::OnKeyDown(wxKeyEvent &event)
             //                }
             //            }
             //        }
+        }
+
+        // Event for number 0
+        if(event.GetKeyCode() == 48 && !(mSparty->GetMoving()) && mSparty->GetAngleMouth() == 0 && mSparty->GetAngleHead() == 0)
+        {
+            int x = (int)(mSparty->GetX());
+            int y = (int)(mSparty->GetY());
+
+            if(this->GetPlayingArea()->IsInPlayArea(x-10,y-10))
+            {
+                //auto item = GetMatch(int x);
+                // We are in the playing area
+//                auto sparty = mItems.back();
+//
+//                VisitorXray xray_visitor;
+//                auto xray = GetXray();
+//                xray->Accept(&xray_visitor);
+//                xray_visitor.CallRemove(item);
+//
+//                mItems.pop_back();
+//                mItems.push_back(item);
+//                mItems.push_back(sparty);
+            }
         }
     }
 }

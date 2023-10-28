@@ -6,6 +6,7 @@
 #include "pch.h"
 #include "Xray.h"
 #include "Game.h"
+#include "VisitorDigit.h"
 #include <algorithm>
 
 /**
@@ -91,4 +92,19 @@ void Xray::Draw(std::shared_ptr<wxGraphicsContext> graphics)
 
 }
 
+std::shared_ptr<Item> Xray::GetMatch(int x)
+{
+    for(auto item: mItems)
+    {
+        VisitorDigit visitor;
+        item->Accept(&visitor);
+
+        if(visitor.GetValue() == x)
+        {
+            return item;
+        }
+    }
+
+    return nullptr;
+}
 

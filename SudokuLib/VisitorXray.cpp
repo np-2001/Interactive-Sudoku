@@ -22,3 +22,11 @@ void VisitorXray::CallThrowup(std::shared_ptr<wxGraphicsContext> graphics)
         mXray->GetGame()->Throwup(graphics, mXray);
     }
 }
+
+void VisitorXray::CallRemove(std::shared_ptr<Item> item)
+{
+    if(mXray != nullptr)
+    {
+        mXray->Remove(item);
+    }
+}

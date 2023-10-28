@@ -42,6 +42,7 @@ public:
 
     void CallAdd(std::shared_ptr<Item> item);
     void CallThrowup(std::shared_ptr<wxGraphicsContext> graphics);
+    void CallRemove(std::shared_ptr<Item> item);
 
 };
 
