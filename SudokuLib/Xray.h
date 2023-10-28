@@ -36,6 +36,10 @@ public:
     void Add(std::shared_ptr<Item> item);
     void Remove(std::shared_ptr<Item> item);
 
+    int GetItemCount () {
+        return mItems.size();
+    }
+
 };
 
 #endif //PROJECT1_335_SUDOKULIB_XRAY_H

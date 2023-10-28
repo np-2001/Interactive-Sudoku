@@ -9,6 +9,7 @@
 #include "Item.h"
 #include "VisitorItem.h"
 #include "VisitorDigit.h"
+#include "VisitorXray.h"
 #include "VisitorGiven.h"
 #include "VisitorSparty.h"
 #include "VisitorBackground.h"
@@ -41,8 +42,8 @@ void Game::OnDraw(std::shared_ptr<wxGraphicsContext> graphics, int width, int he
     // This is up to you...
 
     //These cannot remain constants, they are constants for testing purposes!!
-    int pixelWidth = mWidth*mTileSize;
-    int pixelHeight = mHeight*mTileSize;
+    int pixelWidth = mWidth * mTileSize;
+    int pixelHeight = mHeight * mTileSize;
 
     //
     // Automatic Scaling
@@ -53,7 +54,7 @@ void Game::OnDraw(std::shared_ptr<wxGraphicsContext> graphics, int width, int he
 
     mXOffset = (width - pixelWidth * mScale) / 2.0;
     mYOffset = 0;
-    if (height > pixelHeight * mScale)
+    if(height > pixelHeight * mScale)
     {
         mYOffset = (double)((height - pixelHeight * mScale) / 2.0);
     }
@@ -75,7 +76,7 @@ void Game::OnDraw(std::shared_ptr<wxGraphicsContext> graphics, int width, int he
     //Draw each item in the list
     for(auto item : mItems)
     {
-         //Sparty is hardcoded for now
+        //Sparty is hardcoded for now
 //        if(item == mItems.back())
 //        {
 //            break;
@@ -85,19 +86,51 @@ void Game::OnDraw(std::shared_ptr<wxGraphicsContext> graphics, int width, int he
         // If Item is a Container
         // Visit Container and then Draw ContainerItems
     }
-   // mSparty->Draw(graphics);
+    // mSparty->Draw(graphics);
     //mSpartyChin->Draw(graphics);
 
 
     ///Make sures timer is not drawn when popup is not nullptr
-    if (mLevel->mPopup != nullptr && mTime*0.001 < 3) {
-        mLevel->mPopup->Draw(graphics,pixelHeight,pixelWidth);
-    } else {
-        mTimeDisplay.OnDraw(graphics);
+    if(mLevel->mPopup != nullptr && mTime * 0.001 < 3)
+    {
+        mLevel->mPopup->Draw(graphics, pixelHeight, pixelWidth);
     }
+    else
+    {
+        mTimeDisplay.OnDraw(graphics);
 
-    graphics->PopState();
+        auto level = GetLevel();
+
+        /// Level 3 Feature
+        if(level->GetCurrentLevel() == L"Levels/level3.xml")
+        {
+            //Throwup(graphics,xRay);
+
+        }
+
+        graphics->PopState();
+    }
 }
+
+void Game::Throwup(std::shared_ptr<wxGraphicsContext> graphics,std::shared_ptr<Xray> xRay) {
+    int pixelWidth = mWidth * mTileSize;
+    int pixelHeight = mHeight * mTileSize;
+    if(((mTime / 1000) % 60) % 10 == 0)
+    {
+        wxFont bigFont(wxSize(0, 50),
+                       wxFONTFAMILY_SWISS,
+                       wxFONTSTYLE_NORMAL,
+                       wxFONTWEIGHT_BOLD);
+        graphics->SetFont(bigFont, *wxGREEN);
+
+        double wid, hit;
+        graphics->GetTextExtent(L"THROW UP!!!!!", &wid, &hit);
+        graphics->DrawText(L"THROW UP!!!!!", pixelWidth / 2 - wid / 2, pixelHeight / 2 - hit / 2);
+        mSparty->SetNewAngleMouth();
+
+    }
+}
+
 
 /**
 * Handle a mouse click
