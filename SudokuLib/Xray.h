@@ -36,6 +36,12 @@ public:
     void Add(std::shared_ptr<Item> item);
     void Remove(std::shared_ptr<Item> item);
 
+    /**
+     * Getter for capacity for xray
+     * @return int capacity for xray
+     */
+    int GetCapacity() const {return mCapacity;};
+
     int GetItemCount () {
         return mItems.size();
     }

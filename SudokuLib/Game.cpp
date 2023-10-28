@@ -13,8 +13,10 @@
 #include "VisitorGiven.h"
 #include "VisitorSparty.h"
 #include "VisitorBackground.h"
+#include "VisitorXray.h"
 #include "Background.h"
 #include "Sparty.h"
+#include "Xray.h"
 //using namespace std;
 using std::make_unique;
 
@@ -275,6 +277,8 @@ void Game::Clear()
  */
 void Game::OnKeyDown(wxKeyEvent &event)
 {
+    int count = 0;
+
     if (mLevel->mPopup == nullptr)
     {
         if(event.GetKeyCode() == WXK_SPACE && !(mSparty->GetMoving()) && mSparty->GetAngleMouth() == 0
@@ -303,11 +307,13 @@ void Game::OnKeyDown(wxKeyEvent &event)
                     {
                         // It is not a Given
                         item->Eat();
+                        count += 1;
                     }
                     else
                     {
                         // We are next to a Given
                         item->Regurgitate();
+                        count -= 1;
                     }
                 }
             }
@@ -362,4 +368,18 @@ void Game::Accept(VisitorItem *visitor)
     }
 }
 
+std::shared_ptr<Item> Game::GetXray()
+{
+    for(auto item: mItems)
+    {
+        VisitorXray visitor;
+        item->Accept(&visitor);
 
+        if(visitor.MatchXray())
+        {
+            return item;
+        }
+    }
+
+    return nullptr;
+}
