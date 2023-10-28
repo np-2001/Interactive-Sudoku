@@ -168,11 +168,8 @@ void Level::SolveLevel() {
     auto firstRow = mGame->GetPlayingArea()->GetTopLeftRow();
     auto firstCol = mGame->GetPlayingArea()->GetTopLeftCol();
 
-
     for(int row = firstRow; row < firstRow+9; row++) {
         for(int col = firstCol; col < firstCol+9; col++) {
-
-
             // i need to convert from row,col to x,y pixel location (center hopefully)
             int x = col*mGame->GetTileSize() + (mGame->GetTileSize()/2);
             int y = (row+1)*mGame->GetTileSize() - (mGame->GetTileSize()/2);
@@ -186,21 +183,14 @@ void Level::SolveLevel() {
                 // else, reference solution to see what number goes there
                 // find the number elsewhere on the board
                 // and assign it there
-                auto solution_value = mSolution[row][col];
+                auto solution_value = mSolution[row-firstRow][col-firstCol];
 
-
-                // TODO: find the "correct" number somewhere on the board
+                // find the "correct" number somewhere on the board
                 auto correct = mGame->FindNumber(solution_value);
 
-
-                // TODO: assign it to the current row and col values
+                // assign it to the current row and col values
                 correct->SetLocation(row, col);
-
-
-                // TODO: redraw or update the board to show that the digits have moved
             }
-
-
         }
     }
 }
