@@ -30,3 +30,11 @@ void VisitorXray::CallRemove(std::shared_ptr<Item> item)
         mXray->Remove(item);
     }
 }
+
+std::shared_ptr<Item> VisitorXray::CallGetMatch(int x)
+{
+    if(mXray != nullptr)
+    {
+        return mXray->GetMatch(x);
+    }
+}

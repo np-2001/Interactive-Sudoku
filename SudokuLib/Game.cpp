@@ -294,6 +294,8 @@ void Game::Clear()
 void Game::OnKeyDown(wxKeyEvent &event)
 {
     int count = 0;
+    int x = (int)(mSparty->GetX());
+    int y = (int)(mSparty->GetY());
 
     if (mLevel->mPopup == nullptr)
     {
@@ -301,9 +303,6 @@ void Game::OnKeyDown(wxKeyEvent &event)
             && mSparty->GetAngleHead() == 0)
         {
             mSparty->SetNewAngleMouth();
-
-            int x = (int)(mSparty->GetX());
-            int y = (int)(mSparty->GetY());
 
             auto item = EatTest(x, y);
 
@@ -347,9 +346,6 @@ void Game::OnKeyDown(wxKeyEvent &event)
         {
             mSparty->SetNewAngleHead();
 
-            int x = (int)(mSparty->GetX());
-            int y = (int)(mSparty->GetY());
-
             // HitTest For Container
             auto item = HitTest(x+50,y);
             if (item != nullptr)
@@ -388,26 +384,31 @@ void Game::OnKeyDown(wxKeyEvent &event)
             //        }
         }
 
-        // Event for number 0
-        if(event.GetKeyCode() == 48 && !(mSparty->GetMoving()) && mSparty->GetAngleMouth() == 0 && mSparty->GetAngleHead() == 0)
+        // Event for numbers 0-9
+        if(event.GetKeyCode() >= 48 && event.GetKeyCode() <= 57 && !(mSparty->GetMoving()) && mSparty->GetAngleMouth() == 0 && mSparty->GetAngleHead() == 0)
         {
-            int x = (int)(mSparty->GetX());
-            int y = (int)(mSparty->GetY());
+            int throw_digit = event.GetKeyCode() - 48;
 
             if(this->GetPlayingArea()->IsInPlayArea(x-10,y-10))
             {
-                //auto item = GetMatch(int x);
                 // We are in the playing area
-//                auto sparty = mItems.back();
-//
-//                VisitorXray xray_visitor;
-//                auto xray = GetXray();
-//                xray->Accept(&xray_visitor);
-//                xray_visitor.CallRemove(item);
-//
-//                mItems.pop_back();
-//                mItems.push_back(item);
-//                mItems.push_back(sparty);
+                auto xray = GetXray();
+                auto sparty = mItems.back();
+
+                VisitorXray xray_visitor;
+                xray->Accept(&xray_visitor);
+
+                auto item = xray_visitor.CallGetMatch(throw_digit);
+
+                if(item != nullptr)
+                {
+                    xray_visitor.CallRemove(item);
+                    item->SetPixelLocation(x+10, y+10);
+                    mItems.pop_back();
+                    mItems.push_back(item);
+                    mItems.push_back(sparty);
+                }
+
             }
         }
     }
