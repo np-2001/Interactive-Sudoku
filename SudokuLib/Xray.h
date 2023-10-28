@@ -17,6 +17,10 @@ class Xray: public Item
 private:
     /// Capacity of the xray container
     int mCapacity;
+
+    /// Items inside the xray
+    std::vector<std::shared_ptr<Item>> mItems;
+
 public:
     Xray(Game *game, std::shared_ptr<wxImage> image, int capacity);
     ///  Default constructor (disabled)
@@ -28,6 +32,9 @@ public:
     void Accept(VisitorItem* visitor) override;
     void Eat() override;
     void Regurgitate() override;
+
+    void Add(std::shared_ptr<Item> item);
+    void Remove(std::shared_ptr<Item> item);
 
 };
 
