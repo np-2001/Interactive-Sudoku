@@ -14,6 +14,7 @@
 #include "Level.h"
 #include "Sparty.h"
 #include "PlayingArea.h"
+#include "Xray.h"
 class Game
 {
 private:
@@ -45,6 +46,9 @@ private:
 
     /// Playing Area
     std::shared_ptr<PlayingArea> mPlayingArea;
+
+    /// pointer to xray
+    std::shared_ptr<Xray> mXray;
 
     std::shared_ptr<Sparty> mSparty = nullptr; /// Temp pointer to sparty to be replaced with visitor
 
@@ -87,6 +91,11 @@ public:
     /// Setter for Sparty
     void SetSparty(std::shared_ptr<Sparty> sparty) {
         mSparty = sparty;
+    }
+
+    /// Setter for Xray
+    void SetXray(std::shared_ptr<Xray> xray) {
+        mXray = xray;
     }
 
     std::shared_ptr<Item> EatTest(int x, int y);
