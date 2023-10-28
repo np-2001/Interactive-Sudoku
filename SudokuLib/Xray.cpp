@@ -62,6 +62,9 @@ void Xray::Draw(std::shared_ptr<wxGraphicsContext> graphics)
 {
     Item::Draw(graphics);
 
+    int count = 0;
+    int change = 1;
+
     // Draw Digits in Xray
     for (auto &elm : mItems)
     {
@@ -76,10 +79,13 @@ void Xray::Draw(std::shared_ptr<wxGraphicsContext> graphics)
             // Make these getters in Game, Level class
             int tileHeight = this->GetGame()->GetTileSize();
 
-            graphics->DrawBitmap(itemBitmap, ((this->GetCol()*tileHeight)),
-                                 (((this->GetRow()+1)*tileHeight) - hit), wid/2, hit/2);
+            graphics->DrawBitmap(itemBitmap, ((this->GetCol()*tileHeight) + count),
+                                 (((this->GetRow()+1)*tileHeight) - hit*2) - (count/3)*change, wid/2, hit/2);
 
         }
+
+        count += 20;
+        change *= -1;
 
     }
 

@@ -115,7 +115,7 @@ void Game::OnDraw(std::shared_ptr<wxGraphicsContext> graphics, int width, int he
     }
 }
 
-void Game::Throwup(std::shared_ptr<wxGraphicsContext> graphics,std::shared_ptr<Xray> xRay) {
+void Game::Throwup(std::shared_ptr<wxGraphicsContext> graphics, Xray* xRay) {
     int pixelWidth = mWidth * mTileSize;
     int pixelHeight = mHeight * mTileSize;
     if(((mTime / 1000) % 60) % 10 == 0)
