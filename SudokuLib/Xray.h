@@ -36,6 +36,11 @@ public:
     void Add(std::shared_ptr<Item> item);
     void Remove(std::shared_ptr<Item> item);
 
+    /**
+     * Getter for capacity for xray
+     * @return int capacity for xray
+     */
+    int GetCapacity() const {return mCapacity;};
 };
 
 #endif //PROJECT1_335_SUDOKULIB_XRAY_H
