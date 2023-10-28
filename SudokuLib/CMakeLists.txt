@@ -43,6 +43,8 @@ set(SOURCE_FILES MainFrame.cpp MainFrame.h
         LevelDisplay.h
         VisitorGiven.cpp
         VisitorGiven.h
+        VisitorXray.cpp
+        VisitorXray.h
 )
 
 set(wxBUILD_PRECOMP OFF)

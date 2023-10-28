@@ -38,3 +38,15 @@ void Xray::Regurgitate()
 {
 
 }
+
+void Xray::Add(std::shared_ptr<Item> item)
+{
+
+}
+
+void Xray::Remove(std::shared_ptr<Item> item)
+{
+
+}
+
+

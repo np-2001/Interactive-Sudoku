@@ -14,6 +14,7 @@ class Container;
 class Given;
 class Sparty;
 class Background;
+class Xray;
 
 /**
  * Visitor base class
@@ -47,6 +48,12 @@ public:
      * @param container item we are visiting
      */
     virtual void VisitContainer(Container *container) {}
+
+    /**
+     * Visit xray
+     * @param container item we are visiting
+     */
+    virtual void VisitXray(Xray *xray) {}
 
     /**
      * Visit Sparty

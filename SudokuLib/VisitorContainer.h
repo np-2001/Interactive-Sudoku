@@ -27,6 +27,15 @@ public:
      */
     bool MatchContainer() const { return mIsContainer; }
 
+    /**
+     * Sets flag to true since we are visiting a container
+     * @param given item being visited
+     */
+    void VisitContainer(Container *container) override
+    {
+        mIsContainer = true;
+    }
+
 };
 
 #endif //PROJECT1_335_SUDOKULIB_VISITORCONTAINER_H
