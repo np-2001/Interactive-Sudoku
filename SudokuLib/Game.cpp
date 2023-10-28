@@ -12,6 +12,7 @@
 #include "VisitorGiven.h"
 #include "VisitorSparty.h"
 #include "VisitorBackground.h"
+#include "VisitorXray.h"
 #include "Background.h"
 #include "Sparty.h"
 #include "Xray.h"
@@ -334,4 +335,18 @@ void Game::Accept(VisitorItem *visitor)
     }
 }
 
+std::shared_ptr<Item> Game::GetXray()
+{
+    for(auto item: mItems)
+    {
+        VisitorXray visitor;
+        item->Accept(&visitor);
 
+        if(visitor.MatchXray())
+        {
+            return item;
+        }
+    }
+
+    return nullptr;
+}

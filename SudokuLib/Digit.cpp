@@ -5,6 +5,7 @@
 
 #include "pch.h"
 #include "Digit.h"
+#include "Xray.h"
 
 /**
  * Constructor

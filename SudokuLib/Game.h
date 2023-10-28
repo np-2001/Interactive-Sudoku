@@ -80,6 +80,7 @@ public:
     void Clear();
     void OnKeyDown(wxKeyEvent &event);
     void Accept(VisitorItem *visitor);
+    std::shared_ptr<Item> GetXray();
 
 
     /// Level related Operations

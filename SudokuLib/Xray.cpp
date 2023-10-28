@@ -5,6 +5,7 @@
 
 #include "pch.h"
 #include "Xray.h"
+#include <algorithm>
 
 /**
  * Constructor
@@ -39,14 +40,22 @@ void Xray::Regurgitate()
 
 }
 
+/**
+ * Add an item to the xray
+ * @param item item to be added
+ */
 void Xray::Add(std::shared_ptr<Item> item)
 {
-
+    mItems.push_back(item);
 }
 
+/**
+ * Remove an item from the xray
+ * @param item to be deleted
+ */
 void Xray::Remove(std::shared_ptr<Item> item)
 {
-
+    mItems.erase(std::remove(mItems.begin(), mItems.end(), item), mItems.end());
 }
 
 
