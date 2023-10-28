@@ -24,6 +24,7 @@ using std::make_unique;
 Game::Game()
 {
     mLevel = std::make_shared<Level>(this);
+    mPlayingArea = std::make_shared<PlayingArea>(this);
     //mBackground = make_unique<wxBitmap>(L"images/background.png", wxBITMAP_TYPE_ANY);
 }
 
@@ -195,6 +196,24 @@ std::shared_ptr<Item> Game::HitTest(int x, int y)
         {
             return *i;
         }
+    }
+
+    return  nullptr;
+}
+
+/**
+ * Finds a pointer to a specific digit on the board if one exists
+ * otherwise returns nullptr
+ * @param num digit value we are looking for
+ * @return pointer to an item or nullptr
+ */
+std::shared_ptr<Item> Game::FindNumber(int num) {
+
+    for (auto i = mItems.rbegin(); i != mItems.rend();  i++)
+    {
+        //TODO: check every item to see if its the correct digit we need if so return it
+        VisitorDigit visitor;
+
     }
 
     return  nullptr;

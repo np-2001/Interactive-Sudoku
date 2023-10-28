@@ -23,9 +23,6 @@ private:
     /// Solution of the game
     int mSolution[9][9];
 
-    /// row and col position of top left tile
-    int mTopLeftPosition[2];
-
     void MakeDeclarations(wxXmlNode *node);
     void MakeItems(wxXmlNode *node);
 

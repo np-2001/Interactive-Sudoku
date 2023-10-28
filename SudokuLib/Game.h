@@ -13,6 +13,7 @@
 #include "Timer.h"
 #include "Level.h"
 #include "Sparty.h"
+#include "PlayingArea.h"
 class Game
 {
 private:
@@ -41,6 +42,9 @@ private:
 
     /// Current Level
     std::shared_ptr<Level> mLevel;
+
+    /// Playing Area
+    std::shared_ptr<PlayingArea> mPlayingArea;
 
     std::shared_ptr<Sparty> mSparty = nullptr; /// Temp pointer to sparty to be replaced with visitor
 
@@ -77,6 +81,9 @@ public:
     /// Level related Operations
     std::shared_ptr<Level> GetLevel() {return mLevel; }
 
+    /// Playing Area related Operations
+    std::shared_ptr<PlayingArea> GetPlayingArea() {return mPlayingArea; }
+
     /// Setter for Sparty
     void SetSparty(std::shared_ptr<Sparty> sparty) {
         mSparty = sparty;
@@ -89,6 +96,7 @@ public:
         mTime = 0;
     }
 
+    std::shared_ptr<Item> FindNumber(int num);
 };
 
 #endif //PROJECT1_335_SUDOKULIB_GAME_H

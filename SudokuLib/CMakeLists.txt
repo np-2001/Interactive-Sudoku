@@ -5,8 +5,8 @@ set(SOURCE_FILES MainFrame.cpp MainFrame.h
         ids.h
         Game.cpp
         GameView.cpp
-        Tile.cpp
-        Tile.h
+        PlayingArea.cpp
+        PlayingArea.h
         Item.cpp
         Item.h
         VisitorItem.cpp
