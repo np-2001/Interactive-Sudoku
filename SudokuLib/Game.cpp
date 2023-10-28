@@ -14,6 +14,7 @@
 #include "VisitorSparty.h"
 #include "VisitorBackground.h"
 #include "VisitorXray.h"
+#include "VisitorContainer.h"
 #include "Background.h"
 #include "Sparty.h"
 #include "Xray.h"
@@ -225,9 +226,19 @@ std::shared_ptr<Item> Game::EatTest(int x, int y)
 */
 std::shared_ptr<Item> Game::HitTest(int x, int y)
 {
-    for (auto i = mItems.rbegin(); i != mItems.rend();  i++)
+    for (auto i = mItems.begin(); i != mItems.end();  i++)
     {
-        if ((*i)->HitTest(x, y))
+        VisitorBackground backgroundVisitor;
+        VisitorSparty spartyVisitor;
+        VisitorXray xrayVisitor;
+
+        (*i)->Accept(&backgroundVisitor);
+        (*i)->Accept(&spartyVisitor);
+        (*i)->Accept(&xrayVisitor);
+
+
+        if ((*i)->HitTest(x, y) && !backgroundVisitor.MatchBackground() &&
+            !spartyVisitor.MatchSparty() && !xrayVisitor.MatchXray())
         {
             return *i;
         }
@@ -339,6 +350,21 @@ void Game::OnKeyDown(wxKeyEvent &event)
 
             int x = (int)(mSparty->GetX());
             int y = (int)(mSparty->GetY());
+
+            // HitTest For Container
+            auto item = HitTest(x+50,y);
+            if (item != nullptr)
+            {
+                VisitorContainer visitor;
+                item->Accept(&visitor);
+
+                if (visitor.MatchContainer())
+                {
+                    wxMessageBox(L"This is a container");
+
+                }
+
+            }
             //        Should not be here
             //        auto item = EatTest(x, y);
             //
