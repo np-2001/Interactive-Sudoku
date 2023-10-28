@@ -237,22 +237,26 @@ std::shared_ptr<Item> Game::HitTest(int x, int y)
 }
 
 /**
- * Finds a pointer to a specific digit on the board if one exists
- * otherwise returns nullptr
- * @param num digit value we are looking for
- * @return pointer to an item or nullptr
- */
+* Finds a pointer to a specific digit on the board if one exists
+* otherwise returns nullptr
+* @param num digit value we are looking for
+* @return pointer to an item or nullptr
+*/
 std::shared_ptr<Item> Game::FindNumber(int num) {
 
-    for (auto i = mItems.rbegin(); i != mItems.rend();  i++)
+    for (auto i = mItems.begin(); i != mItems.end();  i++)
     {
         //TODO: check every item to see if its the correct digit we need if so return it
         VisitorDigit visitor;
+        (*i)->Accept(&visitor);
 
+        if(visitor.GetValue() == num) {
+            return *i;
+        }
     }
-
     return  nullptr;
 }
+
 
 /**
  * Add an item to our collection

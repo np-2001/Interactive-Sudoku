@@ -147,8 +147,8 @@ void Level::LoadLevel()
      node->GetAttribute(L"row").ToInt(&row);
      node->GetAttribute(L"col").ToInt(&col);
 
-     mGame->GetPlayingArea()->setTopLeftX(row);
-     mGame->GetPlayingArea()->setTopLeftY(col);
+     mGame->GetPlayingArea()->SetTopLeftRow(row);
+     mGame->GetPlayingArea()->SetTopLeftCol(col);
 
      auto content = node->GetChildren()->GetContent().ToStdString();
 
@@ -161,37 +161,50 @@ void Level::LoadLevel()
 
  }
 
- /**
-  * solve the level
-  */
-  void Level::SolveLevel() {
-      // TODO: update this to use PlayingArea instead!
-     for(int row = 0; row < 0+9; row++) {
-         for(int col = 0; col < 0+9; col++) {
-             // i need to convert from row,col to x,y pixel location
-             // theres probably a better way to do this however,
-             int x = (col*48+ (24/2.0));
-             int y = ((row+1)*48 - (24/2.0));
-             // check to see if there is an item in the spot
-             auto spot = mGame->HitTest(x, y);
-             // if there is no item in the spot on the board find what number should go there
-             if(spot == nullptr)
-             {
-                 // else, reference solution to see what number goes there
-                 // find the number elsewhere on the board
-                 // and assign it there
-                 auto solution_value = mSolution[row][col];
+/**
+* solve the level
+*/
+void Level::SolveLevel() {
+    auto firstRow = mGame->GetPlayingArea()->GetTopLeftRow();
+    auto firstCol = mGame->GetPlayingArea()->GetTopLeftCol();
 
-                 // TODO: find the "correct" number somewhere on the board
-                 auto correct = mGame->FindNumber(solution_value);
 
-                 // TODO: assign it to the current row and col values
-                 // TODO: redraw or update the board to show that the digits have moved
-             }
+    for(int row = firstRow; row < firstRow+9; row++) {
+        for(int col = firstCol; col < firstCol+9; col++) {
 
-         }
-     }
-  }
+
+            // i need to convert from row,col to x,y pixel location (center hopefully)
+            int x = col*mGame->GetTileSize() + (mGame->GetTileSize()/2);
+            int y = (row+1)*mGame->GetTileSize() - (mGame->GetTileSize()/2);
+
+
+            // check to see if there is an item in the spot
+            auto spot = mGame->HitTest(x, y);
+            // if there is no item in the spot on the board find what number should go there
+            if(spot == nullptr)
+            {
+                // else, reference solution to see what number goes there
+                // find the number elsewhere on the board
+                // and assign it there
+                auto solution_value = mSolution[row][col];
+
+
+                // TODO: find the "correct" number somewhere on the board
+                auto correct = mGame->FindNumber(solution_value);
+
+
+                // TODO: assign it to the current row and col values
+                correct->SetLocation(row, col);
+
+
+                // TODO: redraw or update the board to show that the digits have moved
+            }
+
+
+        }
+    }
+}
+
 
 
 /**
