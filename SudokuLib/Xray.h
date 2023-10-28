@@ -35,6 +35,7 @@ public:
 
     void Add(std::shared_ptr<Item> item);
     void Remove(std::shared_ptr<Item> item);
+    void Draw(std::shared_ptr<wxGraphicsContext> graphics) override;
 
     /**
      * Getter for capacity for xray

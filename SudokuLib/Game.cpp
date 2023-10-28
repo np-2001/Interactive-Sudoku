@@ -306,7 +306,12 @@ void Game::OnKeyDown(wxKeyEvent &event)
                     if(!visitor2.MatchGiven())
                     {
                         // It is not a Given
+                        mItems.erase(std::remove(mItems.begin(), mItems.end(), item), mItems.end());
                         item->Eat();
+                        VisitorXray xray_visitor;
+                        auto xray = GetXray();
+                        xray->Accept(&xray_visitor);
+                        xray_visitor.CallAdd(item);
                         count += 1;
                     }
                     else

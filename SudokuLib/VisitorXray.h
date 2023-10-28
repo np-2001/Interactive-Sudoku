@@ -9,6 +9,7 @@
 #define PROJECT1_335_SUDOKULIB_VISITORXRAY_H
 
 #include "VisitorItem.h"
+#include "Item.h"
 
 /**
  * Checks if visited item is the xray
@@ -18,6 +19,9 @@ class VisitorXray: public VisitorItem
 private:
     /// Flag checking if item is a xray
     bool mIsXray = false;
+
+    /// Stores the xray visited
+    Xray *mXray = nullptr;
 
 public:
     /**
@@ -33,7 +37,10 @@ public:
     void VisitXray(Xray *xray) override
     {
         mIsXray = true;
+        mXray = xray;
     }
+
+    void CallAdd(std::shared_ptr<Item> item);
 
 };
 

@@ -5,6 +5,7 @@
 
 #include "pch.h"
 #include "Xray.h"
+#include "Game.h"
 #include <algorithm>
 
 /**
@@ -23,7 +24,7 @@ Xray::Xray(Game *game, std::shared_ptr<wxImage> image, int capacity) : Item(game
  */
 void Xray::Accept(VisitorItem* visitor)
 {
-
+    visitor->VisitXray(this);
 }
 
 /**
@@ -56,6 +57,32 @@ void Xray::Add(std::shared_ptr<Item> item)
 void Xray::Remove(std::shared_ptr<Item> item)
 {
     mItems.erase(std::remove(mItems.begin(), mItems.end(), item), mItems.end());
+}
+void Xray::Draw(std::shared_ptr<wxGraphicsContext> graphics)
+{
+    Item::Draw(graphics);
+
+    // Draw Digits in Xray
+    for (auto &elm : mItems)
+    {
+        auto itemImage = elm->GetImage();
+        auto itemBitmap = elm->GetItemBitmap();
+
+        if (itemImage != nullptr)
+        {
+            int wid = itemImage->GetWidth();
+            int hit = itemImage->GetHeight();
+
+            // Make these getters in Game, Level class
+            int tileHeight = this->GetGame()->GetTileSize();
+
+            graphics->DrawBitmap(itemBitmap, ((this->GetCol()*tileHeight)),
+                                 (((this->GetRow()+1)*tileHeight) - hit), wid/2, hit/2);
+
+        }
+
+    }
+
 }
 
 
