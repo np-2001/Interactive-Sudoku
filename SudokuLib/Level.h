@@ -57,7 +57,6 @@ public:
     void LoadSolve(wxXmlNode *node);
     void SolveLevel();
 
-    //std::shared_ptr<LevelDisplay> GetPopUp() {return mPopup;}
     ///Test will be fixed
     std::shared_ptr<LevelDisplay> mPopup = nullptr;
 

@@ -293,10 +293,7 @@ void Game::Clear()
  */
 void Game::OnKeyDown(wxKeyEvent &event)
 {
-    if(mXray->GetItemCount() == mXray->GetCapacity())
-    {
-        //send error message.
-    }
+    int count = 0;
 
     if (mLevel->mPopup == nullptr)
     {
@@ -330,7 +327,7 @@ void Game::OnKeyDown(wxKeyEvent &event)
                         auto xray = GetXray();
                         xray->Accept(&xray_visitor);
                         xray_visitor.CallAdd(item);
-
+                        count += 1;
                     }
                     else
                     {
