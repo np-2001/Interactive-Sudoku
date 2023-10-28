@@ -43,6 +43,10 @@ public:
      */
     int GetCapacity() const {return mCapacity;};
 
+    /**
+     * Getter for amount of items in Xray
+     * @return int number of items in xray
+     */
     int GetItemCount () {
         return mItems.size();
     }
