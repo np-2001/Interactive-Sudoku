@@ -20,7 +20,6 @@ class Digit: public Item
 private:
     int mValue;
 
-
 public:
     Digit(Game *game, std::shared_ptr<wxImage> image, int value);
 

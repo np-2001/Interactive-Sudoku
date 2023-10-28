@@ -108,11 +108,6 @@ void Game::OnDraw(std::shared_ptr<wxGraphicsContext> graphics, int width, int he
         /// Level 3 Feature
         if(level->GetCurrentLevel() == L"Levels/level3.xml")
         {
-            auto xray = GetXray();
-            VisitorXray xray_visitor;
-            xray->Accept(&xray_visitor);
-
-            xray_visitor.CallThrowup(graphics);
             //Throwup(graphics,xRay);
 
         }
@@ -124,7 +119,7 @@ void Game::OnDraw(std::shared_ptr<wxGraphicsContext> graphics, int width, int he
 void Game::Throwup(std::shared_ptr<wxGraphicsContext> graphics, Xray* xRay) {
     int pixelWidth = mWidth * mTileSize;
     int pixelHeight = mHeight * mTileSize;
-    if(((mTime / 1000) % 60) % 10 == 0 && xRay->GetItemCount() > 0)
+    if(((mTime / 1000) % 60) % 10 == 0)
     {
         wxFont bigFont(wxSize(0, 50),
                        wxFONTFAMILY_SWISS,
@@ -136,9 +131,6 @@ void Game::Throwup(std::shared_ptr<wxGraphicsContext> graphics, Xray* xRay) {
         graphics->GetTextExtent(L"THROW UP!!!!!", &wid, &hit);
         graphics->DrawText(L"THROW UP!!!!!", pixelWidth / 2 - wid / 2, pixelHeight / 2 - hit / 2);
         mSparty->SetNewAngleMouth();
-
-        ///Code here to move items from x-ray mItems back to mItems of game, then set location
-
 
     }
 }
@@ -333,7 +325,6 @@ void Game::OnKeyDown(wxKeyEvent &event)
                     if(!visitor2.MatchGiven())
                     {
                         // It is not a Given
-                        item->SetEatenLocation(item->GetRow(),item->GetCol());
                         mItems.erase(std::remove(mItems.begin(), mItems.end(), item), mItems.end());
                         VisitorXray xray_visitor;
                         auto xray = GetXray();
