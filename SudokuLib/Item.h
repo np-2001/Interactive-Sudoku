@@ -39,6 +39,9 @@ private:
     /// The file for this item
     std::wstring mFile;
 
+    double EatenLocationRow = Item::GetRow();
+    double EatenLocationCol = Item::GetCol();
+
 protected:
     Item(Game *game, std::shared_ptr<wxImage> image);
 
@@ -122,6 +125,11 @@ public:
     /// Getter for mItem Image
     std::shared_ptr<wxImage> GetImage() {
         return mItemImage;
+    }
+
+    void SetEatenLocation (double Row, double Col) {
+        mRow = Row;
+        mCol = Col;
     }
 
 ///**
