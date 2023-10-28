@@ -267,9 +267,9 @@ void Sparty::SetNewCoordinates(int NewX, int NewY) {
         mNewLocationX = mImage->GetWidth()/2;
     }
     // Handles upper y bound of background
-    if(mNewLocationY < mImage->GetHeight()/2)
+    if(mNewLocationY < mImage->GetHeight()/6)
     {
-        mNewLocationY = mImage->GetHeight()/2;
+        mNewLocationY = mImage->GetHeight()/6;
     }
     // Handles lower y bound of background
     if(mNewLocationY > (mGame->GetTileSize()*mGame->GetHeight() - (mImage->GetHeight()/2)))
