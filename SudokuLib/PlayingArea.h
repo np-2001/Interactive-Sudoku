@@ -25,8 +25,10 @@ private:
 
 
     /// TopLeft position
-    int mTopLeftRow;
     int mTopLeftCol;
+    int mTopLeftRow;
+
+    int mBoard[9][9];
 
 
 public:
@@ -37,7 +39,9 @@ public:
     void SetTopLeftCol(int col);
 
 
-    bool IsInPlayArea(int x, int y);
+    bool IsInPlayArea(int x, int y, bool xy);
+
+    bool AddToBoard(int row, int col, int digit);
 
 
 };

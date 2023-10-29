@@ -7,6 +7,7 @@ set(TEST_FILES
         LevelTest.cpp
         SpartyTest.cpp
         VisitorTest.cpp
+        PlayAreaTest.cpp
 
 )
 
