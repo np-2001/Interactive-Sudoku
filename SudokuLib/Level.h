@@ -59,8 +59,6 @@ public:
 
     ///Test will be fixed
     std::shared_ptr<LevelDisplay> mPopup = nullptr;
-
-    void AddContainerChilderen(wxXmlNode *node);
 };
 
 #endif //PROJECT1_335_SUDOKULIB_LEVEL_H

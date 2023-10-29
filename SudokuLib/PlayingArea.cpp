@@ -5,10 +5,12 @@
 
 
 #include "pch.h"
+#include <sstream>
 #include "PlayingArea.h"
 #include "Game.h"
-
-
+#include "VisitorDigit.h"
+#include "VisitorGiven.h"
+#include <algorithm>
 
 
 /**
@@ -17,6 +19,14 @@
 */
 PlayingArea::PlayingArea(Game *game): mGame(game)
 {
+    // Initialize board to -1 (This lets us know that spot is not filled
+    for (int i = 0; i < 9; ++i)
+    {
+        for (int j = 0; j < 9; ++j)
+        {
+            mBoard[i][j] = -1;
+        }
+    }
 }
 
 
@@ -78,15 +88,46 @@ bool PlayingArea::IsInPlayArea(int x, int y, bool xy = false) {
  * @param digit Digit to insert
  * @return True if insertion into the board was successful. False otherwise
  */
-bool PlayingArea::AddToBoard(int row, int col, int digit)
+bool PlayingArea::AddToBoard(int col, int row, std::shared_ptr<Item> digit)
 {
     // If in playing area and there's nothing there
-    if (IsInPlayArea(row,col) && !mGame->HitTest(row, col))
+    if (IsInPlayArea(col,row) && !mGame->HitTest(row, col))
     {
-        mBoard[row - mTopLeftRow][col - mTopLeftCol] = digit;
+        VisitorGiven visitor;
+        digit->Accept(&visitor);
+        int value = visitor.GetValue();
+
+        mBoard[row - mTopLeftRow][col - mTopLeftCol] = value;
         return true;
     }
 
     return false;
+}
 
+/**
+ * Displays the current board in a message window
+ */
+void PlayingArea::DisplayBoard()
+{
+    std::stringstream iss;
+
+    for (int i = 0; i < 9; ++i)
+    {
+        iss << '|';
+        for (int j = 0; j < 9; ++j)
+        {
+            iss << "  ";
+            if (mBoard[i][j] != -1)
+            {
+                iss << mBoard[i][j];
+            }
+            else
+                iss << "  ";
+
+            iss << "  |";
+        }
+        iss << '\n';
+    }
+
+    wxMessageBox(iss.str(), L"Current Board");
 }

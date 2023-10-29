@@ -9,6 +9,7 @@
 #ifndef PROJECT1_335_SUDOKULIB_PLAYINGAREA_H
 #define PROJECT1_335_SUDOKULIB_PLAYINGAREA_H
 
+#include "Item.h"
 
 class Game;
 
@@ -27,7 +28,6 @@ private:
     /// TopLeft position
     int mTopLeftCol;
     int mTopLeftRow;
-
     int mBoard[9][9];
 
 
@@ -41,8 +41,9 @@ public:
 
     bool IsInPlayArea(int x, int y, bool xy);
 
-    bool AddToBoard(int row, int col, int digit);
+    bool AddToBoard(int col, int row, std::shared_ptr<Item>digit);
 
+    void DisplayBoard();
 
 };
 

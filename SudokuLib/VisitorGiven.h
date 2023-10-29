@@ -10,8 +10,9 @@
 
 #include "VisitorItem.h"
 #include "Given.h"
+#include "VisitorDigit.h"
 
-class VisitorGiven: public VisitorItem
+class VisitorGiven: public VisitorDigit
 {
 private:
     /// Flag checking if item is a given
@@ -30,8 +31,10 @@ public:
      */
     void VisitGiven(Given *given) override
     {
+        VisitorDigit::VisitDigit(given);
         mIsGiven = true;
     }
+
 
 };
 

@@ -16,6 +16,7 @@
 #include "Sparty.h"
 #include "LevelDisplay.h"
 #include "VisitorDigit.h"
+
 /**
  * Constructor
  * @param game Game this level belongs to
@@ -278,6 +279,7 @@ void Level::MakeItems(wxXmlNode* node)
             int value;
             obj->GetAttribute("value").ToInt(&value);
             item = std::make_shared<Given>(mGame, mDeclaration->GetImage(id), value);
+            mGame->GetPlayingArea()->AddToBoard(col, row, item);
         }
         else if (name == "background")
         {
@@ -364,4 +366,8 @@ void Level::MakeItems(wxXmlNode* node)
         }
 
     }
+
+    // Display Check //
+    mGame->GetPlayingArea()->DisplayBoard();
+
 }
