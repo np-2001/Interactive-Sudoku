@@ -54,36 +54,36 @@
 		<digit id="i346" col="13.4502" row="9.0537" />
 		<digit id="i346" col="18.9221" row="1.0346" />
 		<digit id="i346" col="2.231" row="1.0106" />
-		<digit id="i346" col="5.6523" row="0.4774" />
+		<digit id="i346" col="12.6523" row="0.4774" />
 		<digit id="i346" col="6.4284" row="1.9049" />
 		<digit id="i346" col="16.7073" row="12.4722" />
 		<digit id="i348" col="15.7796" row="8.305" />
 		<digit id="i348" col="10.279" row="2.1207" />
 		<digit id="i348" col="16.5483" row="6.6454" />
-		<digit id="i348" col="13.6298" row="4.8043" />
+		<digit id="i348" col="13.6298" row="3.8043" />
 		<digit id="i348" col="2.2341" row="10.4269" />
-		<digit id="i350" col="17.9276" row="8.1775" />
-		<digit id="i350" col="17.0344" row="12.0656" />
-		<digit id="i350" col="17.9532" row="8.4917" />
-		<digit id="i350" col="16.9773" row="5.0518" />
+		<digit id="i350" col="17.9276" row="7.1775" />
+		<digit id="i350" col="12.0344" row="12.6656" />
+		<digit id="i350" col="17.9532" row="9.4917" />
+		<digit id="i350" col="16.3773" row="5.0518" />
 		<digit id="i350" col="15.4131" row="2.9035" />
-		<digit id="i350" col="18.6851" row="9.7828" />
-		<digit id="i350" col="1.564" row="12.0949" />
+		<digit id="i350" col="18.6851" row="10.7828" />
+		<digit id="i350" col="1.564" row="10.0949" />
 		<digit id="i350" col="17.3465" row="3.8998" />
 		<digit id="i352" col="14.7488" row="13.1702" />
 		<digit id="i352" col="16.4262" row="10.0575" />
-		<digit id="i352" col="5.1088" row="5.0192" />
-		<digit id="i352" col="1.2055" row="11.4868" />
-		<digit id="i352" col="16.3539" row="0.9247" />
-		<digit id="i352" col="12.3494" row="8.6772" />
-		<digit id="i354" col="18.4106" row="2.8709" />
-		<digit id="i354" col="5.1327" row="7.9336" />
-		<digit id="i354" col="1.3785" row="4.5921" />
-		<digit id="i354" col="13.7285" row="6.6082" />
-		<digit id="i354" col="8.379" row="4.137" />
-		<digit id="i354" col="8.1096" row="1.9467" />
+		<digit id="i352" col="5.1088" row="12.3192" />
+		<digit id="i352" col="10.2055" row="12.4868" />
+		<digit id="i352" col="17.3539" row="0.5247" />
+		<digit id="i352" col="12.3494" row="13.6772" />
+		<digit id="i354" col="18.2106" row="1.8709" />
+		<digit id="i354" col="3.1327" row="8.9336" />
+		<digit id="i354" col="1.3785" row="2.5921" />
+		<digit id="i354" col="13.7285" row="1.6082" />
+		<digit id="i354" col="2.379" row="2.137" />
+		<digit id="i354" col="0.1096" row="1.9467" />
 		<digit id="i356" col="17.0625" row="2.0417" />
-		<digit id="i356" col="4.625" row="12.3333" />
+		<digit id="i356" col="4.625" row="12.2333" />
 		<digit id="i356" col="16.0833" row="0.8542" />
 		<digit id="i356" col="13.5208" row="8.1875" />
 		<digit id="i356" col="6.6458" row="12.1875" />
@@ -92,7 +92,7 @@
 		<digit id="i356" col="14.6667" row="6.3333" />
 		<digit id="i358" col="18.3333" row="4.9167" />
 		<digit id="i358" col="17.3125" row="4.8958" />
-		<digit id="i358" col="16.6875" row="11.9375" />
+		<digit id="i358" col="8.6875" row="12.5375" />
 		<digit id="i358"  col="15.1875" row="10.5833" />
 		<digit id="i358" col="13.8333" row="4.9792" />
 		<digit id="i358" col="18.5208" row="3.0" />
@@ -107,7 +107,7 @@
 		<digit id="i362" col="13.7285" row="6.6082" />
 		<digit id="i362" col="8.75" row="1.3333" />
 		<digit id="i362" col="15.0417" row="8.2917" />
-		<digit id="i362" col="13.5" row="9.7292" />
+		<digit id="i362" col="13" row="9.9292" />
 		<digit id="i362" col="14.8333" row="0.8333" />
 		<digit id="i362" col="5.6458" row="13.9375" />
 		<sparty id="i368"  col="5.8125" row="0.5" />
