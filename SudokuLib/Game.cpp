@@ -441,3 +441,14 @@ std::shared_ptr<Item> Game::GetXray()
 
     return nullptr;
 }
+
+/**
+ * Adds the item item and then updates mItems to make sparty the last drawn item
+ * @param item item to add to mItems
+ */
+void Game::MakeSpartyLast(std::shared_ptr<Item> item)
+{
+    auto sparty = mItems.back();
+    mItems.back() = item;
+    mItems.push_back(sparty);
+}

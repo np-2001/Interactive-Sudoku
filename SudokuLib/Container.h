@@ -31,6 +31,9 @@ private:
     /// Container front image bitmap
     wxGraphicsBitmap mFrontBitmap;
 
+    /// Is container destroyed
+    bool mIsDestroyed = false;
+
 
 public:
     Container(Game *game, std::shared_ptr<wxImage> image);
@@ -54,6 +57,7 @@ public:
      * @param item Digit to be added
      */
     void Add(std::shared_ptr<Digit> item) {mContainerItems.push_back(item); };
+    void DestroyContainer();
 
 
 };

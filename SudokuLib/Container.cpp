@@ -7,6 +7,7 @@
 #include "Container.h"
 #include "Game.h"
 #include "Digit.h"
+#include <cstdlib>
 
 /**
  * Constructor
@@ -95,8 +96,9 @@ void Container::Draw(std::shared_ptr<wxGraphicsContext> graphics)
     hit = mContainerImage->GetHeight();
     tileHeight = GetGame()->GetTileSize();
 
-    graphics->DrawBitmap(mFrontBitmap, ((GetCol()*tileHeight)),
-                         (((GetRow()+1)*tileHeight) - hit), wid, hit);
+    if (!mIsDestroyed)
+        graphics->DrawBitmap(mFrontBitmap, ((GetCol()*tileHeight)),
+                            (((GetRow()+1)*tileHeight) - hit), wid, hit);
 
 }
 
@@ -114,4 +116,37 @@ void Container::Regurgitate()
 Container::Container(Game *game, std::shared_ptr<wxImage> image, std::shared_ptr<wxImage> front) :
  Item(game, image), mContainerImage(image), mFrontImage(front)
 {
+    // Seeds the container destruction offset value
+    std::srand(5);
+}
+
+
+void Container::DestroyContainer()
+{
+    if (!mIsDestroyed)
+    {
+        std::vector<std::shared_ptr<Digit>> toMove;
+        mIsDestroyed = true;
+
+        // Update the new location of the tiles to be destroyed
+        for (auto digit : mContainerItems)
+        {
+            int xOffset = std::rand() * GetGame()->GetTileSize();
+            int yOffset = std::rand() * GetGame()->GetTileSize();
+            digit->SetLocation(GetRow() + xOffset, GetCol() + yOffset);
+            toMove.push_back(digit);
+        }
+
+        // Deletes the items from mContainerItems and then adds it to mItems
+        for (auto digit : toMove)
+        {
+            GetGame()->MakeSpartyLast(digit);
+            std::remove(mContainerItems.begin(), mContainerItems.end(),digit);
+        }
+
+
+    }
+
+
+
 }
