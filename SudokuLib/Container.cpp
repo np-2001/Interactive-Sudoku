@@ -131,9 +131,11 @@ void Container::DestroyContainer()
         // Update the new location of the tiles to be destroyed
         for (auto digit : mContainerItems)
         {
-            int xOffset = std::rand() * GetGame()->GetTileSize();
-            int yOffset = std::rand() * GetGame()->GetTileSize();
-            digit->SetLocation(GetRow() + xOffset, GetCol() + yOffset);
+            int xOffset = std::rand();
+            int yOffset = std::rand();
+            digit->SetLocation(digit->GetRow() - 2, digit->GetCol());
+
+            wxMessageBox(wxString::Format(wxT(" New location is: %f, %f"), digit->GetRow(), digit->GetCol()) );
             toMove.push_back(digit);
         }
 
@@ -141,8 +143,9 @@ void Container::DestroyContainer()
         for (auto digit : toMove)
         {
             GetGame()->MakeSpartyLast(digit);
-            std::remove(mContainerItems.begin(), mContainerItems.end(),digit);
+            //std::remove(mContainerItems.begin(), mContainerItems.end(),digit);
         }
+        mContainerItems.clear();
 
 
     }

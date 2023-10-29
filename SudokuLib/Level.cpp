@@ -365,5 +365,3 @@ void Level::MakeItems(wxXmlNode* node)
 
     }
 }
-
-// Maybe I move this to container class since those who know do

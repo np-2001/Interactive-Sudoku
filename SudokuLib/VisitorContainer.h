@@ -9,6 +9,7 @@
 #define PROJECT1_335_SUDOKULIB_VISITORCONTAINER_H
 
 #include "VisitorItem.h"
+#include "Container.h"
 
 /**
  * Class detailing visitor that
@@ -20,6 +21,7 @@ private:
     /// Flag checking if item is a container
     bool mIsContainer = false;
 
+    Container *mContainer;
 public:
     /**
      * Getter for mIsContainer
@@ -34,7 +36,11 @@ public:
     void VisitContainer(Container *container) override
     {
         mIsContainer = true;
+        mContainer = container;
     }
+
+    /** Calls the DestroyContainer function on this container */
+    void CallDestroyContainer(){ mContainer->DestroyContainer(); }
 
 };
 
