@@ -362,28 +362,24 @@ void Game::OnKeyDown(wxKeyEvent &event)
         if(event.GetKeyCode() >= 48 && event.GetKeyCode() <= 57 && !(mSparty->GetMoving()) && mSparty->GetAngleMouth() == 0 && mSparty->GetAngleHead() == 0)
         {
             int throw_digit = event.GetKeyCode() - 48;
+            // We are in the playing area
+            auto xray = GetXray();
+            auto sparty = mItems.back();
 
-            if(this->GetPlayingArea()->IsInPlayArea(x-10,y-10))
+            VisitorXray xray_visitor;
+            xray->Accept(&xray_visitor);
+
+            auto item = xray_visitor.CallGetMatch(throw_digit);
+
+            if(item != nullptr)
             {
-                // We are in the playing area
-                auto xray = GetXray();
-                auto sparty = mItems.back();
-
-                VisitorXray xray_visitor;
-                xray->Accept(&xray_visitor);
-
-                auto item = xray_visitor.CallGetMatch(throw_digit);
-
-                if(item != nullptr)
-                {
-                    xray_visitor.CallRemove(item);
-                    item->SetPixelLocation(x+10, y+10);
-                    mItems.pop_back();
-                    mItems.push_back(item);
-                    mItems.push_back(sparty);
-                }
-
+                xray_visitor.CallRemove(item);
+                item->SetPixelLocation(x+10, y+10);
+                mItems.pop_back();
+                mItems.push_back(item);
+                mItems.push_back(sparty);
             }
+
         }
     }
 }
