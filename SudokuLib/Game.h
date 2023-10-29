@@ -54,6 +54,10 @@ private:
 
     ///Current time
     long mTime = 0;
+
+    ///Old Time
+    long mOldTime;
+
 public:
     Game();
     Game(wxString startingLevel);

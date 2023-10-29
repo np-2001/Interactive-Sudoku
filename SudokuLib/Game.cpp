@@ -112,8 +112,26 @@ void Game::OnDraw(std::shared_ptr<wxGraphicsContext> graphics, int width, int he
 
         }
 
-        graphics->PopState();
+        if (mSparty->GetThrowUp() == true && mTime*0.001 > 2+(mOldTime*0.001)) {
+            mSparty->SetThrowUp(false);
+
+        } else if (mSparty->GetThrowUp() == true) {
+            wxFont bigFont(wxSize(0, 100),
+                           wxFONTFAMILY_SWISS,
+                           wxFONTSTYLE_NORMAL,
+                           wxFONTWEIGHT_BOLD);
+            graphics->SetFont(bigFont, *wxGREEN);
+
+            double wid, hit;
+
+            graphics->GetTextExtent(L"THROW UP!!!!!", &wid, &hit);
+            graphics->DrawText(L"THROW UP!!!!!", pixelWidth / 2 - wid / 2, pixelHeight / 2 - hit / 2);
+
+        }
+
+
     }
+    graphics->PopState();
 }
 
 void Game::Throwup(std::shared_ptr<wxGraphicsContext> graphics, Xray* xRay) {
@@ -121,17 +139,9 @@ void Game::Throwup(std::shared_ptr<wxGraphicsContext> graphics, Xray* xRay) {
     int pixelHeight = mHeight * mTileSize;
     if(((mTime / 1000) % 60) % 10 == 0 && xRay->GetItemCount() > 0)
     {
-        wxFont bigFont(wxSize(0, 50),
-                       wxFONTFAMILY_SWISS,
-                       wxFONTSTYLE_NORMAL,
-                       wxFONTWEIGHT_BOLD);
-        graphics->SetFont(bigFont, *wxGREEN);
-
-        double wid, hit;
-        graphics->GetTextExtent(L"THROW UP!!!!!", &wid, &hit);
-        graphics->DrawText(L"THROW UP!!!!!", pixelWidth / 2 - wid / 2, pixelHeight / 2 - hit / 2);
+        mOldTime = mTime;
         mSparty->SetNewAngleMouth();
-
+        mSparty->SetThrowUp(true);
 
         ///Afterwards clear the items in xray
         xRay->Empty();
@@ -170,6 +180,7 @@ void Game::OnLeftDown(int x, int y)
  */
 void Game::Update(double time)
 {
+
     mTime = mTime + (time*1000);
 
     mTimeDisplay.Update(mTime);
