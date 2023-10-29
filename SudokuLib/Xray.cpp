@@ -108,3 +108,25 @@ std::shared_ptr<Item> Xray::GetMatch(int x)
     return nullptr;
 }
 
+void Xray::Empty() {
+    std::vector<std::shared_ptr<Item>> toBeEmptied;
+    for (auto digit : mItems)
+    {
+
+        digit->SetPixelLocation(digit->GetEatenLocationX(), digit->GetEatenLocationY());
+
+        // Add to the ToBeDeleted Array
+        toBeEmptied.push_back(digit);
+
+
+    }
+
+    for (auto digit : toBeEmptied)
+    {
+        GetGame()->MakeSpartyLast(digit);
+        //std::remove(mContainerItems.begin(), mContainerItems.end(),digit);
+    }
+    mItems.clear();
+
+}
+

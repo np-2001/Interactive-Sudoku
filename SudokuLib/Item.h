@@ -39,6 +39,9 @@ private:
     /// The file for this item
     std::wstring mFile;
 
+    double EatenLocationX;
+    double EatenLocationY;
+
 protected:
     Item(Game *game, std::shared_ptr<wxImage> image);
 
@@ -123,6 +126,19 @@ public:
     std::shared_ptr<wxImage> GetImage() {
         return mItemImage;
     }
+
+    void SetEatenLocation(double X, double Y) {
+        EatenLocationX = X;
+        EatenLocationY = Y;
+    }
+
+    double GetEatenLocationX() {
+        return EatenLocationX;
+    };
+
+    double GetEatenLocationY() {
+        return EatenLocationY;
+    };
 
 ///**
 // * Get the width of item
