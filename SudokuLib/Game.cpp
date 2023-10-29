@@ -487,3 +487,28 @@ void Game::MakeSpartyLast(std::shared_ptr<Item> item)
     mItems.push_back(item);
     mItems.push_back(sparty);
 }
+
+
+/**
+ * Handles game sequencing depending on if the game was solved sucessfully or not
+ * @param correct Boolean determining if the game was solved correctly or not
+ * @param graphics Graphics device to draw on
+ */
+void Game::Finished(bool correct,std::shared_ptr<wxGraphicsContext> graphics) {
+    int pixelWidth = mWidth * mTileSize;
+    int pixelHeight = mHeight * mTileSize;
+    wxFont bigFont(wxSize(0, 100),
+                   wxFONTFAMILY_SWISS,
+                   wxFONTSTYLE_NORMAL,
+                   wxFONTWEIGHT_BOLD);
+    graphics->SetFont(bigFont, *wxGREEN);
+    double wid, hit;
+    if (correct) {
+        graphics->GetTextExtent(L"Correct!!!!!", &wid, &hit);
+        graphics->DrawText(L"Correct!!!!!", pixelWidth / 2 - wid / 2, pixelHeight / 2 - hit / 2);
+    } else {
+        graphics->GetTextExtent(L"Wrong!!!!!", &wid, &hit);
+        graphics->DrawText(L"Wrong!!!!!", pixelWidth / 2 - wid / 2, pixelHeight / 2 - hit / 2);
+    }
+}
+
