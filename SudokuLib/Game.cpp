@@ -278,7 +278,10 @@ std::shared_ptr<Item> Game::FindNumber(int num) {
         (*i)->Accept(&visitor);
 
         if(visitor.GetValue() == num) {
-            return *i;
+            auto item = *i;
+            mItems.erase(std::remove(mItems.begin(), mItems.end(), item), mItems.end());
+            MakeSpartyLast(item);
+            return item;
         }
     }
     return  nullptr;
