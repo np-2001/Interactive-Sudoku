@@ -310,12 +310,17 @@ std::shared_ptr<Item> Game::FindNumber(int num) {
         VisitorDigit visitor;
         (*i)->Accept(&visitor);
 
-        if(visitor.GetValue() == num) {
-            auto item = *i;
-            mItems.erase(std::remove(mItems.begin(), mItems.end(), item), mItems.end());
-            MakeSpartyLast(item);
-            return item;
+        if(visitor.MatchDigit())
+        {
+            if(visitor.GetValue() == num) {
+                auto item = *i;
+                mItems.erase(std::remove(mItems.begin(), mItems.end(), item), mItems.end());
+                MakeSpartyLast(item);
+                return item;
+            }
         }
+
+
     }
     return  nullptr;
 }
