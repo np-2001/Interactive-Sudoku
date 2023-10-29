@@ -188,6 +188,11 @@ void Level::SolveLevel() {
                 // find the "correct" number somewhere on the board
                 auto correct = mGame->FindNumber(solution_value);
 
+                if(correct == nullptr)
+                {
+                    continue;
+                }
+
                 // assign it to the current row and col values
                 correct->SetLocation(row, col);
             }
