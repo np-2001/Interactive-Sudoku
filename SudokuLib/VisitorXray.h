@@ -45,6 +45,7 @@ public:
     void CallRemove(std::shared_ptr<Item> item);
     std::shared_ptr<Item> CallGetMatch(int x);
 
+    bool CallTimerStart();
 };
 
 #endif //PROJECT1_335_SUDOKULIB_VISITORXRAY_H

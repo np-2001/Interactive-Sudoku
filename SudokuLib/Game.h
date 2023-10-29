@@ -47,10 +47,8 @@ private:
     /// Playing Area
     std::shared_ptr<PlayingArea> mPlayingArea;
 
-    /// pointer to xray
-    std::shared_ptr<Xray> mXray;
-
-    std::shared_ptr<Sparty> mSparty = nullptr; /// Temp pointer to sparty to be replaced with visitor
+    /// pointer to sparty
+    std::shared_ptr<Sparty> mSparty = nullptr;
 
     ///Current time
     long mTime = 0;
@@ -58,6 +56,18 @@ private:
     ///Old Time
     long mOldTime;
 
+    ///Eat Time
+    long mEatTime = 0;
+
+    /// The timer that allows for animation
+    wxTimer mTimer;
+
+    /// Stopwatch used to measure elapsed time
+    wxStopWatch mStopWatch;
+
+
+    ///Indicates timer has started for throw up
+    bool mStarted = false;
 public:
     Game();
     Game(wxString startingLevel);
@@ -67,6 +77,7 @@ public:
     /// The display timer (scoreboard)
     Timer mTimeDisplay;
 
+    Timer mTimeDisplay2;
     double GetOffsetX() const { return mXOffset;}
     double GetOffsetY() const { return mYOffset;}
     double GetScale() const { return mScale;}
@@ -98,10 +109,7 @@ public:
         mSparty = sparty;
     }
 
-    /// Setter for Xray
-    void SetXray(std::shared_ptr<Xray> xray) {
-        mXray = xray;
-    }
+
 
     std::shared_ptr<Item> EatTest(int x, int y);
     std::shared_ptr<Item> HitTest(int row, int col);
@@ -114,6 +122,12 @@ public:
     void Throwup(std::shared_ptr<wxGraphicsContext> graphics, Xray* xRay);
 
     void MakeSpartyLast(std::shared_ptr<Item>);
+
+    long GetEatTime() {
+        return mEatTime;
+    }
+
+
 };
 
 #endif //PROJECT1_335_SUDOKULIB_GAME_H

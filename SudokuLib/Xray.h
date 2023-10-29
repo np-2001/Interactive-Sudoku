@@ -49,6 +49,7 @@ public:
     }
 
     void Empty();
+    bool TimerStart();
 };
 
 #endif //PROJECT1_335_SUDOKULIB_XRAY_H
