@@ -7,7 +7,7 @@
 #include "Container.h"
 #include "Game.h"
 #include "Digit.h"
-#include <cstdlib>
+#include <random>
 
 /**
  * Constructor
@@ -116,8 +116,6 @@ void Container::Regurgitate()
 Container::Container(Game *game, std::shared_ptr<wxImage> image, std::shared_ptr<wxImage> front) :
  Item(game, image), mContainerImage(image), mFrontImage(front)
 {
-    // Seeds the container destruction offset value
-    std::srand(5);
 }
 
 
@@ -125,22 +123,27 @@ void Container::DestroyContainer()
 {
     if (!mIsDestroyed)
     {
-        std::vector<std::shared_ptr<Digit>> toMove;
+        std::vector<std::shared_ptr<Digit>> toBeDeleted;
         mIsDestroyed = true;
+
+        std::default_random_engine generator;
+        std::uniform_int_distribution<int> distX(-2, 2);
+        std::uniform_int_distribution<int> distY(3, 5);
+
 
         // Update the new location of the tiles to be destroyed
         for (auto digit : mContainerItems)
         {
-            int xOffset = std::rand();
-            int yOffset = std::rand();
-            digit->SetLocation(digit->GetRow() - 2, digit->GetCol());
+            int offsetX = distX(generator);
+            int offsetY = distY(generator);
+            digit->SetLocation(digit->GetRow() - offsetY, digit->GetCol() + offsetX);
 
-            wxMessageBox(wxString::Format(wxT(" New location is: %f, %f"), digit->GetRow(), digit->GetCol()) );
-            toMove.push_back(digit);
+            // Add to the ToBeDeleted Array
+            toBeDeleted.push_back(digit);
         }
 
         // Deletes the items from mContainerItems and then adds it to mItems
-        for (auto digit : toMove)
+        for (auto digit : toBeDeleted)
         {
             GetGame()->MakeSpartyLast(digit);
             //std::remove(mContainerItems.begin(), mContainerItems.end(),digit);

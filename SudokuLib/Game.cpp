@@ -350,7 +350,7 @@ void Game::OnKeyDown(wxKeyEvent &event)
 
                 if(visitor.MatchContainer())
                 {
-                    wxMessageBox(L"This is a container");
+                    //wxMessageBox(L"This is a container");
                     visitor.CallDestroyContainer();
 
                 }
