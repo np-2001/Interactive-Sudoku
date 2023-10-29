@@ -22,7 +22,7 @@
 		<xray id="i363" width="144" height="144" image="xray.png" capacity="7" />
 		<background id="i364" width="528" height="528" image="sudoku.png" />
 		<background id="i365" width="960" height="720" image="background3.jpg" />
-		<sparty id="i368" width="96" height="96" front="1" head-pivot-angle="1.5" head-pivot-x="40" head-pivot-y="86" image1="sparty-1.png" image2="sparty-2.png" mouth-pivot-angle="0.5" mouth-pivot-x="30" mouth-pivot-y="65" target-x="72" target-y="24" />
+		<sparty id="i368" width="96" height="96" front="1" head-pivot-angle="1.5" head-pivot-x="40" head-pivot-y="86" image1="sparty-1.png" image2="sparty-2.png" mouth-pivot-angle="1" mouth-pivot-x="30" mouth-pivot-y="65" target-x="72" target-y="24" />
 	</declarations>
 	<game col="4" row="3">3 4 1 9 8 2 7 5 6 2 5 8 3 6 7 9 1 4 9 7 6 5 1 4 2 3 8 4 8 2 1 5 6 3 7 9 6 9 7 4 2 3 5 8 1 5 1 3 7 9 8 6 4 2 7 2 9 8 3 1 4 6 5 1 3 5 6 4 9 8 2 7 8 6 4 2 7 5 1 9 3</game>
 	<items>
