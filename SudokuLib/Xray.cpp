@@ -130,3 +130,7 @@ void Xray::Empty() {
 
 }
 
+
+bool Xray::TimerStart() {
+    return (GetItemCount() > 0) && (GetGame()->GetEatTime() == 0);
+}

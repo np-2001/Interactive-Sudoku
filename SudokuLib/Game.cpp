@@ -22,6 +22,8 @@
 //using namespace std;
 using std::make_unique;
 
+/// Frame duration in milliseconds
+const int FrameDuration = 30;
 
 /**
  * Game Constructor
@@ -97,7 +99,7 @@ void Game::OnDraw(std::shared_ptr<wxGraphicsContext> graphics, int width, int he
     else
     {
         mTimeDisplay.OnDraw(graphics);
-
+        //mTimeDisplay2.OnDraw(graphics);
         auto level = GetLevel();
 
         /// Level 3 Feature
@@ -114,6 +116,7 @@ void Game::OnDraw(std::shared_ptr<wxGraphicsContext> graphics, int width, int he
 
         if (mSparty->GetThrowUp() == true && mTime*0.001 > 2+(mOldTime*0.001)) {
             mSparty->SetThrowUp(false);
+
 
         } else if (mSparty->GetThrowUp() == true) {
             wxFont bigFont(wxSize(0, 100),
@@ -137,16 +140,31 @@ void Game::OnDraw(std::shared_ptr<wxGraphicsContext> graphics, int width, int he
 void Game::Throwup(std::shared_ptr<wxGraphicsContext> graphics, Xray* xRay) {
     int pixelWidth = mWidth * mTileSize;
     int pixelHeight = mHeight * mTileSize;
-    if(((mTime / 1000) % 60) % 10 == 0 && xRay->GetItemCount() > 0)
-    {
-        mOldTime = mTime;
-        mSparty->SetNewAngleMouth();
-        mSparty->SetThrowUp(true);
+ //   long time = mStopWatch.Time();
+ //((mTime / 1000) % 60) % 10 == 0
+ //
+    if (mStarted == true) {
+        long time = mStopWatch.Time();
+        std::cout << time/1000 << "    ";
+        if(time/1000 >= 15 && xRay->GetItemCount() > 0)
+        {
+            mOldTime = mTime;
+            mSparty->SetNewAngleMouth();
+            mSparty->SetThrowUp(true);
 
-        ///Afterwards clear the items in xray
-        xRay->Empty();
+            mStopWatch.Pause();
+            mStopWatch.Start();
+            mStopWatch.Pause();
 
+            auto x = mStopWatch.Time();
+            ///Afterwards clear the items in xray
+            xRay->Empty();
+            mStarted = false;
+
+
+        }
     }
+
 }
 
 
@@ -193,6 +211,8 @@ void Game::Update(double time)
 
     if (mLevel->mPopup != nullptr) {
         mLevel->mPopup->Update(mTime);
+
+
     }
 
 //    if (mSparty != nullptr) {
@@ -204,6 +224,19 @@ void Game::Update(double time)
 //    }
     for (auto item: mItems) {
         item->Update(time);
+    }
+
+    /// Level 3 feature timer update
+    if (mLevel->GetCurrentLevel() == L"Levels/level3.xml") {
+        auto xray = GetXray();
+        VisitorXray xray_visitor;
+        xray->Accept(&xray_visitor);
+
+        if (xray_visitor.CallTimerStart() && mStarted == false) {
+
+            mStopWatch.Start();
+            mStarted = true;
+        }
     }
 
 }

@@ -38,3 +38,7 @@ std::shared_ptr<Item> VisitorXray::CallGetMatch(int x)
         return mXray->GetMatch(x);
     }
 }
+
+bool VisitorXray::CallTimerStart() {
+    return mXray->TimerStart();
+}
