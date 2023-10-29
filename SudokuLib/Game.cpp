@@ -80,11 +80,6 @@ void Game::OnDraw(std::shared_ptr<wxGraphicsContext> graphics, int width, int he
     //Draw each item in the list
     for(auto item : mItems)
     {
-        //Sparty is hardcoded for now
-//        if(item == mItems.back())
-//        {
-//            break;
-//        }
 
         item->Draw(graphics);
         // If Item is a Container
@@ -347,41 +342,20 @@ void Game::OnKeyDown(wxKeyEvent &event)
             mSparty->SetNewAngleHead();
 
             // HitTest For Container
-            auto item = HitTest(x+50,y);
-            if (item != nullptr)
+            auto item = HitTest(x + 50, y);
+            if(item != nullptr)
             {
                 VisitorContainer visitor;
                 item->Accept(&visitor);
 
-                if (visitor.MatchContainer())
+                if(visitor.MatchContainer())
                 {
-                    wxMessageBox(L"This is a container");
+                    //wxMessageBox(L"This is a container");
+                    visitor.CallDestroyContainer();
 
                 }
 
             }
-            //        Should not be here
-            //        auto item = EatTest(x, y);
-            //
-            //        if(item != nullptr)
-            //        {
-            //            //Check if we clicked on a Digit that is not a Given
-            //            VisitorDigit visitor;
-            //            item->Accept(&visitor);
-            //
-            //            if(visitor.MatchDigit())
-            //            {
-            //                // We are next to a Digit
-            //                VisitorGiven visitor2;
-            //                item->Accept(&visitor2);
-            //
-            //                if(! visitor2.MatchGiven())
-            //                {
-            //                    // It is not a Given
-            //                    item->Eat();
-            //                }
-            //            }
-            //        }
         }
 
         // Event for numbers 0-9
@@ -440,4 +414,15 @@ std::shared_ptr<Item> Game::GetXray()
     }
 
     return nullptr;
+}
+
+/**
+ * Adds the item item and then updates mItems to make sparty the last drawn item
+ * @param item item to add to mItems
+ */
+void Game::MakeSpartyLast(std::shared_ptr<Item> item)
+{
+    auto sparty = mItems.back();
+    mItems.back() = item;
+    mItems.push_back(sparty);
 }

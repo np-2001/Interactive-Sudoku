@@ -7,6 +7,7 @@
 #include "Container.h"
 #include "Game.h"
 #include "Digit.h"
+#include <random>
 
 /**
  * Constructor
@@ -95,8 +96,9 @@ void Container::Draw(std::shared_ptr<wxGraphicsContext> graphics)
     hit = mContainerImage->GetHeight();
     tileHeight = GetGame()->GetTileSize();
 
-    graphics->DrawBitmap(mFrontBitmap, ((GetCol()*tileHeight)),
-                         (((GetRow()+1)*tileHeight) - hit), wid, hit);
+    if (!mIsDestroyed)
+        graphics->DrawBitmap(mFrontBitmap, ((GetCol()*tileHeight)),
+                            (((GetRow()+1)*tileHeight) - hit), wid, hit);
 
 }
 
@@ -114,4 +116,43 @@ void Container::Regurgitate()
 Container::Container(Game *game, std::shared_ptr<wxImage> image, std::shared_ptr<wxImage> front) :
  Item(game, image), mContainerImage(image), mFrontImage(front)
 {
+}
+
+
+void Container::DestroyContainer()
+{
+    if (!mIsDestroyed)
+    {
+        std::vector<std::shared_ptr<Digit>> toBeDeleted;
+        mIsDestroyed = true;
+
+        std::default_random_engine generator;
+        std::uniform_int_distribution<int> distX(-2, 2);
+        std::uniform_int_distribution<int> distY(3, 5);
+
+
+        // Update the new location of the tiles to be destroyed
+        for (auto digit : mContainerItems)
+        {
+            int offsetX = distX(generator);
+            int offsetY = distY(generator);
+            digit->SetLocation(digit->GetRow() - offsetY, digit->GetCol() + offsetX);
+
+            // Add to the ToBeDeleted Array
+            toBeDeleted.push_back(digit);
+        }
+
+        // Deletes the items from mContainerItems and then adds it to mItems
+        for (auto digit : toBeDeleted)
+        {
+            GetGame()->MakeSpartyLast(digit);
+            //std::remove(mContainerItems.begin(), mContainerItems.end(),digit);
+        }
+        mContainerItems.clear();
+
+
+    }
+
+
+
 }

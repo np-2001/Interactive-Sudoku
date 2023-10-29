@@ -26,20 +26,22 @@ void MainFrame::Initialize()
 
     // Main Menu options
     auto levelMenu = new wxMenu();
+    auto fileMenu = new wxMenu();
     auto helpMenu = new wxMenu();
 
+    menuBar->Append(fileMenu, L"&File");
     menuBar->Append(levelMenu, L"&Level");
     menuBar->Append(helpMenu, L"&Help");
+
+    // File Submenu
+    fileMenu->Append(IDM_SOLVE_LEVEL, L"&Solve Level", "Solve Current Level");
+    fileMenu->Append(wxID_EXIT, "E&xit\tAlt-X", "Quit this program");
 
     // Level Submenu
     levelMenu->Append(IDM_LEVEL_0, L"&Level 0", "Load level 0");
     levelMenu->Append(IDM_LEVEL_1, L"&Level 1", "Load level 1");
     levelMenu->Append(IDM_LEVEL_2, L"&Level 2", "Load level 2");
     levelMenu->Append(IDM_LEVEL_3, L"&Level 3", "Load level 3");
-    levelMenu->AppendSeparator();
-    levelMenu->Append(IDM_SOLVE_LEVEL, L"&Solve Level", "Solve Current Level");
-    levelMenu->AppendSeparator();
-    levelMenu->Append(wxID_EXIT, "E&xit\tAlt-X", "Quit this program");
 
     // Help Submenu
     helpMenu->Append(wxID_ABOUT, "&Instructions\tF1", L"How to play");
@@ -71,8 +73,8 @@ void MainFrame::OnExit(wxCommandEvent &event)
  */
 void MainFrame::OnAbout(wxCommandEvent &event)
 {
-    wxMessageBox(L"Lorem Ipsum! (Replace this text with tutorial probably)",
-                 L"About Aquarium",
+    wxMessageBox(L"About Action Sudoku",
+                 L"About ActionSudoku",
                  wxOK,
                  this);
 }
