@@ -76,6 +76,9 @@ private:
 
     /// Sparty's chin
     std::shared_ptr<wxImage> mImage2;
+
+    ///Sparty is throwing up
+    bool mThrowUp = false;
 public:
     Sparty(Game *game, std::shared_ptr<wxImage> image);
 
@@ -160,6 +163,11 @@ public:
      */
     int GetSpartyHeight() const {return mImage->GetHeight();}
 
+    bool GetThrowUp () { return mThrowUp;}
+
+    void SetThrowUp (bool throwup) {
+        mThrowUp = throwup;
+    }
 };
 
 #endif //PROJECT1_335_SUDOKULIB_SPARTY_H
