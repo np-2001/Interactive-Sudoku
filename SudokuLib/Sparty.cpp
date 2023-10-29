@@ -279,3 +279,6 @@ void Sparty::SetNewCoordinates(int NewX, int NewY) {
 }
 
 
+
+
+

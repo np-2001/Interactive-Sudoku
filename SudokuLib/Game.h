@@ -127,7 +127,7 @@ public:
         return mEatTime;
     }
 
-
+    void Finished(bool correct,std::shared_ptr<wxGraphicsContext> graphics);
 };
 
 #endif //PROJECT1_335_SUDOKULIB_GAME_H
