@@ -101,7 +101,7 @@ void Game::OnDraw(std::shared_ptr<wxGraphicsContext> graphics, int width, int he
         auto level = GetLevel();
 
         /// Level 3 Feature
-        if(level->GetCurrentLevel() == L"Levels/level1.xml")
+        if(level->GetCurrentLevel() == L"Levels/level3.xml")
         {
             auto xray = GetXray();
             VisitorXray xray_visitor;
