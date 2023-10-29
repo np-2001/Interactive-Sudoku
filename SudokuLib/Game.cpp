@@ -419,6 +419,7 @@ std::shared_ptr<Item> Game::GetXray()
 void Game::MakeSpartyLast(std::shared_ptr<Item> item)
 {
     auto sparty = mItems.back();
-    mItems.back() = item;
+    mItems.pop_back();
+    mItems.push_back(item);
     mItems.push_back(sparty);
 }
