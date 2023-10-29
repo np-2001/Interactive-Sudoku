@@ -48,6 +48,7 @@ public:
         return mItems.size();
     }
 
+    void Empty();
 };
 
 #endif //PROJECT1_335_SUDOKULIB_XRAY_H
