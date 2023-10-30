@@ -29,8 +29,12 @@ private:
     /// TopLeft position
     int mTopLeftCol;
     int mTopLeftRow;
+
+    /// The current state of the board
     std::array<std::array<int, 9>, 9> mBoard;
-    //int mBoard[9][9];
+
+    /// The solution of the board
+    std::array<std::array<int, 9>, 9> mSolution;
     int mFill = 0;
 
 
@@ -40,6 +44,9 @@ public:
     void SetTopLeftRow(int row);
     int GetTopLeftCol() const;
     void SetTopLeftCol(int col);
+
+    std::array<std::array<int, 9>, 9> GetSolution();
+    void SetSolution(std::array<std::array<int, 9>, 9> solution);
 
 
     bool IsInPlayArea(int x, int y, bool xy);

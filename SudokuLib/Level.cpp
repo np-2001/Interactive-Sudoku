@@ -145,6 +145,7 @@ void Level::LoadLevel()
      // <game col="6" row="3">3 2 4 8 7 6 0 1 5 7 5 6 2 0 1 4 8 ... </game>
      int row;
      int col;
+     std::array<std::array<int,9>,9> solution;
      node->GetAttribute(L"row").ToInt(&row);
      node->GetAttribute(L"col").ToInt(&col);
 
@@ -155,10 +156,12 @@ void Level::LoadLevel()
 
      for (int i = 0; i<content.length(); i++) {
          if (content[i] != ' ') {
-             mSolution[j/9][j%9] = content[i]-48;
+             solution[j/9][j%9] = content[i]-48;
              j++;
          }
      }
+
+     mGame->GetPlayingArea()->SetSolution(solution);
 
  }
 
@@ -186,7 +189,8 @@ void Level::SolveLevel() {
                 // else, reference solution to see what number goes there
                 // find the number elsewhere on the board
                 // and assign it there
-                auto solution_value = mSolution[row-firstRow][col-firstCol];
+
+                auto solution_value = mGame->GetPlayingArea()->GetSolution()[row-firstRow][col-firstCol];
 
                 // find the "correct" number somewhere on the board
                 auto correct = mGame->FindNumber(solution_value);
