@@ -138,10 +138,11 @@ bool PlayingArea::RemoveFromBoard(int col, int row, std::shared_ptr<Item> digit)
 
 bool PlayingArea::CheckSolution()
 {
-    if (mBoard == mSolution)
-        wxMessageBox(L"Solved");
-    else
-        wxMessageBox(L"Not Correct");
+
+    if (mBoard == mSolution) {
+
+        return true;
+    }
 
     return false;
 }
@@ -172,9 +173,9 @@ void PlayingArea::DisplayBoard()
         iss << '\n';
     }
 
-    iss << "\n\nThe board has: " << mFill << " digits on it.\n\t" << (mFill/81.0)*100 << "% filled";
+    //iss << "\n\nThe board has: " << mFill << " digits on it.\n\t" << (mFill/81.0)*100 << "% filled";
 
-    wxMessageBox(iss.str(), L"Current Board");
+    //wxMessageBox(iss.str(), L"Current Board");
 }
 
 /**

@@ -56,18 +56,41 @@ private:
     ///Old Time
     long mOldTime;
 
+    ///Old Time for game sequencing
+    long mOldTime2;
+
     ///Eat Time
     long mEatTime = 0;
 
-    /// The timer that allows for animation
+    /// The timer that allows for animation of level 3 feature
     wxTimer mTimer;
 
-    /// Stopwatch used to measure elapsed time
+
+
+    /// Stopwatch used to measure elapsed time for level 3 feature
     wxStopWatch mStopWatch;
 
+    /// Stopwatch used to measure elapsed time for game sequencing
+    wxStopWatch mStopWatch2;
 
     ///Indicates timer has started for throw up
     bool mStarted = false;
+
+    ///Indicates game has been completed
+    bool mCompletion = false;
+
+    ///Indicates loading next level
+    bool mNext = false;
+
+    ///Indicates staying on current level
+    bool mCurrent = false;
+
+    ///Indicates solution has been checked
+    bool mCheck = false;
+
+
+    ///Indicates timer has started for game sequencing
+    bool mSequenceStart = false;
 public:
     Game();
     Game(wxString startingLevel);
@@ -77,7 +100,7 @@ public:
     /// The display timer (scoreboard)
     Timer mTimeDisplay;
 
-    Timer mTimeDisplay2;
+
     double GetOffsetX() const { return mXOffset;}
     double GetOffsetY() const { return mYOffset;}
     double GetScale() const { return mScale;}
@@ -128,6 +151,29 @@ public:
     }
 
     void Finished(bool correct,std::shared_ptr<wxGraphicsContext> graphics);
+
+    void SetCompleted (bool completed) {
+        mCompletion = completed;
+    }
+
+    bool getNext () {
+        return mNext;
+    }
+
+    bool getCurrent () {
+        return mCurrent;
+    }
+
+    void SetNext(bool next) {
+        mNext = next;
+    }
+    void SetCurrent(bool current) {
+        mCurrent = current;
+    }
+    void SetCheck() {
+        mCheck = true;
+    }
+
 };
 
 #endif //PROJECT1_335_SUDOKULIB_GAME_H

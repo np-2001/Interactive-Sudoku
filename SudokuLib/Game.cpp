@@ -87,8 +87,7 @@ void Game::OnDraw(std::shared_ptr<wxGraphicsContext> graphics, int width, int he
         // If Item is a Container
         // Visit Container and then Draw ContainerItems
     }
-    // mSparty->Draw(graphics);
-    //mSpartyChin->Draw(graphics);
+
 
 
     ///Make sures timer is not drawn when popup is not nullptr
@@ -99,7 +98,7 @@ void Game::OnDraw(std::shared_ptr<wxGraphicsContext> graphics, int width, int he
     else
     {
         mTimeDisplay.OnDraw(graphics);
-        //mTimeDisplay2.OnDraw(graphics);
+
         auto level = GetLevel();
 
         /// Level 3 Feature
@@ -117,7 +116,6 @@ void Game::OnDraw(std::shared_ptr<wxGraphicsContext> graphics, int width, int he
         if (mSparty->GetThrowUp() == true && mTime*0.001 > 2+(mOldTime*0.001)) {
             mSparty->SetThrowUp(false);
 
-
         } else if (mSparty->GetThrowUp() == true) {
             wxFont bigFont(wxSize(0, 100),
                            wxFONTFAMILY_SWISS,
@@ -132,9 +130,40 @@ void Game::OnDraw(std::shared_ptr<wxGraphicsContext> graphics, int width, int he
 
         }
 
+        ///Will need to be fixed. As if now if all cells are filled I just set it to level3
+
+        if (mCheck == true ) {
+
+            if (mTime*0.001 > 5 + mOldTime2*0.001) {
+                mCheck = false;
+                mNext = true;
+            } else {
+                Finished(mPlayingArea->CheckSolution(),graphics);
+            }
+        }
 
     }
     graphics->PopState();
+}
+
+void Game::Finished(bool correct,std::shared_ptr<wxGraphicsContext> graphics) {
+
+    int pixelWidth = mWidth * mTileSize;
+    int pixelHeight = mHeight * mTileSize;
+    wxFont bigFont(wxSize(0, 100),
+                   wxFONTFAMILY_SWISS,
+                   wxFONTSTYLE_NORMAL,
+                   wxFONTWEIGHT_BOLD);
+    graphics->SetFont(bigFont, *wxGREEN);
+    double wid, hit;
+    if (correct) {
+        graphics->GetTextExtent(L"Correct!!!!!", &wid, &hit);
+        graphics->DrawText(L"Correct!!!!!", pixelWidth / 2 - wid / 2, pixelHeight / 2 - hit / 2);
+    } else {
+        graphics->GetTextExtent(L"Wrong!!!!!", &wid, &hit);
+        graphics->DrawText(L"Wrong!!!!!", pixelWidth / 2 - wid / 2, pixelHeight / 2 - hit / 2);
+    }
+
 }
 
 void Game::Throwup(std::shared_ptr<wxGraphicsContext> graphics, Xray* xRay) {
@@ -242,6 +271,14 @@ void Game::Update(double time)
             mStopWatch.Start();
             mStarted = true;
         }
+
+    }
+
+    /// If Board is filled and hasn't been checked yet
+    if (mPlayingArea->GetFill() == 81 && mCheck == false) {
+        mCheck = true;
+        mOldTime2 = mTime;
+
     }
 
 }
@@ -514,21 +551,5 @@ void Game::MakeSpartyLast(std::shared_ptr<Item> item)
  * @param correct Boolean determining if the game was solved correctly or not
  * @param graphics Graphics device to draw on
  */
-void Game::Finished(bool correct,std::shared_ptr<wxGraphicsContext> graphics) {
-    int pixelWidth = mWidth * mTileSize;
-    int pixelHeight = mHeight * mTileSize;
-    wxFont bigFont(wxSize(0, 100),
-                   wxFONTFAMILY_SWISS,
-                   wxFONTSTYLE_NORMAL,
-                   wxFONTWEIGHT_BOLD);
-    graphics->SetFont(bigFont, *wxGREEN);
-    double wid, hit;
-    if (correct) {
-        graphics->GetTextExtent(L"Correct!!!!!", &wid, &hit);
-        graphics->DrawText(L"Correct!!!!!", pixelWidth / 2 - wid / 2, pixelHeight / 2 - hit / 2);
-    } else {
-        graphics->GetTextExtent(L"Wrong!!!!!", &wid, &hit);
-        graphics->DrawText(L"Wrong!!!!!", pixelWidth / 2 - wid / 2, pixelHeight / 2 - hit / 2);
-    }
-}
+
 

@@ -363,25 +363,26 @@ void Level::MakeItems(wxXmlNode* node)
         }
 
 
-
         // Add to mItems
         mGame->Add(item);
         // Set the location
         item->SetLocation(row, col);
 
-        if (mLevelFileName == L"Levels/level1.xml") {
-            mPopup = std::make_shared<LevelDisplay>("Level 1 Begin");
-        } else if (mLevelFileName == L"Levels/level2.xml") {
-            mPopup = std::make_shared<LevelDisplay>("Level 2 Begin");
-        } else if (mLevelFileName == L"Levels/level3.xml") {
-            mPopup = std::make_shared<LevelDisplay>("Level 3 Begin");
-        } else {
-            mPopup = std::make_shared<LevelDisplay>("Level 0 Begin");
-        }
+
 
     }
 
+    if (mLevelFileName == L"Levels/level1.xml") {
+        mPopup = std::make_shared<LevelDisplay>("Level 1 Begin");
+    } else if (mLevelFileName == L"Levels/level2.xml") {
+        mPopup = std::make_shared<LevelDisplay>("Level 2 Begin");
+    } else if (mLevelFileName == L"Levels/level3.xml") {
+        mPopup = std::make_shared<LevelDisplay>("Level 3 Begin");
+    } else {
+        mPopup = std::make_shared<LevelDisplay>("Level 0 Begin");
+    }
+
     // Display Check //
-    mGame->GetPlayingArea()->DisplayBoard();
+    //mGame->GetPlayingArea()->DisplayBoard();
 
 }

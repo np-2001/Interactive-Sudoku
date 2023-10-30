@@ -58,6 +58,14 @@ public:
     void DisplayBoard();
 
     bool CheckSolution();
+
+    int GetFill() {
+        return mFill;
+    }
+
+    void SetFill () {
+        mFill = 0;
+    }
 };
 
 
