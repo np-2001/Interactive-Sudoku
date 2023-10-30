@@ -136,7 +136,13 @@ void Game::OnDraw(std::shared_ptr<wxGraphicsContext> graphics, int width, int he
 
             if (mTime*0.001 > 5 + mOldTime2*0.001) {
                 mCheck = false;
-                mNext = true;
+
+                if (mPlayingArea->CheckSolution()) {
+                    mNext = true;
+                } else {
+                    mCurrent = true;
+                }
+
             } else {
                 Finished(mPlayingArea->CheckSolution(),graphics);
             }
@@ -494,9 +500,7 @@ void Game::OnKeyDown(wxKeyEvent &event)
                     mItems.push_back(item);
                     mItems.push_back(sparty);
 
-                    // Display the board after adding to it
-                    // Delete later
-                    GetPlayingArea()->DisplayBoard();
+
                 }
 
             }

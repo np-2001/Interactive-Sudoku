@@ -173,9 +173,9 @@ void PlayingArea::DisplayBoard()
         iss << '\n';
     }
 
-    //iss << "\n\nThe board has: " << mFill << " digits on it.\n\t" << (mFill/81.0)*100 << "% filled";
+    iss << "\n\nThe board has: " << mFill << " digits on it.\n\t" << (mFill/81.0)*100 << "% filled";
 
-    //wxMessageBox(iss.str(), L"Current Board");
+    wxMessageBox(iss.str(), L"Current Board");
 }
 
 /**
