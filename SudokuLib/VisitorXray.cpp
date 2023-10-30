@@ -3,6 +3,7 @@
  * @author Sania Sinha
  */
 
+#include "pch.h"
 #include "VisitorXray.h"
 #include "Xray.h"
 #include "Game.h"
