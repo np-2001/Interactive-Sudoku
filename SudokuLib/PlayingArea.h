@@ -10,6 +10,7 @@
 #define PROJECT1_335_SUDOKULIB_PLAYINGAREA_H
 
 #include "Item.h"
+#include <array>
 
 class Game;
 
@@ -28,7 +29,8 @@ private:
     /// TopLeft position
     int mTopLeftCol;
     int mTopLeftRow;
-    int mBoard[9][9];
+    std::array<std::array<int, 9>, 9> mBoard;
+    //int mBoard[9][9];
     int mFill = 0;
 
 
@@ -48,6 +50,7 @@ public:
 
     void DisplayBoard();
 
+    bool CheckSolution();
 };
 
 

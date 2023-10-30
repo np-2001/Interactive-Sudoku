@@ -10,6 +10,7 @@
 
 #include "Declaration.h"
 #include "LevelDisplay.h"
+#include <array>
 class Game;
 
 class Level
@@ -21,7 +22,7 @@ private:
     std::shared_ptr<Declaration> mDeclaration;
 
     /// Solution of the game
-    int mSolution[9][9];
+    std::array<std::array<int,9>,9> mSolution;
 
     void MakeDeclarations(wxXmlNode *node);
     void MakeItems(wxXmlNode *node);
@@ -59,6 +60,8 @@ public:
 
     ///Test will be fixed
     std::shared_ptr<LevelDisplay> mPopup = nullptr;
+
+    auto GetSolution() {return mSolution;}
 };
 
 #endif //PROJECT1_335_SUDOKULIB_LEVEL_H

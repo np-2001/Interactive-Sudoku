@@ -341,6 +341,10 @@ void Game::Add(std::shared_ptr<Item> item)
 void Game::Clear()
 {
     mItems.clear();
+    mLevel = std::make_shared<Level>(this);
+    mPlayingArea = std::make_shared<PlayingArea>(this);
+    mSparty = nullptr;
+
 }
 
 /**

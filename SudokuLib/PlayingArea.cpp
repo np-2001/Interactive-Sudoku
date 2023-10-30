@@ -99,6 +99,12 @@ bool PlayingArea::AddToBoard(int col, int row, std::shared_ptr<Item> digit)
 
         mBoard[row - mTopLeftRow][col - mTopLeftCol] = value;
         ++mFill;
+
+        // This is not right but will talk it out
+        if (mFill == 81)
+        {
+            CheckSolution();
+        }
         return true;
     }
 
@@ -127,6 +133,17 @@ bool PlayingArea::RemoveFromBoard(int col, int row, std::shared_ptr<Item> digit)
             return true;
         }
     }
+    return false;
+}
+
+bool PlayingArea::CheckSolution()
+{
+    auto x = mGame->GetLevel()->GetSolution();
+    if (mBoard == x)
+        wxMessageBox(L"Solved");
+    else
+        wxMessageBox(L"Not Correct");
+
     return false;
 }
 

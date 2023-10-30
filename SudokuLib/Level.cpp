@@ -166,8 +166,10 @@ void Level::LoadLevel()
 * solve the level
 */
 void Level::SolveLevel() {
-    auto firstRow = mGame->GetPlayingArea()->GetTopLeftRow();
-    auto firstCol = mGame->GetPlayingArea()->GetTopLeftCol();
+    auto playingArea = mGame->GetPlayingArea();
+    auto firstRow = playingArea->GetTopLeftRow();
+    auto firstCol = playingArea->GetTopLeftCol();
+
 
     for(int row = firstRow; row < firstRow+9; row++) {
         for(int col = firstCol; col < firstCol+9; col++) {
@@ -196,9 +198,12 @@ void Level::SolveLevel() {
 
                 // assign it to the current row and col values
                 correct->SetLocation(row, col);
+                playingArea->AddToBoard(col, row, correct);
             }
         }
     }
+    // For visualising board. You can delete this later
+    playingArea->DisplayBoard();
 }
 
 
