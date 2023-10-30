@@ -102,7 +102,7 @@ bool Item::EatTest(double x, double y)
 //        // We are not next to the image
 //        return false;
 //    }
-    if (testX < -5 || testY < -5 || testX >= wid/2 + 5 || testY >= hit-15)
+    if (testX < -10 || testY < -25 || testX >= wid/2 + 5 || testY >= hit-25)
     {
         // We are not next to the image
         return false;

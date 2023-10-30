@@ -145,7 +145,6 @@ void Game::Throwup(std::shared_ptr<wxGraphicsContext> graphics, Xray* xRay) {
  //
     if (mStarted == true) {
         long time = mStopWatch.Time();
-        std::cout << time/1000 << "    ";
         if(time/1000 >= 15 && xRay->GetItemCount() > 0)
         {
             mOldTime = mTime;
@@ -161,6 +160,12 @@ void Game::Throwup(std::shared_ptr<wxGraphicsContext> graphics, Xray* xRay) {
             xRay->Empty();
             mStarted = false;
 
+
+        } else if (xRay->GetItemCount() == 0) {
+            mStopWatch.Pause();
+            mStopWatch.Start();
+            mStopWatch.Pause();
+            mStarted = false;
 
         }
     }
