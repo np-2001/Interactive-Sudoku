@@ -98,11 +98,38 @@ bool PlayingArea::AddToBoard(int col, int row, std::shared_ptr<Item> digit)
         int value = visitor.GetValue();
 
         mBoard[row - mTopLeftRow][col - mTopLeftCol] = value;
+        ++mFill;
         return true;
     }
 
     return false;
 }
+
+/**
+ * Removes from the board if the digit is not a given
+ * @param col Column to remove from
+ * @param row Row to remove from
+ * @param digit Digit to remove
+ * @return True if removal was successful. False otherwise
+ */
+bool PlayingArea::RemoveFromBoard(int col, int row, std::shared_ptr<Item> digit)
+{
+    // If We are in the playArea and there's SPECIFICALLY a digit
+    if (IsInPlayArea(col, row) && mGame->HitTest(row, col))
+    {
+        VisitorGiven visitor;
+        digit->Accept(&visitor);
+        // If we are not a given
+        if (!visitor.MatchGiven())
+        {
+            mBoard[row - mTopLeftRow][col - mTopLeftCol] = -1;
+            --mFill;
+            return true;
+        }
+    }
+    return false;
+}
+
 
 /**
  * Displays the current board in a message window
@@ -128,6 +155,8 @@ void PlayingArea::DisplayBoard()
         }
         iss << '\n';
     }
+
+    iss << "\n\nThe board has: " << mFill << " digits on it.\n\t" << (mFill/81.0)*100 << "% filled";
 
     wxMessageBox(iss.str(), L"Current Board");
 }

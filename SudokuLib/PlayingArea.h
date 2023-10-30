@@ -29,6 +29,7 @@ private:
     int mTopLeftCol;
     int mTopLeftRow;
     int mBoard[9][9];
+    int mFill = 0;
 
 
 public:
@@ -42,6 +43,8 @@ public:
     bool IsInPlayArea(int x, int y, bool xy);
 
     bool AddToBoard(int col, int row, std::shared_ptr<Item>digit);
+
+    bool RemoveFromBoard(int col, int row, std::shared_ptr<Item>digit);
 
     void DisplayBoard();
 

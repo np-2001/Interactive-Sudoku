@@ -438,7 +438,7 @@ void Game::OnKeyDown(wxKeyEvent &event)
             if(item != nullptr)
             {
 
-                if(GetPlayingArea()->AddToBoard(sparty->GetCol(), sparty->GetRow(), item))
+                if(GetPlayingArea()->AddToBoard(sparty->GetCol()+1, sparty->GetRow(), item))
                 {
                     xray_visitor.CallRemove(item);
                     int row = (int)(sparty->GetRow());
@@ -447,6 +447,10 @@ void Game::OnKeyDown(wxKeyEvent &event)
                     mItems.pop_back();
                     mItems.push_back(item);
                     mItems.push_back(sparty);
+
+                    // Display the board after adding to it
+                    // Delete later
+                    GetPlayingArea()->DisplayBoard();
                 }
 
             }
