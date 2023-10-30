@@ -138,8 +138,7 @@ bool PlayingArea::RemoveFromBoard(int col, int row, std::shared_ptr<Item> digit)
 
 bool PlayingArea::CheckSolution()
 {
-    auto x = mGame->GetLevel()->GetSolution();
-    if (mBoard == x)
+    if (mBoard == mSolution)
         wxMessageBox(L"Solved");
     else
         wxMessageBox(L"Not Correct");
@@ -176,4 +175,22 @@ void PlayingArea::DisplayBoard()
     iss << "\n\nThe board has: " << mFill << " digits on it.\n\t" << (mFill/81.0)*100 << "% filled";
 
     wxMessageBox(iss.str(), L"Current Board");
+}
+
+/**
+ * getter for the variable mSolution
+ * @return the solution of the board
+ */
+std::array<std::array<int, 9>, 9> PlayingArea::GetSolution()
+{
+    return mSolution;
+}
+
+/**
+ * setter for the variable mSolution
+ * @param solution the solution for the current board
+ */
+void PlayingArea::SetSolution(std::array<std::array<int, 9>, 9> solution)
+{
+    mSolution = solution;
 }
