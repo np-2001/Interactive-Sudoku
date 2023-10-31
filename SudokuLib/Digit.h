@@ -18,9 +18,11 @@
 class Digit: public Item
 {
 private:
+    /// Value of digit
     int mValue;
 
 public:
+    ///Constructor
     Digit(Game *game, std::shared_ptr<wxImage> image, int value);
 
     ///  Default constructor (disabled)

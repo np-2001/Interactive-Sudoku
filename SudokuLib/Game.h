@@ -80,8 +80,6 @@ private:
     /// The timer that allows for animation of level 3 feature
     wxTimer mTimer;
 
-
-
     /// Stopwatch used to measure elapsed time for level 3 feature
     wxStopWatch mStopWatch;
 
@@ -103,30 +101,77 @@ private:
     ///Indicates solution has been checked
     bool mCheck = false;
 
-
     ///Indicates timer has started for game sequencing
     bool mSequenceStart = false;
+
 public:
+    ///Constructor
     Game();
-    Game(wxString startingLevel);
+    //Game(wxString startingLevel);
     void OnDraw(std::shared_ptr<wxGraphicsContext> graphics, int width, int height);
     virtual void OnLeftDown(int x, int y);
 
     /// The display timer (scoreboard)
     Timer mTimeDisplay;
 
-
+    /**
+     * Getter for X Offset
+     * @return double X Offset
+     */
     double GetOffsetX() const { return mXOffset;}
+
+    /**
+     * Getter for Y Offset
+     * @return double Y Offset
+     */
     double GetOffsetY() const { return mYOffset;}
+
+    /**
+     * Getter for scale
+     * @return double scale value
+     */
     double GetScale() const { return mScale;}
 
+    /**
+     * Setter for tile size
+     * @param size size of tile
+     */
     void SetTileSize(int size) { mTileSize = size;}
+
+    /**
+     * Setter for width of screen
+     * @param wid screen width
+     */
     void SetWidth(int wid) { mWidth = wid;}
+
+    /**
+     * Setter for height of screen
+     * @param hit screen height
+     */
     void SetHeight(int hit) { mHeight = hit;}
 
+    /**
+     * Getter for tile size
+     * @return int size of tile
+     */
     int GetTileSize() const { return mTileSize;}
+
+    /**
+     * Getter for screen width
+     * @return int width of screen
+     */
     int GetWidth() const { return mWidth;}
+
+    /**
+     * Getter for screen height
+     * @return int height of screen
+     */
     int GetHeight() const { return mHeight;}
+
+    /**
+     * Getter for Y position
+     * @return int Y position
+     */
     int GetYPosition() const {return mYPosition;}
 
     void Update(double time);
@@ -138,55 +183,93 @@ public:
     void AddToFront(std::shared_ptr<Item> item);
 
 
-    /// Level related Operations
+    /**
+     * Getter for specific level
+     * @return level
+     */
     std::shared_ptr<Level> GetLevel() {return mLevel; }
 
-    /// Playing Area related Operations
+    /**
+     * Getter for playing area object
+     * @return playing area
+     */
     std::shared_ptr<PlayingArea> GetPlayingArea() {return mPlayingArea; }
 
-    /// Setter for Sparty
+    /**
+     * Setter for sparty
+     * @param sparty sparty object
+     */
     void SetSparty(std::shared_ptr<Sparty> sparty) {
         mSparty = sparty;
     }
 
-
-
     std::shared_ptr<Item> EatTest(int x, int y);
     std::shared_ptr<Item> HitTest(int row, int col);
 
+    /**
+     * Reset timer.
+     */
     void ResetTime() {
         mTime = 0;
     }
 
     std::shared_ptr<Item> FindNumber(int num);
     void Throwup(std::shared_ptr<wxGraphicsContext> graphics, Xray* xRay);
-
     void MakeSpartyLast(std::shared_ptr<Item>);
 
+    /**
+     * Getter for eat time
+     * @return long time to eat
+     */
     long GetEatTime() {
         return mEatTime;
     }
 
     void Finished(bool correct,std::shared_ptr<wxGraphicsContext> graphics);
 
+    /**
+     * Setter for completion of game
+     * @param completed true if game completed
+     */
     void SetCompleted (bool completed) {
         mCompletion = completed;
     }
 
-    bool getNext () {
+    /**
+     * Getter for next game
+     * @return bool
+     */
+    bool GetNext () {
         return mNext;
     }
 
-    bool getCurrent () {
+    /**
+     * Getter for current game
+     * @return bool
+     */
+    bool GetCurrent () {
         return mCurrent;
     }
 
+    /**
+     * Setter for next game
+     * @param next next game
+     */
     void SetNext(bool next) {
         mNext = next;
     }
+
+    /**
+     * Setter for current game
+     * @param current current game
+     */
     void SetCurrent(bool current) {
         mCurrent = current;
     }
+
+    /**
+     * Setter for game solution check
+     */
     void SetCheck() {
         mCheck = true;
     }

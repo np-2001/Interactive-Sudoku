@@ -160,6 +160,11 @@ void Game::OnDraw(std::shared_ptr<wxGraphicsContext> graphics, int width, int he
     graphics->PopState();
 }
 
+/**
+* Handles game sequencing depending on if the game was solved sucessfully or not
+* @param correct Boolean determining if the game was solved correctly or not
+* @param graphics Graphics device to draw on
+*/
 void Game::Finished(bool correct,std::shared_ptr<wxGraphicsContext> graphics) {
 
     int pixelWidth = mWidth * mTileSize;
@@ -180,6 +185,11 @@ void Game::Finished(bool correct,std::shared_ptr<wxGraphicsContext> graphics) {
 
 }
 
+/**
+ * Throw-up functionality if xray is full
+ * @param graphics graphics device to draw on
+ * @param xRay Xray object to check if xray full
+ */
 void Game::Throwup(std::shared_ptr<wxGraphicsContext> graphics, Xray* xRay) {
     int pixelWidth = mWidth * mTileSize;
     int pixelHeight = mHeight * mTileSize;
@@ -242,7 +252,7 @@ void Game::OnLeftDown(int x, int y)
 
 /**
  * Handle updates for animation
- * @param elapsed The time since the last update
+ * @param time The time since the last update
  */
 void Game::Update(double time)
 {
@@ -617,6 +627,10 @@ void Game::Accept(VisitorItem *visitor)
     }
 }
 
+/**
+ * Getter for Xray object
+ * @return Item associated with Xray
+ */
 std::shared_ptr<Item> Game::GetXray()
 {
     for(auto item: mItems)
@@ -645,16 +659,13 @@ void Game::MakeSpartyLast(std::shared_ptr<Item> item)
     mItems.push_back(sparty);
 }
 
+/**
+ * Add item to front of list of items
+ * @param item item to add
+ */
 void Game::AddToFront(std::shared_ptr<Item> item)
 {
     mItems.insert(mItems.begin()+1, item);
 }
-
-
-/**
- * Handles game sequencing depending on if the game was solved sucessfully or not
- * @param correct Boolean determining if the game was solved correctly or not
- * @param graphics Graphics device to draw on
- */
 
 

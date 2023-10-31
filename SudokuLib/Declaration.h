@@ -27,7 +27,11 @@ private:
 public:
     void Add(wxString id, wxXmlNode *node);
 
-    /** Returns the ids to images of this level */
+    /**
+     * Returns the ids to images of this level
+     * @param id id for image
+     * @return id for image of level
+     */
     wxXmlNode *GetDeclaration(const wxString& id) const {return mDeclarations.at(id); }
 
     /** Adds image to declarations so we don't have to load multiple
@@ -44,7 +48,10 @@ public:
      */
     std::shared_ptr<wxImage> GetImage(const wxString& id) {return mImages[id]; }
 
-    /** Returns the size of the declaration map */
+    /**
+     * Returns the size of the declaration map
+     * @return size_t size of declaration map
+     */
     size_t GetDeclarationSize() {return mDeclarations.size(); }
 
 

@@ -6,13 +6,22 @@
 #include "pch.h"
 #include "FullDisplay.h"
 #include "Game.h"
-
+/**
+ * Constructor
+ * @param game Game object being used
+ * @param PixelWidth width of pixels for pop-up
+ * @param PixelHeight height of pixels for pop-up
+ */
 FullDisplay::FullDisplay(Game *game, int PixelWidth, int PixelHeight) {
     mGame = game;
     mPixelWidth = PixelWidth;
     mPixelHeight = PixelHeight;
 }
 
+/**
+ * Draw the pop-up display for when sparty is full
+ * @param graphics graphics device to draw on
+ */
 void FullDisplay::Draw(std::shared_ptr<wxGraphicsContext> graphics) {
 
     //outline the rectangle in black
@@ -43,6 +52,10 @@ void FullDisplay::Draw(std::shared_ptr<wxGraphicsContext> graphics) {
 
 }
 
+/**
+ * Update the pop-up display so it can move up the screen.
+ * @param time time the display moves at.
+ */
 void FullDisplay::Update(double time) {
 
     mPixelHeight = mPixelHeight-((time*0.0005)*3);

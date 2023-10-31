@@ -7,12 +7,22 @@
 #include "FilledDisplay.h"
 #include "Game.h"
 
+/**
+ * Constructor
+ * @param game Game object being used
+ * @param PixelWidth width of pixels for pop-up
+ * @param PixelHeight height of pixels for pop-up
+ */
 FilledDisplay::FilledDisplay(Game *game, int PixelWidth, int PixelHeight) {
     mGame = game;
     mPixelWidth = PixelWidth;
     mPixelHeight = PixelHeight;
 }
 
+/**
+ * Draw the pop-up display for when a tile is occupied
+ * @param graphics graphics device to draw on
+ */
 void FilledDisplay::Draw(std::shared_ptr<wxGraphicsContext> graphics) {
 
     //outline the rectangle in black
@@ -43,6 +53,10 @@ void FilledDisplay::Draw(std::shared_ptr<wxGraphicsContext> graphics) {
 
 }
 
+/**
+ * Update the pop-up display so it can move up the screen.
+ * @param time time the display moves at.
+ */
 void FilledDisplay::Update(double time) {
 
     mPixelHeight = mPixelHeight-((time*0.0005)*3);

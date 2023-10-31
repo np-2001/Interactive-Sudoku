@@ -9,7 +9,10 @@
 /// Size of the scoreboard text in virtual pixels
 const int ScoreboardTextSize = 64;
 
-/// Top left corner of the scoreboard in virtual pixels
+/**
+ * Top left corner of the scoreboard in virtual pixels
+ * @return wxPoint point of scoreboard
+ */
 const wxPoint ScoreboardTopLeft(10, 10);
 
 /// constant for the duration of the frame

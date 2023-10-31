@@ -26,11 +26,17 @@ private:
     int mPixelHeight;
 
 public:
-
+    ///Constructor
     FilledDisplay();
+
     void Draw(std::shared_ptr<wxGraphicsContext> graphics);
     void Update(double time);
     FilledDisplay(Game *game,int PixelWidth, int PixelHeight);
+
+    /**
+     * Getter for pixel height
+     * @return int pixel height
+     */
     int GetPixelHeight () {
         return mPixelHeight;
     }

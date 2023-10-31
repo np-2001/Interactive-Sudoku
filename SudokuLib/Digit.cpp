@@ -10,6 +10,8 @@
 /**
  * Constructor
  * @param game Game object associated with this item
+ * @param image Image object associated with this item
+ * @param value associated with this item
  */
 Digit::Digit(Game *game, std::shared_ptr<wxImage> image, int value) : Item(game, image),mValue(value)
 {
@@ -27,13 +29,15 @@ void Digit::Accept(VisitorItem* visitor)
 /**
  * Digit by default gets eaten if
  * calling object is Sparty
- * @param item digit to be eaten
  */
 void Digit::Eat()
 {
 
 }
 
+/**
+ * Digit by default gets regurgitated.
+ */
 void Digit::Regurgitate()
 {
 

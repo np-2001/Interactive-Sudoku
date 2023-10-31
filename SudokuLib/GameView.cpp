@@ -101,7 +101,7 @@ void GameView::OnPaint(wxPaintEvent& event)
     wxRect size = GetRect();
     mGame.OnDraw(gc, size.GetWidth(), size.GetHeight());
     auto level = mGame.GetLevel()->GetCurrentLevel();
-    if (mGame.getNext() == true) {
+    if (mGame.GetNext() == true) {
         if (level == "Levels/level3.xml") {
             StartNewLevel(L"Levels/level3.xml");
         } else if (level == "Levels/level2.xml") {
@@ -113,7 +113,7 @@ void GameView::OnPaint(wxPaintEvent& event)
         }
 
         mGame.SetNext(false);
-    } else if (mGame.getCurrent() == true) {
+    } else if (mGame.GetCurrent() == true) {
         StartNewLevel(level);
         mGame.SetCurrent(false);
     }
