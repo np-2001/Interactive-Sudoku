@@ -2,12 +2,14 @@
  * @file Timer.h
  * @author Nitin Polavarapu
  *
- *
+ * Class describing the timer object.
  */
 
 #ifndef PROJECT1_335_SUDOKULIB_TIMER_H
 #define PROJECT1_335_SUDOKULIB_TIMER_H
-
+/**
+ * Class describing the timer object.
+ */
 class Timer : public wxWindow
 {
 private:

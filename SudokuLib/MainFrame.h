@@ -9,7 +9,9 @@
 #define PROJECT1_SUDOKULIB_MAINFRAME_H
 
 class GameView;
-
+/**
+ * The top level (main) frame of the application
+ */
 class MainFrame : public wxFrame
 {
 private:

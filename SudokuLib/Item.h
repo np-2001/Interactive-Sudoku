@@ -26,6 +26,7 @@ private:
 
     /// Row of item
     double mRow = 0;
+
     /// Col of item
     double mCol = 0;
 
@@ -33,16 +34,19 @@ private:
     std::shared_ptr<wxImage> mItemImage = nullptr;
 
     /// The bitmap for this item
-//    std::unique_ptr<wxGraphicsBitmap> mItemBitmap = nullptr;
     wxGraphicsBitmap mItemBitmap;
 
     /// The file for this item
     std::wstring mFile;
 
+    /// X location item is eaten at
     double EatenLocationX;
+
+    /// Y location item is eaten at
     double EatenLocationY;
 
 protected:
+    /// Constructor
     Item(Game *game, std::shared_ptr<wxImage> image);
 
 public:
@@ -73,7 +77,6 @@ public:
 
     double GetX() const;
     double GetY() const;
-
     void SetPixelLocation(double x, double y);
 
     /**
@@ -113,44 +116,65 @@ public:
     bool HitTest(int x, int y);
     virtual void XmlLoad(wxXmlNode *node);
 
+    /**
+     * Getter for game object.
+     * @return game object
+     */
     Game * GetGame() { return mGame; }
+
+    /**
+     * Getter for Item Image
+     * @return Item Image
+     */
     std::shared_ptr<wxImage> GetItemImage() {return mItemImage;}
+
+    /**
+     * Getter for item bitmap
+     * @return Item Bitmap
+     */
     wxGraphicsBitmap GetItemBitmap() {return mItemBitmap;}
 
-    /// Setter for newBitmap
+    /**
+     * Setter for the new bitmap
+     * @param newBitmap
+     */
     void SetNewBitmap(wxGraphicsBitmap newBitmap) {
         mItemBitmap = newBitmap;
     }
 
-    /// Getter for mItem Image
+    /**
+     * Getter for images of items
+     * @return item image
+     */
     std::shared_ptr<wxImage> GetImage() {
         return mItemImage;
     }
 
+    /**
+     * Setter for eaten location
+     * @param X location X that is eaten
+     * @param Y location Y that is eaten
+     */
     void SetEatenLocation(double X, double Y) {
         EatenLocationX = X;
         EatenLocationY = Y;
     }
 
+    /**
+     * Getter for eaten location X
+     * @return eaten location X
+     */
     double GetEatenLocationX() {
         return EatenLocationX;
     };
 
+    /**
+     * Getter for eaten location Y
+     * @return eaten location Y
+     */
     double GetEatenLocationY() {
         return EatenLocationY;
     };
-
-///**
-// * Get the width of item
-// * @return item width in pixels
-// */
-//    int GetItemWidth() const { return mItemBitmap->GetWidth(); }
-//
-//    /**
-//* Get the height of item
-//* @return item height in pixels
-//*/
-//    int GetItemHeight() const { return mItemBitmap->GetHeight(); }
 
 };
 

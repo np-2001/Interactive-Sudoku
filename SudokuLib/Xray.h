@@ -11,7 +11,10 @@
 
 #include "Item.h"
 #include "Container.h"
-
+/**
+ * Class outlining xray that
+ * Shows digits in Sparty's stomach
+ */
 class Xray: public Item
 {
 private:

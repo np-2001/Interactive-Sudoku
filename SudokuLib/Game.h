@@ -2,7 +2,7 @@
  * @file Game.h
  * @author Nitin Polavarapu, Samantha Wycoff, Sania Sinha, Finn Clark
  *
- *
+ * Class describing the game overall.
  */
 
 #ifndef PROJECT1_335_SUDOKULIB_GAME_H
@@ -17,7 +17,9 @@
 #include "Xray.h"
 #include "FullDisplay.h"
 #include "FilledDisplay.h"
-
+/**
+ * Class describing the game overall.
+ */
 class Game
 {
 private:

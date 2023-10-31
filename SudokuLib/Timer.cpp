@@ -12,6 +12,7 @@ const int ScoreboardTextSize = 64;
 /// Top left corner of the scoreboard in virtual pixels
 const wxPoint ScoreboardTopLeft(10, 10);
 
+/// constant for the duration of the frame
 const int FrameDuration = 30;
 
 /*

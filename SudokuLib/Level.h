@@ -2,7 +2,7 @@
  * @file Level.h
  * @author Eliezer Amponsah, Finn Clark
  *
- *
+ * Class describing an individual level.
  */
 
 #ifndef PROJECT1_335_SUDOKULIB_LEVEL_H
@@ -12,7 +12,9 @@
 #include "LevelDisplay.h"
 #include <array>
 class Game;
-
+/**
+ * Class describing an individual level.
+ */
 class Level
 {
 private:

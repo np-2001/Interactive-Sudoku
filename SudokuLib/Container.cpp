@@ -12,6 +12,7 @@
 /**
  * Constructor
  * @param game Game object associated with this item
+ * @param image Image associated with this item
  */
 Container::Container(Game *game, std::shared_ptr<wxImage> image) :
     Item(game, image)
@@ -29,7 +30,6 @@ void Container::Accept(VisitorItem* visitor)
 
 /**
  * Containers do not have Eat functionality
- * @param item background item
  */
 void Container::Eat()
 {
@@ -102,6 +102,9 @@ void Container::Draw(std::shared_ptr<wxGraphicsContext> graphics)
 
 }
 
+/**
+ * Container does not have regurgitate functionality
+ */
 void Container::Regurgitate()
 {
 
@@ -118,7 +121,9 @@ Container::Container(Game *game, std::shared_ptr<wxImage> image, std::shared_ptr
 {
 }
 
-
+/**
+ * Destroy the container.
+ */
 void Container::DestroyContainer()
 {
     if (!mIsDestroyed)

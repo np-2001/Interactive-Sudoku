@@ -11,7 +11,9 @@
 #include "VisitorItem.h"
 #include "Given.h"
 #include "VisitorDigit.h"
-
+/**
+ * Checks if visited item is a given
+ */
 class VisitorGiven: public VisitorDigit
 {
 private:

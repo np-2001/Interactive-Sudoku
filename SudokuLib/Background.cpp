@@ -9,6 +9,7 @@
 /**
  * Constructor
  * @param game Game object associated with this item
+ * @param image Image associated with item
  */
 Background::Background(Game *game, std::shared_ptr<wxImage> image) : Item(game, image)
 {
@@ -26,13 +27,15 @@ void Background::Accept(VisitorItem* visitor)
 
 /**
  * Backgrounds do not have Eat functionality
- * @param item background item
  */
 void Background::Eat()
 {
 
 }
 
+/**
+ * Backgrounds do not have Regurgitate functionality
+ */
 void Background::Regurgitate()
 {
 

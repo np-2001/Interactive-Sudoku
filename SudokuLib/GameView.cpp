@@ -19,8 +19,10 @@ wxString initLevel = L"Levels/level1.xml";
 /// Frame duration in milliseconds
 const int FrameDuration = 30;
 
-
+/// Image for sparty's head
 const wstring SpartyHeadImageName = L"images/sparty-1.png";
+
+/// Image for sparty's chin
 const wstring SpartyChinImageName = L"images/sparty-2.png";
 
 /**

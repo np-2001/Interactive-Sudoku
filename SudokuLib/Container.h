@@ -23,19 +23,21 @@ private:
 
     /// Container image
     std::shared_ptr<wxImage> mContainerImage;
+
     /// Container front image
     std::shared_ptr<wxImage> mFrontImage;
 
     /// Container bitmap
     wxGraphicsBitmap mContainerBitmap;
+
     /// Container front image bitmap
     wxGraphicsBitmap mFrontBitmap;
 
     /// Is container destroyed
     bool mIsDestroyed = false;
 
-
 public:
+    ///Constructor
     Container(Game *game, std::shared_ptr<wxImage> image);
 
     Container(Game *game, std::shared_ptr<wxImage> image, std::shared_ptr<wxImage> front);

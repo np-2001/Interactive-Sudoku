@@ -2,7 +2,7 @@
  * @file GameView.h
  * @author Nitin Polavarapu, Samantha Wycoff, Finn Clark
  *
- *
+ * Class describing the view of the game.
  */
 
 #ifndef PROJECT1_335_SUDOKULIB_GAMEVIEW_H
@@ -11,7 +11,9 @@
 #include "Game.h"
 #include "Timer.h"
 
-
+/**
+ * Class describing the view of the game.
+ */
 class GameView : public wxWindow
 {
 private:

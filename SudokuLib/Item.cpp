@@ -26,6 +26,10 @@ Item::~Item()
 
 }
 
+/**
+ * Get X value
+ * @return double X value
+ */
 double Item::GetX() const
 {
     int tileHeight = mGame->GetTileSize();
@@ -33,6 +37,10 @@ double Item::GetX() const
     return (mCol*tileHeight+ (width/2.0));
 }
 
+/**
+ * Get Y value
+ * @return double Y value
+ */
 double Item::GetY() const
 {
     int tileHeight = mGame->GetTileSize();
@@ -40,6 +48,11 @@ double Item::GetY() const
     return ((mRow+1)*tileHeight - (height/2.0));
 }
 
+/**
+ * Setter for pixel location x and y
+ * @param x location pixel x
+ * @param y location pixel y
+ */
 void Item::SetPixelLocation(double x, double y)
 {
     int tileHeight = 48;
