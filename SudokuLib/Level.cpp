@@ -201,8 +201,8 @@ void Level::SolveLevel() {
                 }
 
                 // assign it to the current row and col values
-                correct->SetLocation(row, col);
                 playingArea->AddToBoard(col, row, correct);
+                correct->SetLocation(row, col);
             }
         }
     }

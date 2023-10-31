@@ -389,15 +389,20 @@ std::shared_ptr<Item> Game::FindNumber(int num) {
         if(visitor.MatchDigit())
         {
             if(visitor.GetValue() == num) {
+
                 auto item = *i;
+                if (mPlayingArea->IsInPlayArea(item->GetCol(),item->GetRow(),false)) {
+                    return nullptr;
+                }
+
+
                 mItems.erase(std::remove(mItems.begin(), mItems.end(), item), mItems.end());
                 MakeSpartyLast(item);
                 return item;
+                }
             }
         }
 
-
-    }
     return  nullptr;
 }
 
@@ -455,6 +460,10 @@ void Game::OnKeyDown(wxKeyEvent &event)
                 VisitorDigit visitor;
                 item->Accept(&visitor);
 
+                auto sparty = mItems.back();
+                int row = (int)(sparty->GetRow());
+                int col = (int)(sparty->GetCol());
+
                 if(visitor.MatchDigit())
                 {
                     // We are next to a Digit
@@ -464,7 +473,18 @@ void Game::OnKeyDown(wxKeyEvent &event)
                     if(!visitor2.MatchGiven())
                     {
                         // It is not a Given
-                        item->SetEatenLocation(item->GetX(),item->GetY());
+
+                        if(!GetPlayingArea()->IsInPlayArea(x,y,true))
+                        {
+                            // We are eating off the playing area
+                            item->SetEatenLocation(item->GetX(),item->GetY());
+                        }
+                        else
+                        {
+                            // We are eating on the board
+                            GetPlayingArea()->RemoveFromBoard(item->GetCol(), item->GetRow(), item);
+                        }
+
                         mItems.erase(std::remove(mItems.begin(), mItems.end(), item), mItems.end());
                         VisitorXray xray_visitor;
 
@@ -520,20 +540,18 @@ void Game::OnKeyDown(wxKeyEvent &event)
 
             auto item = xray_visitor.CallGetMatch(throw_digit);
 
+            int row = (int)(sparty->GetRow());
+            int col = (int)(sparty->GetCol());
+
             if(item != nullptr)
             {
-
-                if(GetPlayingArea()->AddToBoard(sparty->GetCol()+1, sparty->GetRow(), item))
+                if(!(GetPlayingArea()->IsInPlayArea(col+1, row, false)) || (GetPlayingArea()->AddToBoard(col+1, row, item)))
                 {
                     xray_visitor.CallRemove(item);
-                    int row = (int)(sparty->GetRow());
-                    int col = (int)(sparty->GetCol());
                     item->SetLocation(row, col+1);
                     mItems.pop_back();
                     mItems.push_back(item);
                     mItems.push_back(sparty);
-
-
                 }
 
             }

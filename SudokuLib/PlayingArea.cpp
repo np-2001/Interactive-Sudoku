@@ -72,7 +72,8 @@ bool PlayingArea::IsInPlayArea(int x, int y, bool xy = false) {
     else
     {
         // Process as (col, row) location
-        if (x < mTopLeftCol || y < mTopLeftRow || x > mTopLeftCol * 9 || y > mTopLeftRow * 9)
+
+        if (x < mTopLeftCol || y < mTopLeftRow || x > mTopLeftCol + 8 || y > mTopLeftRow + 8)
         {
             return false;
         }
@@ -90,8 +91,15 @@ bool PlayingArea::IsInPlayArea(int x, int y, bool xy = false) {
  */
 bool PlayingArea::AddToBoard(int col, int row, std::shared_ptr<Item> digit)
 {
+    int tileHeight = mGame->GetTileSize();
+    int width = digit->GetImage()->GetWidth();
+    int x = col*tileHeight+ (width/2.0);
+
+    int height = digit->GetImage()->GetHeight();
+    int y = (row+1)*tileHeight - (height/2.0);
+
     // If in playing area and there's nothing there
-    if (IsInPlayArea(col,row) && !mGame->HitTest(row, col))
+    if (IsInPlayArea(col,row) && !mGame->HitTest(x,y))
     {
         VisitorGiven visitor;
         digit->Accept(&visitor);
