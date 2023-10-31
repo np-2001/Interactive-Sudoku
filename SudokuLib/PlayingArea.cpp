@@ -176,12 +176,7 @@ bool PlayingArea::RemoveFromBoard(int col, int row, std::shared_ptr<Item> digit)
 bool PlayingArea::CheckSolution()
 {
 
-    if (mBoard == mSolution) {
-
-        return true;
-    }
-
-    return false;
+    return (mBoard == mSolution);
 }
 
 
