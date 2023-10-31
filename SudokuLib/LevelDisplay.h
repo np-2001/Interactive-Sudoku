@@ -15,12 +15,31 @@
 class LevelDisplay
 {
 private:
+
+    ///Time that has elapsed since pop up has appeared
     double mTime = 0;
+
+    ///Word of corresponding level for pop up
     wxString mWord;
 public:
+    /**
+     * Constructor
+     * @param word level to be displayed on pop up
+     */
     LevelDisplay(wxString word);
     LevelDisplay();
+
+    /**
+     * Draws popup of levelDisplay
+     * @param graphics Graphics device to draw on
+     * @param pixelHeight Height of the window
+     * @param pixelWidth Width of the window
+     */
     void Draw(std::shared_ptr<wxGraphicsContext> graphics,int pixelHeight,int pixelWidth);
+    /**
+     * Updates location
+     * @param time Elapsed time
+     */
     void Update(double time);
 };
 

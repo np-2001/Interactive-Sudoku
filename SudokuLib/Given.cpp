@@ -9,6 +9,8 @@
 /**
  * Constructor
  * @param game Game object associated with this item
+ * @param image Image of given
+ * @param value Value of given
  */
 Given::Given(Game *game, std::shared_ptr<wxImage> image, int value) : Digit(game, image, value)
 {
@@ -27,13 +29,14 @@ void Given::Accept(VisitorItem* visitor)
 
 /**
  * Givens do not get eaten
- * @param item digit to be eaten
  */
 void Given::Eat()
 {
 
 }
-
+/**
+ * Givens do not Regurgitate
+ */
 void Given::Regurgitate()
 {
 

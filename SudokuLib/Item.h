@@ -99,14 +99,12 @@ public:
     virtual void Accept(VisitorItem* visitor) = 0;
 
     /**
-     * Function to eat or be eaten
-     * this: object eating
-     * @param item item to be eaten
+     * Virtual Function to eat or be eaten
      */
     virtual void Eat() = 0;
 
     /**
-     * Regurgitate items onto board
+     * Virtual Function for regurgitate
      */
     virtual void Regurgitate() = 0;
 

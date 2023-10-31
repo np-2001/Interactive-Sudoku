@@ -31,19 +31,37 @@ PlayingArea::PlayingArea(Game *game): mGame(game)
 
 
 
-
+/**
+ * Getter for Top Left Row
+ * @return Top Left Row posistion
+ */
 int PlayingArea::GetTopLeftRow() const
 {
     return mTopLeftRow;
 }
+
+/**
+ * Setter for Top Left Row
+ * @param row Position of top left row
+ */
 void PlayingArea::SetTopLeftRow(int row)
 {
     mTopLeftRow = row;
 }
+
+/**
+ * Getter for Top Left Col
+ * @return Top Left Col posistion
+ */
 int PlayingArea::GetTopLeftCol() const
 {
     return mTopLeftCol;
 }
+
+/**
+ * Setter for Top Left Col
+ * @param col Position of top left Col
+ */
 void PlayingArea::SetTopLeftCol(int col)
 {
     mTopLeftCol = col;
@@ -144,6 +162,10 @@ bool PlayingArea::RemoveFromBoard(int col, int row, std::shared_ptr<Item> digit)
     return false;
 }
 
+/**
+ * Checks if solutio is correct
+ * @return Bool representing if solution is correct
+ */
 bool PlayingArea::CheckSolution()
 {
 

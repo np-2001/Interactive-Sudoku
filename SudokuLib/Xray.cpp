@@ -30,13 +30,15 @@ void Xray::Accept(VisitorItem* visitor)
 
 /**
  * Xrays do not have Eat functionality
- * @param item background item
  */
 void Xray::Eat()
 {
 
 }
 
+/**
+ * Xray does not have regurgitate functionality
+ */
 void Xray::Regurgitate()
 {
 
@@ -59,6 +61,10 @@ void Xray::Remove(std::shared_ptr<Item> item)
 {
     mItems.erase(std::remove(mItems.begin(), mItems.end(), item), mItems.end());
 }
+/**
+ * Draws xray
+ * @param graphics Graphics device to draw on
+ */
 void Xray::Draw(std::shared_ptr<wxGraphicsContext> graphics)
 {
     Item::Draw(graphics);
@@ -91,7 +97,11 @@ void Xray::Draw(std::shared_ptr<wxGraphicsContext> graphics)
     }
 
 }
-
+/**
+ * Checks for a value in xray
+ * @param x Value we are checking for
+ * @return pointer if the value exists or nullptr
+ */
 std::shared_ptr<Item> Xray::GetMatch(int x)
 {
     for(auto item: mItems)
@@ -108,6 +118,9 @@ std::shared_ptr<Item> Xray::GetMatch(int x)
     return nullptr;
 }
 
+/**
+ * Empties contents of the xray
+ */
 void Xray::Empty() {
     std::vector<std::shared_ptr<Item>> toBeEmptied;
     for (auto digit : mItems)
@@ -130,11 +143,16 @@ void Xray::Empty() {
 
 }
 
-
+/**
+ * Verifies throw up timer can start
+ */
 bool Xray::TimerStart() {
     return (GetItemCount() > 0) && (GetGame()->GetEatTime() == 0);
 }
-
+/**
+ * Checks if xray is full
+ * @return bool representing Xray is full or not
+ */
 bool Xray::Full(){
     if (!mItems.empty() && mItems.size() == mCapacity)
     {

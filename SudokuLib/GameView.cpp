@@ -100,7 +100,7 @@ void GameView::OnPaint(wxPaintEvent& event)
 //    wxSize size = GetClientSize();
     wxRect size = GetRect();
     mGame.OnDraw(gc, size.GetWidth(), size.GetHeight());
-    int LevelNum = mGame.GetLevel()->GetLevelNumber();
+    const int LevelNum = mGame.GetLevel()->GetLevelNumber();
 
     if (mGame.GetNext() == true) {
         if (LevelNum == 3) {

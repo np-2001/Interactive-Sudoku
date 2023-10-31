@@ -20,7 +20,11 @@ class Level
 private:
     /// Running Game to load this level on
     Game *mGame;
+
+    /// File name of curent level
     wxString mLevelFileName;
+
+    /// Pointer to declaration class
     std::shared_ptr<Declaration> mDeclaration;
 
     void MakeDeclarations(wxXmlNode *node);
@@ -44,16 +48,22 @@ public:
 
     void LoadLevel();
 
-    /** Returns the fileName for the Current Level */
+    /**
+     * Getter for LevelFileName
+     * @return mLevelFileName the file name of current level
+     */
     wxString GetCurrentLevel() {return mLevelFileName; }
 
     /**
      *
-     * @param filename
+     * @param filename The filename of the current level
      */
     void SetLevel(wxString filename) {mLevelFileName = filename; }
 
-    /** Gets the Declaration for this level*/
+    /**
+     * Getter for pointer to Declaration
+     * @return mDeclaration pointer to declaration
+     */
     const std::shared_ptr<Declaration> GetDeclaration()  const {return  mDeclaration; }
 
     void LoadSolve(wxXmlNode *node);

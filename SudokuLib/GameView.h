@@ -43,12 +43,16 @@ private:
 public:
     void Initialize(wxFrame* parent);
 
+    /**
+     * Setter for mTime
+     * @param Time New time
+     */
     void SetTime(long Time) { mTime = Time;}
     void StartNewLevel(wxString levelFile);
 
     /**
- * Stop the timer so the window can close
- */
+    * Stop the timer so the window can close
+    */
     void Stop() {mTimer.Stop();}
 };
 

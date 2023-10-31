@@ -57,6 +57,7 @@ void FullDisplay::Draw(std::shared_ptr<wxGraphicsContext> graphics) {
  * @param time time the display moves at.
  */
 void FullDisplay::Update(double time) {
-
-    mPixelHeight = mPixelHeight-((time*0.0005)*5);
+    const double TimeScale = 0.0005;
+    const double DistanceScale = 3;
+    mPixelHeight = mPixelHeight-((time*TimeScale)*DistanceScale);
 }

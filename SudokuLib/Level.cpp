@@ -28,7 +28,6 @@ Level::Level(Game *game) : mGame(game)
 
 /**
  * Loads the Given Level
- * @param fileName level to load
  */
 void Level::LoadLevel()
 {
@@ -137,7 +136,7 @@ void Level::LoadLevel()
 
 /**
  * Loads the solution for the level
- * @param Starting node for the solution
+ * @param node node for the solution
  */
  void Level::LoadSolve(wxXmlNode* node)
  {

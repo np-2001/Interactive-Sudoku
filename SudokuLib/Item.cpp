@@ -12,6 +12,7 @@ using namespace std;
 /**
  * Constructor
  * @param game Game object associated with this item
+ * @param image The image of the corresponding item
  */
 Item::Item(Game *game, std::shared_ptr<wxImage> image): mGame(game)
 {
@@ -32,8 +33,8 @@ Item::~Item()
  */
 double Item::GetX() const
 {
-    int tileHeight = mGame->GetTileSize();
-    int width = mItemImage->GetWidth();
+    const int tileHeight = mGame->GetTileSize();
+    const int width = mItemImage->GetWidth();
     return (mCol*tileHeight+ (width/2.0));
 }
 
@@ -43,8 +44,8 @@ double Item::GetX() const
  */
 double Item::GetY() const
 {
-    int tileHeight = mGame->GetTileSize();
-    int height = mItemImage->GetHeight();
+    const int tileHeight = mGame->GetTileSize();
+    const int height = mItemImage->GetHeight();
     return ((mRow+1)*tileHeight - (height/2.0));
 }
 
@@ -55,9 +56,9 @@ double Item::GetY() const
  */
 void Item::SetPixelLocation(double x, double y)
 {
-    int tileHeight = 48;
-    int width = mItemImage->GetWidth();
-    int height = mItemImage->GetHeight();
+    const int tileHeight = 48;
+    const int width = mItemImage->GetWidth();
+    const int height = mItemImage->GetHeight();
 
     mCol = (x - (width/2.0))/tileHeight;
     mRow = ((y + (height/2.0))/tileHeight) - 1;
@@ -65,7 +66,7 @@ void Item::SetPixelLocation(double x, double y)
 
 /**
  * Draw the item
- * @param dc Device context to draw on
+ * @param graphics Device context to draw on
  */
 void Item::Draw(shared_ptr<wxGraphicsContext> graphics)
 {

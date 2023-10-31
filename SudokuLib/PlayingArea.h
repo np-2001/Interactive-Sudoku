@@ -22,12 +22,14 @@ class Game;
 class PlayingArea
 {
 private:
-/// Game this item is contained in
+    /// Game this item is contained in
     Game *mGame;
 
 
-    /// TopLeft position
+    /// TopLeft position Col
     int mTopLeftCol;
+
+    /// TopLeft position Row
     int mTopLeftRow;
 
     /// The current state of the board
@@ -35,6 +37,8 @@ private:
 
     /// The solution of the board
     std::array<std::array<int, 9>, 9> mSolution;
+
+    ///Number of filled cells
     int mFill = 0;
 
 
@@ -59,10 +63,17 @@ public:
 
     bool CheckSolution();
 
+    /**
+     * Getter for mFill
+     * @return mFill number of filled cells
+     */
     int GetFill() {
         return mFill;
     }
 
+    /**
+     * Setter for mFill
+     */
     void SetFill () {
         mFill = 0;
     }
