@@ -205,7 +205,10 @@ void GameView::OnKeyDown(wxKeyEvent &event)
  */
 void GameView::StartNewLevel(wxString levelFile)
 {
+
+    mGame.SetCheck(false);
     // Clear Game's Items
+
     mGame.Clear();
 
     mGame.ResetTime();

@@ -267,8 +267,8 @@ public:
     /**
      * Setter for game solution check
      */
-    void SetCheck() {
-        mCheck = true;
+    void SetCheck(bool check) {
+        mCheck = check;
     }
 
 };
