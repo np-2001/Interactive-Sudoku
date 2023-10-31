@@ -651,7 +651,7 @@ void Game::MakeSpartyLast(std::shared_ptr<Item> item)
  */
 void Game::AddToFront(std::shared_ptr<Item> item)
 {
-    mItems.insert(mItems.begin()+1, item);
+    mItems.insert(mItems.begin()+2, item);
 }
 
 
