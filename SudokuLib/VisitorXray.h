@@ -46,6 +46,7 @@ public:
     std::shared_ptr<Item> CallGetMatch(int x);
 
     bool CallTimerStart();
+    bool CallFull();
 };
 
 #endif //PROJECT1_335_SUDOKULIB_VISITORXRAY_H

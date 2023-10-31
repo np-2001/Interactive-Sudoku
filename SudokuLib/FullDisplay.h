@@ -16,18 +16,25 @@
 class FullDisplay
 {
 private:
+
     double mTime = 0;
     //wxString mWord;
 
 //    /// pointer to the game being played.
-//    std::shared_ptr<Game> mGame;
+    Game *mGame;
+
+    int mPixelWidth;
+    int mPixelHeight;
 
 public:
-    FullDisplay(wxString word);
-    FullDisplay();
-    void Draw(std::shared_ptr<wxGraphicsContext> graphics,int pixelHeight,int pixelWidth);
-    void Update(double time);
 
+    FullDisplay();
+    void Draw(std::shared_ptr<wxGraphicsContext> graphics);
+    void Update(double time);
+    FullDisplay(Game *game,int PixelWidth, int PixelHeight);
+    int GetPixelHeight () {
+        return mPixelHeight;
+    }
 };
 
 #endif //PROJECT1_335_SUDOKULIB_FULLDISPLAY_H

@@ -151,13 +151,12 @@ void Game::OnDraw(std::shared_ptr<wxGraphicsContext> graphics, int width, int he
 
     }
 
-    if(mFullList.empty() == false)
+
+    for(auto display: mFullList)
     {
-        for(auto item: mFullList)
-        {
-            item->Draw(graphics, pixelHeight, pixelWidth);
-        }
+        display->Draw(graphics);
     }
+
     graphics->PopState();
 }
 
@@ -299,18 +298,26 @@ void Game::Update(double time)
     // update the position of the full pop-ups, so it moves up screen
     if(mFullList.empty() == false)
     {
-        mYPosition = mTileSize * mHeight;
 
-        for(auto item: mFullList)
+        std::vector<std::shared_ptr<FullDisplay>> deletions;
+        for(auto display: mFullList)
         {
-            if (mYPosition < 0)
+            if (display->GetPixelHeight() < 0)
             {
-                mFullList.pop_back();
+                deletions.push_back(display);
             }
             else
             {
-                item->Update(mTime);
-                mYPosition = mYPosition - time * 3;
+                display->Update(mTime);
+
+            }
+        }
+
+        for (auto display : deletions)
+        {
+            auto iter = std::find(mFullList.begin(), mFullList.end(), display);
+            if (iter != mFullList.end()) {
+                mFullList.erase(iter);
             }
         }
     }
@@ -436,11 +443,7 @@ void Game::OnKeyDown(wxKeyEvent &event)
 {
     //If sparty tries to eat and is full
     //create a pop-up object to display
-    if(mXray != NULL && mXray->Full())
-    {
-        std::shared_ptr<FullDisplay> popUp;
-        mFullList.push_back(popUp);
-    }
+
 
     int x = (int)(mSparty->GetX());
     int y = (int)(mSparty->GetY());
@@ -451,50 +454,61 @@ void Game::OnKeyDown(wxKeyEvent &event)
             && mSparty->GetAngleHead() == 0)
         {
             mSparty->SetNewAngleMouth();
+            auto xray = GetXray();
+            VisitorXray xray_visitor;
+            xray->Accept(&xray_visitor);
 
-            auto item = EatTest(x, y);
-
-            if(item != nullptr)
+            if(xray_visitor.CallFull())
             {
-                //Check if we clicked on a Digit that is not a Given
-                VisitorDigit visitor;
-                item->Accept(&visitor);
+                int pixelWidth = mWidth * mTileSize;
+                int pixelHeight = mHeight * mTileSize;
+                std::shared_ptr<FullDisplay> display = std::make_shared<FullDisplay>(this,pixelWidth,pixelHeight);
+                mFullList.push_back(display);
+            } else {
+                auto item = EatTest(x, y);
 
-                auto sparty = mItems.back();
-                int row = (int)(sparty->GetRow());
-                int col = (int)(sparty->GetCol());
-
-                if(visitor.MatchDigit())
+                if(item != nullptr)
                 {
-                    // We are next to a Digit
-                    VisitorGiven visitor2;
-                    item->Accept(&visitor2);
+                    //Check if we clicked on a Digit that is not a Given
+                    VisitorDigit visitor;
+                    item->Accept(&visitor);
 
-                    if(!visitor2.MatchGiven())
+                    auto sparty = mItems.back();
+                    int row = (int)(sparty->GetRow());
+                    int col = (int)(sparty->GetCol());
+
+                    if(visitor.MatchDigit())
                     {
-                        // It is not a Given
+                        // We are next to a Digit
+                        VisitorGiven visitor2;
+                        item->Accept(&visitor2);
 
-                        if(!GetPlayingArea()->IsInPlayArea(x,y,true))
+                        if(!visitor2.MatchGiven())
                         {
-                            // We are eating off the playing area
-                            item->SetEatenLocation(item->GetX(),item->GetY());
+                            // It is not a Given
+
+                            if(!GetPlayingArea()->IsInPlayArea(x, y, true))
+                            {
+                                // We are eating off the playing area
+                                item->SetEatenLocation(item->GetX(), item->GetY());
+                            }
+                            else
+                            {
+                                // We are eating on the board
+                                GetPlayingArea()->RemoveFromBoard(item->GetCol(), item->GetRow(), item);
+                            }
+
+                            mItems.erase(std::remove(mItems.begin(), mItems.end(), item), mItems.end());
+                            VisitorXray xray_visitor;
+
+                            auto xray = GetXray();
+                            xray->Accept(&xray_visitor);
+                            xray_visitor.CallAdd(item);
                         }
                         else
                         {
-                            // We are eating on the board
-                            GetPlayingArea()->RemoveFromBoard(item->GetCol(), item->GetRow(), item);
+                            // We are next to a Given
                         }
-
-                        mItems.erase(std::remove(mItems.begin(), mItems.end(), item), mItems.end());
-                        VisitorXray xray_visitor;
-
-                        auto xray = GetXray();
-                        xray->Accept(&xray_visitor);
-                        xray_visitor.CallAdd(item);
-                    }
-                    else
-                    {
-                        // We are next to a Given
                     }
                 }
             }
