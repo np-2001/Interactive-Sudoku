@@ -320,6 +320,31 @@ void Game::Update(double time)
         }
     }
 
+    // update the position of the filled pop-ups, so it moves up screen
+    if(mFilledList.empty() == false)
+    {
+        std::vector<std::shared_ptr<FilledDisplay>> deletions;
+        for(auto display: mFilledList)
+        {
+            if (display->GetPixelHeight() < 0)
+            {
+                deletions.push_back(display);
+            }
+            else
+            {
+                display->Update(mTime);
+            }
+        }
+
+        for (auto display : deletions)
+        {
+            auto iter = std::find(mFilledList.begin(), mFilledList.end(), display);
+            if (iter != mFilledList.end()) {
+                mFilledList.erase(iter);
+            }
+        }
+    }
+
 }
 
 /**
@@ -439,10 +464,6 @@ void Game::Clear()
  */
 void Game::OnKeyDown(wxKeyEvent &event)
 {
-    //If sparty tries to eat and is full
-    //create a pop-up object to display
-
-
     int x = (int)(mSparty->GetX());
     int y = (int)(mSparty->GetY());
 

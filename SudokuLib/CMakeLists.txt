@@ -47,6 +47,8 @@ set(SOURCE_FILES MainFrame.cpp MainFrame.h
         VisitorXray.h
         FullDisplay.cpp
         FullDisplay.h
+        FilledDisplay.cpp
+        FilledDisplay.h
 )
 
 set(wxBUILD_PRECOMP OFF)

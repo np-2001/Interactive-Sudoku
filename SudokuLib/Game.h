@@ -16,6 +16,7 @@
 #include "PlayingArea.h"
 #include "Xray.h"
 #include "FullDisplay.h"
+#include "FilledDisplay.h"
 
 class Game
 {
@@ -44,8 +45,6 @@ private:
     /// List of all items in the game
     std::vector<std::shared_ptr<Item>> mItems;
 
-   // std::unique_ptr<wxBitmap> mBackground;  ///< Background image to use (hardcoded for now)
-
     /// Current Level
     std::shared_ptr<Level> mLevel;
 
@@ -58,8 +57,11 @@ private:
     ///pointer to Xray
     std::shared_ptr<Xray> mXray;
 
-    ///list of pop-ups to be drawn
+    ///vector of pop-ups to be drawn
     std::vector<std::shared_ptr<FullDisplay>> mFullList;
+
+    ///vector of pop-ups to be drawn
+    std::vector<std::shared_ptr<FilledDisplay>> mFilledList;
 
     ///Current time
     long mTime = 0;
