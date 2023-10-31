@@ -59,10 +59,10 @@ private:
     ///pointer to Xray
     std::shared_ptr<Xray> mXray;
 
-    ///vector of pop-ups to be drawn
+    ///vector of pop-ups to be drawn for if sparty is full
     std::vector<std::shared_ptr<FullDisplay>> mFullList;
 
-    ///vector of pop-ups to be drawn
+    ///vector of pop-ups to be drawn for if a tile is filled
     std::vector<std::shared_ptr<FilledDisplay>> mFilledList;
 
     ///Current time
