@@ -583,7 +583,7 @@ void Game::OnKeyDown(wxKeyEvent &event)
                 {
                     xray_visitor.CallRemove(item);
                     item->SetLocation(row, col);
-                    this->AddToFront(item);
+                    this->MakeSpartyLast(item);
                 }
                 else if(!GetPlayingArea()->AddToBoard(col, row, item))
                 {
@@ -642,14 +642,4 @@ void Game::MakeSpartyLast(std::shared_ptr<Item> item)
     mItems.push_back(item);
     mItems.push_back(sparty);
 }
-
-/**
- * Add item to front of list of items
- * @param item item to add
- */
-void Game::AddToFront(std::shared_ptr<Item> item)
-{
-    mItems.insert(mItems.begin()+2, item);
-}
-
 
