@@ -425,6 +425,10 @@ void Game::OnKeyDown(wxKeyEvent &event)
                 VisitorDigit visitor;
                 item->Accept(&visitor);
 
+                auto sparty = mItems.back();
+                int row = (int)(sparty->GetRow());
+                int col = (int)(sparty->GetCol());
+
                 if(visitor.MatchDigit())
                 {
                     // We are next to a Digit
@@ -434,7 +438,18 @@ void Game::OnKeyDown(wxKeyEvent &event)
                     if(!visitor2.MatchGiven())
                     {
                         // It is not a Given
-                        item->SetEatenLocation(item->GetX(),item->GetY());
+
+                        if(!GetPlayingArea()->IsInPlayArea(x,y,true))
+                        {
+                            // We are eating off the playing area
+                            item->SetEatenLocation(item->GetX(),item->GetY());
+                        }
+                        else
+                        {
+                            // We are eating on the board
+                            GetPlayingArea()->RemoveFromBoard(item->GetCol(), item->GetRow(), item);
+                        }
+
                         mItems.erase(std::remove(mItems.begin(), mItems.end(), item), mItems.end());
                         VisitorXray xray_visitor;
 
@@ -497,7 +512,7 @@ void Game::OnKeyDown(wxKeyEvent &event)
 
             if(item != nullptr)
             {
-                if(!(GetPlayingArea()->IsInPlayArea(row, col, false)) || (GetPlayingArea()->AddToBoard(col+1, row, item)))
+                if(!(GetPlayingArea()->IsInPlayArea(col, row, false)) || (GetPlayingArea()->AddToBoard(col+1, row, item)))
                 {
                     xray_visitor.CallRemove(item);
                     item->SetLocation(row, col+1);
