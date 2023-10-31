@@ -34,7 +34,7 @@ void FullDisplay::Draw(std::shared_ptr<wxGraphicsContext> graphics) {
 
     int rectangleWidth = 180;
     int rectangleHeight = 70;
-    const int RectangleOffset = 190;
+    const int RectangleOffset = 290;
     graphics->DrawRectangle(mPixelWidth/2-rectangleWidth/2, mPixelHeight/2-rectangleHeight/2+RectangleOffset, rectangleWidth, rectangleHeight);
 
     double wid, hit;
@@ -46,7 +46,7 @@ void FullDisplay::Draw(std::shared_ptr<wxGraphicsContext> graphics) {
     graphics->SetFont(smallFont, wxColour(150, 0, 0));
     graphics->GetTextExtent(L"I'm Full!", &wid, &hit);
 
-    const int textOffset = 200;
+    const int textOffset = 300;
     graphics->DrawText(L"I'm Full!", mPixelWidth/2 - wid/2, mPixelHeight/2-rectangleHeight/2+textOffset);
 
 
@@ -58,5 +58,5 @@ void FullDisplay::Draw(std::shared_ptr<wxGraphicsContext> graphics) {
  */
 void FullDisplay::Update(double time) {
 
-    mPixelHeight = mPixelHeight-((time*0.0005)*3);
+    mPixelHeight = mPixelHeight-((time*0.0005)*5);
 }

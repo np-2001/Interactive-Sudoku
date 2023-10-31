@@ -33,9 +33,9 @@ void FilledDisplay::Draw(std::shared_ptr<wxGraphicsContext> graphics) {
     wxBrush rectBrush(*wxWHITE);
     graphics->SetBrush(rectBrush);
 
-    int rectangleWidth = 180;
+    int rectangleWidth = 540;
     int rectangleHeight = 70;
-    const int RectangleOffset = 190;
+    const int RectangleOffset = 290;
     graphics->DrawRectangle(mPixelWidth/2-rectangleWidth/2, mPixelHeight/2-rectangleHeight/2+RectangleOffset, rectangleWidth, rectangleHeight);
 
     double wid, hit;
@@ -45,10 +45,10 @@ void FilledDisplay::Draw(std::shared_ptr<wxGraphicsContext> graphics) {
                      wxFONTSTYLE_NORMAL,
                      wxFONTWEIGHT_BOLD);
     graphics->SetFont(smallFont, wxColour(150, 0, 0));
-    graphics->GetTextExtent(L"I'm Full!", &wid, &hit);
+    graphics->GetTextExtent(L"Something is already there!", &wid, &hit);
 
-    const int textOffset = 200;
-    graphics->DrawText(L"I'm Full!", mPixelWidth/2 - wid/2, mPixelHeight/2-rectangleHeight/2+textOffset);
+    const int textOffset = 300;
+    graphics->DrawText(L"Something is already there!", mPixelWidth/2 - wid/2, mPixelHeight/2-rectangleHeight/2+textOffset);
 
 
 }
@@ -59,5 +59,5 @@ void FilledDisplay::Draw(std::shared_ptr<wxGraphicsContext> graphics) {
  */
 void FilledDisplay::Update(double time) {
 
-    mPixelHeight = mPixelHeight-((time*0.0005)*3);
+    mPixelHeight = mPixelHeight-((time*0.0005)*5);
 }

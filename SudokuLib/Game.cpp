@@ -147,6 +147,12 @@ void Game::OnDraw(std::shared_ptr<wxGraphicsContext> graphics, int width, int he
         display->Draw(graphics);
     }
 
+    // Draw pop-ups for when a tile space is filled
+    for(auto display: mFilledList)
+    {
+        display->Draw(graphics);
+    }
+
     graphics->PopState();
 }
 
@@ -574,6 +580,13 @@ void Game::OnKeyDown(wxKeyEvent &event)
                     mItems.pop_back();
                     mItems.push_back(item);
                     mItems.push_back(sparty);
+                }
+                else if(GetPlayingArea()->AddToBoard(col, row, item) == false)
+                {
+                    int pixelWidth = mWidth * mTileSize;
+                    int pixelHeight = mHeight * mTileSize;
+                    std::shared_ptr<FilledDisplay> display = std::make_shared<FilledDisplay>(this,pixelWidth,pixelHeight);
+                    mFilledList.push_back(display);
                 }
 
             }
