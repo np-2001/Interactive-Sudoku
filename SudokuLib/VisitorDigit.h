@@ -20,6 +20,8 @@ class VisitorDigit: public VisitorItem
 private:
     /// Flag checking if item is a digit
     bool mIsDigit = false;
+
+    /// Value of digit
     int mValue = 9;
 
 public:

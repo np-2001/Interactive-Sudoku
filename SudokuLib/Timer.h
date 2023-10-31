@@ -13,6 +13,7 @@
 class Timer : public wxWindow
 {
 private:
+    ///Current time of timer
     long mTime = 0;
 
 public:

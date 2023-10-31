@@ -21,7 +21,8 @@ private:
     /// Flag checking if item is a container
     bool mIsContainer = false;
 
-    Container *mContainer;
+    /// Pointer to container
+    Container *mContainer = nullptr;
 public:
     /**
      * Getter for mIsContainer
@@ -31,7 +32,7 @@ public:
 
     /**
      * Sets flag to true since we are visiting a container
-     * @param given item being visited
+     * @param container container being visited
      */
     void VisitContainer(Container *container) override
     {

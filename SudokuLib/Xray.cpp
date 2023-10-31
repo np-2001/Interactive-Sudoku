@@ -13,6 +13,7 @@
  * Constructor
  * @param game Game object associated with this item
  * @param capacity Capacity of the xray
+ * @param image Image of xray
  */
 Xray::Xray(Game *game, std::shared_ptr<wxImage> image, int capacity) : Item(game, image), mCapacity(capacity)
 {
@@ -145,6 +146,7 @@ void Xray::Empty() {
 
 /**
  * Verifies throw up timer can start
+ * @return Boolean representing if xray throwup timer can start
  */
 bool Xray::TimerStart() {
     return (GetItemCount() > 0) && (GetGame()->GetEatTime() == 0);

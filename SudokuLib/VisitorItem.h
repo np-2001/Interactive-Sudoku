@@ -51,7 +51,7 @@ public:
 
     /**
      * Visit xray
-     * @param container item we are visiting
+     * @param xray item we are visiting
      */
     virtual void VisitXray(Xray *xray) {}
 

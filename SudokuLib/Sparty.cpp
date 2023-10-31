@@ -11,7 +11,7 @@ using namespace std;
 
 
 /// Character speed in pixels per second
-const double MaxSpeed = 3200;
+const double MaxSpeed = 4500;
 
 /// The time for an eating cycles in seconds
 const double EatingTime = 0.5;
@@ -20,13 +20,6 @@ const double EatingTime = 0.5;
 const double HeadbuttTime = 0.5;
 
 
-/**
- * Constructor
- * @param game Game object associated with this item
- */
-Sparty::Sparty(Game *game, std::shared_ptr<wxImage> image) : Item(game, image)
-{
-}
 
 /**
  * Accepting visitor to Sparty
@@ -39,18 +32,24 @@ void Sparty::Accept(VisitorItem* visitor)
 
 /**
  * Sparty eats and does not get eaten
- * @param item digit to be eaten
  */
 void Sparty::Eat()
 {
 
 }
 
+/**
+ * Sparty does not Regurgitate. It is done by digits
+ */
 void Sparty::Regurgitate()
 {
 
 }
 
+/**
+ * Updates sparty's location and angle
+ * @param elapsed Time since last update
+ */
 void Sparty::Update(double elapsed)
 {
     double CurrLocationX = Item::GetX();
@@ -141,7 +140,10 @@ Sparty::Sparty(Game *game,
 
     //mChin = std::make_shared<SpartyChin>(game,mImage2,mFront,mHeadAngle,mHeadPivotX,mHeadPivotY,mMouthAngle,mMouthPivotX,mMouthPivotY,targetX,targetY);
 }
-
+/**
+ * Draws the head and mouth of sparty
+ * @param graphics Graphics device to draw on
+ */
 void Sparty::Draw(std::shared_ptr<wxGraphicsContext> graphics) {
 
     int wid = mImage2->GetWidth();
@@ -211,7 +213,10 @@ void Sparty::Draw(std::shared_ptr<wxGraphicsContext> graphics) {
 
 }
 
-
+/**
+ * Draws the Chin (Mouth) of sparty
+ * @param graphics Graphics device to draw on
+ */
 void Sparty::ChinDraw(std::shared_ptr<wxGraphicsContext> graphics) {
     // Load in BitMap only once
     int wid = mImage2->GetWidth();
@@ -234,7 +239,7 @@ void Sparty::ChinDraw(std::shared_ptr<wxGraphicsContext> graphics) {
 }
 
 /**
- * Handle drawing Sparty head image and headbutt animation.
+ * Handle drawing Sparty head image
  * @param graphics Graphics device to draw with.
  */
 void Sparty::HeadDraw(std::shared_ptr<wxGraphicsContext> graphics) {
@@ -255,7 +260,12 @@ void Sparty::HeadDraw(std::shared_ptr<wxGraphicsContext> graphics) {
     }
 }
 
-/// Setter for NewX and NewY
+/**
+ * Setter for NewX and NewY
+ * @param NewX the new x location of sparty
+ * @param NewY the new y location of sparty
+ */
+
 void Sparty::SetNewCoordinates(int NewX, int NewY) {
     Game * mGame = Item::GetGame();
     mNewLocationX = NewX-mTarget.m_x+mGame->GetTileSize();

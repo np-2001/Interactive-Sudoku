@@ -32,7 +32,7 @@ public:
 
     /**
      * Sets flag to true since we are visiting a container
-     * @param given item being visited
+     * @param xray item being visited
      */
     void VisitXray(Xray *xray) override
     {

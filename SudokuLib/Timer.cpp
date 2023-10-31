@@ -25,7 +25,10 @@ Timer::Timer()
 {
 
 }
-
+/**
+ * Draws the timer on the screen
+ * @param graphics Graphics device to draw on
+ */
 void Timer::OnDraw(std::shared_ptr<wxGraphicsContext> graphics) {
 
     int seconds = mTime * 0.001;
@@ -39,7 +42,10 @@ void Timer::OnDraw(std::shared_ptr<wxGraphicsContext> graphics) {
     graphics->SetFont(bigFont, *wxWHITE);
     graphics->DrawText(TimeString,ScoreboardTopLeft.x,ScoreboardTopLeft.y);
 }
-
+/**
+ * Updates the time
+ * @param Time New time of timer
+ */
 void Timer::Update(double Time) {
     mTime = Time;
 }

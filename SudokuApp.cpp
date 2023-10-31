@@ -7,7 +7,10 @@
 #include "SudokuApp.h"
 #include <MainFrame.h>
 
-
+/**
+ * Initialize the application.
+ * @return Boolean representing sucessful initialization
+ */
 bool SudokuApp::OnInit()
 {
 #ifdef WIN32
