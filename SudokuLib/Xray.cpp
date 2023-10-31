@@ -1,6 +1,6 @@
 /**
  * @file Xray.cpp
- * @author Sania Sinha
+ * @author Sania Sinha, Samantha Wycoff
  */
 
 #include "pch.h"
@@ -133,4 +133,12 @@ void Xray::Empty() {
 
 bool Xray::TimerStart() {
     return (GetItemCount() > 0) && (GetGame()->GetEatTime() == 0);
+}
+
+bool Xray::Full(){
+    if (!mItems.empty() && mItems.size() == mCapacity)
+    {
+        return true;
+    }
+    return false;
 }

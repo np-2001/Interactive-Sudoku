@@ -1,6 +1,6 @@
 /**
  * @file Xray.h
- * @author Sania Sinha
+ * @author Sania Sinha, Samantha Wycoff
  *
  * Class outlining xray that
  * Shows digits in Sparty's stomach
@@ -37,6 +37,7 @@ public:
     void Remove(std::shared_ptr<Item> item);
     void Draw(std::shared_ptr<wxGraphicsContext> graphics) override;
     std::shared_ptr<Item> GetMatch(int x);
+    bool Full();
 
     /**
      * Getter for capacity for xray

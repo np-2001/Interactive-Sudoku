@@ -15,6 +15,8 @@
 #include "Sparty.h"
 #include "PlayingArea.h"
 #include "Xray.h"
+#include "FullDisplay.h"
+
 class Game
 {
 private:
@@ -49,6 +51,12 @@ private:
 
     /// pointer to sparty
     std::shared_ptr<Sparty> mSparty = nullptr;
+
+    ///pointer to Xray
+    std::shared_ptr<Xray> mXray = nullptr;
+
+    ///list of pop-ups to be drawn
+    std::list<std::shared_ptr<FullDisplay>> mFullList;
 
     ///Current time
     long mTime = 0;

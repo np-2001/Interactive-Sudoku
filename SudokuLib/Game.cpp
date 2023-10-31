@@ -19,6 +19,7 @@
 #include "Sparty.h"
 #include "Xray.h"
 #include "PlayingArea.h"
+#include "FullDisplay.h"
 //using namespace std;
 using std::make_unique;
 
@@ -148,6 +149,14 @@ void Game::OnDraw(std::shared_ptr<wxGraphicsContext> graphics, int width, int he
             }
         }
 
+    }
+
+    if(mFullList.empty() == false)
+    {
+        for(auto item: mFullList)
+        {
+            item->Draw(graphics, pixelHeight, pixelWidth);
+        }
     }
     graphics->PopState();
 }
@@ -287,6 +296,15 @@ void Game::Update(double time)
 
     }
 
+//    if(mFullList.empty() == false)
+//    {
+//        for(auto item: mFullList)
+//        {
+//
+//            item->Update(time);
+//        }
+//    }
+
 }
 
 /**
@@ -401,7 +419,14 @@ void Game::Clear()
  */
 void Game::OnKeyDown(wxKeyEvent &event)
 {
-    int count = 0;
+    //If sparty tries to eat and is full
+    //create a pop-up object to display
+    if(mXray->Full())
+    {
+        std::shared_ptr<FullDisplay> popUp;
+        mFullList.push_back(popUp);
+    }
+
     int x = (int)(mSparty->GetX());
     int y = (int)(mSparty->GetY());
 
@@ -436,8 +461,6 @@ void Game::OnKeyDown(wxKeyEvent &event)
                         auto xray = GetXray();
                         xray->Accept(&xray_visitor);
                         xray_visitor.CallAdd(item);
-
-                        count += 1;
                     }
                     else
                     {
