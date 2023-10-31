@@ -8,8 +8,9 @@
 LevelDisplay::LevelDisplay() {
 
 }
-LevelDisplay::LevelDisplay(wxString word) {
+LevelDisplay::LevelDisplay(wxString word, int level) {
     mWord = word;
+    mLevel = level;
 }
 void LevelDisplay::Draw(std::shared_ptr<wxGraphicsContext> graphics,int pixelHeight,int pixelWidth) {
 
@@ -50,6 +51,16 @@ void LevelDisplay::Draw(std::shared_ptr<wxGraphicsContext> graphics,int pixelHei
 
         graphics->GetTextExtent(L"B: Headbutt", &wid, &hit);
         graphics->DrawText(L"B: Headbutt", pixelWidth/2 - wid/2, pixelHeight/2-rectangleHeight/2+180);
+
+        if (mLevel == 3) {
+            wxFont smallerFont(wxSize(0, 20),
+                             wxFONTFAMILY_SWISS,
+                             wxFONTSTYLE_NORMAL,
+                             wxFONTWEIGHT_BOLD);
+            graphics->SetFont(smallerFont, *wxBLACK);
+            graphics->GetTextExtent(L"Level 3 Feature: Throwup every 15 seconds after eating", &wid, &hit);
+            graphics->DrawText(L"Level 3 Feature: Throwup every 15 seconds after eating", pixelWidth/2 - wid/2, pixelHeight/2-rectangleHeight/2+230);
+        }
     }
 }
 

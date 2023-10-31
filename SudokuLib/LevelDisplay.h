@@ -21,12 +21,15 @@ private:
 
     ///Word of corresponding level for pop up
     wxString mWord;
+
+    ///Integer corresponding to level
+    int mLevel;
 public:
     /**
      * Constructor
      * @param word level to be displayed on pop up
      */
-    LevelDisplay(wxString word);
+    LevelDisplay(wxString word,int level);
     LevelDisplay();
 
     /**
