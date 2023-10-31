@@ -36,9 +36,6 @@ private:
     /// The bitmap for this item
     wxGraphicsBitmap mItemBitmap;
 
-    /// The file for this item
-    std::wstring mFile;
-
     /// X location item is eaten at
     double mEatenLocationX;
 
@@ -55,13 +52,6 @@ public:
 
     ///  Copy constructor (disabled)
     Item(const Item &) = delete;
-
-    /**
-     * Get the file name for this item image
-     * @return Filename or blank if none
-     *
-     */
-    std::wstring GetFile() { return mFile; }
 
     /**
       * The Row of the item
@@ -119,12 +109,6 @@ public:
      * @return game object
      */
     Game * GetGame() { return mGame; }
-
-    /**
-     * Getter for Item Image
-     * @return Item Image
-     */
-    std::shared_ptr<wxImage> GetItemImage() {return mItemImage;}
 
     /**
      * Getter for item bitmap

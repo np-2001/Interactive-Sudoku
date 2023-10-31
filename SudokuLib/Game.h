@@ -89,9 +89,6 @@ private:
     ///Indicates timer has started for throw up
     bool mStarted = false;
 
-    ///Indicates game has been completed
-    bool mCompletion = false;
-
     ///Indicates loading next level
     bool mNext = false;
 
@@ -103,13 +100,12 @@ private:
 
     /// The display timer (scoreboard)
     Timer mTimeDisplay;
+
 public:
     ///Constructor
     Game();
     void OnDraw(std::shared_ptr<wxGraphicsContext> graphics, int width, int height);
     virtual void OnLeftDown(int x, int y);
-
-
 
     /**
      * Getter for X Offset
@@ -223,14 +219,6 @@ public:
     }
 
     void Finished(bool correct,std::shared_ptr<wxGraphicsContext> graphics);
-
-    /**
-     * Setter for completion of game
-     * @param completed true if game completed
-     */
-    void SetCompleted (bool completed) {
-        mCompletion = completed;
-    }
 
     /**
      * Getter for next game

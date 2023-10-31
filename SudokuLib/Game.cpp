@@ -412,7 +412,7 @@ std::shared_ptr<Item> Game::FindNumber(int num) {
 
                 auto item = *i;
                 if (mPlayingArea->IsInPlayArea(item->GetCol(),item->GetRow(),false)) {
-                    return nullptr;
+                    continue;
                 }
 
 
@@ -570,6 +570,7 @@ void Game::OnKeyDown(wxKeyEvent &event)
             {
                 col = (int)sparty_col + 2;
             }
+
             if (sparty_row - floor(sparty_row) >= 0.5)
             {
                 row++;
@@ -582,12 +583,9 @@ void Game::OnKeyDown(wxKeyEvent &event)
                 {
                     xray_visitor.CallRemove(item);
                     item->SetLocation(row, col);
-//                    mItems.pop_back();
-//                    mItems.push_back(item);
-//                    mItems.push_back(sparty);
                     this->AddToFront(item);
                 }
-                else if(GetPlayingArea()->AddToBoard(col, row, item) == false)
+                else if(!GetPlayingArea()->AddToBoard(col, row, item))
                 {
                     int pixelWidth = mWidth * mTileSize;
                     int pixelHeight = mHeight * mTileSize;
