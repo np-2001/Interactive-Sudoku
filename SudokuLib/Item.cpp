@@ -1,6 +1,6 @@
 /**
  * @file Item.cpp
- * @author Sania Sinha, Finn Clark
+ * @author Eliezer Amponsah, Nitin Polavarapu, Samantha Wycoff, Sania Sinha, Finn Clark
  */
 
 #include "pch.h"

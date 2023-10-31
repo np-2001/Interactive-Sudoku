@@ -1,6 +1,6 @@
 /**
  * @file Timer.cpp
- * @author Nitin Polavarapu
+ * @author Eliezer Amponsah, Nitin Polavarapu, Samantha Wycoff, Sania Sinha, Finn Clark
  */
 
 #include "pch.h"

@@ -101,18 +101,15 @@ private:
     ///Indicates solution has been checked
     bool mCheck = false;
 
-    ///Indicates timer has started for game sequencing
-    bool mSequenceStart = false;
-
+    /// The display timer (scoreboard)
+    Timer mTimeDisplay;
 public:
     ///Constructor
     Game();
-    //Game(wxString startingLevel);
     void OnDraw(std::shared_ptr<wxGraphicsContext> graphics, int width, int height);
     virtual void OnLeftDown(int x, int y);
 
-    /// The display timer (scoreboard)
-    Timer mTimeDisplay;
+
 
     /**
      * Getter for X Offset

@@ -1,6 +1,6 @@
 /**
  * @file Game.cpp
- * @author Nitin Polavarapu, Samantha Wycoff, Sania Sinha, Finn Clark
+ * @author Eliezer Amponsah, Nitin Polavarapu, Samantha Wycoff, Sania Sinha, Finn Clark
  */
 
 #include "pch.h"
@@ -33,7 +33,7 @@ Game::Game()
 {
     mLevel = std::make_shared<Level>(this);
     mPlayingArea = std::make_shared<PlayingArea>(this);
-    //mBackground = make_unique<wxBitmap>(L"images/background.png", wxBITMAP_TYPE_ANY);
+
 }
 
 
@@ -71,22 +71,13 @@ void Game::OnDraw(std::shared_ptr<wxGraphicsContext> graphics, int width, int he
     graphics->Translate(mXOffset, mYOffset);
     graphics->Scale(mScale, mScale);
 
-    //
-    // Draw in virtual pixels on the graphics context
-    //
-    // INSERT YOUR DRAWING CODE HERE
-
-    //Displays the background and the grid
-//    graphics->DrawBitmap(*mBackground, 0, 0, mBackground->GetWidth(), mBackground->GetHeight());
-
     //Iterate over list of items
     //Draw each item in the list
     for(auto item : mItems)
     {
 
         item->Draw(graphics);
-        // If Item is a Container
-        // Visit Container and then Draw ContainerItems
+
     }
 
 
@@ -131,7 +122,6 @@ void Game::OnDraw(std::shared_ptr<wxGraphicsContext> graphics, int width, int he
 
         }
 
-        ///Will need to be fixed. As if now if all cells are filled I just set it to level3
 
         if (mCheck == true ) {
 
@@ -191,11 +181,7 @@ void Game::Finished(bool correct,std::shared_ptr<wxGraphicsContext> graphics) {
  * @param xRay Xray object to check if xray full
  */
 void Game::Throwup(std::shared_ptr<wxGraphicsContext> graphics, Xray* xRay) {
-    int pixelWidth = mWidth * mTileSize;
-    int pixelHeight = mHeight * mTileSize;
- //   long time = mStopWatch.Time();
- //((mTime / 1000) % 60) % 10 == 0
- //
+
     if (mStarted == true) {
         long time = mStopWatch.Time();
         if(time/1000 >= 15 && xRay->GetItemCount() > 0)
@@ -207,8 +193,6 @@ void Game::Throwup(std::shared_ptr<wxGraphicsContext> graphics, Xray* xRay) {
             mStopWatch.Pause();
             mStopWatch.Start();
             mStopWatch.Pause();
-
-            auto x = mStopWatch.Time();
             ///Afterwards clear the items in xray
             xRay->Empty();
             mStarted = false;
@@ -239,11 +223,8 @@ void Game::OnLeftDown(int x, int y)
         int virtualX = (x - mXOffset) / mScale;
         int virtualY = (y - mYOffset) / mScale;
 
-        //Sparty does not move when the left click is outside the background
-
         if(virtualX >= 0 && virtualX < mWidth*mTileSize && virtualY >= 0 && virtualY < mHeight*mTileSize)
         {
-            //Should be a visitor to set New Coordinates instead of pointer to Sparty and Sparty Chin
             mSparty->SetMoving(true);
             mSparty->SetNewCoordinates(virtualX, virtualY);
         }
@@ -273,13 +254,6 @@ void Game::Update(double time)
 
     }
 
-//    if (mSparty != nullptr) {
-//
-//
-//
-//        mSparty->Update(time);
-//
-//    }
     for (auto item: mItems) {
         item->Update(time);
     }
@@ -336,7 +310,8 @@ void Game::Update(double time)
         std::vector<std::shared_ptr<FilledDisplay>> deletions;
         for(auto display: mFilledList)
         {
-            if (display->GetPixelHeight() < 0)
+            int UpperBoundary = 0;
+            if (display->GetPixelHeight() < UpperBoundary)
             {
                 deletions.push_back(display);
             }
@@ -505,8 +480,7 @@ void Game::OnKeyDown(wxKeyEvent &event)
                     item->Accept(&visitor);
 
                     auto sparty = mItems.back();
-                    int row = (int)(sparty->GetRow());
-                    int col = (int)(sparty->GetCol());
+
 
                     if(visitor.MatchDigit())
                     {
@@ -546,11 +520,6 @@ void Game::OnKeyDown(wxKeyEvent &event)
             // We are not next to an item
         }
         // event key code 66 is the key for b
-        auto oldx = int(mSparty->GetX());
-        auto oldy = int(mSparty->GetNewY());
-        auto newx = int(mSparty->GetNewX());
-        auto newy = int(mSparty->GetNewY());
-        auto currangle = int(mSparty->GetAngleMouth());
         if(event.GetKeyCode() == 66 && !(mSparty->GetMoving()) && mSparty->GetAngleMouth() == 0)
         {
             mSparty->SetNewAngleHead();
@@ -564,7 +533,6 @@ void Game::OnKeyDown(wxKeyEvent &event)
 
                 if(visitor.MatchContainer())
                 {
-                    //wxMessageBox(L"This is a container");
                     visitor.CallDestroyContainer();
 
                 }
@@ -576,7 +544,6 @@ void Game::OnKeyDown(wxKeyEvent &event)
         if(event.GetKeyCode() >= 48 && event.GetKeyCode() <= 57 && !(mSparty->GetMoving()) && mSparty->GetAngleMouth() == 0 && mSparty->GetAngleHead() == 0)
         {
             int throw_digit = event.GetKeyCode() - 48;
-            // We are in the playing area
             auto xray = GetXray();
             auto sparty = mItems.back();
 

@@ -1,6 +1,6 @@
 /**
  * @file VisitorContainer.cpp
- * @author Sania Sinha
+ * @author Eliezer Amponsah, Nitin Polavarapu, Samantha Wycoff, Sania Sinha, Finn Clark
  */
 
 #include "pch.h"

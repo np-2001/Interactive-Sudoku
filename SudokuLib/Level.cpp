@@ -1,6 +1,6 @@
 /**
  * @file Level.cpp
- * @author Eliezer Amponsah, Sania Sinha, Finn Clark, Samantha Wycoff
+ * @author Eliezer Amponsah, Nitin Polavarapu, Samantha Wycoff, Sania Sinha, Finn Clark
  */
 
 #include "pch.h"

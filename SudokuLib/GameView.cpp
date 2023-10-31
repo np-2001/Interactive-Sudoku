@@ -1,6 +1,6 @@
 /**
  * @file GameView.cpp
- * @author Nitin Polavarapu, Samantha Wycoff, Finn Clark
+ * @author Eliezer Amponsah, Nitin Polavarapu, Samantha Wycoff, Sania Sinha, Finn Clark
  */
 
 #include "pch.h"

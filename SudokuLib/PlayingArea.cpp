@@ -1,6 +1,6 @@
 /**
 * @file PlayingArea.cpp
-* @author Finn Clark
+* @author Eliezer Amponsah, Nitin Polavarapu, Samantha Wycoff, Sania Sinha, Finn Clark
 */
 
 

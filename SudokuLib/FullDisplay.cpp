@@ -1,6 +1,6 @@
 /**
  * @file FullDisplay.cpp
- * @author Samantha Wycoff
+ * @author Eliezer Amponsah, Nitin Polavarapu, Samantha Wycoff, Sania Sinha, Finn Clark
  */
 
 #include "pch.h"

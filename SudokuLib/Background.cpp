@@ -1,6 +1,6 @@
 /**
  * @file Background.cpp
- * @author Sania Sinha, Samantha Wycoff
+ * @author Eliezer Amponsah, Nitin Polavarapu, Samantha Wycoff, Sania Sinha, Finn Clark
  */
 
 #include "pch.h"
