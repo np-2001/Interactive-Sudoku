@@ -131,6 +131,7 @@ public:
     void OnKeyDown(wxKeyEvent &event);
     void Accept(VisitorItem *visitor);
     std::shared_ptr<Item> GetXray();
+    void AddToFront(std::shared_ptr<Item> item);
 
 
     /// Level related Operations

@@ -145,7 +145,7 @@ void Container::DestroyContainer()
         // Deletes the items from mContainerItems and then adds it to mItems
         for (auto digit : toBeDeleted)
         {
-            GetGame()->MakeSpartyLast(digit);
+            GetGame()->AddToFront(digit);
             //std::remove(mContainerItems.begin(), mContainerItems.end(),digit);
         }
         mContainerItems.clear();

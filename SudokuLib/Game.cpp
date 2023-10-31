@@ -600,6 +600,11 @@ void Game::MakeSpartyLast(std::shared_ptr<Item> item)
     mItems.push_back(sparty);
 }
 
+void Game::AddToFront(std::shared_ptr<Item> item)
+{
+    mItems.insert(mItems.begin()+1, item);
+}
+
 
 /**
  * Handles game sequencing depending on if the game was solved sucessfully or not
