@@ -541,14 +541,24 @@ void Game::OnKeyDown(wxKeyEvent &event)
             auto item = xray_visitor.CallGetMatch(throw_digit);
 
             int row = (int)(sparty->GetRow());
-            int col = (int)(sparty->GetCol());
+            double sparty_col = sparty->GetCol();
+            int col;
+
+            if(sparty_col - floor(sparty_col) < 0.5)
+            {
+                col = (int)sparty_col + 1;
+            }
+            else
+            {
+                col = (int)sparty_col + 2;
+            }
 
             if(item != nullptr)
             {
-                if(!(GetPlayingArea()->IsInPlayArea(col+1, row, false)) || (GetPlayingArea()->AddToBoard(col+1, row, item)))
+                if(!(GetPlayingArea()->IsInPlayArea(col, row, false)) || (GetPlayingArea()->AddToBoard(col, row, item)))
                 {
                     xray_visitor.CallRemove(item);
-                    item->SetLocation(row, col+1);
+                    item->SetLocation(row, col);
                     mItems.pop_back();
                     mItems.push_back(item);
                     mItems.push_back(sparty);
