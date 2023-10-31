@@ -19,6 +19,9 @@ private:
     double mTime = 0;
     //wxString mWord;
 
+//    /// pointer to the game being played.
+//    std::shared_ptr<Game> mGame;
+
 public:
     FullDisplay(wxString word);
     FullDisplay();

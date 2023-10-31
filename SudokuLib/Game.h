@@ -38,6 +38,9 @@ private:
     /// Screen Height
     int mHeight;
 
+    /// Y position for pop ups
+    int mYPosition;
+
     /// List of all items in the game
     std::vector<std::shared_ptr<Item>> mItems;
 
@@ -53,10 +56,10 @@ private:
     std::shared_ptr<Sparty> mSparty = nullptr;
 
     ///pointer to Xray
-    std::shared_ptr<Xray> mXray = nullptr;
+    std::shared_ptr<Xray> mXray;
 
     ///list of pop-ups to be drawn
-    std::list<std::shared_ptr<FullDisplay>> mFullList;
+    std::vector<std::shared_ptr<FullDisplay>> mFullList;
 
     ///Current time
     long mTime = 0;
@@ -120,6 +123,7 @@ public:
     int GetTileSize() const { return mTileSize;}
     int GetWidth() const { return mWidth;}
     int GetHeight() const { return mHeight;}
+    int GetYPosition() const {return mYPosition;}
 
     void Update(double time);
     void Add(std::shared_ptr<Item> item);

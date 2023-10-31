@@ -296,14 +296,24 @@ void Game::Update(double time)
 
     }
 
-//    if(mFullList.empty() == false)
-//    {
-//        for(auto item: mFullList)
-//        {
-//
-//            item->Update(time);
-//        }
-//    }
+    // update the position of the full pop-ups, so it moves up screen
+    if(mFullList.empty() == false)
+    {
+        mYPosition = mTileSize * mHeight;
+
+        for(auto item: mFullList)
+        {
+            if (mYPosition < 0)
+            {
+                mFullList.pop_back();
+            }
+            else
+            {
+                item->Update(mTime);
+                mYPosition = mYPosition - time * 3;
+            }
+        }
+    }
 
 }
 
@@ -421,7 +431,7 @@ void Game::OnKeyDown(wxKeyEvent &event)
 {
     //If sparty tries to eat and is full
     //create a pop-up object to display
-    if(mXray->Full())
+    if(mXray != NULL && mXray->Full())
     {
         std::shared_ptr<FullDisplay> popUp;
         mFullList.push_back(popUp);

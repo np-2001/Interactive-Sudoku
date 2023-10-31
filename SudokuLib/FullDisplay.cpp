@@ -53,8 +53,7 @@ void FullDisplay::Draw(std::shared_ptr<wxGraphicsContext> graphics,int pixelHeig
     }
 }
 
-//void FullDisplay::Update(double time) {
-//    mTime = time;
-//
-//    auto yPosition = mGame->GetTileSize() * mGame->GetHeight();
-//}
+void FullDisplay::Update(double time) {
+    mTime = time;
+    //mGame->GetYPosition() = mGame->GetYPosition() - time * 3;
+}
