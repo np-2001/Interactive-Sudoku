@@ -576,9 +576,10 @@ void Game::OnKeyDown(wxKeyEvent &event)
                 {
                     xray_visitor.CallRemove(item);
                     item->SetLocation(row, col);
-                    mItems.pop_back();
-                    mItems.push_back(item);
-                    mItems.push_back(sparty);
+//                    mItems.pop_back();
+//                    mItems.push_back(item);
+//                    mItems.push_back(sparty);
+                    this->AddToFront(item);
                 }
                 else if(GetPlayingArea()->AddToBoard(col, row, item) == false)
                 {
