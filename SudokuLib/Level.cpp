@@ -205,8 +205,7 @@ void Level::SolveLevel() {
             }
         }
     }
-    // For visualising board. You can delete this later
-    playingArea->DisplayBoard();
+
 }
 
 
