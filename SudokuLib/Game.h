@@ -254,6 +254,7 @@ public:
 
     /**
      * Setter for game solution check
+     * @param check bool representing if check has happened
      */
     void SetCheck(bool check) {
         mCheck = check;
