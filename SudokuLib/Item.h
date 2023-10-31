@@ -40,10 +40,10 @@ private:
     std::wstring mFile;
 
     /// X location item is eaten at
-    double EatenLocationX;
+    double mEatenLocationX;
 
     /// Y location item is eaten at
-    double EatenLocationY;
+    double mEatenLocationY;
 
 protected:
     /// Constructor
@@ -154,8 +154,8 @@ public:
      * @param Y location Y that is eaten
      */
     void SetEatenLocation(double X, double Y) {
-        EatenLocationX = X;
-        EatenLocationY = Y;
+        mEatenLocationX = X;
+        mEatenLocationY = Y;
     }
 
     /**
@@ -163,7 +163,7 @@ public:
      * @return eaten location X
      */
     double GetEatenLocationX() {
-        return EatenLocationX;
+        return mEatenLocationX;
     };
 
     /**
@@ -171,7 +171,7 @@ public:
      * @return eaten location Y
      */
     double GetEatenLocationY() {
-        return EatenLocationY;
+        return mEatenLocationY;
     };
 
 };

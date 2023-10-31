@@ -28,6 +28,7 @@ public:
     /**
      * Constructor
      * @param word level to be displayed on pop up
+     * @param level level referenced
      */
     LevelDisplay(wxString word,int level);
     LevelDisplay();
