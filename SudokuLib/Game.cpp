@@ -497,7 +497,7 @@ void Game::OnKeyDown(wxKeyEvent &event)
                         {
                             // It is not a Given
 
-                            if(!GetPlayingArea()->IsInPlayArea(x, y, true))
+                            if(!GetPlayingArea()->IsInPlayArea(item->GetCol(), item->GetRow(), false))
                             {
                                 // We are eating off the playing area
                                 item->SetEatenLocation(item->GetX(), item->GetY());

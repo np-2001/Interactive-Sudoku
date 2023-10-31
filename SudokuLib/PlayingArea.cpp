@@ -146,8 +146,15 @@ bool PlayingArea::AddToBoard(int col, int row, std::shared_ptr<Item> digit)
  */
 bool PlayingArea::RemoveFromBoard(int col, int row, std::shared_ptr<Item> digit)
 {
+    int tileHeight = mGame->GetTileSize();
+    int width = digit->GetImage()->GetWidth();
+    int x = col*tileHeight+ (width/2.0);
+
+    int height = digit->GetImage()->GetHeight();
+    int y = (row+1)*tileHeight - (height/2.0);
+
     // If We are in the playArea and there's SPECIFICALLY a digit
-    if (IsInPlayArea(col, row) && mGame->HitTest(row, col))
+    if (IsInPlayArea(col, row) && mGame->HitTest(x, y))
     {
         VisitorGiven visitor;
         digit->Accept(&visitor);
