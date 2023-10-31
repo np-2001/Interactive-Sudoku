@@ -512,7 +512,7 @@ void Game::OnKeyDown(wxKeyEvent &event)
 
             if(item != nullptr)
             {
-                if(!(GetPlayingArea()->IsInPlayArea(col, row, false)) || (GetPlayingArea()->AddToBoard(col+1, row, item)))
+                if(!(GetPlayingArea()->IsInPlayArea(col+1, row, false)) || (GetPlayingArea()->AddToBoard(col+1, row, item)))
                 {
                     xray_visitor.CallRemove(item);
                     item->SetLocation(row, col+1);
