@@ -72,7 +72,8 @@ bool PlayingArea::IsInPlayArea(int x, int y, bool xy = false) {
     else
     {
         // Process as (col, row) location
-        if (x < mTopLeftCol || y < mTopLeftRow || x > mTopLeftCol * 9 || y > mTopLeftRow * 9)
+
+        if (x < mTopLeftCol || y < mTopLeftRow || x > mTopLeftCol + 8 || y > mTopLeftRow + 8)
         {
             return false;
         }

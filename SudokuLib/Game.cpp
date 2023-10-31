@@ -361,15 +361,20 @@ std::shared_ptr<Item> Game::FindNumber(int num) {
         if(visitor.MatchDigit())
         {
             if(visitor.GetValue() == num) {
+
                 auto item = *i;
+                if (mPlayingArea->IsInPlayArea(item->GetCol(),item->GetRow(),false)) {
+                    return nullptr;
+                }
+
+
                 mItems.erase(std::remove(mItems.begin(), mItems.end(), item), mItems.end());
                 MakeSpartyLast(item);
                 return item;
+                }
             }
         }
 
-
-    }
     return  nullptr;
 }
 
