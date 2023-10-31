@@ -40,6 +40,7 @@ public:
     ///Constructor
     Container(Game *game, std::shared_ptr<wxImage> image);
 
+    ///Constructor
     Container(Game *game, std::shared_ptr<wxImage> image, std::shared_ptr<wxImage> front);
 
     ///  Default constructor (disabled)

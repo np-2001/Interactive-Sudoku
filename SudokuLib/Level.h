@@ -26,6 +26,8 @@ private:
     void MakeDeclarations(wxXmlNode *node);
     void MakeItems(wxXmlNode *node);
 
+    /// Int corresponding to current level
+    int mLevelNumber;
 
 public:
 
@@ -59,6 +61,14 @@ public:
 
     ///Test will be fixed
     std::shared_ptr<LevelDisplay> mPopup = nullptr;
+
+    /**
+     * Getter for Level Number
+     * @return
+     */
+    int GetLevelNumber () {
+        return mLevelNumber;
+    }
 };
 
 #endif //PROJECT1_335_SUDOKULIB_LEVEL_H

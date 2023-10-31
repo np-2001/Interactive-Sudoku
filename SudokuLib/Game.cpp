@@ -91,10 +91,9 @@ void Game::OnDraw(std::shared_ptr<wxGraphicsContext> graphics, int width, int he
     {
         mTimeDisplay.OnDraw(graphics);
 
-        auto level = GetLevel();
 
         /// Level 3 Feature
-        if(level->GetCurrentLevel() == L"Levels/level3.xml")
+        if(mLevel->GetLevelNumber() == 3)
         {
             auto xray = GetXray();
             VisitorXray xray_visitor;
@@ -259,7 +258,7 @@ void Game::Update(double time)
     }
 
     /// Level 3 feature timer update
-    if (mLevel->GetCurrentLevel() == L"Levels/level3.xml") {
+    if (mLevel->GetLevelNumber() == 3) {
         auto xray = GetXray();
         VisitorXray xray_visitor;
         xray->Accept(&xray_visitor);
