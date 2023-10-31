@@ -19,6 +19,7 @@ void VisitorXray::CallAdd(std::shared_ptr<Item> item)
         mXray->Add(item);
     }
 }
+
 /**
  * Calls throw up function
  * @param graphics Graphics device to draw on
@@ -45,7 +46,7 @@ void VisitorXray::CallRemove(std::shared_ptr<Item> item)
 /**
  * Calls GetMatch on xray
  * @param x Item to be checked for
- * @return Bool representing if Item is in Xray
+ * @return Pointer to item match in xray
  */
 std::shared_ptr<Item> VisitorXray::CallGetMatch(int x)
 {
@@ -53,7 +54,7 @@ std::shared_ptr<Item> VisitorXray::CallGetMatch(int x)
     {
         return mXray->GetMatch(x);
     }
-    //return nullptr;
+    return nullptr;
 }
 
 /**
@@ -63,6 +64,7 @@ std::shared_ptr<Item> VisitorXray::CallGetMatch(int x)
 bool VisitorXray::CallTimerStart() {
     return mXray->TimerStart();
 }
+
 /**
  * Calls CallFull on xray
  * @return Boolean representing if xray is full
