@@ -47,7 +47,8 @@ TEST(VisitorTest, CheckType)
     // Make Sparty
     std::shared_ptr<Item> sparty;
     auto sparty_image = std::make_shared<wxImage>(L"images/sparty-1.png");
-    sparty = std::make_shared<Sparty>(&game, sparty_image);
+    auto sparty_image2 = std::make_shared<wxImage>(L"images/sparty-2.png");
+    sparty = std::make_shared<Sparty>(&game, sparty_image, sparty_image2, 0, 0, 0, 0, 0, 0, 0, 0, 0);
     game.Add(sparty);
 
     VisitorSparty visitor3;
