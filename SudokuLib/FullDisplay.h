@@ -16,14 +16,13 @@
 class FullDisplay
 {
 private:
-
-    double mTime = 0;
-    //wxString mWord;
-
-//    /// pointer to the game being played.
+    /// pointer to the game being played.
     Game *mGame;
 
+    /// width used for pop-up display
     int mPixelWidth;
+
+    /// height used for pop-up display
     int mPixelHeight;
 
 public:

@@ -151,7 +151,7 @@ void Game::OnDraw(std::shared_ptr<wxGraphicsContext> graphics, int width, int he
 
     }
 
-
+    // Draw pop-ups for when Sparty is full
     for(auto display: mFullList)
     {
         display->Draw(graphics);
@@ -298,7 +298,6 @@ void Game::Update(double time)
     // update the position of the full pop-ups, so it moves up screen
     if(mFullList.empty() == false)
     {
-
         std::vector<std::shared_ptr<FullDisplay>> deletions;
         for(auto display: mFullList)
         {
@@ -309,7 +308,6 @@ void Game::Update(double time)
             else
             {
                 display->Update(mTime);
-
             }
         }
 
@@ -464,7 +462,9 @@ void Game::OnKeyDown(wxKeyEvent &event)
                 int pixelHeight = mHeight * mTileSize;
                 std::shared_ptr<FullDisplay> display = std::make_shared<FullDisplay>(this,pixelWidth,pixelHeight);
                 mFullList.push_back(display);
-            } else {
+            }
+            else
+            {
                 auto item = EatTest(x, y);
 
                 if(item != nullptr)
